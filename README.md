@@ -118,6 +118,7 @@
 ## 📝 История Изменений (Changelog)
 
 <!-- CHANGELOG_START -->
+- 2025-11-23: docs: Bootstrap project with READMEs for all system folders
 - 2025-11-23: refactor: Migrate project to v10.5 Scientific Edition structure
 - 2025-11-23: feat: Add MIT LICENSE file to project
 - 2025-11-23: docs: Overhaul README with commands and file architecture
@@ -129,5 +130,6 @@
 ## ⚖️ Лицензия
 
 Этот проект распространяется по лицензии MIT. Темы, созданные с помощью этой системы, могут распространяться **только** через официальный магазин тем Shopify. Перепродажа или распространение вне Shopify запрещены.
+
 
 
