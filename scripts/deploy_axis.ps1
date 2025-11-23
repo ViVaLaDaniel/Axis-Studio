@@ -1,23 +1,24 @@
-﻿# --- AXIS SAVE SYSTEM (Smart Drive + Reports) ---
+﻿# --- AXIS SAVE SYSTEM (Auto-Detect Drive) ---
 
 $SourceDir = Get-Location
 $ProjectName = Split-Path $SourceDir -Leaf
 
-# === УМНЫЙ ПОИСК ДИСКА (Smart Discovery) ===
-# Мы проверяем оба варианта, чтобы скрипт работал всегда
+# === ХИТРЫЙ ПОИСК ДИСКА ===
+# Мы не пишем имя папки руками. Мы просим систему найти её саму.
+$DriveLetter = "G:\"
 $DrivePath = $null
-$Candidates = @("G:\My Drive", "G:\Мой диск")
 
-foreach ($path in $Candidates) {
-    if (Test-Path $path) {
-        $DrivePath = $path
-        break
+if (Test-Path $DriveLetter) {
+    # Берем первую папку в корне диска G: (обычно это и есть "Мой диск")
+    $RootFolder = Get-ChildItem -Path $DriveLetter -Directory | Select-Object -First 1
+    if ($RootFolder) {
+        $DrivePath = $RootFolder.FullName
     }
 }
 
 Write-Host "===== [AXIS] Project: $ProjectName =====" -ForegroundColor Cyan
 
-# --- 0. ОТЧЕТЫ (REPORTS) ---
+# --- 0. ОТЧЕТЫ ---
 Write-Host "[REP] Generating reports..." -ForegroundColor Yellow
 $ReportsDir = Join-Path $SourceDir "REPORTS"
 if (-not (Test-Path $ReportsDir)) { New-Item -ItemType Directory -Force -Path $ReportsDir | Out-Null }
@@ -34,23 +35,22 @@ if ([string]::IsNullOrWhiteSpace($GitStatus)) {
     $GitDiff = git diff --stat
     $FullReport = "## Axis Update: $DateStr $TimeStr
 
-### 📂 Files:
+### Files:
 ``n$GitStatus
-``n### 📊 Stats:
+``n### Stats:
 ``n$GitDiff
 ``n---
 *Axis CLI*"
     
-    # Сохраняем отчет в UTF8
+    # Сохраняем в UTF8
     Add-Content -Path $ReportPath -Value $FullReport -Encoding UTF8
-    Write-Host "[REP] Report saved: REPORTS/$ReportName" -ForegroundColor Green
+    Write-Host "[REP] Report saved." -ForegroundColor Green
 
     # Ссылка в README
     $ReadmePath = Join-Path $SourceDir "README.md"
     $ReadmeEntry = "- **$DateStr $TimeStr**: [View Report](REPORTS/$ReportName)"
     if (Test-Path $ReadmePath) {
         Add-Content -Path $ReadmePath -Value $ReadmeEntry -Encoding UTF8
-        Write-Host "[REP] README updated." -ForegroundColor Green
     }
 }
 
@@ -69,7 +69,7 @@ if (Test-Path ".git") {
 
 # --- 2. GOOGLE DRIVE ---
 if ($DrivePath) {
-    Write-Host "[CLOUD] Found Drive at: $DrivePath" -ForegroundColor Yellow
+    Write-Host "[CLOUD] Detected Drive at: $DrivePath" -ForegroundColor Yellow
     $BackupRoot = Join-Path $DrivePath "Axis Projects Backup"
     $BackupDir = Join-Path $BackupRoot $ProjectName
     
@@ -81,7 +81,6 @@ if ($DrivePath) {
     Write-Host "[CLOUD] Backup Complete!" -ForegroundColor Green
 } else {
     Write-Host "[CLOUD] Warning: Google Drive (G:) not found." -ForegroundColor Red
-    Write-Host "Check if Google Drive for Desktop is running." -ForegroundColor Gray
 }
 
 Write-Host "[DONE] Finished."
