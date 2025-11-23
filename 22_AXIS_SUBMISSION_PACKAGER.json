@@ -6,28 +6,30 @@
   
   "shopify_theme_store_requirements_2025": {
     "technical": {
-      "online_store_2_0": "MANDATORY (JSON templates)",
-      "theme_check": "Must pass with 0 errors, <5 warnings",
-      "lighthouse_score": "Performance >80, Accessibility >90, SEO >90",
-      "browser_support": "Chrome, Firefox, Safari, Edge (last 2 versions)",
-      "app_blocks": "Must support @app blocks in main-product"
+      "online_store_2_0": "MANDATORY. All templates must be JSON. Sections on every page.",
+      "theme_check": "Must pass with 0 errors. Warnings should be justified. Focus on: asset_url, money filters, and valid schema.",
+      "lighthouse_score": "Performance >90, Accessibility >95, SEO >95. Measured on a live demo store, not localhost.",
+      "browser_support": "Chrome, Firefox, Safari, Edge (last 2 major versions on desktop and mobile). No JS errors in console.",
+      "app_blocks": "Must support App Blocks in `main-product.liquid`. Should also consider App Blocks on `main-page.liquid` and `main-collection.liquid`.",
+      "performance": "LCP < 1.8s, CLS < 0.1. No layout shifts on load. Total blocking time < 200ms."
     },
     "content": {
-      "demo_store": "50+ products, 8+ collections, 5+ blog posts",
-      "documentation": "README.md, CHANGELOG.md, Support URL",
-      "screenshots": "5-8 high-quality (1920x1080)",
-      "video_demo": "Optional but recommended (30-60 seconds)"
+      "demo_store": "Must look like a real, high-quality store. Minimum 50 products with unique images and descriptions. 8+ collections. 5+ blog posts. All static pages (About, Contact) filled out.",
+      "documentation": "Clear, concise, and easy for merchants. Must include a Support URL and contact method. `README.md` and `CHANGELOG.md` are mandatory.",
+      "screenshots": "5-8 high-resolution (1920x1080 desktop, 750x1334 mobile). Must showcase key features with annotations. No empty states.",
+      "video_demo": "Optional but highly recommended. 30-90 seconds. Shows the theme in action, highlighting unique features and ease of use."
     },
     "legal": {
-      "license": "Must include LICENSE.txt (Shopify-approved)",
-      "no_external_dependencies": "No CDN links (except Shopify CDN)",
-      "gdpr_compliant": "Cookie consent, data handling policies",
-      "accessibility": "WCAG 2.1 AA compliant"
+      "license": "Must include a `LICENSE.txt` file with a permissive license (MIT, Apache 2.0). GPL is NOT allowed.",
+      "no_external_dependencies": "No third-party CDN links for fonts, scripts, or styles. All assets must be hosted in the theme's `assets` folder.",
+      "gdpr_compliant": "Must integrate with Shopify's Consent Tracking API. No cookies should be set before user consent.",
+      "accessibility": "WCAG 2.1 Level AA is a HARD requirement. Shopify will manually test with screen readers and keyboard navigation."
     },
     "business": {
-      "unique_value_proposition": "Can't be Dawn clone",
-      "target_niche_clarity": "Clear in description",
-      "pricing_justification": "$180-$350 (must justify if >$250)"
+      "unique_value_proposition": "Cannot be a minor variation of Dawn or another popular theme. Must have a unique design, layout, or feature set. (See File 20 & 24).",
+      "target_niche_clarity": "The theme description must clearly state who the theme is for (e.g., 'Perfect for single-product stores', 'Designed for large catalogs').",
+      "pricing_justification": "$180-$350 price range. If priced above $250, you must justify the cost with advanced features, extensive support, or exceptional design.",
+      "support": "A clear support policy and a working support contact (email or helpdesk URL) are required."
     }
   },
   
@@ -86,7 +88,7 @@
       
       "file_license": {
         "path": "LICENSE.txt",
-        "content": "MIT License\n\nCopyright (c) 2025 Axis Studios\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the 'Software'), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\n[Full MIT License text]\n\nSHOPIFY THEME STORE ADDENDUM:\nThis theme may only be distributed through the Shopify Theme Store.\nReselling or redistribution outside of Shopify is prohibited.",
+        "content": "MIT License\n\nCopyright (c) 2025 Axis Studios\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n\nSHOPIFY THEME STORE ADDENDUM:\nThis theme may only be distributed through the Shopify Theme Store.\nReselling or redistribution outside of Shopify is prohibited.",
         "note": "Shopify prefers MIT or similar permissive licenses"
       },
       

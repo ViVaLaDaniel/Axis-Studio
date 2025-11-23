@@ -17,7 +17,17 @@
           "Scroll-triggered color palette shift (day -> night mode based on scroll %)",
           "AI-powered 'Shop the Look' hotspots on lifestyle images"
         ],
-        "validation": "Can this be built with Axis-approved stack (Web Components)? Is it accessible?"
+        "validation": "Can this be built with Axis-approved stack (Web Components)? Is it accessible?",
+        "validation_extended": {
+            "trend_check": {
+              "action": "Search for feature keyword popularity (manual or API)",
+              "threshold": "Must be trending in last 6 months"
+            },
+            "conversion_impact": {
+              "question": "Will this increase ATC rate or reduce bounce?",
+              "required_answer": "Provide 1 case study or A/B test result"
+            }
+        }
       }
     },
     "creative_patterns_library": {

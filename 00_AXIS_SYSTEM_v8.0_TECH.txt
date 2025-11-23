@@ -628,3 +628,273 @@ customElements.define('facet-filters-form', FacetFiltersForm);
 Версия: 8.0 (HUMAN-CENTRIC FINAL)
 Готовность: ✅ 100% (Code + UX + Perf).
 ════════════════════════════════════════════════════════════════════════════════
+═══════════════════════════════════════════════════════════════════════════════
+📍 РАЗДЕЛ 5.3: SHOPIFY MARKETS & MULTI-CURRENCY (NEW)
+═══════════════════════════════════════════════════════════════════════════════
+5.3.1 Обзор Shopify Markets
+────────────────────────────────────────────────────────────────────────────────
+Shopify Markets позволяет продавать в разных странах с автоматической:
+
+Конвертацией валюты
+Адаптацией цен (разные цены для разных рынков)
+Локализацией контента (через Translation API)
+Управлением доставкой и налогами
+
+ВАЖНО: Markets — это НЕ то же самое, что multi-language. Это про geo-targeting.
+5.3.2 Доступ к данным Markets в Liquid
+────────────────────────────────────────────────────────────────────────────────
+Shopify предоставляет объект `localization`
+{{ localization.country.iso_code }}  <!-- "US", "GB", "FR", etc. -->
+{{ localization.country.name }}      <!-- "United States", "United Kingdom" -->
+{{ localization.market.name }}       <!-- "North America", "Europe" -->
+{{ localization.available_countries }} <!-- Array of all available countries -->
+5.3.3 Автоматическая конвертация валюты
+────────────────────────────────────────────────────────────────────────────────
+Shopify автоматически конвертирует цены. НЕ используйте ручную конвертацию!
+✅ ПРАВИЛЬНО:
+{{ product.price | money_with_currency }}
+<!-- Output: $45.00 USD (для US) или £35.00 GBP (для UK) -->
+❌ НЕПРАВИЛЬНО:
+{{ product.price | times: 0.85 | money }}  <!-- Ручная конвертация — ЗАПРЕЩЕНО -->
+5.3.4 Создание универсального Price Snippet
+────────────────────────────────────────────────────────────────────────────────
+Создайте переиспользуемый snippet для отображения цен:
+File: snippets/price.liquid
+{% comment %}
+  Universal Price Display with Multi-Currency Support
+  
+  Parameters:
+  - price: The price object or integer (in cents)
+  - compare_at_price: (optional) Original price for sale display
+  - show_currency: (optional) boolean - Show currency symbol
+  
+  Usage:
+  {% render 'price', price: product.price, compare_at_price: product.compare_at_price %}
+{% endcomment %}
+
+<div class="price {% if compare_at_price and compare_at_price > price %}price--on-sale{% endif %}">
+  {% if compare_at_price and compare_at_price > price %}
+    <span class="price__sale">
+      <span class="visually-hidden">{{ 'products.price.sale_price' | t }}</span>
+      {% if show_currency %}
+        {{ price | money_with_currency }}
+      {% else %}
+        {{ price | money }}
+      {% endif %}
+    </span>
+    <span class="price__compare">
+      <span class="visually-hidden">{{ 'products.price.regular_price' | t }}</span>
+      {% if show_currency %}
+        {{ compare_at_price | money_with_currency }}
+      {% else %}
+        {{ compare_at_price | money }}
+      {% endif %}
+    </span>
+  {% else %}
+    <span class="price__regular">
+      {% if show_currency %}
+        {{ price | money_with_currency }}
+      {% else %}
+        {{ price | money }}
+      {% endif %}
+    </span>
+  {% endif %}
+</div>
+5.3.5 Geo-Targeted Content (Conditional Messaging)
+────────────────────────────────────────────────────────────────────────────────
+Показывайте разный контент для разных стран:
+{% comment %} Free Shipping Thresholds by Country {% endcomment %}
+{% if localization.country.iso_code == 'US' %}
+  <p class="shipping-message">{{ 'cart.free_shipping_us' | t }}</p>
+  <!-- Output: "Free shipping over $50!" -->
+  
+{% elsif localization.country.iso_code == 'GB' %}
+  <p class="shipping-message">{{ 'cart.free_shipping_uk' | t }}</p>
+  <!-- Output: "Free delivery over £40!" -->
+  
+{% elsif localization.country.iso_code == 'CA' %}
+  <p class="shipping-message">{{ 'cart.free_shipping_ca' | t }}</p>
+  <!-- Output: "Free shipping over $75 CAD!" -->
+  
+{% else %}
+  <p class="shipping-message">{{ 'cart.free_shipping_intl' | t }}</p>
+  <!-- Output: "Shipping calculated at checkout" -->
+{% endif %}
+
+
+{% comment %} Payment Method Icons by Region {% endcomment %}
+{% if localization.country.iso_code == 'US' %}
+  {% render 'icon-visa' %}
+  {% render 'icon-mastercard' %}
+  {% render 'icon-amex' %}
+  {% render 'icon-paypal' %}
+  
+{% elsif localization.country.iso_code == 'DE' %}
+  {% render 'icon-visa' %}
+  {% render 'icon-mastercard' %}
+  {% render 'icon-sofort' %}
+  {% render 'icon-klarna' %}
+{% endif %}
+5.3.6 Country Selector (Best Practice)
+────────────────────────────────────────────────────────────────────────────────
+Shopify предоставляет встроенный Country Selector. Используйте его!
+File: snippets/country-selector.liquid
+{% comment %}
+  Shopify's Native Country/Currency Selector
+  Automatically handles Markets and currency switching
+{% endcomment %}
+
+{% form 'localization', class: 'localization-form' %}
+  <div class="localization-selector">
+    <label for="localization-country" class="visually-hidden">
+      {{ 'general.localization.country' | t }}
+    </label>
+    
+    <select 
+      name="country_code" 
+      id="localization-country"
+      class="localization-selector__select"
+      aria-label="{{ 'general.localization.country' | t }}"
+    >
+      {% for country in localization.available_countries %}
+        <option 
+          value="{{ country.iso_code }}" 
+          {% if country.iso_code == localization.country.iso_code %}selected{% endif %}
+        >
+          {{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})
+        </option>
+      {% endfor %}
+    </select>
+    
+    <button type="submit" class="localization-selector__submit">
+      {{ 'general.localization.update' | t }}
+    </button>
+  </div>
+{% endform %}
+
+<script>
+  // Auto-submit on change
+  document.querySelector('#localization-country')?.addEventListener('change', function() {
+    this.closest('form').submit();
+  });
+</script>
+```
+
+**Placement:** Обычно в Header или Footer.
+
+
+5.3.7 Testing Markets Locally
+────────────────────────────────────────────────────────────────────────────────
+**Проблема:** Локальная разработка (`shopify theme dev`) показывает только одну страну.
+
+**Решение:** Используйте URL параметры для симуляции:
+```
+?country=GB          <!-- Simulates UK market -->
+?country=FR&currency=EUR  <!-- Simulates France -->
+Shopify Plus: Используйте Preview Links с geo-targeting.
+5.3.8 Translation API (Multi-Language)
+────────────────────────────────────────────────────────────────────────────────
+Markets ≠ Languages, но часто идут вместе.
+Доступ к текущему языку:
+{{ localization.language.iso_code }}  <!-- "en", "fr", "de" -->
+{{ localization.available_languages }} <!-- Array of enabled languages -->
+Language Selector:
+{% form 'localization' %}
+  <select name="locale_code" id="localization-language">
+    {% for language in localization.available_languages %}
+      <option 
+        value="{{ language.iso_code }}" 
+        {% if language.iso_code == localization.language.iso_code %}selected{% endif %}
+      >
+        {{ language.endonym_name }}  <!-- Native language name: "English", "Français" -->
+      </option>
+    {% endfor %}
+  </select>
+  <button type="submit">{{ 'general.localization.update_language' | t }}</button>
+{% endform %}
+```
+
+
+5.3.9 Combined Country + Language Selector
+────────────────────────────────────────────────────────────────────────────────
+**Best Practice:** Разделяйте Country (Markets) и Language (Translation) селекторы.
+
+**Header Layout:**
+```
+┌─────────────────────────────────────┐
+│ Logo    Nav    🌍 US | EN ▼   Cart │
+│                 └─ Country/Language │
+└─────────────────────────────────────┘
+Implementation:
+<div class="header__localization">
+  {% render 'country-selector' %}
+  {% render 'language-selector' %}
+</div>
+5.3.10 Performance Considerations
+────────────────────────────────────────────────────────────────────────────────
+Проблема: Country Selector добавляет <select> с 200+ странами → DOM bloat.
+Решение:
+
+Показывайте только Top 10 стран по умолчанию.
+"See all countries" → раскрывает полный список.
+
+{% assign top_countries = 'US,CA,GB,AU,DE,FR,IT,ES,NL,SE' | split: ',' %}
+
+<select name="country_code">
+  {% for country in localization.available_countries %}
+    {% if top_countries contains country.iso_code or country.iso_code == localization.country.iso_code %}
+      <option value="{{ country.iso_code }}">{{ country.name }}</option>
+    {% endif %}
+  {% endfor %}
+  
+  <option disabled>──────────</option>
+  
+  {% for country in localization.available_countries %}
+    {% unless top_countries contains country.iso_code %}
+      <option value="{{ country.iso_code }}">{{ country.name }}</option>
+    {% endunless %}
+  {% endfor %}
+</select>
+5.3.11 SEO для Markets (hreflang)
+────────────────────────────────────────────────────────────────────────────────
+Shopify автоматически генерирует hreflang tags для Markets.
+Проверка в layout/theme.liquid:
+<head>
+  {{ content_for_header }}  <!-- Shopify injects hreflang here -->
+</head>
+Manual Override (если нужно):
+{% for language in localization.available_languages %}
+  <link 
+    rel="alternate" 
+    hreflang="{{ language.iso_code }}" 
+    href="{{ canonical_url | replace: localization.language.iso_code, language.iso_code }}"
+  >
+{% endfor %}
+5.3.12 Common Pitfalls (Ошибки)
+────────────────────────────────────────────────────────────────────────────────
+❌ ОШИБКА 1: Хардкод валюты
+<span>Price: ${{ product.price | divided_by: 100 }}</span>
+✅ FIX: Используйте | money_with_currency
+❌ ОШИБКА 2: Хардкод единиц измерения
+<span>Weight: {{ product.weight }}kg</span>
+✅ FIX:
+<span>Weight: {{ product.weight }} {{ product.weight_unit }}</span>
+❌ ОШИБКА 3: Забыли про локализацию дат
+<span>{{ order.created_at }}</span>  <!-- Shows: 2025-11-23 (not localized) -->
+✅ FIX:
+<span>{{ order.created_at | date: format: 'abbreviated_date' }}</span>
+<!-- US: Nov 23, 2025 | FR: 23 nov. 2025 -->
+```
+
+
+5.3.13 Testing Checklist (QA для Markets)
+────────────────────────────────────────────────────────────────────────────────
+Before launching Markets:
+- [ ] Test Country Selector на всех страницах
+- [ ] Verify currency conversion (check cart totals)
+- [ ] Test Payment Methods по странам (некоторые методы недоступны в определённых регионах)
+- [ ] Verify Shipping Rates (разные зоны = разные цены)
+- [ ] Test hreflang tags (Google Search Console)
+- [ ] Mobile: Country Selector не должен ломать layout
+
+═══════════════════════════════════════════════════════════════════════════════

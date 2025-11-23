@@ -1,0 +1,106 @@
+{
+  "system_name": "AXIS_DEMO_MASTER",
+  "version": "1.0",
+  "philosophy": "A great theme is sold by a great demo store.",
+  "objective": "Generate high-quality, realistic, and niche-specific demo content to pass Shopify's review and impress potential buyers.",
+  "output_formats": {
+    "products": "products.csv (Shopify standard format)",
+    "settings": "settings_data.json (for theme presets)",
+    "blog": "blog_posts.md (outlines and content ideas)"
+  },
+  "global_settings": {
+    "product_count": 50,
+    "collection_count": 8,
+    "blog_post_count": 5,
+    "image_source": "Unsplash API (or manual download via provided queries)",
+    "text_source": "AI-generated based on templates"
+  },
+  "niche_templates": {
+    "furniture": {
+      "name": "Furniture & Home Decor",
+      "product_templates": [
+        { "title": "Mid-Century Modern Walnut Sideboard", "type": "Living Room", "tags": "storage, wood, modern", "price_range": [800, 1200] },
+        { "title": "Bouclé Swivel Accent Chair", "type": "Living Room", "tags": "chair, bouclé, cozy", "price_range": [450, 650] },
+        { "title": "Solid Oak Dining Table for 8", "type": "Dining", "tags": "table, oak, minimalist", "price_range": [1500, 2200] },
+        { "title": "Linen Upholstered Platform Bed", "type": "Bedroom", "tags": "bed, linen, scandinavian", "price_range": [900, 1400] },
+        { "title": "Hand-Woven Jute Rug (8x10)", "type": "Rugs", "tags": "rug, natural, bohemian", "price_range": [250, 400] },
+        { "title": "Brass Arc Floor Lamp", "type": "Lighting", "tags": "lamp, brass, minimalist", "price_range": [180, 280] }
+      ],
+      "collection_names": ["New Arrivals", "Living Room", "Dining", "Bedroom", "Lighting", "Rugs", "Office", "Best Sellers"],
+      "blog_post_ideas": [
+        "5 Ways to Style a Walnut Sideboard",
+        "The Ultimate Guide to Choosing a Dining Table",
+        "How to Care for Your Linen Bedding",
+        "2025 Furniture Trends: What's In and What's Out",
+        "Small Space Solutions: Multi-functional Furniture"
+      ],
+      "unsplash_queries": ["mid century modern furniture", "scandinavian interior", "walnut sideboard", "boucle chair", "minimalist living room"],
+      "preset_styles": {
+        "minimal": { "name": "Minimalist", "settings": { "color_scheme": "light", "typography": "sans-serif", "border_radius": "4px" } },
+        "industrial": { "name": "Industrial", "settings": { "color_scheme": "dark", "typography": "monospace", "border_radius": "0px" } },
+        "warm": { "name": "Warm & Cozy", "settings": { "color_scheme": "light", "typography": "serif", "border_radius": "8px" } }
+      }
+    },
+    "fashion": {
+      "name": "Apparel & Accessories",
+      "product_templates": [
+        { "title": "Oversized Organic Cotton Hoodie", "type": "Sweatshirts", "tags": "hoodie, organic, streetwear", "price_range": [90, 120] },
+        { "title": "High-Waisted Wide-Leg Trousers", "type": "Pants", "tags": "trousers, wide-leg, minimalist", "price_range": [110, 150] },
+        { "title": "Recycled Nylon Crossbody Bag", "type": "Bags", "tags": "bag, recycled, vegan", "price_range": [70, 95] },
+        { "title": "Italian Leather Ankle Boots", "type": "Shoes", "tags": "boots, leather, classic", "price_range": [220, 280] },
+        { "title": "Silk Blend Slip Dress", "type": "Dresses", "tags": "dress, silk, eveningwear", "price_range": [180, 250] },
+        { "title": "Chunky Gold-Plated Hoop Earrings", "type": "Jewelry", "tags": "earrings, gold, statement", "price_range": [60, 85] }
+      ],
+      "collection_names": ["New Arrivals", "Tops", "Bottoms", "Dresses", "Outerwear", "Accessories", "Sale", "The Edit"],
+      "blog_post_ideas": [
+        "How to Style Wide-Leg Trousers for Work and Weekend",
+        "The Capsule Wardrobe: 10 Essential Pieces",
+        "A Guide to Sustainable Fashion Brands",
+        "Fall 2025 Lookbook: Our New Collection",
+        "How to Accessorize Your Little Black Dress"
+      ],
+      "unsplash_queries": ["minimalist fashion", "street style photography", "fashion editorial", "clothing flatlay", "autumn fashion"],
+      "preset_styles": {
+        "streetwear": { "name": "Streetwear", "settings": { "color_scheme": "dark", "typography": "sans-serif-bold", "border_radius": "2px" } },
+        "minimalist": { "name": "Minimalist", "settings": { "color_scheme": "light", "typography": "sans-serif", "border_radius": "0px" } },
+        "bohemian": { "name": "Bohemian", "settings": { "color_scheme": "warm", "typography": "serif", "border_radius": "6px" } }
+      }
+    },
+    "beauty": {
+      "name": "Skincare & Cosmetics",
+      "product_templates": [
+        { "title": "Hydrating Hyaluronic Acid Serum", "type": "Serums", "tags": "hydrating, vegan, cruelty-free", "price_range": [35, 50] },
+        { "title": "Vitamin C Brightening Moisturizer", "type": "Moisturizers", "tags": "brightening, vitamin c, anti-aging", "price_range": [45, 65] },
+        { "title": "Gentle Cloud Cleansing Foam", "type": "Cleansers", "tags": "gentle, for sensitive skin, foam", "price_range": [25, 35] },
+        { "title": "Mineral SPF 50+ Sunscreen", "type": "Sunscreen", "tags": "spf, mineral, reef-safe", "price_range": [28, 40] },
+        { "title": "Overnight Retinol Repair Mask", "type": "Masks", "tags": "retinol, mask, repair", "price_range": [60, 80] },
+        { "title": "Dewy Liquid Blush (Rose Pink)", "type": "Makeup", "tags": "blush, dewy, makeup", "price_range": [22, 30] }
+      ],
+      "collection_names": ["New In", "Serums & Treatments", "Moisturizers", "Cleansers", "Masks & Exfoliators", "Sunscreen", "Makeup", "Value Sets"],
+      "blog_post_ideas": [
+        "Your Morning Skincare Routine, Simplified",
+        "The Truth About Retinol: A Beginner's Guide",
+        "Why You Need Vitamin C In Your Skincare",
+        "How to Find the Perfect Cleanser for Your Skin Type",
+        "Our Top 5 Best-Selling Products of 2025"
+      ],
+      "unsplash_queries": ["skincare product photography", "beauty flatlay", "serum texture", "minimalist beauty", "cream swatch"],
+      "preset_styles": {
+        "clinical": { "name": "Clinical", "settings": { "color_scheme": "light-blue", "typography": "sans-serif", "border_radius": "4px" } },
+        "natural": { "name": "Natural", "settings": { "color_scheme": "light-green", "typography": "serif", "border_radius": "8px" } },
+        "luxury": { "name": "Luxury", "settings": { "color_scheme": "dark-gold", "typography": "serif-elegant", "border_radius": "2px" } }
+      }
+    }
+  },
+  "generation_protocol": {
+    "step_1_select_niche": "User specifies niche (e.g., 'furniture')",
+    "step_2_generate_products": {
+      "action": "Use 'product_templates' for the selected niche to generate a products.csv file",
+      "logic": "Loop through templates, generate unique titles, descriptions, and prices within the defined range.",
+      "image_handling": "Generate Unsplash search queries for each product type. User to download images manually."
+    },
+    "step_3_generate_collections": "Create smart collections based on product types and tags.",
+    "step_4_generate_blog_posts": "Use 'blog_post_ideas' to generate markdown files with outlines for each post.",
+    "step_5_generate_presets": "Use 'preset_styles' to generate 3-4 `settings_data.json` files for one-click demo setup."
+  }
+}

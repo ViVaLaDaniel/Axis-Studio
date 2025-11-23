@@ -1,0 +1,187 @@
+{
+  "system_name": "AXIS_MEMORY_LOG",
+  "version": "1.0",
+  "philosophy": "Never make the same mistake twice. Learn from every failure.",
+  "objective": "Create a persistent learning system that prevents recurring bugs and improves output quality over time.",
+"architecture": {
+"storage_method": "JSON file append (mistakes.jsonl)",
+"retention": "Permanent (never delete, only archive after 1 year)",
+"search_index": "By mistake_id, category, root_cause"
+},
+"mistake_categories": {
+"CAT_SECURITY": "XSS, CSRF, hardcoded secrets",
+"CAT_PERFORMANCE": "LCP violations, budget overruns, unoptimized images",
+"CAT_ACCESSIBILITY": "Missing ARIA, focus traps, keyboard nav",
+"CAT_ARCHITECTURE": "Circular dependencies, missing files, wrong structure",
+"CAT_DESIGN": "Poor UX, merchant confusion, layout breaks",
+"CAT_LOGIC": "Broken functionality, edge cases, validation errors"
+},
+"entry_template": {
+"mistake_id": "M{AUTO_INCREMENT}",
+"timestamp": "ISO 8601 datetime",
+"project_name": "Theme name or 'Generic'",
+"category": "One of mistake_categories",
+"severity": "CRITICAL | HIGH | MEDIUM | LOW",
+"context": {
+"user_request": "Original user query",
+"ai_output": "What AI generated (truncated if long)",
+"failure_point": "Which file/phase failed?"
+},
+"root_cause": {
+"primary": "Main reason for failure",
+"contributing_factors": ["Secondary reasons"],
+"file_conflict": "If two files had contradictory rules"
+},
+"fix_applied": {
+"description": "How the error was corrected",
+"code_diff": "Before/After snippet (optional)",
+"prevention_rule": "New rule added to prevent recurrence"
+},
+"prevention_integration": {
+"updated_files": ["List of files that were patched"],
+"new_validation": "Added to quality_gates or pre_output_validation"
+},
+"tags": ["searchable", "keywords"]
+},
+"learning_protocol": {
+"trigger_events": [
+"QA Failure (File 05)",
+"Security Alert (File 11)",
+"Performance Budget Exceeded (File 15)",
+"Human reports bug in delivered code",
+"CI/CD pipeline failure (File 07)"
+],
+"capture_process": {
+"step_1": "AI detects failure or human reports issue",
+"step_2": "AI generates mistake entry using 'entry_template'",
+"step_3": "AI analyzes root cause (which file's rules were violated?)",
+"step_4": "AI proposes prevention rule",
+"step_5": "Human approves prevention rule (or AI auto-applies if severity=CRITICAL)",
+"step_6": "AI updates relevant files (axis_brain, quality_gates, etc.)"
+}
+},
+"search_and_apply": {
+"pre_generation_check": {
+"action": "Before generating code, AI searches Memory Log for similar past failures",
+"query": "Match current task context against 'context.user_request' and 'tags'",
+"apply_prevention": "If match found, apply 'fix_applied.prevention_rule' proactively"
+},
+"example_workflow": {
+"scenario": "User: 'Create a cart drawer'",
+"ai_searches": "Memory Log for 'cart drawer' + 'focus trap'",
+"finds": "M042: Cart drawer missing focus trap (2024-10-15)",
+"applies": "Auto-includes focus trap logic BEFORE generating code",
+"result": "Bug prevented before it happens"
+}
+},
+"sample_entries": {
+"M001": {
+"mistake_id": "M001",
+"timestamp": "2024-10-15T14:23:00Z",
+"project_name": "Generic",
+"category": "CAT_ACCESSIBILITY",
+"severity": "HIGH",
+"context": {
+"user_request": "Generate a modal dialog for cart drawer",
+"ai_output": "Generated modal-dialog.liquid without focus trap",
+"failure_point": "Phase 2 (Production)"
+},
+"root_cause": {
+"primary": "File 06 (Creative Engine) prioritized visual design over a11y",
+"contributing_factors": ["File 00 accessibility rules were not enforced in quality_gates"],
+"file_conflict": "File 06 vs File 00 (A11Y section)"
+},
+"fix_applied": {
+"description": "Added mandatory focus trap logic to all modal components",
+"prevention_rule": "quality_gates must check for 'trapFocus()' method in modal-related code"
+},
+"prevention_integration": {
+"updated_files": ["axis_brain_v1.json (quality_gates)", "00_AXIS_SYSTEM_v8.0_TECH.txt (Section 6.2)"],
+"new_validation": "Grep scan for 'modal|drawer|popup' without 'trapFocus' keyword"
+},
+"tags": ["accessibility", "focus-trap", "modal", "cart-drawer"]
+},
+"M042": {
+  "mistake_id": "M042",
+  "timestamp": "2024-11-10T09:15:00Z",
+  "project_name": "Fashion Store Theme",
+  "category": "CAT_PERFORMANCE",
+  "severity": "CRITICAL",
+  "context": {
+    "user_request": "Add video hero section with autoplay",
+    "ai_output": "Generated 4K video (15MB) without compression warning",
+    "failure_point": "Phase 3 (Testing) - Performance Budget Exceeded"
+  },
+  "root_cause": {
+    "primary": "File 15 (Performance Budget) not checked during code generation",
+    "contributing_factors": ["File 09 lacks 'media_budget' validation"],
+    "file_conflict": "None"
+  },
+  "fix_applied": {
+    "description": "Added media budget check to File 09. Max video weight = 2MB.",
+    "code_diff": "Added: if (video_size > 2MB) { throw PerformanceWarning; }",
+    "prevention_rule": "quality_gates must validate video file sizes BEFORE output"
+  },
+  "prevention_integration": {
+    "updated_files": ["09_AXIS_DEPENDENCY_MANAGER.json", "axis_brain_v1.json"],
+    "new_validation": "Check all video/image URLs for file size metadata"
+  },
+  "tags": ["performance", "video", "lcp", "budget", "hero"]
+},
+
+"M087": {
+  "mistake_id": "M087",
+  "timestamp": "2024-11-20T16:45:00Z",
+  "project_name": "Tech Gadgets Theme",
+  "category": "CAT_SECURITY",
+  "severity": "CRITICAL",
+  "context": {
+    "user_request": "Generate a product review form",
+    "ai_output": "Used <form> tag instead of {% form %} (missing CSRF protection)",
+    "failure_point": "Phase 2 (Production) - Security Scan"
+  },
+  "root_cause": {
+    "primary": "File 11 warning was ignored due to false positive fatigue",
+    "contributing_factors": ["Too many false positives reduced trust in File 11"],
+    "file_conflict": "None"
+  },
+  "fix_applied": {
+    "description": "Updated File 11 to distinguish Shopify forms vs HTML forms",
+    "prevention_rule": "BLOCK output if '<form' detected without '{% form' wrapper"
+  },
+  "prevention_integration": {
+    "updated_files": ["11_AXIS_SECURITY_SCANNER.json"],
+    "new_validation": "Regex: <form(?!.*{% form) = CRITICAL ERROR"
+  },
+  "tags": ["security", "csrf", "forms", "xss"]
+}
+},
+"reporting": {
+"weekly_report": {
+"trigger": "Every Monday 9am",
+"content": [
+"Total mistakes logged this week",
+"Most common category",
+"Prevention success rate (bugs avoided)",
+"Top 3 files causing issues"
+],
+"action": "Email report to team + update axis_brain if pattern detected"
+},
+"monthly_analysis": {
+"action": "AI analyzes trends and suggests systemic improvements",
+"example": "If 60% of bugs are CAT_SECURITY, AI suggests mandatory Security Training module"
+}
+},
+"export_formats": {
+"json": "Full machine-readable log",
+"markdown": "Human-readable report for team review",
+"dashboard": "Web UI showing mistake trends (future feature)"
+},
+"integration_with_axis_brain": {
+"pre_output_validation_addition": {
+"new_step": "Search Memory Log for similar past failures",
+"action": "If match found with severity=CRITICAL, apply prevention rule automatically",
+"example": "User asks for 'sticky ATC'. AI finds M156 (missing z-index). Auto-applies fix."
+}
+}
+}

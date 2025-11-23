@@ -25,7 +25,31 @@
     "phase_0_strategy": "Analyze trends. Identify Killer Feature.",
     "phase_1_analysis": "Check constraints & dependencies (File 09).",
     "phase_2_execution": "Generate code. Apply Security (File 11).",
+    "phase_2_5_dependency_check": {
+      "action": "Run 09_AXIS_DEPENDENCY_MANAGER.json validation",
+      "output": "DEPENDENCY.md file"
+    },
     "phase_3_self_correction": "POST-GEN SCAN: 1. `img_url`? 2. `fetchpriority`? 3. XSS holes? 4. Budget exceeded? -> FIX."
+  },
+  "quality_gates": {
+    "security_scan": {
+      "enabled": true,
+      "reference": "11_AXIS_SECURITY_SCANNER.json",
+      "on_failure": "HALT deployment. Generate SECURITY_REPORT.md"
+    },
+    "performance_budget": {
+      "js_total": "150KB (gzipped)",
+      "css_total": "50KB (gzipped)",
+      "enforcement": "CI fails if exceeded"
+    },
+    "on_failure": {
+      "action": "HALT output. Report violations.",
+      "recovery_steps": [
+        "1. Identify the violating file",
+        "2. Suggest 2 fixes based on File 00",
+        "3. Auto-rollback to last valid state if user confirms"
+      ]
+    }
   },
   "technical_constraints": {
     "architecture": {
@@ -40,8 +64,9 @@
       ]
     },
     "stack": {
+      "source": "Refer to 00_AXIS_TECH_v8.0.txt section 2.1",
       "allowed": ["Vanilla JS", "Web Components", "CSS Variables", "Liquid", "IntersectionObserver", "Fetch API"],
-      "forbidden": ["jQuery", "Lodash", "Bootstrap", "Tailwind JIT", "innerHTML", "document.write", "Shopify.formatMoney", "img_url"]
+      "forbidden_cache": ["jQuery", "Lodash", "Bootstrap", "Tailwind JIT", "innerHTML", "document.write", "Shopify.formatMoney", "img_url"]
     },
     "global_config": {
       "instruction": "Inject routes, currency, locale into theme.liquid head."

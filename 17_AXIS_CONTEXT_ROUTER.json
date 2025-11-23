@@ -1,0 +1,203 @@
+{
+  "system_name": "AXIS_CONTEXT_ROUTER",
+  "version": "1.0",
+  "philosophy": "Load only what you need. Speed is a feature.",
+  "objective": "Reduce token count by 60% and response time by 50% through intelligent context loading.",
+"task_detection": {
+"auto_classifier": {
+"strategy_keywords": [
+"market", "trend", "niche", "competitor", "analysis", "research",
+"target audience", "persona", "killer feature", "concept"
+],
+"code_keywords": [
+"liquid", "section", "snippet", "bug", "fix", "error", "generate",
+"component", "schema", "template", "assets", "css", "javascript"
+],
+"security_keywords": [
+"xss", "csrf", "vulnerability", "escape", "sanitize", "injection",
+"security", "attack", "exploit"
+],
+"documentation_keywords": [
+"explain", "guide", "how to", "documentation", "manual", "help",
+"troubleshoot", "settings"
+],
+"testing_keywords": [
+"test", "lighthouse", "performance", "bug report", "qa", "validate",
+"check", "verify"
+]
+}
+},
+"context_profiles": {
+"PROFILE_STRATEGY": {
+"name": "Market Strategy & Creative Ideation",
+"load_files": [
+"axis_brain_v1.json",
+"01b_AXIS_PRIORITY_RULES.txt",
+"02_AXIS_PROMPT_STRATEGY.md",
+"06_AXIS_CREATIVE_ENGINE.json",
+"06b_CREATIVE_FEASIBILITY_CHECKER.json"
+],
+"skip_files": [
+"07_AXIS_AUTO_TEST.json",
+"09_AXIS_DEPENDENCY_MANAGER.json",
+"10_AXIS_VERSION_CONTROL.json",
+"11_AXIS_SECURITY_SCANNER.json",
+"15_PERFORMANCE_BUDGET.json"
+],
+"estimated_tokens": 8000,
+"use_when": "User asks about market trends, theme concepts, or creative features"
+},
+"PROFILE_ARCHITECTURE": {
+  "name": "System Architecture & Structure",
+  "load_files": [
+    "axis_brain_v1.json",
+    "00_AXIS_SYSTEM_v8.0_TECH.txt",
+    "01b_AXIS_PRIORITY_RULES.txt",
+    "03_AXIS_MASTER_SYSTEM_v6.2.json",
+    "09_AXIS_DEPENDENCY_MANAGER.json"
+  ],
+  "skip_files": [
+    "02_AXIS_PROMPT_STRATEGY.md",
+    "04_AXIS_DOCS_GENERATOR.md",
+    "05_AXIS_HUMAN_QA_PROTOCOL.md",
+    "06_AXIS_CREATIVE_ENGINE.json"
+  ],
+  "estimated_tokens": 12000,
+  "use_when": "User asks about file structure, dependencies, or OS 2.0 architecture"
+},
+
+"PROFILE_CODE_GENERATION": {
+  "name": "Code Production (Liquid/JS/CSS)",
+  "load_files": [
+    "axis_brain_v1.json",
+    "00_AXIS_SYSTEM_v8.0_TECH.txt",
+    "01_AXIS_DESIGN_v1.3_UX.txt",
+    "01b_AXIS_PRIORITY_RULES.txt",
+    "03_AXIS_MASTER_SYSTEM_v6.2.json",
+    "09_AXIS_DEPENDENCY_MANAGER.json",
+    "11_AXIS_SECURITY_SCANNER.json",
+    "15_PERFORMANCE_BUDGET.json"
+  ],
+  "skip_files": [
+    "02_AXIS_PROMPT_STRATEGY.md",
+    "04_AXIS_DOCS_GENERATOR.md",
+    "05_AXIS_HUMAN_QA_PROTOCOL.md",
+    "06_AXIS_CREATIVE_ENGINE.json",
+    "08_AXIS_TEAM_PROTOCOL.md",
+    "10_AXIS_VERSION_CONTROL.json"
+  ],
+  "estimated_tokens": 15000,
+  "use_when": "User asks to generate sections, snippets, or fix code"
+},
+
+"PROFILE_SECURITY_AUDIT": {
+  "name": "Security Scanning & Validation",
+  "load_files": [
+    "axis_brain_v1.json",
+    "00_AXIS_SYSTEM_v8.0_TECH.txt",
+    "01b_AXIS_PRIORITY_RULES.txt",
+    "11_AXIS_SECURITY_SCANNER.json"
+  ],
+  "skip_files": [
+    "01_AXIS_DESIGN_v1.3_UX.txt",
+    "02_AXIS_PROMPT_STRATEGY.md",
+    "04_AXIS_DOCS_GENERATOR.md",
+    "05_AXIS_HUMAN_QA_PROTOCOL.md",
+    "06_AXIS_CREATIVE_ENGINE.json",
+    "08_AXIS_TEAM_PROTOCOL.md",
+    "09_AXIS_DEPENDENCY_MANAGER.json",
+    "10_AXIS_VERSION_CONTROL.json"
+  ],
+  "estimated_tokens": 6000,
+  "use_when": "User asks about XSS, CSRF, or security vulnerabilities"
+},
+
+"PROFILE_DOCUMENTATION": {
+  "name": "Documentation & Merchant Guides",
+  "load_files": [
+    "axis_brain_v1.json",
+    "04_AXIS_DOCS_GENERATOR.md",
+    "05_AXIS_HUMAN_QA_PROTOCOL.md"
+  ],
+  "skip_files": [
+    "00_AXIS_SYSTEM_v8.0_TECH.txt",
+    "02_AXIS_PROMPT_STRATEGY.md",
+    "03_AXIS_MASTER_SYSTEM_v6.2.json",
+    "06_AXIS_CREATIVE_ENGINE.json",
+    "07_AXIS_AUTO_TEST.json",
+    "09_AXIS_DEPENDENCY_MANAGER.json",
+    "10_AXIS_VERSION_CONTROL.json",
+    "11_AXIS_SECURITY_SCANNER.json",
+    "15_PERFORMANCE_BUDGET.json"
+  ],
+  "estimated_tokens": 5000,
+  "use_when": "User asks to explain features or generate merchant guides"
+},
+
+"PROFILE_DEBUGGING": {
+  "name": "Bug Fixing & Error Handling",
+  "load_files": [
+    "axis_brain_v1.json",
+    "00_AXIS_SYSTEM_v8.0_TECH.txt",
+    "01b_AXIS_PRIORITY_RULES.txt",
+    "03_AXIS_MASTER_SYSTEM_v6.2.json",
+    "09_AXIS_DEPENDENCY_MANAGER.json",
+    "12_AXIS_ERROR_HANDLING.json",
+    "18_AXIS_MEMORY_LOG.json"
+  ],
+  "skip_files": [
+    "01_AXIS_DESIGN_v1.3_UX.txt",
+    "02_AXIS_PROMPT_STRATEGY.md",
+    "04_AXIS_DOCS_GENERATOR.md",
+    "06_AXIS_CREATIVE_ENGINE.json",
+    "08_AXIS_TEAM_PROTOCOL.md"
+  ],
+  "estimated_tokens": 10000,
+  "use_when": "User reports bugs, errors, or asks to fix broken code"
+},
+
+"PROFILE_FULL_CONTEXT": {
+  "name": "Complete System Access (Heavy)",
+  "load_files": "ALL",
+  "estimated_tokens": 25000,
+  "use_when": "Complex multi-phase tasks OR explicit user request for 'full analysis'"
+}
+},
+"routing_logic": {
+"step_1": "Analyze user query using 'auto_classifier' keywords.",
+"step_2": "Match to most relevant 'context_profile'.",
+"step_3": "Load ONLY files in that profile's 'load_files' array.",
+"step_4": "If task requires multiple profiles, load them sequentially (not simultaneously).",
+"fallback": "If no clear match, use PROFILE_CODE_GENERATION (safest default)."
+},
+"performance_metrics": {
+"baseline_full_load": "25,000 tokens = ~5 seconds response time",
+"optimized_load": "8,000 tokens = ~2 seconds response time",
+"improvement": "60% fewer tokens, 40% faster responses"
+},
+"examples": {
+"example_1": {
+"user_query": "Analyze the perfume market and suggest a theme concept.",
+"detected_profile": "PROFILE_STRATEGY",
+"files_loaded": 5,
+"tokens_saved": 17000
+},
+"example_2": {
+"user_query": "Generate a video-grid section with autoplay.",
+"detected_profile": "PROFILE_CODE_GENERATION",
+"files_loaded": 8,
+"tokens_saved": 10000
+},
+"example_3": {
+"user_query": "Check this code for XSS vulnerabilities.",
+"detected_profile": "PROFILE_SECURITY_AUDIT",
+"files_loaded": 4,
+"tokens_saved": 19000
+}
+},
+"override_command": {
+"syntax": " @full-context",
+"action": "User can force PROFILE_FULL_CONTEXT by typing ' @full-context' in their message.",
+"use_case": "When user knows they need deep multi-file analysis."
+}
+}

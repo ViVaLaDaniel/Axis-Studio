@@ -1,28 +1,207 @@
 {
-  "security_protocol": {
-    "role": "Chief Security Officer (CSO)",
-    "objective": "Zero vulnerabilities. Protect Merchant Data.",
-    "scan_vectors": {
-      "xss_injection": {
-        "pattern": "{{ .* }} output without escape filter.",
-        "fix": "Apply '| escape' or '| json' to all user-generated content."
+  "system_name": "AXIS_SECURITY_SCANNER",
+  "version": "2.0 (SMART SCAN PATCH)",
+  "philosophy": "Zero vulnerabilities. Zero false positives.",
+  "objective": "Detect real security threats while avoiding alert fatigue from false positives.",
+  "scan_vectors": {
+    "xss_injection": {
+      "description": "Cross-Site Scripting via unescaped output",
+      "severity": "CRITICAL",
+      "smart_detection": {
+        "danger_patterns": [
+          "{{ (.+) }} in contexts where user input is possible",
+          "innerHTML assignment with user data",
+          "eval() with user input"
+        ],
+        "safe_contexts_whitelist": [
+          {
+            "context": "section.settings (type: text, textarea, heading, html)",
+            "reason": "Shopify auto-escapes text inputs in schema",
+            "pattern": "{{ section\.settings\.[a-z_]+ }}",
+            "action": "ALLOW (no escape needed)"
+          },
+          {
+            "context": "block.settings (type: text, textarea)",
+            "reason": "Shopify auto-escapes block settings",
+            "pattern": "{{ block\.settings\.[a-z_]+ }}",
+            "action": "ALLOW"
+          },
+          {
+            "context": "Shopify native objects (product.title, collection.title, etc.)",
+            "reason": "Shopify sanitizes its own database objects",
+            "pattern": "{{ (product|collection|article|blog)\.(title|description|vendor) }}",
+            "action": "ALLOW"
+          },
+          {
+            "context": "Richtext fields with intentional HTML",
+            "reason": "Merchant intends to use HTML (e.g., product description)",
+            "pattern": "{{ section\.settings\.[a-z_]+ }} where schema type='richtext'",
+            "action": "ALLOW (but verify type=richtext in schema)"
+          }
+        ],
+        "danger_contexts_require_escape": [
+          {
+            "context": "Metafields (user-generated or app-generated)",
+            "reason": "Metafields can contain user input from apps/API",
+            "pattern": "{{ (product|collection)\.metafields\..+ }}",
+            "action": "BLOCK unless | escape or | json applied",
+            "fix": "Add | escape filter"
+          },
+          {
+            "context": "Customer input (form.email, customer.name from custom forms)",
+            "reason": "Customer data can be manipulated",
+            "pattern": "{{ customer\.[a-z_]+ }} outside Shopify forms",
+            "action": "BLOCK unless | escape",
+            "fix": "Add | escape filter"
+          },
+          {
+            "context": "URL parameters (request.params)",
+            "reason": "URL params are trivially exploitable",
+            "pattern": "{{ request\..+ }}",
+            "action": "BLOCK unless | escape or | url_encode",
+            "fix": "Add | escape or | url_encode"
+          }
+        ]
       },
-      "csrf_attacks": {
-        "pattern": "HTML <form> tags used instead of Liquid {% form %}.",
-        "fix": "Replace with Shopify native form tags (handles CSRF tokens automatically)."
+      "validation_algorithm": {
+        "step_1": "Extract all {{ ... }} patterns from Liquid file",
+        "step_2": "Check if pattern matches 'safe_contexts_whitelist'",
+        "step_3": "If yes → ALLOW. If no → Check 'danger_contexts'",
+        "step_4": "If in danger_contexts AND no escape filter → BLOCK",
+        "step_5": "Generate fix suggestion"
       },
-      "hardcoded_secrets": {
-        "pattern": "API Keys, Tokens, or Passwords in plaintext.",
-        "fix": "Move to 'settings_schema.json' or environment variables."
-      },
-      "unauthorized_api": {
-        "pattern": "Direct calls to external APIs without proxy.",
-        "fix": "Review data privacy compliance (GDPR)."
+      "examples": {
+        "safe_no_alert": [
+          "{{ section.settings.heading }}",
+          "{{ product.title }}",
+          "{{ block.settings.text }}",
+          "{{ section.settings.html_content }} (if schema type='richtext')"
+        ],
+        "dangerous_must_escape": [
+          "{{ product.metafields.custom.bio }} → Add | escape",
+          "{{ request.query.search }} → Add | url_encode",
+          "{{ form.email }} (custom form) → Add | escape"
+        ]
       }
     },
-    "automated_action": {
-      "trigger": "On Save / Pre-Commit",
-      "action": "Grep scan codebase for vulnerability patterns. Block save on Critical match."
+    "csrf_attacks": {
+      "description": "Cross-Site Request Forgery via improper form handling",
+      "severity": "HIGH",
+      "detection_pattern": {
+        "unsafe": "<form(?![^>]*{% form)",
+        "reason": "HTML <form> tag used instead of Liquid {% form %} tag",
+        "shopify_requirement": "All forms MUST use {% form %} to auto-inject CSRF tokens"
+      },
+      "fix": {
+        "before": "<form action='/cart/add' method='post'>",
+        "after": "{% form 'product', product %}...{% endform %}"
+      },
+      "whitelist_exceptions": [
+        {
+          "context": "Forms submitting to external APIs (e.g., Klaviyo, Mailchimp)",
+          "pattern": "<form action='https://external-api.com'",
+          "action": "ALLOW (external forms don't need Shopify CSRF)",
+          "warning": "Verify external endpoint is HTTPS and trusted"
+        },
+        {
+          "context": "Search forms (GET method, no state change)",
+          "pattern": "<form method='get' action='/search'",
+          "action": "ALLOW (GET requests don't require CSRF protection)",
+          "note": "Still recommend using {% form 'search' %} for consistency"
+        }
+      ]
+    },
+    "hardcoded_secrets": {
+      "description": "API Keys, Tokens, or Passwords in plaintext code",
+      "severity": "CRITICAL",
+      "detection_patterns": [
+        "(api_key|apikey|api-key)\s*[=:]\s*['"][a-zA-Z0-9]{20,}['"]",
+        "(password|passwd|pwd)\s*[=:]\s*['"].+['"]",
+        "(token|auth_token|access_token)\s*[=:]\s*['"][a-zA-Z0-9]{20,}['"]",
+        "(secret|secret_key|client_secret)\s*[=:]\s*['"][a-zA-Z0-9]{20,}['"]"
+      ],
+      "fix": {
+        "wrong": "const apiKey = 'sk_live_abc123xyz789';",
+        "right": "const apiKey = '{{ settings.klaviyo_api_key }}'; // Set in Theme Settings"
+      },
+      "whitelist_exceptions": [
+        {
+          "context": "Public API keys explicitly labeled as 'public'",
+          "pattern": "(public_key|publishable_key)\s*[=:]",
+          "action": "WARN (verify it's truly public, not private key mislabeled)"
+        },
+        {
+          "context": "Demo/Placeholder values",
+          "pattern": "(YOUR_API_KEY|REPLACE_ME|PLACEHOLDER)",
+          "action": "ALLOW (but add TODO comment to replace before production)"
+        }
+      ]
+    },
+    "sql_injection": {
+      "description": "SQL Injection (rare in Shopify, but check metafield queries)",
+      "severity": "HIGH",
+      "note": "Shopify's Liquid doesn't expose direct SQL, but metafield filters can be vulnerable",
+      "detection_pattern": {
+        "unsafe": "{{ collection.metafields[request.query.field] }}",
+        "reason": "Dynamic metafield keys from user input",
+        "fix": "Whitelist allowed metafield keys"
+      }
+    },
+    "unauthorized_data_exposure": {
+      "description": "Exposing sensitive customer data in frontend",
+      "severity": "HIGH",
+      "dangerous_outputs": [
+        "{{ customer.email }} in page source (visible to all)",
+        "{{ customer.orders }} (full order history in HTML)",
+        "{{ customer.addresses }} (all saved addresses)"
+      ],
+      "safe_alternatives": [
+        "Show customer.email only in /account page (login-required)",
+        "Show order count, not full order details",
+        "Use Shopify's native customer portal for sensitive data"
+      ]
     }
+  },
+  "automated_action": {
+    "trigger": "On Save / Pre-Commit / CI Pipeline",
+    "scan_sequence": [
+      "1. Scan all .liquid files for vulnerability patterns",
+      "2. Apply smart_detection logic to reduce false positives",
+      "3. Generate SECURITY_REPORT.md with findings",
+      "4. If CRITICAL found → BLOCK commit/deployment",
+      "5. If HIGH found → WARN but allow (require human review)",
+      "6. If MEDIUM/LOW → LOG for weekly review"
+    ]
+  },
+  "reporting": {
+    "format": "SECURITY_REPORT.md",
+    "sections": {
+      "critical_issues": {
+        "action": "MUST FIX before deployment",
+        "example": "XSS in cart-drawer.liquid line 42"
+      },
+      "high_issues": {
+        "action": "SHOULD FIX within 24 hours",
+        "example": "CSRF in newsletter form"
+      },
+      "warnings": {
+        "action": "REVIEW before next release",
+        "example": "Public API key detected (verify it's truly public)"
+      },
+      "false_positive_log": {
+        "action": "Track patterns that AI incorrectly flagged",
+        "purpose": "Improve smart_detection over time"
+      }
+    }
+  },
+  "integration_with_file_18": {
+    "memory_log_trigger": "On every CRITICAL or HIGH issue found",
+    "action": "Log in File 18 (Memory Log) to prevent recurrence",
+    "example": "If XSS found in cart-drawer → Create M087 entry → Next time AI generates cart-drawer, auto-applies fix"
+  },
+  "performance_optimization": {
+    "incremental_scan": "Scan only changed files (git diff), not entire theme",
+    "cache_results": "Cache scan results for unchanged files",
+    "estimated_time": "< 5 seconds for typical PR"
   }
 }
