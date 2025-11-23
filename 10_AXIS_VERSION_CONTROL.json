@@ -23,6 +23,15 @@
     "changelog_automation": {
       "trigger": "On Merge to Main",
       "action": "Generate CHANGELOG.md based on commit types."
+    },
+    "saving_protocol": {
+      "script_path": "scripts/save.ps1",
+      "purpose": "Automates the entire save process: git add, commit, push, and Google Drive backup.",
+      "usage": {
+        "command": "pwsh -file scripts/save.ps1 \"Your commit message\"",
+        "note": "If no commit message is provided, the script will generate one automatically."
+      },
+      "recommendation": "Run at the end of each work session to ensure all progress is saved and backed up."
     }
   }
 }

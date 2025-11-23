@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu_header",
+        "label": "Header menu",
+        "default": "main-menu"
+      }
+    ]
+  },
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu_footer",
+        "label": "Footer menu",
+        "default": "footer"
+      }
+    ]
+  },
+  {
+    "name": "General",
+    "settings": []
+  }
+]

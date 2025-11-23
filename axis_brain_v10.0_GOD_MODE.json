@@ -67,7 +67,8 @@
       ],
       "forbidden_check": "Scan for jQuery, img_url, Shopify.formatMoney, localStorage misuse.",
       "security_check": "Run File 11 (Smart Scan) to catch XSS/CSRF.",
-      "a11y_check": "Run File 23 (A11Y Checker) to validate WCAG 2.1 AA."
+      "a11y_check": "Run File 23 (A11Y Checker) to validate WCAG 2.1 AA.",
+      "selling_plans_check": "Validate correct display of Selling Plan info in cart and customer orders (Refer to File 00, Section 5.4)."
     },
     
     "phase_4_demo_generation": {

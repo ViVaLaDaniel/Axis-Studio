@@ -72,6 +72,8 @@ theme/
 ✅ Sections Everywhere: Весь контент только через секции.
 ✅ Section Groups: Header и Footer ОБЯЗАНЫ быть section groups.
 ✅ App Blocks: В секции main-product ОБЯЗАТЕЛЕН блок "type": "@app".
+✅ Custom Liquid Section: Секция с произвольным Liquid-кодом должна присутствовать и быть доступна на всех шаблонах.
+✅ Default Menus: Настройки `link_list` для Header и Footer ДОЛЖНЫ иметь `default: "main-menu"` и `default: "footer"` соответственно.
 ✅ Theme Blocks: Использовать папку blocks/ для переиспользуемых компонентов.
 ✅ Presets: Каждая секция ДОЛЖНА иметь блок presets.
 ✅ theme.liquid: Обязателен в /layout.
@@ -260,641 +262,238 @@ customElements.define('product-card', ProductCard);
 </head>
 
 
-════════════════════════════════════════════════════════════════════════════════
-🌍 РАЗДЕЛ 5: ЛОКАЛИЗАЦИЯ (I18N)
-════════════════════════════════════════════════════════════════════════════════
+═══════════════════════════════════════════════════════════════════════════════
+📍 РАЗДЕЛ 5: SHOPIFY MARKETS, ЛОКАЛИЗАЦИЯ И I18N
+═══════════════════════════════════════════════════════════════════════════════
 
-5.1 Правила
+5.1 Локализация строк (Переводы)
 ────────────────────────────────────────────────────────────────────────────────
+Все строки, видимые пользователю, ДОЛЖНЫ быть переводимы.
+
 ❌ Хардкод: <h1>Shopping Cart</h1>
 ✅ Перевод: <h1>{{ 'cart.general.title' | t }}</h1>
 
-
-5.2 Schema Translation
-────────────────────────────────────────────────────────────────────────────────
-"label": "t:sections.hero.settings.heading.label"
-
-
-════════════════════════════════════════════════════════════════════════════════
-♿ РАЗДЕЛ 6: ДОСТУПНОСТЬ (A11Y)
-════════════════════════════════════════════════════════════════════════════════
-
-6.1 Чек-лист
-────────────────────────────────────────────────────────────────────────────────
-✅ Skip Link.
-✅ Keyboard Nav.
-✅ ARIA.
-✅ Contrast 4.5:1.
-
-
-6.2 Focus Trap (ОБЯЗАТЕЛЬНО)
-────────────────────────────────────────────────────────────────────────────────
-class ModalDialog extends HTMLElement {
-  constructor() {
-    super();
-    this.querySelector('[data-close]')?.addEventListener('click', this.close.bind(this));
-  }
-  
-  open() {
-    this.setAttribute('open', '');
-    this.setAttribute('aria-modal', 'true');
-    this.trapFocus();
-    document.body.classList.add('overflow-hidden');
-  }
-  
-  close() {
-    this.removeAttribute('open');
-    this.removeAttribute('aria-modal');
-    this.removeTrapFocus();
-    document.body.classList.remove('overflow-hidden');
-  }
-  
-  trapFocus() {
-    const focusableElements = this.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    );
-    this.firstFocusable = focusableElements[0];
-    this.lastFocusable = focusableElements[focusableElements.length - 1];
-    this.addEventListener('keydown', this.handleKeydown);
-    this.firstFocusable?.focus();
-  }
-  
-  handleKeydown = (e) => {
-    if (e.key === 'Escape') { this.close(); return; }
-    if (e.key === 'Tab') {
-      if (e.shiftKey && document.activeElement === this.firstFocusable) {
-        e.preventDefault(); this.lastFocusable?.focus();
-      } else if (!e.shiftKey && document.activeElement === this.lastFocusable) {
-        e.preventDefault(); this.firstFocusable?.focus();
-      }
-    }
-  }
-  
-  removeTrapFocus() { this.removeEventListener('keydown', this.handleKeydown); }
-}
-customElements.define('modal-dialog', ModalDialog);
-
-
-════════════════════════════════════════════════════════════════════════════════
-📋 РАЗДЕЛ 7: SCHEMA И НАСТРОЙКИ (MERCHANT UX)
-════════════════════════════════════════════════════════════════════════════════
-
-7.1 Пример схемы с группировкой (UX Friendly)
-────────────────────────────────────────────────────────────────────────────────
-{% schema %}
+Структура файла `locales/en.default.json`:
+```json
 {
-  "name": "t:sections.hero.name",
-  "tag": "section",
-  "class": "section",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Content"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Image"
-    },
-    {
-      "type": "header",
-      "content": "Layout",
-      "info": "Controls the spacing and alignment"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Top Padding",
-      "min": 0, "max": 100, "step": 4, "unit": "px", "default": 36
+  "general": {
+    "view_all": "View all"
+  },
+  "cart": {
+    "general": {
+      "title": "Shopping Cart"
     }
-  ],
-  "presets": [
-    {
-      "name": "Hero Banner",
+  }
+}
+```
+
+5.2 Перевод в Schema секций
+────────────────────────────────────────────────────────────────────────────────
+Названия полей и информация в schema также должны быть переводимы.
+
+```json
+"settings": [
+  {
+    "type": "text",
+    "id": "heading",
+    "label": "t:sections.hero.settings.heading.label"
+  }
+]
+```
+Файл `locales/en.default.json` будет содержать:
+```json
+{
+  "sections": {
+    "hero": {
       "settings": {
-        "padding_top": 36
+        "heading": {
+          "label": "Heading"
+        }
       }
     }
-  ]
-}
-{% endschema %}
-
-
-7.2 Theme Block Schema
-────────────────────────────────────────────────────────────────────────────────
-{% schema %}
-{
-  "name": "Text Block",
-  "class": "theme-block",
-  "settings": [
-    { "type": "textarea", "id": "text", "label": "Text" }
-  ],
-  "presets": [ { "name": "Text Block" } ]
-}
-{% endschema %}
-
-
-════════════════════════════════════════════════════════════════════════════════
-🎨 РАЗДЕЛ 8: SEO И МЕТАДАННЫЕ
-════════════════════════════════════════════════════════════════════════════════
-
-8.1 Правила
-────────────────────────────────────────────────────────────────────────────────
-• Один H1.
-• JSON-LD для Product, Article, Organization.
-
-8.2 JSON-LD для Product
-────────────────────────────────────────────────────────────────────────────────
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  "name": {{ product.title | json }},
-  "image": [{{ product.featured_image | image_url: width: 1200 | json }}],
-  "offers": {
-    "@type": "Offer",
-    "price": {{ product.selected_or_first_available_variant.price | divided_by: 100.0 | json }},
-    "priceCurrency": {{ cart.currency.iso_code | json }}
   }
 }
-</script>
+```
 
-
-════════════════════════════════════════════════════════════════════════════════
-⚖️ РАЗДЕЛ 9: ЮРИДИЧЕСКОЕ СООТВЕТСТВИЕ
-════════════════════════════════════════════════════════════════════════════════
-✅ Unit Pricing.
-✅ GDPR (Consent API).
-✅ B2B.
-
-<script>
-  Shopify.loadFeatures([{ name: 'consent-tracking-api', version: '0.1' }]);
-</script>
-
-
-════════════════════════════════════════════════════════════════════════════════
-🛒 РАЗДЕЛ 10: CART API И КОМПОНЕНТЫ (SECURE)
-════════════════════════════════════════════════════════════════════════════════
-
-10.1 Cart Drawer (Section Rendering)
-────────────────────────────────────────────────────────────────────────────────
-class CartDrawer extends HTMLElement {
-  constructor() {
-    super();
-    document.addEventListener('cart:refresh', this.refreshCart.bind(this));
-    this.addEventListener('click', this.onClick.bind(this));
-  }
-  
-  async onClick(e) {
-    if (e.target.matches('[data-remove-from-cart]')) {
-      e.preventDefault();
-      await this.removeFromCart(e.target.dataset.lineIndex);
-    }
-  }
-  
-  async removeFromCart(lineIndex) {
-    const url = window.routes.cart_change_url || '/cart/change.js';
-    try {
-      await fetch(url, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ line: lineIndex, quantity: 0 })
-      });
-      await this.refreshCart();
-    } catch (err) { console.error(err); }
-  }
-  
-  async refreshCart() {
-    const cartUrl = window.routes.cart_url || '/cart';
-    const res = await fetch(`${cartUrl}?section_id=cart-drawer`);
-    const text = await res.text();
-    
-    const html = new DOMParser().parseFromString(text, 'text/html');
-    
-    this.renderElement(html, '[data-cart-items]');
-    this.renderElement(html, '[data-cart-footer]');
-    this.updateCartCount(html.querySelector('[data-cart-count]')?.textContent);
-    this.open();
-  }
-
-  renderElement(sourceDoc, selector) {
-    const source = sourceDoc.querySelector(selector);
-    const target = this.querySelector(selector);
-    if (source && target) target.innerHTML = source.innerHTML;
-  }
-  
-  updateCartCount(count) {
-    if (count) document.querySelectorAll('[data-cart-count]').forEach(el => el.textContent = count);
-  }
-  
-  open() { this.setAttribute('open', ''); this.trapFocus(); }
-  close() { this.removeAttribute('open'); }
-}
-customElements.define('cart-drawer', CartDrawer);
-
-
-10.2 Sticky Add To Cart Bar (MOBILE UX)
-────────────────────────────────────────────────────────────────────────────────
-class StickyAtc extends HTMLElement {
-  constructor() {
-    super();
-    this.mainButton = document.querySelector('.product-form__submit');
-    this.bar = this.querySelector('.sticky-atc-bar');
-    
-    if (!this.mainButton) return;
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-          this.bar.classList.add('is-visible');
-        } else {
-          this.bar.classList.remove('is-visible');
-        }
-      });
-    }, { threshold: 0 });
-    
-    observer.observe(this.mainButton);
-  }
-}
-customElements.define('sticky-atc', StickyAtc);
-
-
-════════════════════════════════════════════════════════════════════════════════
-🚀 РАЗДЕЛ 11: PREMIUM ФУНКЦИИ
-════════════════════════════════════════════════════════════════════════════════
-
-11.1 Predictive Search
-────────────────────────────────────────────────────────────────────────────────
-class PredictiveSearch extends HTMLElement {
-  constructor() {
-    super();
-    this.input = this.querySelector('input[type="search"]');
-    this.results = this.querySelector('[data-predictive-search]');
-    this.input.addEventListener('input', this.debounce(this.onChange.bind(this), 300));
-    this.abortController = new AbortController();
-  }
-  
-  onChange() {
-    const term = this.input.value.trim();
-    if (term.length < 3) { this.close(); return; }
-    
-    this.abortController.abort();
-    this.abortController = new AbortController();
-    
-    const url = `${window.routes.predictive_search_url}?q=${encodeURIComponent(term)}&resources[type]=product&section_id=predictive-search`;
-    
-    fetch(url, { signal: this.abortController.signal })
-      .then(res => res.text())
-      .then(text => {
-        const html = new DOMParser().parseFromString(text, 'text/html');
-        this.results.innerHTML = html.querySelector('#shopify-section-predictive-search').innerHTML;
-        this.setAttribute('open', 'true');
-      })
-      .catch(err => { if (err.name !== 'AbortError') console.error(err); });
-  }
-  
-  debounce(fn, wait) {
-    let t;
-    return (...args) => { clearTimeout(t); t = setTimeout(() => fn.apply(this, args), wait); };
-  }
-  
-  close() { this.removeAttribute('open'); }
-}
-customElements.define('predictive-search', PredictiveSearch);
-
-
-11.2 Faceted Filtering
-────────────────────────────────────────────────────────────────────────────────
-class FacetFiltersForm extends HTMLElement {
-  constructor() {
-    super();
-    this.addEventListener('change', this.onChange.bind(this));
-  }
-  
-  onChange(e) {
-    const formData = new FormData(e.target.closest('form'));
-    const params = new URLSearchParams(formData);
-    this.render(`${window.location.pathname}?${params}`);
-  }
-  
-  render(url) {
-    history.pushState({}, '', url);
-    fetch(url).then(r => r.text()).then(html => {
-      const doc = new DOMParser().parseFromString(html, 'text/html');
-      document.querySelector('#product-grid').innerHTML = doc.querySelector('#product-grid').innerHTML;
-    });
-  }
-}
-customElements.define('facet-filters-form', FacetFiltersForm);
-
-
-════════════════════════════════════════════════════════════════════════════════
-📦 РАЗДЕЛ 12: ОБЯЗАТЕЛЬНЫЕ ФАЙЛЫ ТЕМЫ
-════════════════════════════════════════════════════════════════════════════════
-✅ sections/header.liquid, footer.liquid, main-product.liquid...
-✅ snippets/icon-cart.liquid, sticky-atc.liquid (NEW)...
-✅ templates/customers/addresses.json, order.json...
-✅ blocks/app-block.liquid
-
-
-════════════════════════════════════════════════════════════════════════════════
-🧪 РАЗДЕЛ 13: ТЕСТИРОВАНИЕ (UX FOCUSED)
-════════════════════════════════════════════════════════════════════════════════
-1. Theme Check.
-2. Lighthouse > 90.
-3. Mobile Scroll Test (Sticky Bar check).
-4. Low Power Mode Test (Reduced Motion check).
-
-
-════════════════════════════════════════════════════════════════════════════════
-🎯 РАЗДЕЛ 14: РЕЖИМЫ РАБОТЫ
-════════════════════════════════════════════════════════════════════════════════
-1. 🎨 ДИЗАЙН
-2. 💰 МАРКЕТИНГ
-3. 💻 КОД
-4. 🕵️‍♂️ АУДИТ
-5. 🛡️ GIT
-6. 🤖 AI INTEGRATION
-7. 📱 UX/MOBILE (NEW: Проверка удобства пальцев)
-
-
-════════════════════════════════════════════════════════════════════════════════
-📊 РАЗДЕЛ 15: ФИНАЛЬНЫЕ КОМАНДЫ
-════════════════════════════════════════════════════════════════════════════════
-17.1 Deprecated
-❌ img_url, money, checkout.liquid, Shopify.formatMoney.
-
-17.2 Статус
-Версия: 8.0 (HUMAN-CENTRIC FINAL)
-Готовность: ✅ 100% (Code + UX + Perf).
-════════════════════════════════════════════════════════════════════════════════
-═══════════════════════════════════════════════════════════════════════════════
-📍 РАЗДЕЛ 5.3: SHOPIFY MARKETS & MULTI-CURRENCY (NEW)
-═══════════════════════════════════════════════════════════════════════════════
-5.3.1 Обзор Shopify Markets
+5.3 Обзор Shopify Markets (Multi-Currency & Geo-Targeting)
 ────────────────────────────────────────────────────────────────────────────────
 Shopify Markets позволяет продавать в разных странах с автоматической:
-
-Конвертацией валюты
-Адаптацией цен (разные цены для разных рынков)
-Локализацией контента (через Translation API)
-Управлением доставкой и налогами
+- Конвертацией валюты
+- Адаптацией цен (разные цены для разных рынков)
+- Локализацией контента (через Translation API)
+- Управлением доставкой и налогами
 
 ВАЖНО: Markets — это НЕ то же самое, что multi-language. Это про geo-targeting.
-5.3.2 Доступ к данным Markets в Liquid
+
+5.3.1 Доступ к данным Markets в Liquid
 ────────────────────────────────────────────────────────────────────────────────
-Shopify предоставляет объект `localization`
+Shopify предоставляет глобальный объект `localization` для доступа к данным о рынке.
+
+```liquid
 {{ localization.country.iso_code }}  <!-- "US", "GB", "FR", etc. -->
 {{ localization.country.name }}      <!-- "United States", "United Kingdom" -->
 {{ localization.market.name }}       <!-- "North America", "Europe" -->
 {{ localization.available_countries }} <!-- Array of all available countries -->
-5.3.3 Автоматическая конвертация валюты
+```
+
+5.3.2 Автоматическая конвертация валюты
 ────────────────────────────────────────────────────────────────────────────────
-Shopify автоматически конвертирует цены. НЕ используйте ручную конвертацию!
+Shopify автоматически конвертирует цены. НЕ используйте ручную математику.
+
 ✅ ПРАВИЛЬНО:
+```liquid
 {{ product.price | money_with_currency }}
 <!-- Output: $45.00 USD (для US) или £35.00 GBP (для UK) -->
+```
+
 ❌ НЕПРАВИЛЬНО:
+```liquid
 {{ product.price | times: 0.85 | money }}  <!-- Ручная конвертация — ЗАПРЕЩЕНО -->
-5.3.4 Создание универсального Price Snippet
+```
+
+5.3.3 Создание универсального Price Snippet
 ────────────────────────────────────────────────────────────────────────────────
-Создайте переиспользуемый snippet для отображения цен:
-File: snippets/price.liquid
+Чтобы обеспечить консистентность, создайте переиспользуемый snippet для отображения цен.
+**File:** `snippets/price.liquid`
+```liquid
 {% comment %}
   Universal Price Display with Multi-Currency Support
-  
-  Parameters:
   - price: The price object or integer (in cents)
   - compare_at_price: (optional) Original price for sale display
-  - show_currency: (optional) boolean - Show currency symbol
-  
-  Usage:
-  {% render 'price', price: product.price, compare_at_price: product.compare_at_price %}
 {% endcomment %}
 
 <div class="price {% if compare_at_price and compare_at_price > price %}price--on-sale{% endif %}">
   {% if compare_at_price and compare_at_price > price %}
     <span class="price__sale">
-      <span class="visually-hidden">{{ 'products.price.sale_price' | t }}</span>
-      {% if show_currency %}
-        {{ price | money_with_currency }}
-      {% else %}
-        {{ price | money }}
-      {% endif %}
+      {{ price | money_with_currency }}
     </span>
-    <span class="price__compare">
-      <span class="visually-hidden">{{ 'products.price.regular_price' | t }}</span>
-      {% if show_currency %}
-        {{ compare_at_price | money_with_currency }}
-      {% else %}
-        {{ compare_at_price | money }}
-      {% endif %}
-    </span>
+    <s class="price__compare">
+      {{ compare_at_price | money_with_currency }}
+    </s>
   {% else %}
     <span class="price__regular">
-      {% if show_currency %}
-        {{ price | money_with_currency }}
-      {% else %}
-        {{ price | money }}
-      {% endif %}
+      {{ price | money_with_currency }}
     </span>
   {% endif %}
 </div>
-5.3.5 Geo-Targeted Content (Conditional Messaging)
+```
+**Usage:** `{% render 'price', price: product.price, compare_at_price: product.compare_at_price %}`
+
+5.3.4 Geo-Targeted Content (Conditional Messaging)
 ────────────────────────────────────────────────────────────────────────────────
-Показывайте разный контент для разных стран:
+Показывайте разный контент для разных стран с помощью объекта `localization`.
+
+```liquid
 {% comment %} Free Shipping Thresholds by Country {% endcomment %}
-{% if localization.country.iso_code == 'US' %}
-  <p class="shipping-message">{{ 'cart.free_shipping_us' | t }}</p>
-  <!-- Output: "Free shipping over $50!" -->
-  
-{% elsif localization.country.iso_code == 'GB' %}
-  <p class="shipping-message">{{ 'cart.free_shipping_uk' | t }}</p>
-  <!-- Output: "Free delivery over £40!" -->
-  
-{% elsif localization.country.iso_code == 'CA' %}
-  <p class="shipping-message">{{ 'cart.free_shipping_ca' | t }}</p>
-  <!-- Output: "Free shipping over $75 CAD!" -->
-  
-{% else %}
-  <p class="shipping-message">{{ 'cart.free_shipping_intl' | t }}</p>
-  <!-- Output: "Shipping calculated at checkout" -->
-{% endif %}
+{%- case localization.country.iso_code -%}
+  {%- when 'US' -%}
+    <p class="shipping-message">{{ 'cart.free_shipping_us' | t }}</p>
+    <!-- Output: "Free shipping over $50!" -->
+  {%- when 'GB' -%}
+    <p class="shipping-message">{{ 'cart.free_shipping_uk' | t }}</p>
+    <!-- Output: "Free delivery over £40!" -->
+  {%- else -%}
+    <p class="shipping-message">{{ 'cart.free_shipping_intl' | t }}</p>
+    <!-- Output: "Shipping calculated at checkout" -->
+{%- endcase -%}
+```
 
-
-{% comment %} Payment Method Icons by Region {% endcomment %}
-{% if localization.country.iso_code == 'US' %}
-  {% render 'icon-visa' %}
-  {% render 'icon-mastercard' %}
-  {% render 'icon-amex' %}
-  {% render 'icon-paypal' %}
-  
-{% elsif localization.country.iso_code == 'DE' %}
-  {% render 'icon-visa' %}
-  {% render 'icon-mastercard' %}
-  {% render 'icon-sofort' %}
-  {% render 'icon-klarna' %}
-{% endif %}
-5.3.6 Country Selector (Best Practice)
+5.3.5 Country & Language Selectors
 ────────────────────────────────────────────────────────────────────────────────
-Shopify предоставляет встроенный Country Selector. Используйте его!
-File: snippets/country-selector.liquid
-{% comment %}
-  Shopify's Native Country/Currency Selector
-  Automatically handles Markets and currency switching
-{% endcomment %}
-
+Shopify предоставляет встроенный селектор. Используйте его.
+**File:** `snippets/localization-form.liquid`
+```liquid
 {% form 'localization', class: 'localization-form' %}
-  <div class="localization-selector">
-    <label for="localization-country" class="visually-hidden">
-      {{ 'general.localization.country' | t }}
-    </label>
-    
-    <select 
-      name="country_code" 
-      id="localization-country"
-      class="localization-selector__select"
-      aria-label="{{ 'general.localization.country' | t }}"
-    >
+  <div class="localization-form__select">
+    <label for="localization-country">{{ 'general.localization.country' | t }}</label>
+    <select name="country_code" id="localization-country">
       {% for country in localization.available_countries %}
-        <option 
-          value="{{ country.iso_code }}" 
-          {% if country.iso_code == localization.country.iso_code %}selected{% endif %}
-        >
-          {{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})
+        <option value="{{ country.iso_code }}" {% if country.iso_code == localization.country.iso_code %}selected{% endif %}>
+          {{ country.name }} ({{ country.currency.iso_code }})
         </option>
       {% endfor %}
     </select>
-    
-    <button type="submit" class="localization-selector__submit">
-      {{ 'general.localization.update' | t }}
-    </button>
   </div>
+
+  <div class="localization-form__select">
+    <label for="localization-language">{{ 'general.localization.language' | t }}</label>
+    <select name="locale_code" id="localization-language">
+      {% for language in localization.available_languages %}
+        <option value="{{ language.iso_code }}" {% if language.iso_code == localization.language.iso_code %}selected{% endif %}>
+          {{ language.endonym_name }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+  <button type="submit" class="button--hidden">{{ 'general.localization.update' | t }}</button>
 {% endform %}
-
-<script>
-  // Auto-submit on change
-  document.querySelector('#localization-country')?.addEventListener('change', function() {
-    this.closest('form').submit();
-  });
-</script>
 ```
-
 **Placement:** Обычно в Header или Footer.
 
-
-5.3.7 Testing Markets Locally
+5.3.6 SEO для Markets (hreflang)
 ────────────────────────────────────────────────────────────────────────────────
-**Проблема:** Локальная разработка (`shopify theme dev`) показывает только одну страну.
+Shopify автоматически генерирует `hreflang` теги для Markets.
+Просто убедитесь, что в `layout/theme.liquid` есть `{{ content_for_header }}`.
 
-**Решение:** Используйте URL параметры для симуляции:
-```
-?country=GB          <!-- Simulates UK market -->
-?country=FR&currency=EUR  <!-- Simulates France -->
-Shopify Plus: Используйте Preview Links с geo-targeting.
-5.3.8 Translation API (Multi-Language)
+5.3.7 Тестирование Markets
 ────────────────────────────────────────────────────────────────────────────────
-Markets ≠ Languages, но часто идут вместе.
-Доступ к текущему языку:
-{{ localization.language.iso_code }}  <!-- "en", "fr", "de" -->
-{{ localization.available_languages }} <!-- Array of enabled languages -->
-Language Selector:
-{% form 'localization' %}
-  <select name="locale_code" id="localization-language">
-    {% for language in localization.available_languages %}
-      <option 
-        value="{{ language.iso_code }}" 
-        {% if language.iso_code == localization.language.iso_code %}selected{% endif %}
-      >
-        {{ language.endonym_name }}  <!-- Native language name: "English", "Français" -->
-      </option>
-    {% endfor %}
-  </select>
-  <button type="submit">{{ 'general.localization.update_language' | t }}</button>
-{% endform %}
-```
+- **Локально:** Используйте URL-параметр `?country=GB` для симуляции другого рынка.
+- **В админке Shopify:** Используйте Preview Links с выбором страны.
 
-
-5.3.9 Combined Country + Language Selector
+5.3.8 Common Pitfalls (Ошибки)
 ────────────────────────────────────────────────────────────────────────────────
-**Best Practice:** Разделяйте Country (Markets) и Language (Translation) селекторы.
+❌ **Хардкод валюты:** `<span>Price: ${{ product.price | divided_by: 100 }}</span>`
+    ✅ **FIX:** `<span>{{ product.price | money_with_currency }}</span>`
 
-**Header Layout:**
-```
-┌─────────────────────────────────────┐
-│ Logo    Nav    🌍 US | EN ▼   Cart │
-│                 └─ Country/Language │
-└─────────────────────────────────────┘
-Implementation:
-<div class="header__localization">
-  {% render 'country-selector' %}
-  {% render 'language-selector' %}
-</div>
-5.3.10 Performance Considerations
-────────────────────────────────────────────────────────────────────────────────
-Проблема: Country Selector добавляет <select> с 200+ странами → DOM bloat.
-Решение:
+❌ **Хардкод единиц измерения:** `<span>Weight: {{ product.weight }}kg</span>`
+    ✅ **FIX:** `<span>{{ product.weight }} {{ product.weight_unit }}</span>`
 
-Показывайте только Top 10 стран по умолчанию.
-"See all countries" → раскрывает полный список.
-
-{% assign top_countries = 'US,CA,GB,AU,DE,FR,IT,ES,NL,SE' | split: ',' %}
-
-<select name="country_code">
-  {% for country in localization.available_countries %}
-    {% if top_countries contains country.iso_code or country.iso_code == localization.country.iso_code %}
-      <option value="{{ country.iso_code }}">{{ country.name }}</option>
-    {% endif %}
-  {% endfor %}
-  
-  <option disabled>──────────</option>
-  
-  {% for country in localization.available_countries %}
-    {% unless top_countries contains country.iso_code %}
-      <option value="{{ country.iso_code }}">{{ country.name }}</option>
-    {% endunless %}
-  {% endfor %}
-</select>
-5.3.11 SEO для Markets (hreflang)
-────────────────────────────────────────────────────────────────────────────────
-Shopify автоматически генерирует hreflang tags для Markets.
-Проверка в layout/theme.liquid:
-<head>
-  {{ content_for_header }}  <!-- Shopify injects hreflang here -->
-</head>
-Manual Override (если нужно):
-{% for language in localization.available_languages %}
-  <link 
-    rel="alternate" 
-    hreflang="{{ language.iso_code }}" 
-    href="{{ canonical_url | replace: localization.language.iso_code, language.iso_code }}"
-  >
-{% endfor %}
-5.3.12 Common Pitfalls (Ошибки)
-────────────────────────────────────────────────────────────────────────────────
-❌ ОШИБКА 1: Хардкод валюты
-<span>Price: ${{ product.price | divided_by: 100 }}</span>
-✅ FIX: Используйте | money_with_currency
-❌ ОШИБКА 2: Хардкод единиц измерения
-<span>Weight: {{ product.weight }}kg</span>
-✅ FIX:
-<span>Weight: {{ product.weight }} {{ product.weight_unit }}</span>
-❌ ОШИБКА 3: Забыли про локализацию дат
-<span>{{ order.created_at }}</span>  <!-- Shows: 2025-11-23 (not localized) -->
-✅ FIX:
-<span>{{ order.created_at | date: format: 'abbreviated_date' }}</span>
-<!-- US: Nov 23, 2025 | FR: 23 nov. 2025 -->
-```
-
-
-5.3.13 Testing Checklist (QA для Markets)
-────────────────────────────────────────────────────────────────────────────────
-Before launching Markets:
-- [ ] Test Country Selector на всех страницах
-- [ ] Verify currency conversion (check cart totals)
-- [ ] Test Payment Methods по странам (некоторые методы недоступны в определённых регионах)
-- [ ] Verify Shipping Rates (разные зоны = разные цены)
-- [ ] Test hreflang tags (Google Search Console)
-- [ ] Mobile: Country Selector не должен ломать layout
+❌ **Нелокализованные даты:** `<span>{{ order.created_at }}</span>`
+    ✅ **FIX:** `<span>{{ order.created_at | date: format: 'abbreviated_date' }}</span>`
 
 ═══════════════════════════════════════════════════════════════════════════════
+📍 РАЗДЕЛ 5.4: SELLING PLANS (ПОДПИСКИ)
+═══════════════════════════════════════════════════════════════════════════════
+5.4.1 Обзор Selling Plans
+────────────────────────────────────────────────────────────────────────────────
+Shopify Selling Plans (Подписки) позволяют мерчантам предлагать товары с регулярной доставкой или платежами. Тема ОБЯЗАНА корректно отображать информацию о выбранном плане подписки.
+
+5.4.2 Отображение в Корзине (cart.json / Cart Snippet)
+────────────────────────────────────────────────────────────────────────────────
+Если товар в корзине продается по подписке, необходимо вывести информацию о плане подписки.
+
+```liquid
+{% if item.selling_plan_allocation %}
+  <div class="selling-plan-info">
+    <small>{{ item.selling_plan_allocation.selling_plan.name }}</small>
+  </div>
+{% endif %}
+```
+**Размещение:** Внутри цикла по товарам корзины, рядом с названием товара или его ценой.
+
+5.4.3 Отображение на Странице Заказа Клиента (customers/order.json)
+────────────────────────────────────────────────────────────────────────────────
+На странице деталей заказа клиента также необходимо отображать информацию о подписке для каждого товара.
+
+```liquid
+{% if line.selling_plan_allocation %}
+  <div class="selling-plan-info">
+    <small>{{ line.selling_plan_allocation.selling_plan.name }}</small>
+  </div>
+{% endif %}
+```
+**Размещение:** Внутри цикла по товарам заказа, рядом с названием товара.
+
+5.4.4 Совместимость на Странице Продукта
+────────────────────────────────────────────────────────────────────────────────
+Убедитесь, что секция `main-product` позволяет приложениям подписки (которые обычно используют App Blocks) корректно встраивать свой виджет выбора плана подписки.
+✅ Это требование уже покрыто принципом `✅ App Blocks` в Разделе 1.2.
+
+5.4.5 Тестирование Selling Plans
+────────────────────────────────────────────────────────────────────────────────
+- [ ] Проверить отображение информации о подписке в корзине.
+- [ ] Проверить отображение информации о подписке на странице заказа клиента.
+- [ ] Убедиться, что виджеты приложений подписки корректно работают на странице продукта.
+
+════════════════════════════════════════════════════════════════════════════════
+♿ РАЗДЕЛ 6: ДОСТУПНОСТЬ (A11Y)

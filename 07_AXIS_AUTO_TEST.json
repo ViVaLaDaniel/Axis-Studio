@@ -1,6 +1,45 @@
 {
   "automated_testing_suite": {
     "philosophy": "Catch bugs before humans do. Zero tolerance for performance regression.",
+    "ci_cd_pipeline_steps": [
+      {
+        "step": 1,
+        "name": "Linting & Syntax Check",
+        "tool": "Shopify Theme Check CLI",
+        "reference": "self",
+        "fail_action": "Block commit on any errors."
+      },
+      {
+        "step": 2,
+        "name": "Security Scan",
+        "tool": "AXIS Security Scanner",
+        "reference": "11_AXIS_SECURITY_SCANNER.json",
+        "command": "RUN --file=11_AXIS_SECURITY_SCANNER.json",
+        "fail_action": "Block deployment on CRITICAL vulnerabilities."
+      },
+      {
+        "step": 3,
+        "name": "Performance Budget Check",
+        "tool": "AXIS Performance Budget",
+        "reference": "15_PERFORMANCE_BUDGET.json",
+        "command": "VALIDATE --file=15_PERFORMANCE_BUDGET.json",
+        "fail_action": "Block deployment if hard limits are exceeded."
+      },
+      {
+        "step": 4,
+        "name": "Lighthouse CI",
+        "tool": "Google Lighthouse",
+        "reference": "self",
+        "fail_action": "Block deployment if score < threshold."
+      },
+      {
+        "step": 5,
+        "name": "Visual Regression Testing",
+        "tool": "Percy / BackstopJS",
+        "reference": "self",
+        "fail_action": "Require manual approval on pixel difference > 0.1%."
+      }
+    ],
     "lighthouse_ci": {
       "command": "lhci autorun --config=lighthouserc.json",
       "thresholds": {
@@ -8,18 +47,16 @@
         "accessibility": 95,
         "best_practices": 100,
         "seo": 100
-      },
-      "fail_action": "Block deployment if score < threshold."
+      }
     },
     "theme_check": {
       "tool": "Shopify Theme Check CLI",
-      "command": "theme check --fail-level=error",
+      "command": "theme check --fail-level=error --strict",
       "config": {
         "Liquid/Syntax": "enabled",
         "Translation/MissingKeys": "enabled",
         "Performance/ImgLazyLoading": "enabled"
-      },
-      "pre_commit_hook": "Must pass before git commit."
+      }
     },
     "visual_regression": {
       "tool": "Percy / BackstopJS",
@@ -30,14 +67,6 @@
         "Collection Filter (Expanded)"
       ],
       "tolerance": "0.1% pixel difference"
-    },
-    "performance_budget": {
-      "global_limits": {
-        "js_bundle_size": "150KB (gzipped)",
-        "css_bundle_size": "50KB (gzipped)",
-        "image_weight_lcp": "300KB (WebP/AVIF)"
-      },
-      "enforcement": "CI Pipeline fails on budget exceeded."
     }
   }
 }

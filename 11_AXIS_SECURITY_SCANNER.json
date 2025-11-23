@@ -17,25 +17,25 @@
           {
             "context": "section.settings (type: text, textarea, heading, html)",
             "reason": "Shopify auto-escapes text inputs in schema",
-            "pattern": "{{ section\.settings\.[a-z_]+ }}",
+            "pattern": "{{ section\\\\.settings\\\\.[a-z_]+ }}",
             "action": "ALLOW (no escape needed)"
           },
           {
             "context": "block.settings (type: text, textarea)",
             "reason": "Shopify auto-escapes block settings",
-            "pattern": "{{ block\.settings\.[a-z_]+ }}",
+            "pattern": "{{ block\\\\.settings\\\\.[a-z_]+ }}",
             "action": "ALLOW"
           },
           {
             "context": "Shopify native objects (product.title, collection.title, etc.)",
             "reason": "Shopify sanitizes its own database objects",
-            "pattern": "{{ (product|collection|article|blog)\.(title|description|vendor) }}",
+            "pattern": "{{ (product|collection|article|blog)\\\\.(title|description|vendor) }}",
             "action": "ALLOW"
           },
           {
             "context": "Richtext fields with intentional HTML",
             "reason": "Merchant intends to use HTML (e.g., product description)",
-            "pattern": "{{ section\.settings\.[a-z_]+ }} where schema type='richtext'",
+            "pattern": "{{ section\\\\.settings\\\\.[a-z_]+ }} where schema type='richtext'",
             "action": "ALLOW (but verify type=richtext in schema)"
           }
         ],
@@ -43,21 +43,21 @@
           {
             "context": "Metafields (user-generated or app-generated)",
             "reason": "Metafields can contain user input from apps/API",
-            "pattern": "{{ (product|collection)\.metafields\..+ }}",
+            "pattern": "{{ (product|collection)\\\\.metafields\\\\..+ }}",
             "action": "BLOCK unless | escape or | json applied",
             "fix": "Add | escape filter"
           },
           {
             "context": "Customer input (form.email, customer.name from custom forms)",
             "reason": "Customer data can be manipulated",
-            "pattern": "{{ customer\.[a-z_]+ }} outside Shopify forms",
+            "pattern": "{{ customer\\\\.[a-z_]+ }} outside Shopify forms",
             "action": "BLOCK unless | escape",
             "fix": "Add | escape filter"
           },
           {
             "context": "URL parameters (request.params)",
             "reason": "URL params are trivially exploitable",
-            "pattern": "{{ request\..+ }}",
+            "pattern": "{{ request\\\\..+ }}",
             "action": "BLOCK unless | escape or | url_encode",
             "fix": "Add | escape or | url_encode"
           }
@@ -66,8 +66,8 @@
       "validation_algorithm": {
         "step_1": "Extract all {{ ... }} patterns from Liquid file",
         "step_2": "Check if pattern matches 'safe_contexts_whitelist'",
-        "step_3": "If yes → ALLOW. If no → Check 'danger_contexts'",
-        "step_4": "If in danger_contexts AND no escape filter → BLOCK",
+        "step_3": "If yes -> ALLOW. If no -> Check 'danger_contexts'",
+        "step_4": "If in danger_contexts AND no escape filter -> BLOCK",
         "step_5": "Generate fix suggestion"
       },
       "examples": {
@@ -78,9 +78,9 @@
           "{{ section.settings.html_content }} (if schema type='richtext')"
         ],
         "dangerous_must_escape": [
-          "{{ product.metafields.custom.bio }} → Add | escape",
-          "{{ request.query.search }} → Add | url_encode",
-          "{{ form.email }} (custom form) → Add | escape"
+          "{{ product.metafields.custom.bio }} -> Add | escape",
+          "{{ request.query.search }} -> Add | url_encode",
+          "{{ form.email }} (custom form) -> Add | escape"
         ]
       }
     },
@@ -115,10 +115,10 @@
       "description": "API Keys, Tokens, or Passwords in plaintext code",
       "severity": "CRITICAL",
       "detection_patterns": [
-        "(api_key|apikey|api-key)\s*[=:]\s*['"][a-zA-Z0-9]{20,}['"]",
-        "(password|passwd|pwd)\s*[=:]\s*['"].+['"]",
-        "(token|auth_token|access_token)\s*[=:]\s*['"][a-zA-Z0-9]{20,}['"]",
-        "(secret|secret_key|client_secret)\s*[=:]\s*['"][a-zA-Z0-9]{20,}['"]"
+        "(api_key|apikey|api-key)\\\\s*[=:]\\\\s*['\"][a-zA-Z0-9]{20,}['\"]",
+        "(password|passwd|pwd)\\\\s*[=:]\\\\s*['\"].+['\"]",
+        "(token|auth_token|access_token)\\\\s*[=:]\\\\s*['\"][a-zA-Z0-9]{20,}['\"]",
+        "(secret|secret_key|client_secret)\\\\s*[=:]\\\\s*['\"][a-zA-Z0-9]{20,}['\"]"
       ],
       "fix": {
         "wrong": "const apiKey = 'sk_live_abc123xyz789';",
@@ -127,7 +127,7 @@
       "whitelist_exceptions": [
         {
           "context": "Public API keys explicitly labeled as 'public'",
-          "pattern": "(public_key|publishable_key)\s*[=:]",
+          "pattern": "(public_key|publishable_key)\\\\s*[=:]",
           "action": "WARN (verify it's truly public, not private key mislabeled)"
         },
         {
@@ -168,9 +168,9 @@
       "1. Scan all .liquid files for vulnerability patterns",
       "2. Apply smart_detection logic to reduce false positives",
       "3. Generate SECURITY_REPORT.md with findings",
-      "4. If CRITICAL found → BLOCK commit/deployment",
-      "5. If HIGH found → WARN but allow (require human review)",
-      "6. If MEDIUM/LOW → LOG for weekly review"
+      "4. If CRITICAL found -> BLOCK commit/deployment",
+      "5. If HIGH found -> WARN but allow (require human review)",
+      "6. If MEDIUM/LOW -> LOG for weekly review"
     ]
   },
   "reporting": {
@@ -197,7 +197,7 @@
   "integration_with_file_18": {
     "memory_log_trigger": "On every CRITICAL or HIGH issue found",
     "action": "Log in File 18 (Memory Log) to prevent recurrence",
-    "example": "If XSS found in cart-drawer → Create M087 entry → Next time AI generates cart-drawer, auto-applies fix"
+    "example": "If XSS found in cart-drawer -> Create M087 entry -> Next time AI generates cart-drawer, auto-applies fix"
   },
   "performance_optimization": {
     "incremental_scan": "Scan only changed files (git diff), not entire theme",
