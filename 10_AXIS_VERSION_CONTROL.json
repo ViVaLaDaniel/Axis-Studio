@@ -1,0 +1,28 @@
+{
+  "version_control_strategy": {
+    "philosophy": "Semantic Versioning (SemVer). Every change is traceable.",
+    "branching_model": {
+      "main": "Production-ready code ONLY. Never commit directly.",
+      "develop": "Integration branch for new features.",
+      "feature/xyz": "Working branch for specific tasks (e.g., 'feature/sticky-atc').",
+      "hotfix/xyz": "Urgent patches for live bugs."
+    },
+    "commit_convention": {
+      "standard": "Conventional Commits",
+      "types": [
+        "feat: (New feature)",
+        "fix: (Bug fix)",
+        "docs: (Documentation only)",
+        "style: (Formatting, missing semi colons, etc)",
+        "refactor: (A code change that neither fixes a bug nor adds a feature)",
+        "perf: (A code change that improves performance)",
+        "test: (Adding missing tests)"
+      ],
+      "example": "feat(cart): add free shipping progress bar"
+    },
+    "changelog_automation": {
+      "trigger": "On Merge to Main",
+      "action": "Generate CHANGELOG.md based on commit types."
+    }
+  }
+}

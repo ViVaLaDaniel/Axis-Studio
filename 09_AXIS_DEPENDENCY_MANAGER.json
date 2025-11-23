@@ -1,0 +1,20 @@
+{
+  "dependency_graph": {
+    "purpose": "Prevent 'Spaghetti Code' and ensure modularity.",
+    "rules": {
+      "no_circular_deps": "Section A cannot include Section B if B includes A.",
+      "orphan_check": "Every file in /snippets must be referenced at least once.",
+      "asset_coupling": "JS/CSS assets must be loaded strictly within their parent Section/Block (no global pollution)."
+    },
+    "mapping_template": {
+      "section_name": "main-product.liquid",
+      "requires_snippets": ["price.liquid", "product-media-gallery.liquid"],
+      "requires_assets": ["component-price.css", "component-slider.js"],
+      "impact_score": "CRITICAL (Affects Conversion)"
+    },
+    "validation_action": {
+      "trigger": "Pre-Build",
+      "script": "Scan all 'render', 'include', 'section' tags and build a Tree. Alert on broken links."
+    }
+  }
+}

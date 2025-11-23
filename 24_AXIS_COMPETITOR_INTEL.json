@@ -1,0 +1,542 @@
+{
+  "system_name": "AXIS_COMPETITOR_INTEL",
+  "version": "1.0 (GOD MODE)",
+  "philosophy": "Know your enemy. Win their customers.",
+  "objective": "Analyze top Shopify themes to identify gaps, trends, and opportunities for differentiation.",
+  
+  "top_10_themes_2025": {
+    "data_source": "Shopify Theme Store (sorted by Sales + Reviews)",
+    "last_updated": "2025-11-23",
+    
+    "rank_1_dawn": {
+      "name": "Dawn (Free)",
+      "developer": "Shopify",
+      "price": "$0 (Free)",
+      "sales_estimate": "1M+ stores",
+      "rating": "4.6/5",
+      "target_niche": "All (General Purpose)",
+      
+      "key_features": [
+        "Clean, minimalist design",
+        "Fast (Lighthouse 95+)",
+        "Fully accessible (WCAG 2.1 AA)",
+        "50+ sections",
+        "App Block support"
+      ],
+      
+      "weaknesses": [
+        "Too generic (every store looks the same)",
+        "Limited customization options",
+        "No advanced features (video backgrounds, parallax)",
+        "Basic product page (no zoom, 360° view)"
+      ],
+      
+      "user_complaints": [
+        "'Looks too basic for my premium brand'",
+        "'Everyone uses Dawn, no differentiation'",
+        "'Need more layout options'"
+      ],
+      
+      "axis_advantage": {
+        "differentiation": "Unique layouts (Bento Grid, Asymmetric Hero)",
+        "premium_feel": "Advanced animations, video support",
+        "merchant_control": "More preset options (3 vs Dawn's 1)"
+      }
+    },
+    
+    "rank_2_impact": {
+      "name": "Impact",
+      "developer": "Maestrooo",
+      "price": "$350",
+      "sales_estimate": "10k-15k",
+      "rating": "4.9/5",
+      "target_niche": "Fashion, Apparel",
+      
+      "key_features": [
+        "Video-first design",
+        "Instagram-like product grids",
+        "Advanced filtering",
+        "Lookbook builder",
+        "Mobile-optimized",
+        "80+ sections"
+      ],
+      
+      "strengths": [
+        "Best-in-class mobile UX",
+        "Stunning visual design",
+        "Excellent documentation",
+        "Fast support response (<24h)"
+      ],
+      
+      "weaknesses": [
+        "Expensive ($350)",
+        "Overkill for small stores (too many options)",
+        "Heavy JS bundle (150KB+)",
+        "Learning curve for merchants"
+      ],
+      
+      "user_praise": [
+        "'Best fashion theme on Shopify'",
+        "'Support is incredible'",
+        "'Customers love the video galleries'"
+      ],
+      
+      "user_complaints": [
+        "'Pricey for startups'",
+        "'Too many settings, overwhelming'",
+        "'Slow on low-end devices'"
+      ],
+      
+      "axis_strategy": {
+        "compete_on": "Price ($220-$280 vs $350)",
+        "match": "Video-first, Mobile UX, Advanced filters",
+        "differentiate": "Lighter JS bundle (<100KB), Simpler settings",
+        "target": "Fashion brands with <$100k revenue (can't afford Impact)"
+      }
+    },
+    
+    "rank_3_prestige": {
+      "name": "Prestige",
+      "developer": "Maestrooo",
+      "price": "$350",
+      "sales_estimate": "8k-12k",
+      "rating": "4.8/5",
+      "target_niche": "Luxury, High-End Retail",
+      
+      "key_features": [
+        "Full-screen imagery",
+        "Sophisticated typography",
+        "Mega menu",
+        "Size guide builder",
+        "Store locator",
+        "70+ sections"
+      ],
+      
+      "strengths": [
+        "Premium aesthetic",
+        "Excellent for luxury brands",
+        "Strong typography system",
+        "Detailed product pages"
+      ],
+      
+      "weaknesses": [
+        "Not mobile-first (desktop-focused)",
+        "Slow on mobile (LCP 2.5s+)",
+        "Complex customization",
+        "Expensive"
+      ],
+      
+      "axis_strategy": {
+        "compete_on": "Mobile performance (LCP <1.5s)",
+        "match": "Premium aesthetic, Typography, Mega menu",
+        "differentiate": "Mobile-first approach, Better performance",
+        "target": "Luxury brands that need mobile sales"
+      }
+    },
+    
+    "rank_4_focal": {
+      "name": "Focal",
+      "developer": "Maestrooo",
+      "price": "$350",
+      "sales_estimate": "6k-10k",
+      "rating": "4.9/5",
+      "target_niche": "High-Volume Stores",
+      
+      "key_features": [
+        "Advanced search & filtering",
+        "Mega collections",
+        "Predictive search",
+        "Color swatches",
+        "Quick add to cart",
+        "90+ sections"
+      ],
+      
+      "strengths": [
+        "Best for large catalogs (1000+ SKUs)",
+        "Excellent filtering UX",
+        "Fast search",
+        "High conversion rate"
+      ],
+      
+      "weaknesses": [
+        "Overwhelming for small stores",
+        "Generic visual design",
+        "Expensive",
+        "Setup time (2-3 days)"
+      ],
+      
+      "axis_strategy": {
+        "compete_on": "Visual uniqueness (Focal is plain)",
+        "match": "Advanced filtering, Quick add",
+        "differentiate": "Better out-of-box design, Faster setup",
+        "target": "Medium-volume stores (100-500 SKUs)"
+      }
+    },
+    
+    "rank_5_motion": {
+      "name": "Motion",
+      "developer": "Archetype Themes",
+      "price": "$350",
+      "sales_estimate": "5k-8k",
+      "rating": "4.7/5",
+      "target_niche": "Creative Brands",
+      
+      "key_features": [
+        "Parallax scrolling",
+        "Scroll animations",
+        "Split-screen layouts",
+        "Video backgrounds",
+        "60+ sections"
+      ],
+      
+      "strengths": [
+        "Visually stunning",
+        "Unique interactions",
+        "Great for storytelling",
+        "Modern aesthetic"
+      ],
+      
+      "weaknesses": [
+        "Heavy animations (performance hit)",
+        "Not accessible (motion sickness)",
+        "Poor mobile experience",
+        "Expensive"
+      ],
+      
+      "axis_strategy": {
+        "compete_on": "Accessible motion (respects prefers-reduced-motion)",
+        "match": "Parallax, Split-screen, Video backgrounds",
+        "differentiate": "Better performance, Mobile-friendly",
+        "target": "Creative brands that care about accessibility"
+      }
+    },
+    
+    "rank_6_refresh": {
+      "name": "Refresh",
+      "developer": "Archetype Themes",
+      "price": "$280",
+      "sales_estimate": "4k-6k",
+      "rating": "4.8/5",
+      "target_niche": "Health & Wellness",
+      
+      "key_features": [
+        "Clean, airy design",
+        "Recipe builder",
+        "Ingredient list",
+        "Blog-focused",
+        "50+ sections"
+      ],
+      
+      "strengths": [
+        "Perfect for wellness brands",
+        "Content-rich layouts",
+        "Excellent typography",
+        "Fast"
+      ],
+      
+      "weaknesses": [
+        "Limited to wellness niche",
+        "Basic e-commerce features",
+        "No advanced filtering"
+      ],
+      
+      "axis_strategy": {
+        "compete_on": "Multi-niche flexibility",
+        "match": "Clean design, Typography",
+        "differentiate": "Works for any niche (not just wellness)",
+        "target": "Wellness brands + other content-heavy niches"
+      }
+    },
+    
+    "rank_7_warehouse": {
+      "name": "Warehouse",
+      "developer": "Clean Canvas",
+      "price": "$280",
+      "sales_estimate": "3k-5k",
+      "rating": "4.9/5",
+      "target_niche": "Industrial, B2B",
+      
+      "key_features": [
+        "Bulk ordering",
+        "B2B pricing tiers",
+        "Advanced product tables",
+        "Quote requests",
+        "45+ sections"
+      ],
+      
+      "strengths": [
+        "Best B2B theme",
+        "Excellent for wholesalers",
+        "Practical features",
+        "Fast support"
+      ],
+      
+      "weaknesses": [
+        "Ugly design (purely functional)",
+        "No visual flair",
+        "Limited to B2B use cases"
+      ],
+      
+      "axis_strategy": {
+        "compete_on": "Beautiful B2B (rare combination)",
+        "match": "B2B features (bulk, quotes)",
+        "differentiate": "Modern design (B2B doesn't have to be ugly)",
+        "target": "B2B brands that care about aesthetics"
+      }
+    },
+    
+    "rank_8_impulse": {
+      "name": "Impulse",
+      "developer": "Archetype Themes",
+      "price": "$280",
+      "sales_estimate": "3k-4k",
+      "rating": "4.7/5",
+      "target_niche": "Fashion, Accessories",
+      
+      "key_features": [
+        "Instagram feed",
+        "Quick shop",
+        "Color swatches",
+        "Promo banners",
+        "55+ sections"
+      ],
+      
+      "strengths": [
+        "Social media integration",
+        "Fast checkout flow",
+        "Mobile-optimized",
+        "Affordable ($280)"
+      ],
+      
+      "weaknesses": [
+        "Generic design (looks like many themes)",
+        "Limited unique features",
+        "No standout element"
+      ],
+      
+      "axis_strategy": {
+        "compete_on": "Unique visual identity",
+        "match": "Instagram feed, Quick shop",
+        "differentiate": "Distinctive design language",
+        "target": "Fashion brands tired of generic themes"
+      }
+    },
+    
+    "rank_9_expanse": {
+      "name": "Expanse",
+      "developer": "Pixel Union",
+      "price": "$280",
+      "sales_estimate": "2k-4k",
+      "rating": "4.6/5",
+      "target_niche": "Home & Garden",
+      
+      "key_features": [
+        "Large product images",
+        "Room planner",
+        "Lifestyle galleries",
+        "Size guides",
+        "60+ sections"
+      ],
+      
+      "strengths": [
+        "Great for furniture",
+        "Visual storytelling",
+        "Good documentation",
+        "Reasonable price"
+      ],
+      
+      "weaknesses": [
+        "Slow performance (large images)",
+        "Mobile UX issues",
+        "Limited filtering"
+      ],
+      
+      "axis_strategy": {
+        "compete_on": "Performance (fast image loading)",
+        "match": "Large images, Lifestyle galleries",
+        "differentiate": "Better mobile UX, Advanced filtering",
+        "target": "Furniture brands that need speed + beauty"
+      }
+    },
+    
+    "rank_10_symmetry": {
+      "name": "Symmetry",
+      "developer": "Clean Canvas",
+      "price": "$180",
+      "sales_estimate": "2k-3k",
+      "rating": "4.8/5",
+      "target_niche": "General (Budget-Friendly)",
+      
+      "key_features": [
+        "Simple, clean design",
+        "Fast performance",
+        "Easy customization",
+        "40+ sections"
+      ],
+      
+      "strengths": [
+        "Affordable ($180)",
+        "No bloat (lightweight)",
+        "Beginner-friendly",
+        "Fast support"
+      ],
+      
+      "weaknesses": [
+        "Too simple (lacks advanced features)",
+        "Generic look",
+        "Limited sections (40 vs 70+)"
+      ],
+      
+      "axis_strategy": {
+        "compete_on": "Advanced features at budget price",
+        "match": "Clean design, Fast performance",
+        "differentiate": "More sections (60+), Unique layouts",
+        "target": "Startups that want premium look without premium price"
+      }
+    }
+  },
+  
+  "market_trends_2025": {
+    "trend_1_video_first": {
+      "adoption": "80% of top themes",
+      "why": "TikTok/Instagram influence, higher engagement",
+      "axis_action": "MUST HAVE video support (autoplay, lazy load, muted)"
+    },
+    "trend_2_mobile_obsession": {
+      "reality": "70% of Shopify traffic is mobile",
+      "implication": "Mobile UX is more important than desktop",
+      "axis_action": "Mobile-first design, Sticky ATC, Touch targets 44px+"
+    },
+    "trend_3_sustainability": {
+      "demand": "Eco-conscious brands want 'green' themes",
+      "features": "Carbon footprint badges, sustainable shipping options",
+      "axis_action": "Consider adding sustainability sections (optional)"
+    },
+    "trend_4_ai_features": {
+      "emerging": "AI product recommendations, AI search",
+      "reality": "Still niche, not mainstream",
+      "axis_action": "Monitor, don't implement yet (too early)"
+    },
+    "trend_5_minimalism_fatigue": {
+      "observation": "Merchants tired of 'Dawn clones'",
+      "opportunity": "Themes with personality are winning",
+      "axis_action": "Bold typography, unique grids, color (not just white/black)"
+    }
+  },
+  
+  "pricing_strategy": {
+    "market_reality": {
+      "free": "Dawn (Shopify official)",
+      "budget": "$180-$220 (Symmetry, simple themes)",
+      "mid_tier": "$220-$280 (Most popular range)",
+      "premium": "$280-$350 (Maestrooo dominance)"
+    },
+    
+    "axis_positioning": {
+      "target_price": "$240-$280",
+      "justification": "Premium features (video, advanced filtering) at mid-tier price",
+      "competitive_edge": "Better value than Maestrooo ($350), more features than budget themes ($180)"
+    },
+    
+    "pricing_psychology": {
+      "avoid": "$199 (looks budget), $349 (too close to Maestrooo)",
+      "optimal": "$249 or $279 (feels mid-premium)",
+      "launch_promo": "Offer $199 for first 100 buyers (urgency)"
+    }
+  },
+  
+  "feature_gap_analysis": {
+    "underserved_niches": [
+      "Furniture (Expanse is slow)",
+      "B2B (Warehouse is ugly)",
+      "Multi-brand (no good options)",
+      "Subscription-first (no native support)"
+    ],
+    
+    "missing_features_in_top_themes": [
+      "Built-in A/B testing",
+      "Advanced product bundles",
+      "Real-time inventory display",
+      "Multi-language support (most are English-only)",
+      "Dark mode toggle (user preference)"
+    ],
+    
+    "axis_opportunity": {
+      "niche": "Furniture + Fashion hybrid (visual storytelling + performance)",
+      "unique_feature": "Built-in product comparison tool (rare in themes)",
+      "differentiator": "Best-in-class mobile UX (better than Impact)"
+    }
+  },
+  
+  "review_analysis": {
+    "what_users_love": [
+      "Fast support (<24h response)",
+      "Easy customization (no code needed)",
+      "Fast loading times",
+      "Mobile experience",
+      "Unique design"
+    ],
+    
+    "what_users_hate": [
+      "Poor documentation",
+      "Slow support (>48h)",
+      "Bugs after Shopify updates",
+      "Complex settings (too many options)",
+      "Generic design"
+    ],
+    
+    "axis_priorities": {
+      "must_have": [
+        "Excellent documentation (File 04)",
+        "Fast performance (File 07, 15)",
+        "Unique design (File 20)",
+        "Simple settings (Preset-first approach)"
+      ],
+      "nice_to_have": [
+        "Video tutorials",
+        "Discord community",
+        "Monthly updates"
+      ]
+    }
+  },
+  
+  "competitive_moats": {
+    "maestrooo_moat": {
+      "strength": "Brand reputation (8+ years)",
+      "weakness": "High price, slow innovation",
+      "axis_attack": "Better price/value ratio, modern features"
+    },
+    
+    "shopify_dawn_moat": {
+      "strength": "Free, official support",
+      "weakness": "Too generic, limited features",
+      "axis_attack": "Premium features at reasonable price"
+    },
+    
+    "axis_moat_building": {
+      "phase_1": "Launch with unique design (File 20)",
+      "phase_2": "Build reputation via excellent support",
+      "phase_3": "Create ecosystem (multiple themes for different niches)",
+      "phase_4": "Become 'the Maestrooo alternative' ($100 cheaper, same quality)"
+    }
+  },
+  
+  "integration_with_axis_workflow": {
+    "when_to_use": "Phase 0 (Strategy) + Before submission (File 20 Anti-Pattern Check)",
+    "command": "> ANALYZE_COMPETITION --niche=furniture",
+    "ai_actions": [
+      "1. Show top 3 themes in niche",
+      "2. List their strengths/weaknesses",
+      "3. Suggest differentiation strategy",
+      "4. Recommend pricing",
+      "5. Highlight feature gaps"
+    ]
+  },
+  
+  "success_metrics": {
+    "year_1_goal": "100 sales (conservative)",
+    "year_2_goal": "500 sales (if reviews good)",
+    "year_3_goal": "2,000 sales (break into top 20)",
+    "revenue_projection": "$24k (Year 1), $120k (Year 2), $480k (Year 3) at $240/theme"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "system_name": "AXIS_ERROR_HANDLING",
+  "objective": "Detect and auto-fix errors before output.",
+  "response_protocol": {
+    "syntax_error": "HALT. Regenerate JSON block.",
+    "forbidden_tech": "HALT. Replace jQuery with Vanilla JS.",
+    "missing_file": "WARN. Auto-generate placeholder file.",
+    "performance_violation": "AUTO-ADJUST. Add 'loading=lazy'."
+  }
+}

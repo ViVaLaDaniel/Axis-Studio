@@ -1,0 +1,42 @@
+{
+  "creative_engine": {
+    "philosophy": "Innovation within guardrails. Break design rules, never technical rules.",
+    "protocol": {
+      "step_1_niche_psychology": {
+        "instruction": "Analyze the target niche's emotional drivers. E.g., Luxury = Trust + Exclusivity. Tech = Speed + Innovation.",
+        "output": "A 'Vibe Map' with 3 core emotions."
+      },
+      "step_2_trend_fusion": {
+        "instruction": "Combine 2 current trends from different industries. E.g., 'Gaming UI (HP bars)' + 'E-commerce' = Gamified loyalty progress.",
+        "constraint": "The fusion must be implementable in pure CSS + Vanilla JS (Axis Tech Stack)."
+      },
+      "step_3_killer_feature_invention": {
+        "prompt": "What visual or interaction pattern does NOT exist in top Shopify themes yet, but would cause a 'wow' moment?",
+        "examples": [
+          "3D product preview using CSS transform-style: preserve-3d (no WebGL)",
+          "Scroll-triggered color palette shift (day -> night mode based on scroll %)",
+          "AI-powered 'Shop the Look' hotspots on lifestyle images"
+        ],
+        "validation": "Can this be built with Axis-approved stack (Web Components)? Is it accessible?"
+      }
+    },
+    "creative_patterns_library": {
+      "scroll_effects": [
+        "Parallax depth layers", 
+        "Text gradient reveal", 
+        "Magnetic cursor (desktop only)",
+        "Scroll-linked SVG path animations"
+      ],
+      "layout_innovations": [
+        "Asymmetric Bento Grid (golden ratio)", 
+        "Floating product cards with physics-based hover",
+        "Split-screen dual product comparison"
+      ],
+      "micro_interactions": [
+        "Button ripple with brand color pulse",
+        "Cart icon 'shake' on error (reduce-motion safe)",
+        "Success confetti (CSS particles, no canvas)"
+      ]
+    }
+  }
+}

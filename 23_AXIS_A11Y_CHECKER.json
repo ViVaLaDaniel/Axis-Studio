@@ -1,0 +1,341 @@
+{
+  "system_name": "AXIS_A11Y_CHECKER",
+  "version": "1.0 (GOD MODE)",
+  "philosophy": "Accessibility is not optional. It's the law (and good business).",
+  "objective": "Auto-validate WCAG 2.1 Level AA compliance before Shopify submission to prevent instant rejection.",
+  
+  "why_critical": {
+    "shopify_requirement": "WCAG 2.1 AA is MANDATORY since 2024. Themes are tested by accessibility specialists.",
+    "rejection_rate": "25% of themes rejected for A11Y failures",
+    "common_failures": [
+      "Missing ARIA labels on icon-only buttons",
+      "Poor color contrast (<4.5:1)",
+      "Broken keyboard navigation",
+      "Missing focus indicators",
+      "Inaccessible modals (no focus trap)"
+    ]
+  },
+  
+  "wcag_2_1_aa_requirements": {
+    "perceivable": {
+      "1_4_3_contrast": {
+        "requirement": "Text contrast ratio ≥4.5:1 (normal text), ≥3:1 (large text)",
+        "check": "Validate all color combinations in all presets",
+        "tool": "Contrast ratio calculator"
+      },
+      "1_4_11_non_text_contrast": {
+        "requirement": "UI components (buttons, form inputs) ≥3:1 contrast",
+        "check": "Validate button borders, input outlines"
+      },
+      "1_1_1_non_text_content": {
+        "requirement": "All images have alt text (or role='presentation' if decorative)",
+        "check": "Grep scan for <img> without alt attribute"
+      }
+    },
+    "operable": {
+      "2_1_1_keyboard": {
+        "requirement": "All functionality available via keyboard (no mouse-only)",
+        "check": "Simulate Tab navigation through entire page"
+      },
+      "2_1_2_no_keyboard_trap": {
+        "requirement": "Keyboard focus never gets stuck",
+        "check": "Test modals, dropdowns (must have Escape key)"
+      },
+      "2_4_7_focus_visible": {
+        "requirement": "Visible focus indicator on all interactive elements",
+        "check": "Validate :focus CSS styles exist"
+      }
+    },
+    "understandable": {
+      "3_2_4_consistent_identification": {
+        "requirement": "Icons and controls used consistently (e.g., same icon for 'Add to Cart')",
+        "check": "Visual audit of UI patterns"
+      },
+      "3_3_2_labels_or_instructions": {
+        "requirement": "Form inputs have associated <label> elements",
+        "check": "Grep scan for <input> without <label> or aria-label"
+      }
+    },
+    "robust": {
+      "4_1_2_name_role_value": {
+        "requirement": "All UI components have proper ARIA roles",
+        "check": "Validate buttons, links, form controls have correct roles"
+      },
+      "4_1_3_status_messages": {
+        "requirement": "Status changes announced to screen readers (e.g., 'Item added to cart')",
+        "check": "Validate aria-live regions for dynamic updates"
+      }
+    }
+  },
+  
+  "automated_checks": {
+    "check_1_color_contrast": {
+      "action": "Calculate contrast ratios for all text/background combinations",
+      "algorithm": "WCAG 2.1 formula: (L1 + 0.05) / (L2 + 0.05)",
+      
+      "implementation": {
+        "step_1": "Extract all color variables from CSS (background, text, primary, etc.)",
+        "step_2": "Generate all possible text/bg combinations",
+        "step_3": "Calculate contrast ratio for each",
+        "step_4": "Flag any ratio <4.5:1"
+      },
+      
+      "example_check": {
+        "background": "#FFFFFF",
+        "text": "#767676",
+        "calculated_ratio": 4.54,
+        "result": "PASS (≥4.5:1)"
+      },
+      
+      "failure_example": {
+        "background": "#FFFFFF",
+        "text": "#CCCCCC",
+        "calculated_ratio": 3.2,
+        "result": "FAIL (<4.5:1)",
+        "fix": "Change text to #777777 (ratio 4.68) or darker"
+      },
+      
+      "check_all_presets": {
+        "preset_1_light": "Check all color combos",
+        "preset_2_dark": "Check all color combos",
+        "preset_3_colorful": "Check all color combos"
+      }
+    },
+    
+    "check_2_missing_alt_text": {
+      "action": "Scan all <img> tags for missing alt attributes",
+      "pattern": "<img(?![^>]*alt=)",
+      
+      "exceptions": {
+        "decorative_images": {
+          "valid": "<img src='decoration.png' alt='' role='presentation'>",
+          "rule": "Empty alt='' is OK if role='presentation'"
+        },
+        "background_images": {
+          "valid": "CSS background-image (no alt needed)",
+          "note": "Only applies to truly decorative backgrounds"
+        }
+      },
+      
+      "common_violations": [
+        "<img src='{{ product.image | image_url }}'>  <!-- Missing alt -->",
+        "{{ product.image | image_url | image_tag }}  <!-- Correct: auto-includes alt -->"
+      ],
+      
+      "fix": "Always use image_tag filter (auto-adds alt) OR manually add alt='{{ product.title | escape }}'"
+    },
+    
+    "check_3_aria_labels": {
+      "action": "Find icon-only buttons without ARIA labels",
+      "pattern": "<button(?![^>]*aria-label)(?![^>]*><[^<]*text)",
+      
+      "critical_elements": [
+        "Cart icon button",
+        "Search icon button",
+        "Close modal button (X)",
+        "Menu toggle (hamburger)",
+        "Wishlist heart icon",
+        "Social media icons"
+      ],
+      
+      "correct_patterns": {
+        "icon_button": "<button aria-label='{{ 'general.cart' | t }}'>{% render 'icon-cart' %}</button>",
+        "with_visually_hidden": "<button>{% render 'icon-cart' %}<span class='visually-hidden'>{{ 'general.cart' | t }}</span></button>"
+      },
+      
+      "violation_example": "<button>{% render 'icon-cart' %}</button>  <!-- Screen reader reads nothing! -->"
+    },
+    
+    "check_4_form_labels": {
+      "action": "Ensure all <input>, <select>, <textarea> have associated <label>",
+      "pattern": "<input(?![^>]*aria-label)(?![^>]*id=.+<label[^>]*for=)",
+      
+      "correct_patterns": [
+        "<!-- Pattern 1: Explicit label -->",
+        "<label for='email'>Email</label>",
+        "<input type='email' id='email'>",
+        "",
+        "<!-- Pattern 2: Implicit label -->",
+        "<label>Email <input type='email'></label>",
+        "",
+        "<!-- Pattern 3: ARIA label (if no visible label) -->",
+        "<input type='search' aria-label='{{ 'general.search' | t }}'>"
+      ],
+      
+      "shopify_forms": {
+        "note": "Shopify {% form %} tags auto-generate labels",
+        "manual_check_needed": "Custom forms or search inputs"
+      }
+    },
+    
+    "check_5_keyboard_navigation": {
+      "action": "Verify Tab order and Escape key functionality",
+      
+      "tab_order_requirements": [
+        "1. Skip to content link (first focusable element)",
+        "2. Header navigation",
+        "3. Main content",
+        "4. Sidebar/filters (if present)",
+        "5. Footer"
+      ],
+      
+      "focus_trap_validation": {
+        "modals": "Must trap focus inside modal, release on Escape or Close",
+        "dropdowns": "Must trap focus if expanded, Escape to close",
+        "implementation": "Check for trapFocus() method in modal components (File 00, Section 6.2)"
+      },
+      
+      "automated_test": {
+        "tool": "Puppeteer/Playwright (simulate Tab key press)",
+        "manual_fallback": "Human tester navigates with Tab key only (no mouse)",
+        "pass_criteria": "All interactive elements reachable, logical order"
+      }
+    },
+    
+    "check_6_focus_indicators": {
+      "action": "Validate visible focus styles on all interactive elements",
+      
+      "requirement": "Focus indicator must be ≥3px outline OR high-contrast background change",
+      
+      "correct_css": {
+        "method_1_outline": "button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }",
+        "method_2_background": "button:focus-visible { background: var(--color-focus-bg); box-shadow: 0 0 0 3px var(--color-focus-ring); }",
+        "method_3_underline": "a:focus-visible { text-decoration: underline; text-decoration-thickness: 2px; }"
+      },
+      
+      "common_violation": {
+        "code": "button:focus { outline: none; }  <!-- NEVER DO THIS -->",
+        "why_bad": "Keyboard users can't see where they are",
+        "fix": "Use :focus-visible instead of :focus (modern approach)"
+      },
+      
+      "browser_default": {
+        "note": "If no custom styles, browser default (blue ring) is acceptable",
+        "recommendation": "Custom focus styles for brand consistency, but NEVER remove without replacement"
+      }
+    },
+    
+    "check_7_aria_live_regions": {
+      "action": "Validate status announcements for dynamic content",
+      
+      "required_announcements": [
+        "Item added to cart → <div role='status' aria-live='polite'>",
+        "Form error → <div role='alert' aria-live='assertive'>",
+        "Search results loaded → <div role='status' aria-live='polite'>",
+        "Filter applied → <div role='status' aria-live='polite'>"
+      ],
+      
+      "implementation": {
+        "polite": "Non-urgent updates (cart count, search results)",
+        "assertive": "Urgent updates (errors, warnings)",
+        "code_example": "<div role='status' aria-live='polite' aria-atomic='true' class='visually-hidden'>\n  {{ 'cart.item_added' | t }}\n</div>"
+      },
+      
+      "common_mistake": {
+        "issue": "Updating cart count without announcement",
+        "fix": "Update hidden aria-live region when cart changes"
+      }
+    },
+    
+    "check_8_skip_links": {
+      "action": "Verify skip navigation link exists",
+      
+      "requirement": "First focusable element must be 'Skip to content' link",
+      
+      "implementation": {
+        "html": "<a href='#main-content' class='skip-to-content'>{{ 'general.skip_to_content' | t }}</a>\n<main id='main-content'>...",
+        "css": ".skip-to-content { position: absolute; left: -9999px; }\n.skip-to-content:focus { left: 0; top: 0; z-index: 9999; }"
+      },
+      
+      "test": "Press Tab on page load. First focus should be Skip link."
+    }
+  },
+  
+  "manual_checks_required": {
+    "screen_reader_test": {
+      "tools": ["NVDA (Windows)", "JAWS (Windows)", "VoiceOver (Mac/iOS)", "TalkBack (Android)"],
+      "test_pages": ["Homepage", "Collection", "Product", "Cart", "Checkout"],
+      "key_scenarios": [
+        "Navigate product page with screen reader off (keyboard only)",
+        "Add item to cart and verify announcement",
+        "Use filters on collection page",
+        "Complete checkout form"
+      ],
+      "pass_criteria": "All content understandable, all actions performable"
+    },
+    
+    "zoom_test": {
+      "requirement": "Page must be usable at 200% zoom (WCAG 1.4.4)",
+      "test": "Browser zoom to 200%, check for horizontal scroll and overlapping text",
+      "common_issues": "Fixed-width containers that don't reflow"
+    },
+    
+    "motion_test": {
+      "requirement": "Respect prefers-reduced-motion (File 01, Section 4.1)",
+      "test": "Enable 'Reduce Motion' in OS settings, verify animations disabled",
+      "pass_criteria": "No parallax, no autoplay videos, no scroll-linked animations"
+    }
+  },
+  
+  "reporting": {
+    "output_file": "A11Y_REPORT.md",
+    "format": "# Accessibility Audit Report\n\n## Summary\n- Total Checks: X\n- Passed: X\n- Failed: X\n- Warnings: X\n\n## Critical Issues (MUST FIX)\n[List of WCAG AA failures]\n\n## Warnings (SHOULD FIX)\n[List of best practice violations]\n\n## Passed Checks\n[List of successful validations]",
+    
+    "example_critical_issue": {
+      "id": "A11Y-001",
+      "severity": "CRITICAL",
+      "wcag_criterion": "1.4.3 Contrast (Minimum)",
+      "location": "sections/hero.liquid, line 42",
+      "issue": "Text color #CCCCCC on background #FFFFFF has contrast ratio 3.2:1 (requires 4.5:1)",
+      "fix": "Change text color to #777777 or darker",
+      "estimated_fix_time": "5 minutes"
+    }
+  },
+  
+  "integration_with_axis_workflow": {
+    "when_to_run": "After Phase 3 (Code Complete), before Packaging (File 22)",
+    "command": "> RUN A11Y_CHECK --theme=zenith",
+    "ai_actions": [
+      "1. Run all 8 automated checks",
+      "2. Generate A11Y_REPORT.md",
+      "3. If CRITICAL issues found → HALT deployment",
+      "4. If WARNINGS found → LOG for review",
+      "5. Provide fix suggestions for each issue"
+    ],
+    "estimated_time": "2 minutes (automated) + 30 minutes (manual screen reader test)"
+  },
+  
+  "common_fixes": {
+    "fix_1_low_contrast": {
+      "problem": "Text too light on white background",
+      "solution": "Use contrast checker (e.g., WebAIM), darken text until ratio ≥4.5:1",
+      "tool": "https://webaim.org/resources/contrastchecker/"
+    },
+    "fix_2_missing_alt": {
+      "problem": "Images without alt text",
+      "solution": "Always use {{ image | image_url | image_tag }} (auto-includes alt)",
+      "fallback": "Manually add alt='{{ product.title | escape }}'"
+    },
+    "fix_3_icon_button": {
+      "problem": "Icon-only button with no label",
+      "solution": "Add aria-label='{{ 'action_name' | t }}' OR <span class='visually-hidden'>Label</span>",
+      "example": "<button aria-label='{{ 'general.close' | t }}'>{% render 'icon-close' %}</button>"
+    },
+    "fix_4_no_focus": {
+      "problem": "Removed focus outline",
+      "solution": "Replace with custom :focus-visible style",
+      "code": "button:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }"
+    },
+    "fix_5_broken_tab_order": {
+      "problem": "Tab order doesn't match visual order",
+      "solution": "Avoid CSS 'order' property or use tabindex to fix",
+      "note": "Prefer fixing HTML source order over tabindex hacks"
+    }
+  },
+  
+  "success_criteria": {
+    "minimum_to_pass": "0 CRITICAL issues, <3 WARNINGS",
+    "ideal": "0 CRITICAL, 0 WARNINGS",
+    "shopify_expectation": "100% WCAG 2.1 AA compliance (tested manually by their team)"
+  }
+}

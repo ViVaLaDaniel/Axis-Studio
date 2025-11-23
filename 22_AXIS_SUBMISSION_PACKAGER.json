@@ -1,0 +1,342 @@
+{
+  "system_name": "AXIS_SUBMISSION_PACKAGER",
+  "version": "1.0 (GOD MODE)",
+  "philosophy": "One click from finished code to Theme Store submission. Zero manual work.",
+  "objective": "Generate production-ready release package that passes Shopify's 47-point review checklist.",
+  
+  "shopify_theme_store_requirements_2025": {
+    "technical": {
+      "online_store_2_0": "MANDATORY (JSON templates)",
+      "theme_check": "Must pass with 0 errors, <5 warnings",
+      "lighthouse_score": "Performance >80, Accessibility >90, SEO >90",
+      "browser_support": "Chrome, Firefox, Safari, Edge (last 2 versions)",
+      "app_blocks": "Must support @app blocks in main-product"
+    },
+    "content": {
+      "demo_store": "50+ products, 8+ collections, 5+ blog posts",
+      "documentation": "README.md, CHANGELOG.md, Support URL",
+      "screenshots": "5-8 high-quality (1920x1080)",
+      "video_demo": "Optional but recommended (30-60 seconds)"
+    },
+    "legal": {
+      "license": "Must include LICENSE.txt (Shopify-approved)",
+      "no_external_dependencies": "No CDN links (except Shopify CDN)",
+      "gdpr_compliant": "Cookie consent, data handling policies",
+      "accessibility": "WCAG 2.1 AA compliant"
+    },
+    "business": {
+      "unique_value_proposition": "Can't be Dawn clone",
+      "target_niche_clarity": "Clear in description",
+      "pricing_justification": "$180-$350 (must justify if >$250)"
+    }
+  },
+  
+  "packaging_pipeline": {
+    "stage_1_pre_flight_checks": {
+      "action": "Run automated tests before packaging",
+      "checks": [
+        {
+          "name": "Theme Check (Shopify CLI)",
+          "command": "shopify theme check",
+          "pass_criteria": "0 errors, <5 warnings",
+          "on_fail": "HALT. Output error list. Fix before proceeding."
+        },
+        {
+          "name": "Lighthouse CI",
+          "command": "lhci autorun",
+          "pass_criteria": "Performance >80, A11Y >90, SEO >90",
+          "on_fail": "WARN. Proceed with caution. Log issues in release notes."
+        },
+        {
+          "name": "Security Scan (File 11)",
+          "action": "Run AXIS Security Scanner",
+          "pass_criteria": "0 CRITICAL, 0 HIGH issues",
+          "on_fail": "HALT. Fix vulnerabilities immediately."
+        },
+        {
+          "name": "Accessibility Check (File 23)",
+          "action": "Run A11Y Checker",
+          "pass_criteria": "100% keyboard nav, all ARIA labels present",
+          "on_fail": "HALT. Fix A11Y issues (Shopify will reject)."
+        },
+        {
+          "name": "Dependency Check (File 09)",
+          "action": "Verify no circular dependencies or orphaned files",
+          "pass_criteria": "All files referenced, no broken includes",
+          "on_fail": "WARN. List orphaned files for review."
+        }
+      ]
+    },
+    
+    "stage_2_metadata_generation": {
+      "action": "Auto-generate required files for Theme Store listing",
+      
+      "file_readme": {
+        "path": "README.md",
+        "template": "# [Theme Name] by Axis Studios\n\n## Overview\n[1-2 sentence description]\n\n## Key Features\n- Feature 1\n- Feature 2\n- Feature 3\n\n## Installation\n1. Download theme ZIP\n2. Upload to Shopify Admin > Themes\n3. Customize via Theme Editor\n\n## Support\nEmail: support@axisstudios.com\nDocs: https://docs.axisstudios.com/[theme-slug]\n\n## Changelog\nSee CHANGELOG.md\n\n## License\nSee LICENSE.txt",
+        "ai_action": "Auto-populate with theme-specific features from File 20 (Visualizer)"
+      },
+      
+      "file_changelog": {
+        "path": "CHANGELOG.md",
+        "format": "Keep a Changelog (https://keepachangelog.com)",
+        "template": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n## [1.0.0] - 2025-11-23\n\n### Added\n- Initial release\n- Hero section with asymmetric grid\n- Video-first product cards\n- Multi-currency support (Shopify Markets)\n- 3 pre-built presets (Minimal, Noir, Vivid)\n\n### Technical\n- Lighthouse Performance Score: 95\n- WCAG 2.1 AA compliant\n- Zero jQuery dependencies",
+        "ai_action": "Auto-generate from Git commit history (File 10)"
+      },
+      
+      "file_license": {
+        "path": "LICENSE.txt",
+        "content": "MIT License\n\nCopyright (c) 2025 Axis Studios\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the 'Software'), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\n[Full MIT License text]\n\nSHOPIFY THEME STORE ADDENDUM:\nThis theme may only be distributed through the Shopify Theme Store.\nReselling or redistribution outside of Shopify is prohibited.",
+        "note": "Shopify prefers MIT or similar permissive licenses"
+      },
+      
+      "file_theme_info": {
+        "path": "config/settings_schema.json (theme_info section)",
+        "structure": {
+          "name": "theme_info",
+          "theme_name": "[Theme Name]",
+          "theme_version": "1.0.0",
+          "theme_author": "Axis Studios",
+          "theme_documentation_url": "https://docs.axisstudios.com/[theme-slug]",
+          "theme_support_url": "https://support.axisstudios.com",
+          "theme_support_email": "support@axisstudios.com"
+        },
+        "ai_action": "Auto-inject into settings_schema.json"
+      },
+      
+      "file_submission_checklist": {
+        "path": "SUBMISSION_CHECKLIST.md",
+        "purpose": "Human verification before upload",
+        "content": "# Shopify Theme Store Submission Checklist\n\n## Technical (Auto-Checked)\n- [x] Theme Check passed (0 errors)\n- [x] Lighthouse scores >80 (Performance, A11Y, SEO)\n- [x] Security scan passed (File 11)\n- [x] A11Y check passed (File 23)\n\n## Content (Manual Check Required)\n- [ ] Demo store has 50+ products\n- [ ] All images high-quality (no watermarks)\n- [ ] Blog has 5+ posts\n- [ ] All collections populated (8+)\n- [ ] About, Contact, Shipping pages created\n\n## Documentation (Auto-Generated)\n- [x] README.md\n- [x] CHANGELOG.md\n- [x] LICENSE.txt\n\n## Screenshots (Manual Upload)\n- [ ] Desktop: 3-4 screenshots (1920x1080)\n- [ ] Mobile: 2 screenshots (750x1334)\n- [ ] Feature callouts added\n\n## Listing Details (Manual Input)\n- [ ] Theme name chosen\n- [ ] Description written (200-300 words)\n- [ ] Target niche specified\n- [ ] Pricing set ($180-$350)\n- [ ] Keywords added (max 10)\n\n## Final Review\n- [ ] Tested on real device (iPhone, Android)\n- [ ] Checkout flow works\n- [ ] No console errors\n- [ ] Passed to QA team (File 05)\n\n**Ready to Submit:** YES / NO"
+      }
+    },
+    
+    "stage_3_screenshot_generation": {
+      "automation_level": "Semi-automated (AI generates guidelines, human captures)",
+      
+      "screenshot_plan": {
+        "desktop": [
+          {
+            "page": "Homepage",
+            "viewport": "1920x1080",
+            "focus": "Hero section + unique grid",
+            "annotations": "Highlight: Asymmetric layout, Video autoplay"
+          },
+          {
+            "page": "Collection Page",
+            "viewport": "1920x1080",
+            "focus": "Product grid with filters",
+            "annotations": "Highlight: Faceted filtering, Infinite scroll"
+          },
+          {
+            "page": "Product Page",
+            "viewport": "1920x1080",
+            "focus": "Product gallery + Add to Cart",
+            "annotations": "Highlight: Zoom on hover, Sticky ATC bar"
+          }
+        ],
+        "mobile": [
+          {
+            "page": "Homepage (Mobile)",
+            "viewport": "750x1334",
+            "focus": "Mobile navigation + hero",
+            "device": "iPhone 14 Pro"
+          },
+          {
+            "page": "Product Page (Mobile)",
+            "viewport": "750x1334",
+            "focus": "Sticky ATC in action",
+            "device": "iPhone 14 Pro"
+          }
+        ]
+      },
+      
+      "tools": {
+        "manual": "Use browser DevTools (F12) → Device Toolbar → Screenshot",
+        "automated": "Puppeteer/Playwright (future feature)",
+        "annotation": "Figma, Canva, or Photoshop (add arrows/text)"
+      }
+    },
+    
+    "stage_4_version_tagging": {
+      "strategy": "Semantic Versioning (SemVer)",
+      "format": "MAJOR.MINOR.PATCH (e.g., 1.0.0)",
+      
+      "rules": {
+        "major": "Breaking changes (e.g., remove deprecated sections)",
+        "minor": "New features (e.g., add new section type)",
+        "patch": "Bug fixes (e.g., fix Safari CSS issue)"
+      },
+      
+      "git_tagging": {
+        "command": "git tag -a v1.0.0 -m 'Initial Theme Store Release'",
+        "push": "git push origin v1.0.0"
+      },
+      
+      "shopify_version_field": {
+        "location": "config/settings_schema.json (theme_info.theme_version)",
+        "format": "1.0.0 (must match Git tag)"
+      }
+    },
+    
+    "stage_5_zip_generation": {
+      "action": "Create submission.zip (Shopify-ready)",
+      
+      "included_files": [
+        "assets/",
+        "blocks/",
+        "config/",
+        "layout/",
+        "locales/",
+        "sections/",
+        "snippets/",
+        "templates/",
+        "README.md",
+        "CHANGELOG.md",
+        "LICENSE.txt"
+      ],
+      
+      "excluded_files": [
+        ".git/",
+        "node_modules/",
+        ".DS_Store",
+        "*.log",
+        "*.md (except README, CHANGELOG)",
+        "tests/",
+        "docs/ (unless theme-specific)"
+      ],
+      
+      "validation": {
+        "max_size": "50MB (Shopify limit)",
+        "structure_check": "Must have layout/theme.liquid",
+        "json_validation": "All JSON files must be valid (no comments)"
+      },
+      
+      "command": "zip -r submission.zip . -x '*.git*' -x 'node_modules/*' -x '*.log'"
+    },
+    
+    "stage_6_listing_content": {
+      "action": "Generate content for Theme Store listing page",
+      
+      "theme_description": {
+        "length": "200-300 words",
+        "structure": [
+          "Hook: What makes this theme unique?",
+          "Features: List 5-7 key features",
+          "Target: Who is this for?",
+          "Technical: Mention performance, accessibility",
+          "CTA: Encourage demo store visit"
+        ],
+        "example_furniture": "[Theme Name] is designed for modern furniture brands that value craftsmanship and clean aesthetics. Built with performance in mind, it achieves 95+ Lighthouse scores while delivering a visually stunning shopping experience.\n\n**Key Features:**\n- Asymmetric Bento Grid for visual interest\n- Video-first product showcases\n- Built-in size guide and care instructions\n- Multi-currency support (Shopify Markets)\n- 3 pre-configured presets (Minimal, Industrial, Warm)\n\n**Perfect For:**\nFurniture stores, home decor brands, artisan makers\n\n**Technical Excellence:**\n- WCAG 2.1 AA compliant\n- Zero jQuery dependencies\n- Optimized for mobile (LCP <1.5s)\n\nExplore the demo store to see [Theme Name] in action."
+      },
+      
+      "keywords": {
+        "max": 10,
+        "examples": {
+          "furniture": "furniture, home decor, modern, minimalist, performance, video, shopify 2.0, accessible",
+          "fashion": "fashion, clothing, luxury, minimalist, video, sustainable, shopify 2.0, accessible"
+        },
+        "rule": "Include 'shopify 2.0' and 'accessible' for SEO"
+      },
+      
+      "pricing_strategy": {
+        "tier_1": "$180-$220 (Standard theme, 15-20 sections)",
+        "tier_2": "$220-$280 (Premium theme, 20-30 sections, advanced features)",
+        "tier_3": "$280-$350 (Ultimate theme, 30+ sections, unique interactions)",
+        "justification": "If pricing >$250, highlight advanced features (e.g., 'Includes AI-powered product recommendations')"
+      }
+    }
+  },
+  
+  "quality_gates": {
+    "automated_checks": [
+      "[ ] Theme Check: 0 errors",
+      "[ ] Lighthouse: >80 Performance, >90 A11Y, >90 SEO",
+      "[ ] Security Scan: 0 CRITICAL/HIGH issues",
+      "[ ] A11Y Check: 100% keyboard nav",
+      "[ ] Dependency Check: No orphans",
+      "[ ] JSON Validation: All valid",
+      "[ ] File Size: <50MB"
+    ],
+    "manual_checks": [
+      "[ ] Demo store populated (50+ products)",
+      "[ ] Screenshots captured (5-8 total)",
+      "[ ] Description written",
+      "[ ] Support URL active",
+      "[ ] Test checkout completed",
+      "[ ] Mobile tested on real device"
+    ],
+    "final_gate": {
+      "question": "Would you personally buy this theme for $250?",
+      "if_no": "Do NOT submit. Iterate on design or features."
+    }
+  },
+  
+  "submission_process": {
+    "step_1": "Create Partner Account (https://partners.shopify.com)",
+    "step_2": "Navigate to Themes > Submit Theme",
+    "step_3": "Upload submission.zip",
+    "step_4": "Fill listing details (name, description, keywords, pricing)",
+    "step_5": "Upload screenshots",
+    "step_6": "Provide demo store URL",
+    "step_7": "Submit for review",
+    "wait_time": "2-4 weeks (Shopify review process)",
+    "approval_rate": "~40% first submission, ~70% after revisions"
+  },
+  
+  "common_rejection_reasons": {
+    "reason_1": {
+      "issue": "Generic design (looks like Dawn)",
+      "prevention": "Use File 20 (Visualizer) to ensure uniqueness",
+      "fix_time": "1-2 weeks (redesign required)"
+    },
+    "reason_2": {
+      "issue": "Accessibility failures (missing ARIA labels, poor contrast)",
+      "prevention": "Run File 23 (A11Y Checker) before submission",
+      "fix_time": "1-3 days"
+    },
+    "reason_3": {
+      "issue": "Poor demo quality (empty collections, Lorem Ipsum)",
+      "prevention": "Use File 21 (Demo Master) to populate properly",
+      "fix_time": "2-3 days"
+    },
+    "reason_4": {
+      "issue": "Performance issues (LCP >3s, large JS bundles)",
+      "prevention": "Run Lighthouse CI (File 07) and respect Performance Budget (File 15)",
+      "fix_time": "3-5 days"
+    },
+    "reason_5": {
+      "issue": "Broken functionality (cart doesn't work, filters broken)",
+      "prevention": "Run QA Protocol (File 05) on real devices",
+      "fix_time": "1-2 days"
+    }
+  },
+  
+  "post_approval_maintenance": {
+    "update_frequency": "Every 3-6 months (or when Shopify updates OS 2.0)",
+    "version_increments": "1.0.0 → 1.1.0 (minor features) → 1.1.1 (bug fixes)",
+    "changelog_requirement": "Document every update for users",
+    "support_commitment": "Respond to support emails within 48 hours"
+  },
+  
+  "integration_with_axis_workflow": {
+    "when_to_run": "After Phase 4 (Demo Complete), final step before submission",
+    "command": "> PACKAGE FOR SUBMISSION --theme=zenith --version=1.0.0",
+    "ai_actions": [
+      "1. Run all pre-flight checks (Theme Check, Lighthouse, Security, A11Y)",
+      "2. Generate README.md, CHANGELOG.md, LICENSE.txt",
+      "3. Create submission.zip",
+      "4. Generate SUBMISSION_CHECKLIST.md",
+      "5. Output listing description + keywords",
+      "6. Provide screenshot capture plan"
+    ],
+    "estimated_time": "30 minutes (automated) + 2 hours (manual screenshots + listing)"
+  },
+  
+  "success_metrics": {
+    "first_submission_approval": "Target: 70% (with AXIS system)",
+    "time_to_market": "4-6 weeks (concept → approved theme)",
+    "post_launch_rating": "Target: 4.8+ stars (out of 5)",
+    "monthly_sales": "Target: 20-50 sales/month (mature theme)"
+  }
+}

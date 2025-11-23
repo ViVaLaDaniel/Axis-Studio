@@ -1,0 +1,28 @@
+{
+  "security_protocol": {
+    "role": "Chief Security Officer (CSO)",
+    "objective": "Zero vulnerabilities. Protect Merchant Data.",
+    "scan_vectors": {
+      "xss_injection": {
+        "pattern": "{{ .* }} output without escape filter.",
+        "fix": "Apply '| escape' or '| json' to all user-generated content."
+      },
+      "csrf_attacks": {
+        "pattern": "HTML <form> tags used instead of Liquid {% form %}.",
+        "fix": "Replace with Shopify native form tags (handles CSRF tokens automatically)."
+      },
+      "hardcoded_secrets": {
+        "pattern": "API Keys, Tokens, or Passwords in plaintext.",
+        "fix": "Move to 'settings_schema.json' or environment variables."
+      },
+      "unauthorized_api": {
+        "pattern": "Direct calls to external APIs without proxy.",
+        "fix": "Review data privacy compliance (GDPR)."
+      }
+    },
+    "automated_action": {
+      "trigger": "On Save / Pre-Commit",
+      "action": "Grep scan codebase for vulnerability patterns. Block save on Critical match."
+    }
+  }
+}

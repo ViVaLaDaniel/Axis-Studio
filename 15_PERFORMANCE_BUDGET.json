@@ -1,0 +1,11 @@
+{
+  "system_name": "AXIS_PERFORMANCE_BUDGET",
+  "metrics": {
+    "lighthouse_min_score": 90,
+    "js_soft_limit_kb": 90,
+    "js_hard_limit_kb": 150,
+    "css_hard_limit_kb": 50,
+    "lcp_target_seconds": 1.2
+  },
+  "enforcement": "Fail build if hard limits exceeded."
+}

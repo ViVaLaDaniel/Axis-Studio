@@ -1,0 +1,43 @@
+{
+  "automated_testing_suite": {
+    "philosophy": "Catch bugs before humans do. Zero tolerance for performance regression.",
+    "lighthouse_ci": {
+      "command": "lhci autorun --config=lighthouserc.json",
+      "thresholds": {
+        "performance": 90,
+        "accessibility": 95,
+        "best_practices": 100,
+        "seo": 100
+      },
+      "fail_action": "Block deployment if score < threshold."
+    },
+    "theme_check": {
+      "tool": "Shopify Theme Check CLI",
+      "command": "theme check --fail-level=error",
+      "config": {
+        "Liquid/Syntax": "enabled",
+        "Translation/MissingKeys": "enabled",
+        "Performance/ImgLazyLoading": "enabled"
+      },
+      "pre_commit_hook": "Must pass before git commit."
+    },
+    "visual_regression": {
+      "tool": "Percy / BackstopJS",
+      "snapshots": [
+        "Homepage (Desktop/Mobile)",
+        "Product Page (Variant Switch)",
+        "Cart Drawer (Open State)",
+        "Collection Filter (Expanded)"
+      ],
+      "tolerance": "0.1% pixel difference"
+    },
+    "performance_budget": {
+      "global_limits": {
+        "js_bundle_size": "150KB (gzipped)",
+        "css_bundle_size": "50KB (gzipped)",
+        "image_weight_lcp": "300KB (WebP/AVIF)"
+      },
+      "enforcement": "CI Pipeline fails on budget exceeded."
+    }
+  }
+}

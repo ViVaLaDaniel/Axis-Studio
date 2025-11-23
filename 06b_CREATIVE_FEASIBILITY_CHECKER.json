@@ -1,0 +1,10 @@
+{
+  "system_name": "AXIS_CREATIVE_FEASIBILITY_CHECKER",
+  "version": "1.0",
+  "objective": "Evaluate if a proposed Killer Feature can be safely implemented.",
+  "evaluation_pipeline": {
+    "step_1_stack_validation": "Check if feature uses ONLY allowed tech (No jQuery).",
+    "step_2_performance_impact": "Estimate JS/CSS weight. Reject if > 30KB extra.",
+    "step_3_accessibility": "Must work with 'prefers-reduced-motion'."
+  }
+}
