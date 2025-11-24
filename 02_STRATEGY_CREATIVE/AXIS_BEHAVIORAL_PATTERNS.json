@@ -1,0 +1,175 @@
+{
+  "MODULE_NAME": "AXIS_BEHAVIORAL_PATTERNS",
+  "VERSION": "10.5",
+  "ROLE": "Human Behavior Engine",
+  "DESCRIPTION": "Модуль поведенческой психологии eCommerce: законы принятия решений, когнитивные искажения, мотивация, избегание риска, факторы доверия и инерция поведения. Используется для моделирования поведения покупателей и оптимизации UX/CRO.",
+
+  "INTEGRATES_WITH": {
+    "reads_from": [
+      "AXIS_NEURO_DESIGN_LIBRARY.json",
+      "AXIS_CRO_PATTERNS.json",
+      "AXIS_ECOMMERCE_ARCHETYPES.json",
+      "AXIS_COLOR_PSYCHOLOGY.json",
+      "AXIS_TEXT_GUIDELINES.md"
+    ],
+    "updated_by": "AXIS_KNOWLEDGE_SYNCER.json",
+    "exposes_to": [
+      "25_AXIS_CRO_SCIENTIST.json",
+      "06_AXIS_CREATIVE_ENGINE.json",
+      "02_AXIS_PROMPT_STRATEGY.md",
+      "20_AXIS_VISUALIZER.md"
+    ]
+  },
+
+  "BEHAVIORAL_PATTERNS": {
+
+    "loss_aversion": {
+      "summary": "Люди сильнее реагируют на потерю, чем на приобретение.",
+      "applications": [
+        "Low stock indicators",
+        "Expiring delivery windows",
+        "Clear discount framing"
+      ],
+      "avoid_when": ["luxury", "medical"],
+      "neurological_basis": "Amygdala triggers stronger response to loss than gain."
+    },
+
+    "anchoring_effect": {
+      "summary": "Первая увиденная цена влияет на восприятие последующих.",
+      "applications": [
+        "Old price → New price contrast",
+        "Tiered pricing tables",
+        "Premium-first product layout"
+      ],
+      "success_criteria": [
+        "Old price visually smaller but noticeable",
+        "New price clearer and higher contrast"
+      ]
+    },
+
+    "social_proof_reinforcement": {
+      "summary": "Пользователи ориентируются на опыт других людей.",
+      "applications": [
+        "Photo reviews",
+        "UGC content",
+        "Badges like '50,000+ customers'"
+      ],
+      "avoid_when": ["brand-new stores (trust mismatch)"],
+      "neuro_basis": "Mirror neuron activation increases trust."
+    },
+
+    "choice_overload": {
+      "summary": "Слишком много вариантов → паралич выбора.",
+      "applications": [
+        "Progressive disclosure",
+        "Simplified variant selection",
+        "Step-by-step guided flows"
+      ],
+      "risks": ["High drop-off in product configuration"]
+    },
+
+    "commitment_consistency": {
+      "summary": "Человек стремится сохранять последовательность в действиях.",
+      "applications": [
+        "Micro commitments before checkout",
+        "Small initial selections",
+        "Save-to-Wishlist prompts"
+      ],
+      "avoid_when": ["no clear benefit to user"]
+    },
+
+    "reciprocity_effect": {
+      "summary": "Люди склонны отвечать на 'щедрость' бренда.",
+      "applications": [
+        "Free sample with order",
+        "Welcome discounts",
+        "Educational content"
+      ],
+      "risk": "Must be authentic, not manipulative."
+    },
+
+    "urgency_ethics": {
+      "summary": "Этическое создание легкой срочности.",
+      "allowed": ["real stock counters", "real delivery timers"],
+      "forbidden": ["fake countdowns", "auto-reset timers"],
+      "neuro_basis": "Time pressure increases dopamine-triggered decision speed."
+    },
+
+    "cognitive_fluency": {
+      "summary": "Мозг предпочитает простые, легко читаемые интерфейсы.",
+      "applications": [
+        "Clear visual hierarchy",
+        "Short CTA",
+        "Simple typography",
+        "Minimal navigation"
+      ],
+      "symptoms_of_low_fluency": [
+        "Scrolling up-down repeatedly",
+        "Reading fatigue"
+      ]
+    },
+
+    "default_effect": {
+      "summary": "Пользователи часто выбирают вариант по умолчанию.",
+      "applications": [
+        "Pre-selected most popular variant",
+        "Default shipping options"
+      ],
+      "avoid_when": ["financial risk", "medical decisions"]
+    },
+
+    "fear_of_missing_out": {
+      "summary": "FOMO усиливает эмоциональные решения.",
+      "applications": [
+        "'Popular right now'",
+        "'Trending products'",
+        "Social activity counters"
+      ],
+      "avoid_when": ["luxury niches"]
+    },
+
+    "trust_signals": {
+      "summary": "Визуальные и текстовые элементы создают ощущение безопасности.",
+      "applications": [
+        "SSL/secure payment badges",
+        "Verified reviews",
+        "Quality certification"
+      ],
+      "when_most_important": ["checkout", "subscriptions"]
+    }
+  },
+
+  "RISK_PREVENTION": {
+    "dark_patterns_blacklist": [
+      "fake urgency",
+      "infinite timers",
+      "auto-added upsells",
+      "hidden fees",
+      "misleading discount framing"
+    ],
+    "ethical_framework": [
+      "Patterns must empower, not manipulate.",
+      "All alerts must be real.",
+      "Choice architecture must support clarity."
+    ]
+  },
+
+  "BEHAVIOR_ENGINE_RULES": {
+    "trigger_inputs": [
+      "session_length",
+      "scroll_depth",
+      "device_type",
+      "product_price_range",
+      "cart_actions",
+      "review_interactions"
+    ],
+    "output_modifications": {
+      "cta_style": true,
+      "discount_display": true,
+      "motion_intensity": true,
+      "color_theme": true,
+      "text_tone": true,
+      "layout_density": true
+    }
+  }
+}
