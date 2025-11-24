@@ -1,0 +1,174 @@
+{
+  "MODULE_NAME": "AXIS_KNOWLEDGE_SYNCER",
+  "VERSION": "10.5-KERNEL",
+  "ROLE": "Knowledge Kernel & System Intelligence Sync Daemon",
+  "DESCRIPTION": "Центральное ядро знаний AXIS OS. Управляет сбором данных, обучением, обновлением модулей, отслеживанием трендов и защитой системы от устаревания.",
+
+  "KERNEL_BEHAVIOR": {
+    "MODE": "ACTIVE_INTELLIGENCE",
+    "BEHAVIOR_LEVEL": "C_FULL_AUTONOMOUS",
+    "CAPABILITIES": [
+      "SELF_UPDATE",
+      "SELF_AUDIT",
+      "TREND_TRACKING",
+      "SCIENTIFIC_SYNC",
+      "PLATFORM_WATCHDOG",
+      "AUTO_GENERATE_TASKS",
+      "CROSS_MODULE_INTEGRATION",
+      "LONG_TERM_MEMORY_INJECTION"
+    ],
+    "OS_COMMUNICATION": {
+      "writes_to": [
+        "18_AXIS_MEMORY_LOG.json",
+        "AXIS_NEURO_DESIGN_LIBRARY.json",
+        "AXIS_CRO_PATTERNS.json",
+        "AXIS_ECOMMERCE_ARCHETYPES.json",
+        "AXIS_BEHAVIORAL_PATTERNS.json",
+        "AXIS_COLOR_PSYCHOLOGY.json",
+        "01_AXIS_DESIGN_v1.3_UX.txt",
+        "10_AXIS_PERFORMANCE_BUDGET.json",
+        "06_AXIS_CREATIVE_ENGINE.json"
+      ],
+      "reads_from": [
+        "17_AXIS_CONTEXT_ROUTER.json",
+        "UX_RESEARCH_LIBRARY.json",
+        "24_AXIS_COMPETITOR_INTEL.json",
+        "AXIS_MEMORY_LOG",
+        "Shopify_Dev_Changelog",
+        "External_Research_Sources"
+      ]
+    }
+  },
+
+  "SYNC_CHANNELS": {
+    "01_UX_SCIENCE": {
+      "priority": "CRITICAL",
+      "sources": [
+        {
+          "name": "Baymard Institute",
+          "domain": "UX Research | Checkout | Product Page | Filtering",
+          "inject_into": [
+            "AXIS_NEURO_DESIGN_LIBRARY.json",
+            "AXIS_CRO_PATTERNS.json",
+            "UX_RESEARCH_LIBRARY.json"
+          ],
+          "update_frequency": "QUARTERLY"
+        },
+        {
+          "name": "Nielsen Norman Group",
+          "domain": "Usability | Cognitive Psychology | Attention patterns",
+          "inject_into": [
+            "AXIS_NEURO_DESIGN_LIBRARY.json",
+            "AXIS_TEXT_GUIDELINES.md"
+          ],
+          "update_frequency": "BI_ANNUAL"
+        },
+        {
+          "name": "CXL Institute",
+          "domain": "Behavioral Psychology | CRO Optimization",
+          "inject_into": [
+            "AXIS_BEHAVIORAL_PATTERNS.json",
+            "AXIS_CRO_PATTERNS.json"
+          ],
+          "update_frequency": "QUARTERLY"
+        }
+      ]
+    },
+
+    "02_PLATFORM_TECH": {
+      "priority": "MANDATORY",
+      "sources": [
+        {
+          "name": "Shopify Developer Changelog",
+          "domain": "Liquid Updates | API Deprecations | OS2.0 Evolution",
+          "inject_into": [
+            "00_AXIS_SYSTEM_v8.0_TECH.txt",
+            "19_AXIS_APP_INTEGRATION_GUIDE.json",
+            "03_AXIS_MASTER_SYSTEM_v6.2.json"
+          ],
+          "action_protocol": "AUTO_REFACTOR_IF_DEPRECATED"
+        },
+        {
+          "name": "Google Core Web Vitals",
+          "domain": "LCP | INP | CLS",
+          "inject_into": [
+            "15_AXIS_PERFORMANCE_BUDGET.json",
+            "12_AXIS_ERROR_HANDLING.json"
+          ],
+          "thresholds": {
+            "LCP": "< 2.5s",
+            "INP": "< 200ms",
+            "CLS": "< 0.1"
+          }
+        }
+      ]
+    },
+
+    "03_MARKET_INTELLIGENCE": {
+      "priority": "HIGH",
+      "sources": [
+        {
+          "name": "Shopify Theme Store Top Sellers",
+          "domain": "Trends | Visual Patterns | Feature Adoption",
+          "inject_into": [
+            "24_AXIS_COMPETITOR_INTEL.json",
+            "02_AXIS_PROMPT_STRATEGY.md",
+            "06_AXIS_CREATIVE_ENGINE.json"
+          ],
+          "method": "MANUAL_REVIEW_TOP_10"
+        },
+        {
+          "name": "Awwwards Ecommerce Winners",
+          "domain": "Design Trends | Motion | Typography",
+          "inject_into": [
+            "AXIS_NEURO_DESIGN_LIBRARY.json",
+            "20_AXIS_VISUALIZER.md"
+          ]
+        }
+      ]
+    },
+
+    "04_INTERNAL_MEMORY": {
+      "priority": "HIGH",
+      "source": "18_AXIS_MEMORY_LOG.json",
+      "uses": [
+        "error-prevention",
+        "architecture-refactor-roadmap",
+        "guideline-auto-updates"
+      ],
+      "inject_into": [
+        "AXIS_ERROR_HANDLING.json",
+        "SPEC_LIVING_STYLEGUIDE.md"
+      ]
+    }
+  },
+
+  "AUTO_LEARNING_ENGINE": {
+    "ENABLED": true,
+    "rules": {
+      "IF_DEPRECATION_FOUND": "TRIGGER_REFACTOR_TASK",
+      "IF_PATTERN_OBSOLETE": "MARK_FOR_ARCHITECT_REVIEW",
+      "IF_LCP_DROP": "TRIGGER_PERFORMANCE_AUDIT",
+      "IF_NEW_UX_RESEARCH": "INJECT_INTO_NEURO_LIBRARY",
+      "IF_TOP_THEME_ADOPTS_FEATURE_X": "ADD_TO_CREATIVE_ENGINE_QUEUE"
+    }
+  },
+
+  "PIPELINE_INTEGRATION": {
+    "phase_0": "DATA_COLLECTION",
+    "phase_1": "VALIDATION",
+    "phase_2": "DIFF_VERSION_COMPARE",
+    "phase_3": "KNOWLEDGE_INJECTION",
+    "phase_4": "TASK_GENERATION",
+    "phase_5": "MODULE_UPDATE"
+  },
+
+  "VERSIONING_PROTOCOL": {
+    "semantic": true,
+    "auto_bump": {
+      "major": "when incompatible research or platform update occurs",
+      "minor": "when new research is added",
+      "patch": "when metadata or thresholds updated"
+    }
+  }
+}
