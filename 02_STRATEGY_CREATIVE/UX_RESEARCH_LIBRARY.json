@@ -1,0 +1,171 @@
+{
+  "MODULE_NAME": "UX_RESEARCH_LIBRARY",
+  "VERSION": "10.5",
+  "ROLE": "Scientific UX Evidence Repository",
+  "DESCRIPTION": "Централизованная база научных UX-исследований, включающая данные Baymard, NNGroup, CXL и академические источники. Используется для принятия решений в дизайне, CRO и архитектуре.",
+
+  "UPDATED_BY": "AXIS_KNOWLEDGE_SYNCER.json",
+  "USED_BY": [
+    "AXIS_NEURO_DESIGN_LIBRARY.json",
+    "AXIS_CRO_PATTERNS.json",
+    "AXIS_BEHAVIORAL_PATTERNS.json",
+    "AXIS_ECOMMERCE_ARCHETYPES.json",
+    "02_AXIS_PROMPT_STRATEGY.md",
+    "06_AXIS_CREATIVE_ENGINE.json"
+  ],
+
+  "RESEARCH_DOMAINS": {
+    "checkout_usability": {
+      "source": "Baymard Institute",
+      "key_findings": [
+        {
+          "id": "chk_01",
+          "title": "Multi-step checkout outperforms one-page checkout",
+          "impact": ["↓ errors", "↑ completion rate"],
+          "explanation": "Снижение когнитивной нагрузки за счёт разделения информации."
+        },
+        {
+          "id": "chk_02",
+          "title": "Address autocomplete reduces failures by ~20%",
+          "impact": ["↓ checkout time", "↓ form fatigue"]
+        }
+      ],
+      "antipatterns": [
+        "Mandatory account creation",
+        "Hidden shipping costs",
+        "Severe coupon-field distraction"
+      ],
+      "recommended_patterns": [
+        "Guest checkout",
+        "Clear total cost before payment",
+        "Inline validation"
+      ]
+      
+    },
+
+    "product_page_behavior": {
+      "source": "Baymard Institute / NNGroup",
+      "key_findings": [
+        {
+          "id": "pdp_01",
+          "title": "Large product images increase conversion by 9–17%",
+          "mechanism": "Visual dominance and reduced uncertainty."
+        },
+        {
+          "id": "pdp_02",
+          "title": "Accordion layouts reduce perceived complexity",
+          "science": ["Hick's Law", "Cognitive Load Theory"]
+        }
+      ],
+      "antipatterns": [
+        "Low-resolution imagery",
+        "Hidden critical details",
+        "Variant overload"
+      ],
+      "recommended_patterns": [
+        "Image zoom",
+        "Sticky ATC",
+        "Structured information blocks"
+      ]
+    },
+
+    "navigation_patterns": {
+      "source": "NNGroup",
+      "key_findings": [
+        {
+          "id": "nav_01",
+          "title": "Users rely on predictable navigation more than innovative layouts",
+          "explanation": "Jacob’s Law: пользователи ожидают знакомых паттернов навигации."
+        },
+        {
+          "id": "nav_02",
+          "title": "Fewer than 7 top-level navigation items reduces decision friction"
+        }
+      ],
+      "antipatterns": [
+        "Mega-menu overload",
+        "Icon-only navigation without labels"
+      ]
+    },
+
+    "search_behavior": {
+      "source": "Baymard Institute",
+      "key_findings": [
+        {
+          "id": "srch_01",
+          "title": "Users often rely on search even when navigation is clear",
+          "impact": ["↑ search usage", "↑ conversion from search"]
+        },
+        {
+          "id": "srch_02",
+          "title": "Autocomplete reduces null-results rate significantly"
+        }
+      ],
+      "antipatterns": [
+        "Exact match only search",
+        "Zero-result pages without suggestions"
+      ],
+      "recommended_patterns": [
+        "Query tolerance",
+        "Synonym matching",
+        "Recent searches history"
+      ]
+    },
+
+    "form_usability": {
+      "source": "NNGroup / CXL",
+      "key_findings": [
+        {
+          "id": "frm_01",
+          "title": "Inline validation reduces form abandonment",
+          "impact": ["↓ errors", "↑ confidence"]
+        },
+        {
+          "id": "frm_02",
+          "title": "Label placement above fields increases speed of completion"
+        }
+      ],
+      "antipatterns": [
+        "Floating labels",
+        "Tiny checkboxes",
+        "Multi-column forms"
+      ]
+    },
+
+    "trust_and_reassurance": {
+      "source": "CXL Institute",
+      "key_findings": [
+        {
+          "id": "trs_01",
+          "title": "Social proof reduces uncertainty",
+          "impact": ["↑ click rates", "↑ checkout starts"]
+        },
+        {
+          "id": "trs_02",
+          "title": "Visible guarantee increases willingness to purchase"
+        }
+      ],
+      "antipatterns": [
+        "Unverified reviews",
+        "Overused trust badges"
+      ],
+      "recommended_patterns": [
+        "Photo reviews",
+        "Clear warranty copy"
+      ]
+    }
+  },
+
+  "META_RESEARCH_RULES": {
+    "validation_steps": [
+      "Research must come from verified scientific or enterprise sources.",
+      "Each finding must map to a neuro-UX or behavioral principle.",
+      "Findings without a measurable impact are excluded."
+    ],
+    "update_protocol": [
+      "Knowledge Syncer checks for new Baymard reports.",
+      "NNGroup articles parsed every 6 months.",
+      "CXL case studies evaluated quarterly."
+    ]
+  }
+}
