@@ -9,6 +9,7 @@
 ├── 01_AXIS_DESIGN_v1.3_UX.txt
 ├── 01b_AXIS_PRIORITY_RULES.txt
 ├── AXIS_COLOR_PSYCHOLOGY.json
+├── AXIS_MOTION_GUIDELINES.md
 ├── AXIS_TEXT_GUIDELINES.md
 └── TECH_AXIS_SIGNALS.md
 ```
@@ -18,6 +19,7 @@
 - [**`01_AXIS_DESIGN_v1.3_UX.txt`**](./01_AXIS_DESIGN_v1.3_UX.txt) — **Дизайн-Система**. Определяет визуальный язык проекта: принципы построения сеток, типографику, UX-паттерны, правила работы с цветом и анимациями.
 - [**`01b_AXIS_PRIORITY_RULES.txt`**](./01b_AXIS_PRIORITY_RULES.txt) — **Правила Приоритетов**. Разрешает конфликты между другими правилами (например, `Performance > Design`).
 - [**`AXIS_COLOR_PSYCHOLOGY.json`**](./AXIS_COLOR_PSYCHOLOGY.json) — **Психология Цвета.** Научно-обоснованная библиотека эмоциональных, конверсионных и UX-свойств цвета. Используется для генерации тем, пресетов и стратегических решений в дизайне.
+- [**`AXIS_MOTION_GUIDELINES.md`**](./AXIS_MOTION_GUIDELINES.md) — **Гайд по Анимации.** Фундаментальные правила движения, физики и микровзаимодействий в AXIS OS.
 - [**`AXIS_TEXT_GUIDELINES.md`**](./AXIS_TEXT_GUIDELINES.md) — **Гайд по UX-текстам.** Психолингвистические правила для CTA, microcopy и текстов, влияющих на конверсию.
 - [**`TECH_AXIS_SIGNALS.md`**](./TECH_AXIS_SIGNALS.md) — **Центральная Система Сигналов.** Фундаментальная спецификация событийной модели AXIS OS для коммуникации между всеми модулями системы.
 
