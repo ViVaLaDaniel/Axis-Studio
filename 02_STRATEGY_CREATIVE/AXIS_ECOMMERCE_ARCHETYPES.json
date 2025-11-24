@@ -1,0 +1,167 @@
+{
+  "MODULE_NAME": "AXIS_ECOMMERCE_ARCHETYPES",
+  "VERSION": "10.5",
+  "ROLE": "Behavioral segmentation engine",
+  "DESCRIPTION": "Машинно-читаемая библиотека поведенческих типов покупателей, основанная на UX-психологии, мотивации, уровне доверия, цене и когнитивных паттернах.",
+
+  "INTEGRATES_WITH": {
+    "reads_from": [
+      "AXIS_NEURO_DESIGN_LIBRARY.json",
+      "AXIS_CRO_PATTERNS.json",
+      "AXIS_COLOR_PSYCHOLOGY.json",
+      "AXIS_TEXT_GUIDELINES.md",
+      "UX_RESEARCH_LIBRARY.json"
+    ],
+    "writes_to": [
+      "02_AXIS_PROMPT_STRATEGY.md",
+      "20_AXIS_VISUALIZER.md",
+      "06_AXIS_CREATIVE_ENGINE.json",
+      "PRODUCT_PLAYBOOK.md"
+    ],
+    "updated_by": "AXIS_KNOWLEDGE_SYNCER.json"
+  },
+
+  "ARCHETYPES": {
+    "luxury_buyer": {
+      "summary": "Покупатель, ориентированный на статус, качество, эстетику и уверенность в бренде.",
+      "behaviour_drivers": [
+        "prestige_seeking",
+        "quality_validation",
+        "minimal_information_overload"
+      ],
+      "ux_preferences": {
+        "motion": "slow, elegant, minimal",
+        "images": "hero-grade, clean lighting",
+        "text_style": "short, confident, premium tone",
+        "layout": "spacious, high contrast"
+      },
+      "cro_recommendations": {
+        "avoid": ["urgency", "countdown timers", "aggressive discounts"],
+        "use": ["quality badges", "brand story", "craftsmanship messaging"],
+        "cta_style": "minimal, strong, premium"
+      },
+      "color_preferences": ["luxury", "trust"],
+      "risk_signals": ["cheap visuals", "overloaded info"]
+    },
+
+    "bargain_hunter": {
+      "summary": "Ищет максимальную выгоду: скидки, акции, сравнения, выгода без лишнего шума.",
+      "behaviour_drivers": [
+        "loss_aversion",
+        "discount_reactivity",
+        "value_maximization"
+      ],
+      "ux_preferences": {
+        "motion": "fast, direct",
+        "images": "simple, clear product-first visuals",
+        "text_style": "clear price framing",
+        "layout": "dense, but organized"
+      },
+      "cro_recommendations": {
+        "use": ["anchoring", "bundle offers", "clear discount badges"],
+        "avoid": ["long-form storytelling"],
+        "cta_style": "high-contrast, urgency-supported"
+      },
+      "color_preferences": ["energy"],
+      "risk_signals": ["hidden fees", "fake scarcity"]
+    },
+
+    "impulsive_shopper": {
+      "summary": "Покупает быстро, эмоционально, часто на мобильном.",
+      "behaviour_drivers": [
+        "immediate_reward",
+        "emotional_satisfaction",
+        "ease_of_purchase"
+      ],
+      "ux_preferences": {
+        "motion": "interactive micro-interactions",
+        "images": "bold, strong visuals",
+        "text_style": "short, exciting",
+        "layout": "simple paths to checkout"
+      },
+      "cro_recommendations": {
+        "use": ["sticky ATC", "quick add", "bold CTA"],
+        "avoid": ["complex variant selection"],
+        "cta_style": "large mobile-first CTA"
+      },
+      "color_preferences": ["energy"],
+      "risk_signals": ["slow loading", "complex checkout"]
+    },
+
+    "analytical_buyer": {
+      "summary": "Принимает решения на основе фактов: характеристики, параметры, сравнения.",
+      "behaviour_drivers": [
+        "information_completeness",
+        "control",
+        "accuracy"
+      ],
+      "ux_preferences": {
+        "motion": "minimal, functional",
+        "images": "technical or detailed visuals",
+        "text_style": "precise, technical",
+        "layout": "structured, segmented, expandable"
+      },
+      "cro_recommendations": {
+        "use": [
+          "comparison charts",
+          "technical specifications accordions",
+          "verified reviews"
+        ],
+        "avoid": ["aggressive urgency"],
+        "cta_style": "clear and trustworthy"
+      },
+      "color_preferences": ["trust"],
+      "risk_signals": ["missing specs", "visual noise", "lack of clarity"]
+    },
+
+    "social_identity_buyer": {
+      "summary": "Эмоциональный покупатель, ориентированный на сообщество, тренды и влияние.",
+      "behaviour_drivers": [
+        "social_proof",
+        "community_affiliation",
+        "trend_alignment"
+      ],
+      "ux_preferences": {
+        "motion": "smooth, trendy transitions",
+        "images": "lifestyle visuals, human presence",
+        "text_style": "emotional, inspirational",
+        "layout": "visual-first"
+      },
+      "cro_recommendations": {
+        "use": ["UGC galleries", "video testimonials", "high social proof"],
+        "avoid": ["product-only layouts"],
+        "cta_style": "friendly, personalized"
+      },
+      "color_preferences": ["calm", "energy"],
+      "risk_signals": ["weak reviews", "low social relevance"]
+    }
+  },
+
+  "ARCHETYPE_ENGINE_RULES": {
+    "classification_inputs": [
+      "product_type",
+      "brand_positioning",
+      "price_level",
+      "user_reviews",
+      "traffic_source",
+      "device_type",
+      "session_behaviour"
+    ],
+    "output_influences": {
+      "cta_style": true,
+      "color_theme": true,
+      "motion_intensity": true,
+      "microcopy_tone": true,
+      "information_density": true,
+      "checkout_flow_variants": true
+    }
+  },
+
+  "ETHICS": {
+    "rules": [
+      "Archetypes must SUPPORT user decisions, not manipulate them.",
+      "No stereotyping based on sensitive traits.",
+      "Patterns must be grounded in scientific behavioural research."
+    ]
+  }
+}
