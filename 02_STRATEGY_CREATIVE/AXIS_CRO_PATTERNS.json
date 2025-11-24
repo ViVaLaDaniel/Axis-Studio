@@ -1,0 +1,153 @@
+{
+  "MODULE_NAME": "AXIS_CRO_PATTERNS",
+  "VERSION": "10.5",
+  "ROLE": "Conversion Science Library",
+  "DESCRIPTION": "Машинно-читаемая библиотека конверсионных паттернов, основанных на нейро-UX, поведенческой психологии и eCommerce исследованиях.",
+
+  "FOUNDATIONS": {
+    "depends_on": [
+      "AXIS_NEURO_DESIGN_LIBRARY.json",
+      "AXIS_COLOR_PSYCHOLOGY.json",
+      "AXIS_TEXT_GUIDELINES.md",
+      "AXIS_ECOMMERCE_ARCHETYPES.json",
+      "UX_RESEARCH_LIBRARY.json"
+    ],
+    "updated_by": "AXIS_KNOWLEDGE_SYNCER.json",
+    "used_by": [
+      "25_AXIS_CRO_SCIENTIST.json",
+      "06_AXIS_CREATIVE_ENGINE.json",
+      "20_AXIS_VISUALIZER.md"
+    ]
+  },
+
+  "PATTERNS": {
+
+    "ATC_ELEVATION": {
+      "category": "Add to cart optimization",
+      "description": "Паттерны, которые увеличивают вероятность нажатия на CTA ATC.",
+      "behaviour_science": [
+        "Fitts Law: CTA должен быть крупным и доступным",
+        "Pre-attentive color: CTA выделяется одним ключевым цветом",
+        "Loss Aversion: низкий сток усиливает действие"
+      ],
+      "variants": {
+        "sticky_atc_bar": {
+          "summary": "Плавающая панель ATC внизу экрана на мобильном.",
+          "when_to_use": ["mobile", "long PDP", "fashion", "beauty"],
+          "when_to_avoid": ["luxury", "minimalist brands"],
+          "risks": ["too intrusive → falls to dark pattern"],
+          "success_indicators": ["↑ ATC rate", "↑ scroll depth"]
+        },
+        "quick_add_card": {
+          "summary": "Быстрое добавление товара прямо из карточки.",
+          "when_to_use": ["collection", "search results"],
+          "behaviour_effects": ["reduced decision friction"],
+          "risks": ["variant confusion on products with many options"]
+        }
+      }
+    },
+
+    "PRICING_ENGINE": {
+      "category": "Pricing psychology",
+      "patterns": {
+        "anchoring": {
+          "summary": "Старая цена якорит восприятие скидки.",
+          "rules": [
+            "Старая цена должна быть визуально меньше, но заметна.",
+            "Разница должна быть очевидной (Weber’s Law)."
+          ],
+          "risks": ["fake discounts ruin trust"],
+          "impact": ["↑ conversion", "↑ perceived value"]
+        },
+        "decoy_effect": {
+          "summary": "Добавление третьего варианта делает один из них более привлекательным.",
+          "when_to_use": ["subscription", "digital products"],
+          "avoid_when": ["luxury, high-trust niches"]
+        }
+      }
+    },
+
+    "URGENCY_PATTERNS": {
+      "category": "Ethical urgency & scarcity",
+      "principles": [
+        "Никогда не использовать ложный дефицит.",
+        "Все сигналы должны быть верифицируемыми."
+      ],
+      "patterns": {
+        "low_stock_indicator": {
+          "summary": "‘Осталось 3 товара’ усиливает действие.",
+          "behaviour_science": ["Loss Aversion"],
+          "impact": ["short-term boost", "↑ ATC"],
+          "avoid_when": ["luxury, clinical niches"]
+        },
+        "delivery_cutoff_timer": {
+          "summary": "Введите таймер доставки: ‘Закажите в течение 2 часов для получения завтра’.",
+          "behaviour_science": ["Temporal Motivation Theory"],
+          "impact": ["↑ checkout start"],
+          "risks": ["must be accurate"]
+        }
+      }
+    },
+
+    "SOCIAL_PROOF": {
+      "category": "Reassurance & trust building",
+      "patterns": {
+        "verified_reviews": {
+          "summary": "Реальные отзывы + фото покупателей.",
+          "behaviour_science": ["Social proof", "Trust signals"],
+          "impact": ["↑ trust", "↓ bounce"]
+        },
+        "count_badges": {
+          "summary": "‘50,000+ клиентов’ повышает уверенность.",
+          "avoid_when": ["small new brands → feels fake"],
+          "impact": ["↑ conversion for new visitors"]
+        }
+      }
+    },
+
+    "EXPERIENCE_PATTERNS": {
+      "category": "Interaction and UX improvements",
+      "patterns": {
+        "accordion_information": {
+          "summary": "Дозирование информации снижает cognitive load.",
+          "science": ["Hick’s Law", "Cognitive Load Theory"],
+          "use_in": ["PDP", "FAQ", "filters"]
+        },
+        "guided_choice": {
+          "summary": "Показывать один шаг за раз для сложных продуктов.",
+          "use_cases": ["skincare", "nutrition", "complex apparel"],
+          "impact": ["↑ decision confidence"]
+        }
+      }
+    }
+  },
+
+  "RISK_MATRIX": {
+    "dark_pattern_detection": [
+      "false urgency",
+      "fake scarcity",
+      "misleading comparisons",
+      "forced continuity"
+    ],
+    "ethical_rules": [
+      "All urgency must be real.",
+      "All comparison points must be verifiable.",
+      "Patterns must support decisions, not manipulate."
+    ]
+  },
+
+  "ACTIONABILITY": {
+    "CRO_questions": [
+      "Как снизить когнитивную нагрузку?",
+      "Как усилить CTA через цвет и размер?",
+      "Как упростить выбор пользователю?",
+      "Как добавить уверенности?",
+      "Какие паттерны не подходят нише?"
+    ],
+    "outputs_for_other_modules": [
+      "UX scripts for Visualizer",
+      "prompts for Creative Engine",
+      "insights for PRODUCT_PLAYBOOK.md"
+    ]
+  }
+}
