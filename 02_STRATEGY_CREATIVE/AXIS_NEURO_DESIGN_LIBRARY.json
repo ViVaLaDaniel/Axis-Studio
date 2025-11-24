@@ -1,0 +1,230 @@
+{
+  "MODULE_NAME": "AXIS_NEURO_DESIGN_LIBRARY",
+  "VERSION": "10.5",
+  "ROLE": "Neuro-UX knowledge base for visual and interaction decisions",
+  "DESCRIPTION": "Central library of perception, attention and decision-making principles for designing high-conversion, low-friction eCommerce experiences.",
+
+  "SCOPE": [
+    "visual_perception",
+    "attention_allocation",
+    "decision_complexity",
+    "cognitive_load",
+    "reading_patterns",
+    "action_readiness"
+  ],
+
+  "ENGINE_BEHAVIOR": {
+    "READ_ONLY_FOR_RUNTIME": true,
+    "EDITABLE_VIA_KNOWLEDGE_SYNCER": true,
+    "INTEGRATES_WITH": [
+      "AXIS_TEXT_GUIDELINES.md",
+      "AXIS_COLOR_PSYCHOLOGY.json",
+      "AXIS_CRO_PATTERNS.json",
+      "AXIS_ECOMMERCE_ARCHETYPES.json",
+      "SPEC_LIVING_STYLEGUIDE.md",
+      "design_tokens.json"
+    ]
+  },
+
+  "GESTALT_LAWS": {
+    "proximity": {
+      "summary": "Elements that are close together are perceived as a group.",
+      "ux_application": [
+        "Group price, title and CTA together.",
+        "Keep filters and their labels visually tight.",
+        "Avoid large gaps between logically related elements."
+      ],
+      "metrics_impact": ["scannability", "decision_speed"],
+      "risks": [
+        "Too much spacing breaks perceived grouping.",
+        "Inconsistent spacing patterns create confusion."
+      ],
+      "recommended_usage": [
+        "Product cards",
+        "Cart line items",
+        "Form sections"
+      ]
+    },
+    "similarity": {
+      "summary": "Elements that look similar are perceived as related.",
+      "ux_application": [
+        "Use consistent button styles for similar actions.",
+        "Use one style for 'primary actions', another for 'secondary'."
+      ],
+      "metrics_impact": ["error_rate", "click_accuracy"],
+      "risks": [
+        "Making destructive actions look like primary.",
+        "Too many button styles dilute meaning."
+      ]
+    },
+    "figure_ground": {
+      "summary": "Users distinguish a focal element (figure) from the background (ground).",
+      "ux_application": [
+        "Use contrast and depth to highlight primary content.",
+        "Dim background when overlays or drawers are open."
+      ],
+      "metrics_impact": ["focus", "task_completion"],
+      "risks": [
+        "Low contrast between content and background.",
+        "Busy backgrounds behind text or CTAs."
+      ]
+    },
+    "continuity": {
+      "summary": "The eye follows lines, curves and flows in a preferred direction.",
+      "ux_application": [
+        "Guide users with clear reading flows (Z/F patterns).",
+        "Align price, variant selector and CTA in a vertical flow."
+      ],
+      "metrics_impact": ["reading_speed", "navigation_efficiency"]
+    },
+    "closure": {
+      "summary": "The brain tends to fill in missing information to see complete shapes.",
+      "ux_application": [
+        "Use simple, complete shapes for icons and badges.",
+        "Avoid overly fragmented layouts."
+      ]
+    }
+  },
+
+  "ATTENTION_AND_READING": {
+    "fitts_law": {
+      "summary": "Time to acquire a target depends on its size and distance.",
+      "rules": [
+        "Primary CTAs must be large enough and close to the point of decision.",
+        "On mobile, avoid placing critical CTAs in hard-to-reach corners.",
+        "Tap targets >= 44px on mobile."
+      ],
+      "impacts": ["tap_accuracy", "mobile_conversion"]
+    },
+    "hicks_law": {
+      "summary": "Decision time increases with the number and complexity of choices.",
+      "rules": [
+        "Limit visible options at once.",
+        "Use progressive disclosure (more details on demand).",
+        "Keep navigation focused (5–7 top-level items)."
+      ],
+      "impacts": ["decision_speed", "drop_off"],
+      "risks": [
+        "Exposing all filter options by default.",
+        "Long CTA groups with similar labels."
+      ]
+    },
+    "serial_position_effect": {
+      "summary": "Users remember best the first and last items in a sequence.",
+      "rules": [
+        "Place most important links at the beginning or end of navigation.",
+        "In lists, prioritize high-value items first."
+      ],
+      "impacts": ["click_distribution", "feature_discovery"]
+    },
+    "reading_patterns": {
+      "patterns": [
+        "F-pattern for content-heavy pages.",
+        "Z-pattern for simple hero layouts."
+      ],
+      "guidelines": [
+        "Align headline, key benefit and CTA following F/Z flows.",
+        "Avoid breaking reading flow with random element placement."
+      ]
+    }
+  },
+
+  "COGNITIVE_LOAD": {
+    "definition": "Cognitive load is the mental effort required to understand and act.",
+    "principles": [
+      "Reduce simultaneous choices.",
+      "Visually group related information.",
+      "Use plain language and clear hierarchy.",
+      "Avoid unnecessary visual noise."
+    ],
+    "symptoms_of_overload": [
+      "High drop-off in mid-funnel.",
+      "Users scrolling up and down repeatedly.",
+      "Frequent input errors in forms."
+    ],
+    "reduction_strategies": [
+      "Chunk complex forms into steps.",
+      "Use default selections when safe.",
+      "Offer sensible presets instead of raw controls."
+    ]
+  },
+
+  "PRE_ATTENTIVE_FEATURES": {
+    "summary": "Certain visual properties are processed by the brain before conscious attention.",
+    "primary_channels": [
+      "color",
+      "size",
+      "orientation",
+      "position",
+      "shape",
+      "motion"
+    ],
+    "ux_rules": [
+      "Use one primary highlight color for key CTAs.",
+      "Use subtle motion for state changes, not decoration.",
+      "Do not overload the interface with multiple competing signals."
+    ],
+    "integration_with_color_module": {
+      "uses": "AXIS_COLOR_PSYCHOLOGY.json",
+      "goal": "Align pre-attentive signals with emotional and conversion goals."
+    }
+  },
+
+  "WEBER_LAW_AND_CONTRAST": {
+    "summary": "Perceived change depends on relative, not absolute, difference.",
+    "applications": [
+      "Small contrast changes may be ignored by users.",
+      "Price changes must be visually obvious if important.",
+      "Discount labels should have a clear contrast against surroundings."
+    ]
+  },
+
+  "NEURO_TYPOGRAPHY": {
+    "guidelines": [
+      "Line length: 45–75 characters for comfortable reading.",
+      "Line height: 1.4–1.6 for body text.",
+      "Avoid using more than 2–3 font families.",
+      "Use hierarchy via size/weight, not random colors."
+    ],
+    "impacts": ["reading_speed", "comprehension", "fatigue"],
+    "connected_modules": [
+      "AXIS_TEXT_GUIDELINES.md",
+      "design_tokens.json"
+    ]
+  },
+
+  "DECISION_ARCHITECTURE": {
+    "summary": "Structuring choices to support good decisions without manipulation.",
+    "patterns": [
+      {
+        "id": "default_safe_choice",
+        "description": "Pre-select the most common or recommended option when ethically safe.",
+        "use_for": ["shipping options", "plan tiers"],
+        "avoid_when": ["high-risk financial decisions", "sensitive categories"]
+      },
+      {
+        "id": "progressive_disclosure",
+        "description": "Hide secondary options behind toggles or accordions.",
+        "use_for": ["advanced filters", "technical details"]
+      }
+    ]
+  },
+
+  "INTEGRATION_PROTOCOL": {
+    "used_by": [
+      "AXIS_CRO_SCIENTIST.json",
+      "AXIS_CRO_PATTERNS.json",
+      "AXIS_ECOMMERCE_ARCHETYPES.json",
+      "AXIS_TEXT_GUIDELINES.md",
+      "AXIS_MOTION_GUIDELINES.md",
+      "AXIS_COLOR_PSYCHOLOGY.json"
+    ],
+    "updated_by": "AXIS_KNOWLEDGE_SYNCER.json",
+    "exposed_to": [
+      "Creative Engine",
+      "Theme Architect",
+      "UX Writer",
+      "CRO Scientist"
+    ]
+  }
+}
