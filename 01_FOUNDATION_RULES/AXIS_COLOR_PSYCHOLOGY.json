@@ -1,0 +1,116 @@
+{
+  "MODULE_NAME": "AXIS_COLOR_PSYCHOLOGY",
+  "VERSION": "10.5",
+  "DESCRIPTION": "Научно-обоснованная библиотека эмоциональных, конверсионных и UX-свойств цвета. Используется для генерации тем, пресетов и стратегических решений в дизайне.",
+  
+  "COLOR_MODEL": "OKLCH",
+  "COLOR_ENGINE_BEHAVIOR": {
+    "AUTO_MAP_TO_THEME_TOKENS": true,
+    "SUPPORTS_DARK_MODE": true,
+    "INTEGRATES_WITH": [
+      "design_tokens.json",
+      "AXIS_NEURO_DESIGN_LIBRARY.json",
+      "AXIS_CRO_PATTERNS.json",
+      "AXIS_ECOMMERCE_ARCHETYPES.json",
+      "20_AXIS_VISUALIZER.md"
+    ]
+  },
+
+  "EMOTIONAL_MAPPINGS": {
+    "trust": {
+      "oklch_ranges": { "l": "0.7-0.9", "c": "0.05-0.12", "h": "230-260" },
+      "feels_like": "честность, прозрачность, спокойствие",
+      "recommended_for": ["Tech", "Finance", "Healthcare"],
+      "ui_usage": ["Buttons", "Navigation", "Headers"]
+    },
+    "luxury": {
+      "oklch_ranges": { "l": "0.15-0.3", "c": "0.02-0.06", "h": "0-360" },
+      "feels_like": "элегантность, премиум, дороговизна",
+      "recommended_for": ["Luxury", "Fashion", "Jewelry"],
+      "ui_usage": ["Hero Text", "Brand Sections", "Backgrounds"]
+    },
+    "energy": {
+      "oklch_ranges": { "l": "0.7-0.95", "c": "0.15-0.3", "h": "30-70" },
+      "feels_like": "динамика, активность, спортивность",
+      "recommended_for": ["Fitness", "Lifestyle", "D2C"],
+      "ui_usage": ["CTA Buttons", "Badges", "Price Highlights"]
+    },
+    "calm": {
+      "oklch_ranges": { "l": "0.85-0.95", "c": "0.02-0.07", "h": "180-220" },
+      "feels_like": "спокойствие, минимализм, чистота",
+      "recommended_for": ["Spa", "Medical", "Minimal Brands"],
+      "ui_usage": ["Backgrounds", "Forms", "Empty States"]
+    },
+    "danger_alert": {
+      "oklch_ranges": { "l": "0.55-0.8", "c": "0.2-0.35", "h": "5-25" },
+      "feels_like": "ошибка, предупреждение, срочность",
+      "recommended_for": ["Global UX", "Checkout"],
+      "ui_usage": ["Errors", "Warnings", "Stock Alerts"]
+    }
+  },
+
+  "NICHE_RECOMMENDATIONS": {
+    "Luxury": {
+      "palette": "low-lightness, low-chroma, neutral-gold accents",
+      "emotions": ["luxury", "trust"],
+      "notes": "Черный + глубокие нейтралы + золотые акценты повышают воспринимаемую стоимость продукта."
+    },
+    "Beauty": {
+      "palette": "soft pinks, warm pastels, low-chroma neutrals",
+      "emotions": ["calm", "trust"],
+      "notes": "Пастели успокаивают, создают эффект заботы и внимательности."
+    },
+    "Tech": {
+      "palette": "cool blues, cyber-neutrals, glass gradients",
+      "emotions": ["trust"],
+      "notes": "Оттенки синего формируют доверие и ощущение технологичности."
+    },
+    "Fitness": {
+      "palette": "high-chroma oranges, greens, electrics",
+      "emotions": ["energy"],
+      "notes": "Яркие, насыщенные цвета увеличивают мотивацию и CTR."
+    }
+  },
+
+  "BUTTON_COLOR_LOGIC": {
+    "primary": {
+      "rules": [
+        "L > 0.75 for accessibility",
+        "C between 0.12 and 0.3 for phase detection",
+        "Contrast ratio ≥ 4.5:1"
+      ],
+      "emotional_goal": "максимально понятный и вызывающий действие CTA"
+    },
+    "secondary": {
+      "rules": [
+        "Low-chroma neutral tones",
+        "Must not compete with primary"
+      ]
+    }
+  },
+
+  "COLOR_BEHAVIORAL_EFFECTS": {
+    "loss_aversion_trigger": "Warm red/orange signals urgency without deception",
+    "anchoring_boost": "Neutral backgrounds improve product comparison",
+    "choice_reduction": "Low-chroma palettes reduce cognitive load"
+  },
+
+  "ACCESSIBILITY_RULES": {
+    "contrast_minimum": "4.5:1",
+    "avoid": [
+      "high-chroma blue for text",
+      "pure red backgrounds",
+      "yellow text on white"
+    ],
+    "recommended_lightness_range": "0.7-0.95"
+  },
+
+  "TOKEN_GENERATION_PROTOCOL": {
+    "auto_generate_tokens": true,
+    "maps_to": "design_tokens.json",
+    "pattern": {
+      "token_name": "color.<emotion>.<state>",
+      "states": ["default", "hover", "pressed", "dark"]
+    }
+  }
+}
