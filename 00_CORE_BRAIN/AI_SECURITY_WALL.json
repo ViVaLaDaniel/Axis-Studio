@@ -1,0 +1,53 @@
+{
+  "system_component": "AI_SECURITY_WALL",
+  "version": "10.5.0_ENTERPRISE",
+  "status": "ACTIVE",
+  "protocol": "ZERO_TRUST",
+  "firewall_rules": {
+    "BLOCK_DESTRUCTIVE_COMMANDS": {
+      "triggers": ["rm -rf", "delete *", "drop database", "format disk", "wipe", "truncate"],
+      "action": "BLOCK_IMMEDIATELY",
+      "response": "⛔ SECURITY ALERT: Destructive command intercepted."
+    },
+    "PII_PROTECTION": {
+      "triggers": ["password", "api_key", "secret", "token", "access_token", "client_secret"],
+      "protected_file_patterns": [".env", ".env.*", "*.pem", "*.pfx", "*.key"],
+      "action": "MASK_OR_BLOCK",
+      "response": "⚠️ SECURITY WARNING: Attempt to expose sensitive or credential data."
+    },
+    "SYSTEM_INTEGRITY_LOCK": {
+      "protected_paths": [
+        "00_CORE_BRAIN/",
+        "scripts/",
+        ".git/",
+        ".cursorrules",
+        "06_CI_CD_RELEASE/",
+        "05_QUALITY_SECURITY/"
+      ],
+      "write_permission": "CONFIRMATION_REQUIRED",
+      "action": "REQUIRE_EXPLICIT_USER_CONFIRMATION",
+      "user_prompt": "You are about to modify a core/system-critical file. Are you absolutely sure?"
+    },
+    "HALLUCINATION_GUARD": {
+      "check": "Does file path exist OR is it being created in an allowed folder?",
+      "allowed_creation_roots": [
+        "00_CORE_BRAIN/",
+        "01_FOUNDATION_RULES/",
+        "02_STRATEGY_CREATIVE/",
+        "03_ARCHITECTURE/",
+        "04_EXECUTION_DEV/",
+        "05_QUALITY_SECURITY/",
+        "06_CI_CD_RELEASE/",
+        "07_TEAM_DOCS/"
+      ],
+      "action": "VERIFY_BEFORE_WRITE",
+      "on_fail": "ABORT_OPERATION",
+      "response": "⚠️ HALLUCINATION GUARD: Target path is invalid or outside allowed roots."
+    }
+  },
+  "override_protocol": {
+    "command": "sudo --force",
+    "required_auth": "Explicit natural-language confirmation from user (single step, no automation)",
+    "audit_log_target": "18_AXIS_MEMORY_LOG.json"
+  }
+}

@@ -17,7 +17,11 @@
 - ✅ `18_AXIS_MEMORY_LOG.json`
 - ✅ `AXIS_SYSTEM_PROMPT_v10.0.json`
 - ✅ `AXIS_KNOWLEDGE_SYNCER.json`
-- ✅ `AI_BEHAVIOR_TREE.json`
+- ✅ `AI_ROLE_ENGINE.json`
+- ✅ `AI_SECURITY_WALL.json`
+- ✅ `AI_ACTION_MATRIX.json`
+- ✅ `AI_PERFORMANCE_GOVERNOR.json`
+- ✅ `AI_DATA_MODEL.json`
 
 ### ✅ `01_FOUNDATION_RULES/`
 - ✅ `00_AXIS_SYSTEM_v8.0_TECH.txt`
@@ -83,6 +87,10 @@
 - ✅ `AXIS_COMPLETE_DOCUMENTATION_v10.0_GOD_MODE.md`
 - ✅ `AXIS_ROLES_REFERENCE.json`
 - ✅ `TEAM_WORKFLOW_GUIDE.md`
+
+### 🟡 `08_INTEGRATIONS/`
+- ✅ `GEMINI_CLI_ADAPTER.md`
+- ✅ `README.md`
 
 ---
 ## 🎯 Будущие Задачи (Next-Level System Goals)

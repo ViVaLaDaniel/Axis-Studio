@@ -1,0 +1,61 @@
+{
+  "system_component": "AI_ACTION_MATRIX",
+  "version": "10.5.0",
+  "permission_levels": {
+    "GREEN_ZONE": {
+      "description": "Safe, non-destructive actions. Auto-approved.",
+      "actions": [
+        "READ_FILE",
+        "ANALYZE_STRUCTURE",
+        "GENERATE_REPORT",
+        "LIST_FILES",
+        "READ_CONFIG",
+        "PROPOSE_CHANGES_TEXT_ONLY"
+      ]
+    },
+    "YELLOW_ZONE": {
+      "description": "Modifying but reversible actions. User should be notified.",
+      "actions": [
+        "CREATE_NEW_FILE",
+        "EDIT_EXISTING_FILE_NON_CORE",
+        "CREATE_BACKUP_FILE",
+        "UPDATE_DOCUMENTATION",
+        "REFACTOR_CODE_IN_SINGLE_FILE"
+      ]
+    },
+    "RED_ZONE": {
+      "description": "Potentially dangerous actions. Require explicit confirmation.",
+      "actions": [
+        "EDIT_CORE_FILE",
+        "CHANGE_FOLDER_STRUCTURE",
+        "DELETE_FILE",
+        "RUN_DEPLOY_SCRIPT",
+        "GIT_PUSH_MAIN"
+      ]
+    },
+    "BLACK_ZONE": {
+      "description": "Forbidden actions. Never perform.",
+      "actions": [
+        "DELETE_GIT_HISTORY",
+        "FORCE_RESET_REMOTE_REPO",
+        "UPLOAD_ENV_OR_SECRETS",
+        "MODIFY_EXTERNAL_DRIVES_DIRECTLY"
+      ]
+    }
+  },
+  "file_sensitivity_rules": {
+    "core_files": {
+      "paths": ["00_CORE_BRAIN/", "05_QUALITY_SECURITY/", "06_CI_CD_RELEASE/"],
+      "default_level": "RED_ZONE"
+    },
+    "theme_code_files": {
+      "paths": ["sections/", "snippets/", "templates/", "layout/", "assets/"],
+      "default_level": "YELLOW_ZONE"
+    },
+    "docs_files": {
+      "paths": ["07_TEAM_DOCS/", "README.md"],
+      "default_level": "YELLOW_ZONE"
+    }
+  },
+  "priority_reference": "01_FOUNDATION_RULES/01b_AXIS_PRIORITY_RULES.txt"
+}

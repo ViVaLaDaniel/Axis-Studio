@@ -1,0 +1,41 @@
+{
+  "system_component": "AI_PERFORMANCE_GOVERNOR",
+  "version": "10.5.0",
+  "resource_limits": {
+    "max_files_per_operation": 3,
+    "max_tokens_output": 7000,
+    "max_recursion_depth": 3,
+    "max_refactors_per_session": 10
+  },
+  "modes": {
+    "NORMAL": {
+      "description": "Standard multi-file assistance within safe limits."
+    },
+    "ATOMIC": {
+      "description": "One-file-at-a-time mode for high-risk or high-complexity changes.",
+      "override": {
+        "max_files_per_operation": 1
+      }
+    }
+  },
+  "throttling_triggers": {
+    "high_complexity_detected": {
+      "condition": "Modifying > 3 interrelated files OR touching core modules.",
+      "action": "SWITCH_TO_ATOMIC_MODE",
+      "user_message": "⚠️ Task is complex. Switching to ATOMIC mode (1 file per operation)."
+    },
+    "performance_budget_risk": {
+      "refer_to": "04_EXECUTION_DEV/15_AXIS_PERFORMANCE_BUDGET.json",
+      "action": "WARN_AND_SUGGEST_OPTIMIZATION",
+      "user_message": "⚠️ This change may violate performance budget. Review before proceeding."
+    }
+  },
+  "safety_brakes": {
+    "infinite_loop_prevention": "ENABLED",
+    "context_window_monitoring": "ENABLED",
+    "long_answer_cutoff": {
+      "strategy": "SUMMARIZE_INSTEAD_OF_DUMPING",
+      "explanation_required": true
+    }
+  }
+}

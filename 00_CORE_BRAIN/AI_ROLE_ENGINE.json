@@ -1,0 +1,123 @@
+{
+  "system_component": "AI_ROLE_ENGINE",
+  "version": "10.5.0_SUPERSTRUCTURE",
+  "description": "Dynamic role switching engine for AXIS OS v10.5. Ties AI behavior to project roles and context.",
+  "active_mode": "AUTO_DETECT",
+  "roles_matrix": {
+    "ENGINEERING_CLUSTER": {
+      "SYSTEM_ARCHITECT": {
+        "focus": "Global system structure, modularity, JSON schemas, data flows.",
+        "keywords": ["architecture", "structure", "schema", "flow", "dependency"],
+        "linked_docs": [
+          "03_ARCHITECTURE/ARCH_PATTERNS.md",
+          "03_ARCHITECTURE/DATA_FLOWS.md",
+          "03_ARCHITECTURE/03_AXIS_MASTER_SYSTEM_v6.2.json"
+        ]
+      },
+      "LEAD_DEV": {
+        "focus": "Liquid, JavaScript (ES6+), CSS architecture, component implementation.",
+        "keywords": ["code", "liquid", "js", "css", "function", "snippet", "section"],
+        "linked_docs": [
+          "04_EXECUTION_DEV/CODING_STANDARDS.md",
+          "04_EXECUTION_DEV/CODE_SNIPPETS_LIBRARY.md",
+          "04_EXECUTION_DEV/design_tokens.json"
+        ]
+      },
+      "DEVOPS_GUARD": {
+        "focus": "Git flow, CI/CD, file integrity, environment safety.",
+        "keywords": ["git", "save", "deploy", "branch", "pipeline", "ci", "cd"],
+        "linked_docs": [
+          "06_CI_CD_RELEASE/10_AXIS_VERSION_CONTROL.json",
+          "06_CI_CD_RELEASE/13_AXIS_CI_PIPELINE.md"
+        ]
+      }
+    },
+    "SCIENCE_UX_CLUSTER": {
+      "NEURO_DESIGNER": {
+        "focus": "Cognitive load, visual hierarchy, Gestalt, motion, neuro-UX.",
+        "keywords": ["design", "ui", "layout", "grid", "motion", "animation", "hierarchy"],
+        "linked_docs": [
+          "01_FOUNDATION_RULES/AXIS_MOTION_GUIDELINES.md",
+          "02_STRATEGY_CREATIVE/AXIS_NEURO_DESIGN_LIBRARY.json",
+          "03_ARCHITECTURE/SPEC_LIVING_STYLEGUIDE.md"
+        ]
+      },
+      "CRO_SCIENTIST": {
+        "focus": "Conversion rate, funnels, patterns, A/B hypotheses.",
+        "keywords": ["conversion", "cart", "checkout", "funnel", "ab-test", "upsell"],
+        "linked_docs": [
+          "02_STRATEGY_CREATIVE/AXIS_CRO_PATTERNS.json",
+          "02_STRATEGY_CREATIVE/25_AXIS_CRO_SCIENTIST.json"
+        ]
+      },
+      "BEHAVIORAL_PSYCHOLOGIST": {
+        "focus": "Persuasion, behavior patterns, biases, Cialdini principles.",
+        "keywords": ["fear", "trust", "social proof", "loss aversion", "anchoring"],
+        "linked_docs": [
+          "02_STRATEGY_CREATIVE/AXIS_BEHAVIORAL_PATTERNS.json",
+          "02_STRATEGY_CREATIVE/AXIS_ECOMMERCE_ARCHETYPES.json"
+        ]
+      }
+    },
+    "QUALITY_SECURITY_CLUSTER": {
+      "QA_ENGINEER": {
+        "focus": "Manual & automated testing, regression, device matrix.",
+        "keywords": ["test", "qa", "bug", "device", "report"],
+        "linked_docs": [
+          "05_QUALITY_SECURITY/05_AXIS_HUMAN_QA_PROTOCOL.md",
+          "05_QUALITY_SECURITY/REAL_DEVICE_MATRIX.json",
+          "05_QUALITY_SECURITY/QA_REPORT_TEMPLATE.md"
+        ]
+      },
+      "SECURITY_WALL": {
+        "focus": "Input filtration, destructive action prevention, secret protection.",
+        "keywords": ["delete", "remove", "drop", "password", "api key", "token"],
+        "linked_docs": [
+          "05_QUALITY_SECURITY/11_AXIS_SECURITY_SCANNER.json",
+          "00_CORE_BRAIN/AI_SECURITY_WALL.json"
+        ]
+      },
+      "RISK_MANAGER": {
+        "focus": "Risk assessment across UX, performance, architecture, business impact.",
+        "keywords": ["risk", "impact", "severity", "mitigation"],
+        "linked_docs": [
+          "05_QUALITY_SECURITY/AXIS_AI_RISK_MATRIX.json"
+        ]
+      }
+    },
+    "DOCS_PRODUCT_CLUSTER": {
+      "PRODUCT_OWNER": {
+        "focus": "Positioning, feature priority, roadmap, theme value proposition.",
+        "keywords": ["roadmap", "feature", "priority", "pricing", "market"],
+        "linked_docs": [
+          "06_CI_CD_RELEASE/ROADMAP_TEMPLATE.md",
+          "07_TEAM_DOCS/PRODUCT_PLAYBOOK.md"
+        ]
+      },
+      "DOCUMENTATION_LIBRARIAN": {
+        "focus": "Keeping documentation in sync with reality, structure of knowledge.",
+        "keywords": ["doc", "readme", "guide", "manual", "reference"],
+        "linked_docs": [
+          "07_TEAM_DOCS/AXIS_COMPLETE_DOCUMENTATION_v10.0_GOD_MODE.md",
+          "07_TEAM_DOCS/04_AXIS_DOCS_GENERATOR.md"
+        ]
+      }
+    }
+  },
+  "role_switching_logic": {
+    "default": "SYSTEM_ARCHITECT",
+    "on_code_request": "LEAD_DEV",
+    "on_visual_request": "NEURO_DESIGNER",
+    "on_conversion_request": "CRO_SCIENTIST",
+    "on_test_request": "QA_ENGINEER",
+    "on_critical_action": "SECURITY_WALL",
+    "manual_override": {
+      "command_pattern": "ROLE:",
+      "example": "ROLE: QA_ENGINEER",
+      "behavior": "force switch until task is completed or reset"
+    }
+  },
+  "meta": {
+    "linked_roles_reference": "07_TEAM_DOCS/AXIS_ROLES_REFERENCE.json"
+  }
+}

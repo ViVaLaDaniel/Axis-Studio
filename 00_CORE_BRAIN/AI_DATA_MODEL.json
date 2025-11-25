@@ -1,0 +1,65 @@
+{
+  "system_component": "AI_DATA_MODEL",
+  "version": "10.5.0",
+  "entities": {
+    "SECTION": {
+      "description": "Independent UI unit (Liquid + JSON Schema + CSS).",
+      "source_files": ["sections/*.liquid"],
+      "linked_docs": ["03_ARCHITECTURE/DATA_FLOWS.md"]
+    },
+    "SNIPPET": {
+      "description": "Reusable UI or logic fragment.",
+      "source_files": ["snippets/*.liquid"]
+    },
+    "TEMPLATE": {
+      "description": "Top-level page template wiring sections together.",
+      "source_files": ["templates/*.json", "templates/*.liquid"]
+    },
+    "TOKEN": {
+      "description": "Design token (color, spacing, font, motion) defined in design_tokens.json.",
+      "source_files": ["04_EXECUTION_DEV/design_tokens.json"],
+      "linked_docs": ["03_ARCHITECTURE/SPEC_LIVING_STYLEGUIDE.md"]
+    },
+    "SIGNAL": {
+      "description": "JS event used for decoupled communication.",
+      "examples": ["UI.VARIANT.CHANGE", "CART.UPDATED", "A11Y.ERROR"],
+      "linked_docs": ["01_FOUNDATION_RULES/TECH_AXIS_SIGNALS.md"]
+    },
+    "UX_PATTERN": {
+      "description": "UX interface pattern (cards, layout, form flow).",
+      "source_files": ["02_STRATEGY_CREATIVE/AXIS_NEURO_DESIGN_LIBRARY.json"]
+    },
+    "CRO_PATTERN": {
+      "description": "Conversion pattern (sticky ATC, progress bar, social proof block).",
+      "source_files": ["02_STRATEGY_CREATIVE/AXIS_CRO_PATTERNS.json"]
+    },
+    "ARCHETYPE": {
+      "description": "E-commerce customer archetype (luxury, bargain hunter, tech buyer).",
+      "source_files": ["02_STRATEGY_CREATIVE/AXIS_ECOMMERCE_ARCHETYPES.json"]
+    },
+    "BEHAVIOR_PATTERN": {
+      "description": "Behavior rule or bias affecting user decisions.",
+      "source_files": ["02_STRATEGY_CREATIVE/AXIS_BEHAVIORAL_PATTERNS.json"]
+    },
+    "ERROR": {
+      "description": "Detected issue in code, UX, performance or security.",
+      "source_files": ["00_CORE_BRAIN/AI_ERROR_MODEL.json", "18_AXIS_MEMORY_LOG.json"]
+    },
+    "TASK": {
+      "description": "Unit of work for AI or human (feature, fix, refactor).",
+      "source_files": ["07_TEAM_DOCS/AXIS_AI_TASK_MANAGER.md"]
+    }
+  },
+  "relationships": {
+    "SECTION_uses_SNIPPET": true,
+    "SECTION_uses_TOKEN": true,
+    "SECTION_emits_SIGNAL": true,
+    "SNIPPET_emits_SIGNAL": true,
+    "JS_listens_SIGNAL": true,
+    "UX_PATTERN_uses_TOKEN": true,
+    "CRO_PATTERN_uses_UX_PATTERN": true,
+    "ARCHETYPE_influences_CRO_PATTERN": true,
+    "ERROR_creates_TASK": true,
+    "TASK_links_to_FILES": true
+  }
+}
