@@ -17,7 +17,7 @@
 - ✅ `18_AXIS_MEMORY_LOG.json`
 - ✅ `AXIS_SYSTEM_PROMPT_v10.json`
 - ✅ `AXIS_KNOWLEDGE_SYNCER.json`
-- ❌ `AI_BEHAVIOR_TREE.json`
+- ✅ `AI_BEHAVIOR_TREE.json`
 
 ### ✅ `01_FOUNDATION_RULES/`
 - ✅ `00_AXIS_SYSTEM_v8.0_TECH.txt`
