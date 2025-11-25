@@ -1,0 +1,28 @@
+{
+  "ci": {
+    "collect": {
+      "url": ["http://localhost:3000"],
+      "startServerCommand": "npm run start",
+      "startServerReadyTimeout": 10000,
+      "numberOfRuns": 3
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", {"minScore": 0.90}],
+        "categories:accessibility": ["error", {"minScore": 0.95}],
+        "categories:best-practices": ["warn", {"minScore": 0.90}],
+        "categories:seo": ["error", {"minScore": 0.95}],
+        "performance-budget": ["error", {"maxNumericValue": 150000}],
+        "metrics:interactive": ["error", {"maxNumericValue": 3000}],
+        "metrics:largest-contentful-paint": ["error", {"maxNumericValue": 2500}],
+        "metrics:cumulative-layout-shift": ["error", {"maxNumericValue": 0.1}],
+        "mainthread-work-breakdown": ["warn", {"maxNumericValue": 300}],
+        "resource-summary:script:size": ["error", {"maxNumericValue": 150000}],
+        "resource-summary:stylesheet:size": ["error", {"maxNumericValue": 100000}]
+      }
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    }
+  }
+}
