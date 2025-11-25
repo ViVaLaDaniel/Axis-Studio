@@ -10,12 +10,12 @@
 
 ---
 
-### 🟡 `00_CORE_BRAIN/`
+### ✅ `00_CORE_BRAIN/`
 - ✅ `axis_brain_v10.0_GOD_MODE.json`
-- ❌ `00_INDEX_AXIS_PROJECT_v10.0.md`
+- ✅ `00_INDEX_AXIS_PROJECT_v10.0.md`
 - ✅ `17_AXIS_CONTEXT_ROUTER.json`
 - ✅ `18_AXIS_MEMORY_LOG.json`
-- ✅ `AXIS_SYSTEM_PROMPT_v10.json`
+- ✅ `AXIS_SYSTEM_PROMPT_v10.0.json`
 - ✅ `AXIS_KNOWLEDGE_SYNCER.json`
 - ✅ `AI_BEHAVIOR_TREE.json`
 
