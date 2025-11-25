@@ -1,11 +1,41 @@
 {
   "system_name": "AXIS_PERFORMANCE_BUDGET",
+  "description": "Defines the performance budget for the theme. These values are enforced by CI/CD checks (e.g., Lighthouse CI). All values should ideally be sourced from '00_CORE_BRAIN/AXIS_GLOBAL_CONSTANTS.json'.",
   "metrics": {
-    "lighthouse_min_score": 90,
-    "js_soft_limit_kb": 90,
-    "js_hard_limit_kb": 150,
-    "css_hard_limit_kb": 50,
-    "lcp_target_seconds": 1.2
+    "lighthouse_performance_score_min": {
+      "value": 92,
+      "source": "AXIS_GLOBAL_CONSTANTS.json"
+    },
+    "lcp_ms": {
+      "value": 2500,
+      "description": "Largest Contentful Paint (ms)",
+      "source": "AXIS_GLOBAL_CONSTANTS.json"
+    },
+    "inp_ms": {
+      "value": 200,
+      "description": "Interaction to Next Paint (ms)",
+      "source": "AXIS_GLOBAL_CONSTANTS.json"
+    },
+    "cls": {
+      "value": 0.1,
+      "description": "Cumulative Layout Shift",
+      "source": "AXIS_GLOBAL_CONSTANTS.json"
+    },
+    "main_thread_blocking_ms": {
+      "value": 300,
+      "description": "Total Main-Thread Blocking Time (ms)",
+      "source": "AXIS_GLOBAL_CONSTANTS.json"
+    },
+    "js_bundle_size_kb": {
+      "value": 150,
+      "description": "Initial JS bundle size (KB)",
+      "source": "AXIS_GLOBAL_CONSTANTS.json"
+    },
+    "css_bundle_size_kb": {
+      "value": 100,
+      "description": "Initial CSS bundle size (KB)",
+      "source": "AXIS_GLOBAL_CONSTANTS.json"
+    }
   },
-  "enforcement": "Fail build if hard limits exceeded."
+  "enforcement": "Fail CI/CD pipeline if any of these budget metrics are exceeded."
 }
