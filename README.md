@@ -63,6 +63,7 @@
 - ✅ `CODE_SNIPPETS_LIBRARY.md`
 - ✅ `CODING_STANDARDS.md`
 - ✅ `design_tokens.json`
+- ✅ `NEGOTIATION_PROTOCOL.json`
 
 ### ✅ `05_QUALITY_SECURITY/`
 - ✅ `05_AXIS_HUMAN_QA_PROTOCOL.md`
@@ -224,6 +225,7 @@
 - [**`CODE_SNIPPETS_LIBRARY.md`**](./04_EXECUTION_DEV/CODE_SNIPPETS_LIBRARY.md) — **Библиотека Сниппетов.**
 - [**`CODING_STANDARDS.md`**](./04_EXECUTION_DEV/CODING_STANDARDS.md) — **Стандарты Кодирования.**
 - [**`design_tokens.json`**](./04_EXECUTION_DEV/design_tokens.json) — **Дизайн-Токены.**
+- [**`NEGOTIATION_PROTOCOL.json`**](./04_EXECUTION_DEV/NEGOTIATION_PROTOCOL.json) — **Протокол Переговоров.** Определяет логику отката для разрешения конфликтов.
 
 </details>
 

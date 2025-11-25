@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0",
+  "description": "Defines the negotiation and graceful degradation protocols for resolving conflicts between strategic feature requests and technical constraints (e.g., performance budgets). This prevents deadlocks and allows the system to find a viable compromise.",
+  "policies": [
+    {
+      "policy_name": "Hero_Component_Media_Negotiation",
+      "trigger": {
+        "type": "PERFORMANCE_BUDGET_VIOLATION",
+        "scope": "component:hero"
+      },
+      "negotiation_chain": [
+        {
+          "step": 1,
+          "feature": "3D_MODEL_INTERACTIVE",
+          "description": "Highest-impact, highest-cost feature."
+        },
+        {
+          "step": 2,
+          "feature": "VIDEO_BACKGROUND_AUTOPLAY",
+          "description": "Fallback to a high-quality, muted video loop."
+        },
+        {
+          "step": 3,
+          "feature": "ANIMATED_SVG_ELEMENTS",
+          "description": "Fallback to lightweight vector animations."
+        },
+        {
+          "step": 4,
+          "feature": "STATIC_IMAGE_KEN_BURNS",
+          "description": "Fallback to a high-resolution image with subtle zoom/pan effects."
+        },
+        {
+          "step": 5,
+          "feature": "STATIC_IMAGE_OPTIMIZED",
+          "description": "Safest fallback: a highly optimized static WebP image."
+        }
+      ]
+    },
+    {
+      "policy_name": "Product_Grid_Image_Negotiation",
+      "trigger": {
+        "type": "PERFORMANCE_BUDGET_VIOLATION",
+        "scope": "component:product_grid"
+      },
+      "negotiation_chain": [
+        {
+          "step": 1,
+          "feature": "IMAGE_SECOND_ON_HOVER",
+          "description": "Show secondary product image on hover."
+        },
+        {
+          "step": 2,
+          "feature": "IMAGE_ZOOM_ON_HOVER",
+          "description": "Fallback to a simple CSS zoom effect."
+        },
+        {
+          "step": 3,
+          "feature": "STATIC_IMAGE_NO_EFFECT",
+          "description": "Safest fallback: no hover effect on product grid images."
+        }
+      ]
+    },
+    {
+      "policy_name": "Generic_Feature_Negotiation",
+      "trigger": {
+        "type": "ANY_CONSTRAINT_VIOLATION"
+      },
+      "negotiation_chain": [
+        {
+          "step": 1,
+          "action": "PROPOSE_LAZY_LOADING",
+          "description": "Attempt to solve the issue by deferring the loading of the component."
+        },
+        {
+          "step": 2,
+          "action": "PROPOSE_REDUCED_FUNCTIONALITY",
+          "description": "Ask the user to approve a version of the feature with high-cost elements removed."
+        },
+        {
+          "step": 3,
+          "action": "ABORT_AND_REPORT",
+          "description": "If no compromise can be found, abort the task and report the deadlock with suggestions."
+        }
+      ]
+    }
+  ]
+}
