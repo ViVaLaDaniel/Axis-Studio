@@ -22,6 +22,7 @@
 - ✅ `AI_ACTION_MATRIX.json`
 - ✅ `AI_PERFORMANCE_GOVERNOR.json`
 - ✅ `AI_DATA_MODEL.json`
+- ✅ `AXIS_GLOBAL_CONSTANTS.json`
 
 ### ✅ `01_FOUNDATION_RULES/`
 - ✅ `00_AXIS_SYSTEM_v8.0_TECH.txt`
@@ -155,6 +156,7 @@
 - [**`AI_ACTION_MATRIX.json`**](./00_CORE_BRAIN/AI_ACTION_MATRIX.json) — **Матрица Действий AI.** Определяет разрешения на выполнение действий.
 - [**`AI_PERFORMANCE_GOVERNOR.json`**](./00_CORE_BRAIN/AI_PERFORMANCE_GOVERNOR.json) — **Губернатор Производительности AI.** Ограничивает ресурсы.
 - [**`AI_DATA_MODEL.json`**](./00_CORE_BRAIN/AI_DATA_MODEL.json) — **Модель Данных AI.** Определяет словарь сущностей.
+- [**`AXIS_GLOBAL_CONSTANTS.json`**](./00_CORE_BRAIN/AXIS_GLOBAL_CONSTANTS.json) — **Глобальные Константы.** Единый источник правды для всех лимитов и констант.
 - [**`AXIS_KNOWLEDGE_SYNCER.json`**](./00_CORE_BRAIN/AXIS_KNOWLEDGE_SYNCER.json) — **Ядро Знаний и Синхронизатор.**
 - [**`AXIS_SYSTEM_PROMPT_v10.json`**](./00_CORE_BRAIN/AXIS_SYSTEM_PROMPT_v10.json) — **Системный промпт.**
 

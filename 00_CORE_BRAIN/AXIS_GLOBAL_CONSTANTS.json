@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "description": "Single source of truth for all global constants, limits, and forbidden technologies across the AXIS OS. All modules must reference this file instead of hardcoding values.",
+  "performance_budgets": {
+    "comment": "Core Web Vitals and performance metrics based on the OMEGA audit.",
+    "LCP_ms": {
+      "value": 2500,
+      "description": "Largest Contentful Paint (in milliseconds). Target for 75th percentile."
+    },
+    "INP_ms": {
+      "value": 200,
+      "description": "Interaction to Next Paint (in milliseconds). Target for 75th percentile."
+    },
+    "CLS": {
+      "value": 0.1,
+      "description": "Cumulative Layout Shift. Unitless."
+    },
+    "main_thread_blocking_ms": {
+      "value": 300,
+      "description": "Maximum total main-thread blocking time during page load."
+    },
+    "js_bundle_size_kb": {
+      "value": 150,
+      "description": "Initial JavaScript bundle size limit in kilobytes."
+    },
+    "css_bundle_size_kb": {
+      "value": 100,
+      "description": "Initial CSS bundle size limit in kilobytes."
+    },
+    "lighthouse_performance_score_min": {
+      "value": 92,
+      "description": "Minimum acceptable Lighthouse performance score for CI/CD checks."
+    }
+  },
+  "forbidden_tech_stack": [
+    "jQuery",
+    "Alpine.js",
+    "AngularJS",
+    "Bootstrap.js (use native CSS or Headless UI components)",
+    "img_url filter (use responsive image techniques)"
+  ],
+  "security_constants": {
+    "max_asset_upload_size_kb": 2048
+  },
+  "qa_constants": {
+    "minimum_a11y_score": 95,
+    "minimum_seo_score": 95
+  }
+}
