@@ -1,5 +1,89 @@
 # <p align="center">🚀 AXIS Studios v10.5: Scientific Edition 🚀</p>
 
+## 🗺️ Дорожная карта проекта
+
+Ниже представлена визуальная дорожная карта проекта AXIS. Карта обновляется автоматически после каждого коммита, отражая текущий статус готовности каждого модуля.
+
+- ✅ **Готово:** Файл или модуль полностью завершен.
+- ❌ **В работе:** Файл запланирован, но еще не создан.
+- 🟡 **Частично готово:** Директория содержит как готовые, так и незавершенные файлы.
+
+---
+
+### 🟡 `00_CORE_BRAIN/`
+- ✅ `axis_brain_v10.0_GOD_MODE.json`
+- ❌ `00_INDEX_AXIS_PROJECT_v10.0.md`
+- ✅ `17_AXIS_CONTEXT_ROUTER.json`
+- ✅ `18_AXIS_MEMORY_LOG.json`
+- ✅ `AXIS_SYSTEM_PROMPT_v10.json`
+- ✅ `AXIS_KNOWLEDGE_SYNCER.json`
+- ❌ `AI_BEHAVIOR_TREE.json`
+
+### ✅ `01_FOUNDATION_RULES/`
+- ✅ `00_AXIS_SYSTEM_v8.0_TECH.txt`
+- ✅ `01_AXIS_DESIGN_v1.3_UX.txt`
+- ✅ `01b_AXIS_PRIORITY_RULES.txt`
+- ✅ `AXIS_COLOR_PSYCHOLOGY.json`
+- ✅ `TECH_AXIS_SIGNALS.md`
+- ✅ `AXIS_TEXT_GUIDELINES.md`
+- ✅ `AXIS_MOTION_GUIDELINES.md`
+
+### ✅ `02_STRATEGY_CREATIVE/`
+- ✅ `02_AXIS_PROMPT_STRATEGY.md`
+- ✅ `06_AXIS_CREATIVE_ENGINE.json`
+- ✅ `06b_AXIS_CREATIVE_FEASIBILITY_CHECKER.json`
+- ✅ `20_AXIS_VISUALIZER.md`
+- ✅ `24_AXIS_COMPETITOR_INTEL.json`
+- ✅ `25_AXIS_CRO_SCIENTIST.json`
+- ✅ `AXIS_NEURO_DESIGN_LIBRARY.json`
+- ✅ `AXIS_CRO_PATTERNS.json`
+- ✅ `AXIS_ECOMMERCE_ARCHETYPES.json`
+- ✅ `AXIS_BEHAVIORAL_PATTERNS.json`
+- ✅ `UX_RESEARCH_LIBRARY.json`
+
+### 🟡 `03_ARCHITECTURE/`
+- ✅ `03_AXIS_MASTER_SYSTEM_v6.2.json`
+- ✅ `09_AXIS_DEPENDENCY_MANAGER.json`
+- ✅ `14_SECTION_CLUSTER_MANAGER.md`
+- ✅ `16_TEMPLATE_SPLITTER_TOOL.md`
+- ✅ `ARCH_PATTERNS.md`
+- ✅ `DATA_FLOWS.md`
+- ✅ `SPEC_LIVING_STYLEGUIDE.md`
+- ❌ `ARCH_FLOWCHARTS.md`
+
+### ✅ `04_EXECUTION_DEV/`
+- ✅ `19_AXIS_APP_INTEGRATION_GUIDE.json`
+- ✅ `12_AXIS_ERROR_HANDLING.json`
+- ✅ `15_AXIS_PERFORMANCE_BUDGET.json`
+- ✅ `CODE_SNIPPETS_LIBRARY.md`
+- ✅ `CODING_STANDARDS.md`
+- ✅ `design_tokens.json`
+
+### 🟡 `05_QUALITY_SECURITY/`
+- ✅ `05_AXIS_HUMAN_QA_PROTOCOL.md`
+- ✅ `07_AXIS_AUTO_TEST.json`
+- ✅ `11_AXIS_SECURITY_SCANNER.json`
+- ✅ `23_AXIS_A11Y_CHECKER.json`
+- ✅ `14b_MOCK_DATA_INJECTOR.json`
+- ✅ `REAL_DEVICE_MATRIX.json`
+- ❌ `DEVICE_BENCHMARKS.json`
+- ✅ `QA_REPORT_TEMPLATE.md`
+
+### ✅ `06_CI_CD_RELEASE/`
+- ✅ `10_AXIS_VERSION_CONTROL.json`
+- ✅ `13_AXIS_CI_PIPELINE.md`
+- ✅ `21_AXIS_DEMO_MASTER.json`
+- ✅ `22_AXIS_SUBMISSION_PACKAGER.json`
+- ✅ `ROADMAP_TEMPLATE.md`
+
+### 🟡 `07_TEAM_DOCS/`
+- ✅ `04_AXIS_DOCS_GENERATOR.md`
+- ✅ `08_AXIS_TEAM_PROTOCOL.md`
+- ✅ `PRODUCT_PLAYBOOK.md`
+- ✅ `AXIS_COMPLETE_DOCUMENTATION_v10.0_GOD_MODE.md`
+- ✅ `AXIS_ROLES_REFERENCE.json`
+- ❌ `TEAM_WORKFLOW_GUIDE.md`
+
 <p align="center">
   <img alt="Version" src="https://img.shields.io/badge/version-10.5-blue.svg?cacheSeconds=2592000" />
   <img alt="Status" src="https://img.shields.io/badge/status-production--ready-brightgreen.svg" />
