@@ -1,0 +1,5 @@
+﻿{
+  "meta": { "version": "1.0", "type": "UX_RESEARCH" },
+  "heuristics": [],
+  "accessibility_checklist": { "wcag_level": "AA" }
+}

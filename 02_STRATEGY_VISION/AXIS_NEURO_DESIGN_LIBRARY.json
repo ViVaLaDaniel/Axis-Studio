@@ -1,0 +1,4 @@
+﻿{
+  "meta": { "version": "1.0", "type": "NEURO_DESIGN" },
+  "principles": [ "cognitive_load_minimization", "f_pattern_layout" ]
+}

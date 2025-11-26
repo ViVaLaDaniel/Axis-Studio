@@ -1,0 +1,7 @@
+﻿{
+  "meta": { "version": "1.0", "type": "CRO_PATTERNS" },
+  "patterns": {
+    "scarcity": { "enabled": true, "method": "low_stock_threshold" },
+    "social_proof": { "enabled": true, "method": "reviews_count" }
+  }
+}
