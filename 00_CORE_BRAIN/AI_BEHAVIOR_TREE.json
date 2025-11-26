@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "description": "The main behavior tree for the AXIS AI execution engine.",
+  "tasks": [
+    {
+      "id": "task_001",
+      "name": "Initialize Project",
+      "type": "command",
+      "enabled": true,
+      "details": {
+        "description": "Log a message indicating the start of the process.",
+        "command": "echo 'AI Engine Started. Initializing project...'"
+      }
+    },
+    {
+      "id": "task_002",
+      "name": "Create Theme Files",
+      "type": "file_operation",
+      "enabled": false,
+      "details": {
+        "description": "Create a basic theme file structure.",
+        "operations": [
+          {
+            "action": "create_file",
+            "path": "theme/layout/theme.liquid",
+            "content": "<h1>Hello, World!</h1>"
+          }
+        ]
+      }
+    }
+  ]
+}
