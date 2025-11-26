@@ -171,31 +171,31 @@
 > Эта папка содержит "Конституцию" проекта. Это нерушимые законы и фундаментальные правила, на которых строится вся разработка.
 
 #### 📄 Содержимое:
-- [**`00_AXIS_SYSTEM_v8.0_TECH.txt`**](./01_FOUNDATION_RULES/00_AXIS_SYSTEM_v8.0_TECH.txt) — **Техническая Конституция.**
-- [**`01_AXIS_DESIGN_v1.3_UX.txt`**](./01_FOUNDATION_RULES/01_AXIS_DESIGN_v1.3_UX.txt) — **Дизайн-Система.**
-- [**`01b_AXIS_PRIORITY_RULES.txt`**](./01_FOUNDATION_RULES/01b_AXIS_PRIORITY_RULES.txt) — **Правила Приоритетов.**
-- [**`AXIS_COLOR_PSYCHOLOGY.json`**](./01_FOUNDATION_RULES/AXIS_COLOR_PSYCHOLOGY.json) — **Психология Цвета.**
-- [**`AXIS_MOTION_GUIDELINES.md`**](./01_FOUNDATION_RULES/AXIS_MOTION_GUIDELINES.md) — **Гайд по Анимации.**
-- [**`AXIS_TEXT_GUIDELINES.md`**](./01_FOUNDATION_RULES/AXIS_TEXT_GUIDELINES.md) — **Гайд по UX-текстам.**
-- [**`TECH_AXIS_SIGNALS.md`**](./01_FOUNDATION_RULES/TECH_AXIS_SIGNALS.md) — **Центральная Система Сигналов.**
+- [**✅ `00_AXIS_SYSTEM_v8.0_TECH.txt`**](./01_FOUNDATION_RULES/00_AXIS_SYSTEM_v8.0_TECH.txt) — **Техническая Конституция.**
+- [**✅ `01_AXIS_DESIGN_v1.3_UX.txt`**](./01_FOUNDATION_RULES/01_AXIS_DESIGN_v1.3_UX.txt) — **Дизайн-Система.**
+- [**✅ `01b_AXIS_PRIORITY_RULES.txt`**](./01_FOUNDATION_RULES/01b_AXIS_PRIORITY_RULES.txt) — **Правила Приоритетов.**
+- [**✅ `AXIS_COLOR_PSYCHOLOGY.json`**](./01_FOUNDATION_RULES/AXIS_COLOR_PSYCHOLOGY.json) — **Психология Цвета.**
+- [**✅ `AXIS_MOTION_GUIDELINES.md`**](./01_FOUNDATION_RULES/AXIS_MOTION_GUIDELINES.md) — **Гайд по Анимации.**
+- [**✅ `AXIS_TEXT_GUIDELISHNES.md`**](./01_FOUNDATION_RULES/AXIS_TEXT_GUIDELINES.md) — **Гайд по UX-текстам.**
+- [**✅ `TECH_AXIS_SIGNALS.md`**](./01_FOUNDATION_RULES/TECH_AXIS_SIGNALS.md) — **Центральная Система Сигналов.**
+- [**✅ `COMPETITOR_ANALYSIS_IMPACT_THEME.md`**](./01_FOUNDATION_RULES/COMPETITOR_ANALYSIS_IMPACT_THEME.md) — **Анализ темы Impact.**
+- [**✅ `UX_RESEARCH_LIBRARY.json`**](./01_FOUNDATION_RULES/UX_RESEARCH_LIBRARY.json) — **Репозиторий UX-исследований.**
 
 </details>
 
 <details>
-<summary><code>#02_STRATEGY_CREATIVE</code> — Стратегия и Креатив</summary>
+<summary><code>#02_STRATEGY_VISION</code> — Стратегия и Креатив</summary>
 
 > Этот блок отвечает за стратегическое планирование, креатив и UX-науку. Файлы здесь помогают AI анализировать рынок, генерировать уникальные идеи и избегать "generic" дизайна.
 
 #### 📄 Содержимое:
-- [**`02_AXIS_PROMPT_STRATEGY.md`**](./02_STRATEGY_CREATIVE/02_AXIS_PROMPT_STRATEGY.md) — **Генератор Стратегии.**
-- [**`06_AXIS_CREATIVE_ENGINE.json`**](./02_STRATEGY_CREATIVE/06_AXIS_CREATIVE_ENGINE.json) — **Креативный Движок.**
-- [**`24_AXIS_COMPETITOR_INTEL.json`**](./02_STRATEGY_CREATIVE/24_AXIS_COMPETITOR_INTEL.json) — **Анализ Конкурентов.**
-- [**`25_AXIS_CRO_SCIENTIST.json`**](./02_STRATEGY_CREATIVE/25_AXIS_CRO_SCIENTIST.json) — **CRO-ученый.**
-- [**`AXIS_BEHAVIORAL_PATTERNS.json`**](./02_STRATEGY_CREATIVE/AXIS_BEHAVIORAL_PATTERNS.json) — **Поведенческие Паттерны.**
-- [**`AXIS_NEURO_DESIGN_LIBRARY.json`**](./02_STRATEGY_CREATIVE/AXIS_NEURO_DESIGN_LIBRARY.json) — **Библиотека Нейро-дизайна.**
-- [**`AXIS_CRO_PATTERNS.json`**](./02_STRATEGY_CREATIVE/AXIS_CRO_PATTERNS.json) — **Паттерны CRO.**
-- [**`AXIS_ECOMMERCE_ARCHETYPES.json`**](./02_STRATEGY_CREATIVE/AXIS_ECOMMERCE_ARCHETYPES.json) — **Архетипы E-commerce.**
-- [**`UX_RESEARCH_LIBRARY.json`**](./02_STRATEGY_CREATIVE/UX_RESEARCH_LIBRARY.json) — **Репозиторий UX-исследований.**
+- [**✅ `02_AXIS_PROMPT_STRATEGY.md`**](./02_STRATEGY_CREATIVE/02_AXIS_PROMPT_STRATEGY.md) — **Генератор Стратегии.**
+- [**✅ `06_AXIS_CREATIVE_ENGINE.json`**](./02_STRATEGY_CREATIVE/06_AXIS_CREATIVE_ENGINE.json) — **Креативный Движок.**
+- [**✅ `24_AXIS_COMPETITOR_INTEL.json`**](./02_STRATEGY_CREATIVE/24_AXIS_COMPETITOR_INTEL.json) — **Анализ Конкурентов.**
+- [**✅ `25_AXIS_CRO_SCIENTIST.json`**](./02_STRATEGY_CREATIVE/25_AXIS_CRO_SCIENTIST.json) — **CRO-ученый.**
+- [**✅ `AXIS_NEURO_DESIGN_LIBRARY.json`**](./02_STRATEGY_CREATIVE/AXIS_NEURO_DESIGN_LIBRARY.json) — **Библиотека Нейро-дизайна.**
+- [**✅ `AXIS_CRO_PATTERNS.json`**](./02_STRATEGY_CREATIVE/AXIS_CRO_PATTERNS.json) — **Паттерны CRO.**
+- [**✅ `AXIS_ECOMMERCE_ARCHETYPES.json`**](./02_STRATEGY_CREATIVE/AXIS_ECOMMERCE_ARCHETYPES.json) — **Архетипы E-commerce.**
 
 </details>
 
@@ -208,10 +208,9 @@
 - [**`03_AXIS_MASTER_SYSTEM_v6.2.json`**](./03_ARCHITECTURE/03_AXIS_MASTER_SYSTEM_v6.2.json) — **Мастер-Система.**
 - [**`09_AXIS_DEPENDENCY_MANAGER.json`**](./03_ARCHITECTURE/09_AXIS_DEPENDENCY_MANAGER.json) — **Менеджер Зависимостей.**
 - [**`14_SECTION_CLUSTER_MANAGER.md`**](./03_ARCHITECTURE/14_SECTION_CLUSTER_MANAGER.md) — **Менеджер Кластеров.**
-- [**`ARCH_PATTERNS.md`**](./03_ARCHITECTURE/ARCH_PATTERNS.md) — **Архитектурные Паттерны.**
-- [**`DATA_FLOWS.md`**](./03_ARCHITECTURE/DATA_FLOWS.md) — **Потоки Данных.**
-- [**`SPEC_LIVING_STYLEGUIDE.md`**](./03_ARCHITECTURE/SPEC_LIVING_STYLEGUIDE.md) — **Живой Стайлгайд.**
-- [**`ARCH_FLOWCHARTS.md`**](./03_ARCHITECTURE/ARCH_FLOWCHARTS.md) — **Визуальные схемы архитектуры.**
+- [**✅ `ARCH_PATTERNS.md`**](./03_ARCHITECTURE/ARCH_PATTERNS.md) — **Архитектурные Паттерны.**
+- [**✅ `DATA_FLOWS.md`**](./03_ARCHITECTURE/DATA_FLOWS.md) — **Потоки Данных.**
+- [**✅ `ARCH_FLOWCHARTS.md`**](./03_ARCHITECTURE/ARCH_FLOWCHARTS.md) — **Визуальные схемы архитектуры.**
 
 </details>
 
@@ -221,13 +220,14 @@
 > Это "цех" проекта. Здесь находятся инструменты и руководства для непосредственного написания кода (Liquid, JS, CSS) и интеграции со сторонними приложениями.
 
 #### 📄 Содержимое:
-- [**`12_AXIS_ERROR_HANDLING.json`**](./04_EXECUTION_DEV/12_AXIS_ERROR_HANDLING.json) — **Обработчик Ошибок.**
-- [**`15_AXIS_PERFORMANCE_BUDGET.json`**](./04_EXECUTION_DEV/15_AXIS_PERFORMANCE_BUDGET.json) — **Бюджет Производительности.**
-- [**`19_AXIS_APP_INTEGRATION_GUIDE.json`**](./04_EXECUTION_DEV/19_AXIS_APP_INTEGRATION_GUIDE.json) — **Гид по Интеграциям.**
-- [**`CODE_SNIPPETS_LIBRARY.md`**](./04_EXECUTION_DEV/CODE_SNIPPETS_LIBRARY.md) — **Библиотека Сниппетов.**
-- [**`CODING_STANDARDS.md`**](./04_EXECUTION_DEV/CODING_STANDARDS.md) — **Стандарты Кодирования.**
-- [**`design_tokens.json`**](./04_EXECUTION_DEV/design_tokens.json) — **Дизайн-Токены.**
-- [**`NEGOTIATION_PROTOCOL.json`**](./04_EXECUTION_DEV/NEGOTIATION_PROTOCOL.json) — **Протокол Переговоров.** Определяет логику отката для разрешения конфликтов.
+- [**✅ `19_AXIS_APP_INTEGRATION_GUIDE.json`**](./04_EXECUTION_DEV/19_AXIS_APP_INTEGRATION_GUIDE.json) — **Гид по Интеграциям.**
+- [**✅ `12_AXIS_ERROR_HANDLING.json`**](./04_EXECUTION_DEV/12_AXIS_ERROR_HANDLING.json) — **Обработчик Ошибок.**
+- [**✅ `15_AXIS_PERFORMANCE_BUDGET.json`**](./04_EXECUTION_DEV/15_AXIS_PERFORMANCE_BUDGET.json) — **Бюджет Производительности.**
+- [**✅ `CODE_SNIPPETS_LIBRARY.md`**](./04_EXECUTION_DEV/CODE_SNIPPETS_LIBRARY.md) — **Библиотека Сниппетов.**
+- [**✅ `CODING_STANDARDS.md`**](./04_EXECUTION_DEV/CODING_STANDARDS.md) — **Стандарты Кодирования.**
+- [**✅ `design_tokens.json`**](./04_EXECUTION_DEV/design_tokens.json) — **Дизайн-Токены.**
+- [**✅ `NEGOTIATION_PROTOCOL.json`**](./04_EXECUTION_DEV/NEGOTIATION_PROTOCOL.json) — **Протокол Переговоров.** Определяет логику отката для разрешения конфликтов.
+- [**✅ `SPEC_LIVING_STYLEGUIDE.md`**](./04_EXECUTION_DEV/SPEC_LIVING_STYLEGUIDE.md) — **Живой Стайлгайд.**
 
 </details>
 
@@ -293,32 +293,61 @@
 ## 📝 История Изменений (Changelog)
 
 <!-- CHANGELOG_START -->
-- 2025-11-24: docs: Add work report for 2025-11-24 (Part 4)
-- 2025-11-24: docs: Add work report for 2025-11-24 (Part 3)
-- 2025-11-24: feat: Fill CODE_SNIPPETS_LIBRARY.md and update READMEs
-- 2025-11-24: feat: Fill SPEC_LIVING_STYLEGUIDE.md and update READMEs
-- 2025-11-24: feat: Fill DATA_FLOWS.md and update READMEs
-- 2025-11-24: feat: Fill ARCH_PATTERNS.md and update READMEs
-- 2025-11-24: feat: Fill UX_RESEARCH_LIBRARY.json and update READMEs
-- 2025-11-24: feat: Fill AXIS_BEHAVIORAL_PATTERNS.json and update READMEs
-- 2025-11-24: feat: Fill AXIS_ECOMMERCE_ARCHETYPES.json and update READMEs
-- 2025-11-24: feat: Fill AXIS_CRO_PATTERNS.json and update READMEs
-- 2025-11-24: feat: Fill AXIS_NEURO_DESIGN_LIBRARY.json and update READMEs
-- 2025-11-24: feat: Fill AXIS_MOTION_GUIDELINES.md and update READMEs
-- 2025-11-24: feat: Fill AXIS_TEXT_GUIDELINES.md and update READMEs
-- 2025-11-24: feat: Fill TECH_AXIS_SIGNALS.md and update READMEs
-- 2025-11-24: feat: Fill AXIS_COLOR_PSYCHOLOGY.json and update READMEs
-- 2025-11-24: docs: Add work report for 2025-11-24 (Part 2)
-- 2025-11-24: refactor(README): Remove TOC and add direct file hyperlinks
-- 2025-11-24: fix: Update root README.md with AXIS_KNOWLEDGE_SYNCER.json details
-- 2025-11-24: feat: Fill AXIS_KNOWLEDGE_SYNCER.json and update 00_CORE_BRAIN README
-- 2025-11-24: docs: Add work report for 2025-11-24
-- 2025-11-24: docs: Create final, detailed, collapsible README
-- 2025-11-24: docs: Final polish of README.md with project tree
-- 2025-11-24: refactor: Migrate project to v10.5 Scientific Edition structure
-- 2025-11-23: feat: Add MIT LICENSE file to project
-- 2025-11-23: docs: Overhaul README with commands and file architecture
-- 2025-11-23: feat: Implement automatic changelog in README
+
+<details>
+<summary><b>2025 год</b></summary>
+
+<details>
+<summary><b>Ноябрь</b></summary>
+
+<details>
+<summary>26 ноября 2025 г.</summary>
+<ul>
+  <li>feat(arch): restore missing JSON architecture files</li>
+  <li>feat: Add competitor analysis and fix file encodings</li>
+</ul>
+</details>
+
+<details>
+<summary>24 ноября 2025 г.</summary>
+<ul>
+  <li>docs: Add work report for 2025-11-24 (Part 4)</li>
+  <li>docs: Add work report for 2025-11-24 (Part 3)</li>
+  <li>feat: Fill CODE_SNIPPETS_LIBRARY.md and update READMEs</li>
+  <li>feat: Fill SPEC_LIVING_STYLEGUIDE.md and update READMEs</li>
+  <li>feat: Fill DATA_FLOWS.md and update READMEs</li>
+  <li>feat: Fill ARCH_PATTERNS.md and update READMEs</li>
+  <li>feat: Fill UX_RESEARCH_LIBRARY.json and update READMEs</li>
+  <li>feat: Fill AXIS_BEHAVIORAL_PATTERNS.json and update READMEs</li>
+  <li>feat: Fill AXIS_ECOMMERCE_ARCHETYPES.json and update READMEs</li>
+  <li>feat: Fill AXIS_CRO_PATTERNS.json and update READMEs</li>
+  <li>feat: Fill AXIS_NEURO_DESIGN_LIBRARY.json and update READMEs</li>
+  <li>feat: Fill AXIS_MOTION_GUIDELINES.md and update READMEs</li>
+  <li>feat: Fill AXIS_TEXT_GUIDELINES.md and update READMEs</li>
+  <li>feat: Fill TECH_AXIS_SIGNALS.md and update READMEs</li>
+  <li>feat: Fill AXIS_COLOR_PSYCHOLOGY.json and update READMEs</li>
+  <li>docs: Add work report for 2025-11-24 (Part 2)</li>
+  <li>refactor(README): Remove TOC and add direct file hyperlinks</li>
+  <li>fix: Update root README.md with AXIS_KNOWLEDGE_SYNCER.json details</li>
+  <li>feat: Fill AXIS_KNOWLEDGE_SYNCER.json and update 00_CORE_BRAIN README</li>
+  <li>docs: Add work report for 2025-11-24</li>
+  <li>docs: Create final, detailed, collapsible README</li>
+  <li>docs: Final polish of README.md with project tree</li>
+  <li>refactor: Migrate project to v10.5 Scientific Edition structure</li>
+</ul>
+</details>
+
+<details>
+<summary>23 ноября 2025 г.</summary>
+<ul>
+  <li>feat: Add MIT LICENSE file to project</li>
+  <li>docs: Overhaul README with commands and file architecture</li>
+  <li>feat: Implement automatic changelog in README</li>
+</ul>
+</details>
+
+</details>
+</details>
 <!-- Новые изменения будут добавляться сюда автоматически -->
 
 ---
