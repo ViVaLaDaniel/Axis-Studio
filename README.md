@@ -100,6 +100,11 @@
 
 ### ✅ `src/`
 - ✅ `orchestrator.py`
+- ✅ `core/`
+- ✅ `adapters/`
+- ✅ `cli/`
+- ✅ `utils/`
+- ✅ `main.py`
 </details>
 
 ---
@@ -434,6 +439,7 @@ AXIS Studio спроектирован как **LLM-агностичная пл�
 
 #### 📄 Содержимое:
 - [**`orchestrator.py`**](./src/orchestrator.py) — **Основной Оркестратор.** Загружает и выполняет дерево поведения AI.
+- [**`main.py`**](./src/main.py) — **Точка входа.** Запускает Runtime Engine.
 
 </details>
 
@@ -505,6 +511,7 @@ AXIS Studio спроектирован как **LLM-агностичная пл�
   <li>feat(orchestrator): Move 09_ENGINE/engine.py to src/orchestrator.py</li>
   <li>feat(src): Create base `src/` subdirectories (core, adapters, cli, utils)</li>
   <li>feat(config): Create axis.config.json</li>
+  <li>feat(runtime): Create src/main.py entry point</li>
 </ul>
 </details>
 
