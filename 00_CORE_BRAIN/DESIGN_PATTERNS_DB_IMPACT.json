@@ -1,0 +1,490 @@
+{
+  "THEME_NAME": "Impact",
+  "DESIGN_SYSTEM_VERSION": "6.0.0",
+  "DEVELOPER": "Maestrooo",
+  "NICHE": "Fashion, Apparel",
+  
+  "COLOR_SYSTEM": {
+    "description": "Bold, high-contrast palette for fashion-forward brands",
+    
+    "primary_palette": {
+      "black": {
+        "hex": "#000000",
+        "usage": "Primary text, buttons, headers",
+        "psychology": "Sophistication, power, modernity"
+      },
+      "white": {
+        "hex": "#FFFFFF",
+        "usage": "Background, button text",
+        "psychology": "Clean, spacious, premium"
+      },
+      "accent": {
+        "hex": "#FF3B30",
+        "usage": "Sale badges, CTAs, urgency elements",
+        "psychology": "Energy, urgency, action"
+      }
+    },
+    
+    "secondary_colors": {
+      "gray_100": "#F8F8F8",
+      "gray_200": "#E8E8E8",
+      "gray_300": "#D1D1D1",
+      "gray_400": "#9E9E9E",
+      "gray_500": "#757575",
+      "gray_600": "#616161",
+      "gray_700": "#424242",
+      "gray_800": "#303030",
+      "gray_900": "#1C1C1C"
+    },
+    
+    "semantic_colors": {
+      "success": "#34C759",
+      "error": "#FF3B30",
+      "warning": "#FF9500",
+      "info": "#007AFF",
+      "sale_badge": "#FF3B30",
+      "new_badge": "#34C759",
+      "trending_badge": "#FF9500"
+    },
+    
+    "fashion_specific": {
+      "principle": "High contrast black/white base + bold accent for energy",
+      "instag ram_aesthetic": "Clean, punchy, Instagram-ready",
+      "customization": "Merchants can change accent color to match brand"
+    }
+  },
+  
+  "TYPOGRAPHY_SYSTEM": {
+    "fonts": {
+      "heading": {
+        "family": "'Neue Haas Grotesk Display', 'Helvetica Neue', Arial, sans-serif",
+        "weights": [500, 700],
+        "fallback": "-apple-system, sans-serif",
+        "psychology": "Modern, confident, fashion-forward"
+      },
+      "body": {
+        "family": "'DM Sans', 'Helvetica Neue', Arial, sans-serif",
+        "weights": [400, 500],
+        "fallback": "system-ui, sans-serif"
+      }
+    },
+    
+    "type_scale": {
+      "base_size": "16px",
+      "scale_ratio": 1.333,
+      "sizes": {
+        "h1": {
+          "desktop": "72px",
+          "mobile": "48px",
+          "line_height": "1",
+          "weight": 700,
+          "letter_spacing": "-0.02em",
+          "usage": "Hero headlines - большие, смелые"
+        },
+        "h2": {
+          "desktop": "56px",
+          "mobile": "36px",
+          "line_height": "1.1",
+          "weight": 700,
+          "letter_spacing": "-0.01em"
+        },
+        "h3": {
+          "desktop": "40px",
+          "mobile": "28px",
+          "line_height": "1.2",
+          "weight": 700
+        },
+        "h4": {
+          "desktop": "28px",
+          "mobile": "22px",
+          "line_height": "1.3",
+          "weight": 500
+        },
+        "body_large": {
+          "size": "18px",
+          "line_height": "1.6",
+          "weight": 400
+        },
+        "body": {
+          "size": "16px",
+          "line_height": "1.6",
+          "weight": 400
+        },
+        "body_small": {
+          "size": "14px",
+          "line_height": "1.5",
+          "weight": 400
+        },
+        "button": {
+          "size": "14px",
+          "line_height": "1",
+          "weight": 500,
+          "letter_spacing": "0.1em",
+          "text_transform": "uppercase"
+        }
+      }
+    },
+    
+    "fashion_principles": {
+      "large_headings": "Impact uses VERY large headings (72px+) for drama",
+      "tight_leading": "line-height 1-1.2 for headings = compact, impactful",
+      "uppercase_buttons": "All caps for CTAs = energy, action"
+    }
+  },
+  
+  "SPACING_SYSTEM": {
+    "base_unit": "8px",
+    "scale": {
+      "0": "0px",
+      "1": "8px",
+      "2": "16px",
+      "3": "24px",
+      "4": "32px",
+      "5": "40px",
+      "6": "48px",
+      "7": "56px",
+      "8": "64px",
+      "10": "80px",
+      "12": "96px",
+      "16": "128px",
+      "20": "160px"
+    },
+    
+    "usage": {
+      "component_padding": "3-4 (24-32px)",
+      "section_padding_vertical": "8-12 (64-96px) desktop, 6-8 (48-64px) mobile",
+      "grid_gap": "2-3 (16-24px)",
+      "fashion_principle": "Generous whitespace = premium, breathing room"
+    },
+    
+    "container_widths": {
+      "page_width": "1400px (wider than Dawn for visual impact)",
+      "content_width": "800px",
+      "mobile": "100% with 20px padding"
+    }
+  },
+  
+  "BUTTON_STYLES": {
+    "primary": {
+      "background": "#000000",
+      "color": "#FFFFFF",
+      "padding": "18px 40px",
+      "border": "2px solid #000000",
+      "border_radius": "0px (sharp, modern)",
+      "font_size": "14px",
+      "font_weight": 500,
+      "text_transform": "uppercase",
+      "letter_spacing": "0.1em",
+      "transition": "all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)",
+      "hover": {
+        "background": "#FFFFFF",
+        "color": "#000000",
+        "border": "2px solid #000000",
+        "transform": "translateY(-2px)",
+        "box_shadow": "0 4px 12px rgba(0,0,0,0.15)"
+      },
+      "active": {
+        "transform": "translateY(0)",
+        "box_shadow": "0 2px 8px rgba(0,0,0,0.1)"
+      }
+    },
+    
+    "secondary": {
+      "background": "transparent",
+      "color": "#000000",
+      "padding": "18px 40px",
+      "border": "2px solid #000000",
+      "hover": {
+        "background": "#000000",
+        "color": "#FFFFFF"
+      }
+    },
+    
+    "accent": {
+      "background": "#FF3B30",
+      "color": "#FFFFFF",
+      "border": "none",
+      "usage": "Sale CTAs, urgent actions",
+      "hover": {
+        "background": "#E6352A"
+      }
+    },
+    
+    "sticky_atc_mobile": {
+      "position": "fixed",
+      "bottom": "0",
+      "width": "100%",
+      "padding": "20px",
+      "background": "#FFFFFF",
+      "box_shadow": "0 -4px 12px rgba(0,0,0,0.1)",
+      "z_index": "100",
+      "psychology": "Thumb-friendly, always accessible, high conversion"
+    }
+  },
+  
+  "CARD_STYLES": {
+    "product_card": {
+      "background": "transparent",
+      "border": "none",
+      "padding": "0",
+      "transition": "transform 0.3s ease",
+      "hover": {
+        "transform": "translateY(-4px)",
+        "image_effect": "Slight zoom (scale 1.05)",
+        "quick_add_button": "Slides up from bottom"
+      },
+      "image": {
+        "aspect_ratio": "3:4 (portrait - fashion standard)",
+        "object_fit": "cover",
+        "loading": "lazy",
+        "transition": "transform 0.5s ease"
+      },
+      "quick_add": {
+        "position": "absolute bottom of image",
+        "transform": "translateY(100%) → translateY(0) on hover",
+        "background": "#000000",
+        "color": "#FFFFFF",
+        "padding": "12px",
+        "width": "100%",
+        "text_align": "center"
+      },
+      "badges": {
+        "position": "top-left",
+        "background": "#FF3B30 (sale) or #34C759 (new)",
+        "color": "#FFFFFF",
+        "padding": "6px 12px",
+        "font_size": "11px",
+        "text_transform": "uppercase",
+        "letter_spacing": "0.08em"
+      },
+      "title": {
+        "font_size": "14px",
+        "margin_top": "16px",
+        "text_transform": "uppercase",
+        "letter_spacing": "0.05em"
+      },
+      "price": {
+        "font_size": "16px",
+        "font_weight": 500,
+        "margin_top": "8px"
+      }
+    }
+  },
+  
+  "LAYOUT_PATTERNS": {
+    "video_hero": {
+      "type": "Full-screen video background",
+      "height": "100vh",
+      "video": {
+        "autoplay": true,
+        "muted": true,
+        "loop": true,
+        "playsinline": true,
+        "poster": "High-quality image (fallback)"
+      },
+      "text_overlay": {
+        "position": "center",
+        "color": "#FFFFFF",
+        "text_shadow": "0 2px 8px rgba(0,0,0,0.5)",
+        "max_width": "600px"
+      },
+      "mobile": {
+        "video": "Show poster image only (save bandwidth)",
+        "or": "Show short mobile-optimized video"
+      },
+      "psychology": "Immersive, premium, engaging"
+    },
+    
+    "lookbook_grid": {
+      "type": "Instagram-style product tagging",
+      "layout": "Large lifestyle image with clickable hotspots",
+      "hotspot": {
+        "visual": "Pulsing dot + icon",
+        "click": "Opens product quick-view modal",
+        "psychology": "Contextualized products, inspiration"
+      },
+      "usage": "Show products in outfits, room settings"
+    },
+    
+    "product_grid": {
+      "columns_desktop": "4",
+      "columns_tablet": "3",
+      "columns_mobile": "2",
+      "gap": "16px",
+      "scroll_behavior": "Horizontal scroll on mobile (swipe-friendly)"
+    },
+    
+    "split_content": {
+      "type": "50/50 image + text",
+      "alternating": "Left/right alternates for visual rhythm",
+      "padding": "Large (96px vertical)",
+      "usage": "Storytelling, brand values"
+    }
+  },
+  
+  "ANIMATION_SYSTEM": {
+    "durations": {
+      "instant": "0ms",
+      "fast": "150ms",
+      "base": "300ms (most transitions)",
+      "slow": "500ms",
+      "dramatic": "800ms (hero entrances)"
+    },
+    
+    "easings": {
+      "standard": "cubic-bezier(0.4, 0.0, 0.2, 1)",
+      "decelerate": "cubic-bezier(0.0, 0.0, 0.2, 1)",
+      "accelerate": "cubic-bezier(0.4, 0.0, 1, 1)",
+      "bounce": "cubic-bezier(0.68, -0.55, 0.265, 1.55)"
+    },
+    
+    "signature_animations": {
+      "product_card_hover": {
+        "transform": "translateY(-4px)",
+        "duration": "300ms",
+        "easing": "ease-out"
+      },
+      "quick_add_slide": {
+        "transform": "translateY(100%) → translateY(0)",
+        "duration": "300ms",
+        "easing": "cubic-bezier(0.4, 0.0, 0.2, 1)"
+      },
+      "image_zoom_hover": {
+        "transform": "scale(1) → scale(1.05)",
+        "duration": "500ms",
+        "easing": "ease-out"
+      },
+      "cart_drawer_slide": {
+        "transform": "translateX(100%) →translateX(0)",
+        "duration": "400ms",
+        "easing": "cubic-bezier(0.4, 0.0, 0.2, 1)"
+      }
+    },
+    
+    "scroll_animations": {
+      "fade_in_up": {
+        "initial": "opacity: 0, translateY(30px)",
+        "final": "opacity: 1, translateY(0)",
+        "duration": "600ms",
+        "trigger": "Element 20% visible"
+      },
+      "parallax": {
+        "element": "background-image",
+        "speed": "0.5x scroll speed",
+        "usage": "Hero sections"
+      }
+    },
+    
+    "performance": {
+      "gpu_accelerated": "transform, opacity only",
+      "reduce_motion": "@media (prefers-reduced-motion) { transform/animation: none; }",
+      "will_change": "Use on hover/active states only"
+    }
+  },
+  
+  "MOBILE_FIRST_FEATURES": {
+    "sticky_atc_bar": {
+      "trigger": "Scroll past main ATC button",
+      "content": ["Product image (40px)", "Price", "Add to Cart button"],
+      "position": "Fixed bottom",
+      "z_index": "100",
+      "background": "#FFFFFF",
+      "box_shadow": "0 -4px 12px rgba(0,0,0,0.1)",
+      "conversion_impact": "+20-30% mobile conversion"
+    },
+    
+    "swipe_galleries": {
+      "product_images": "Horizontal swipe (native feel)",
+      "indicators": "Dots below images",
+      "snap": "scroll-snap-type: x mandatory"
+    },
+    
+    "touch_optimizations": {
+      "min_tap_target": "48px × 48px",
+      "thumb_zone": "Bottom 1/3 of screen prioritized for CTAs",
+      "spacing": "12px min between targets"
+    },
+    
+    "filter_drawer": {
+      "trigger": "Filter button",
+      "animation": "Slide from left",
+      "content": "All filters (price, size, color, etc.)",
+      "apply": "Show X results button at bottom",
+      "ux": "Best mobile filtering in industry"
+    }
+  },
+  
+  "FASHION_SPECIFIC_PATTERNS": {
+    "color_swatches": {
+      "display": "Circular color dots below product title",
+      "size": "24px diameter",
+      "hover": "Change product image to variant",
+      "selected_state": "Border + checkmark"
+    },
+    
+    "size_selector": {
+      "display": "Pill buttons (S, M, L, XL)",
+      "disabled_state": "Strikethrough + opacity 0.5",
+      "selected_state": "Filled background"
+    },
+    
+    "instagram_feed": {
+      "layout": "Grid of recent Instagram posts",
+      "click": "Opens Instagram in new tab",
+      "psychology": "Social proof, user-generated content"
+    },
+    
+    "lookbook_slider": {
+      "type": "Full-screen image slider with product tags",
+      "navigation": "Arrows + swipe",
+      "product_tag": "Click → Quick view modal"
+    }
+  },
+  
+  "ICONOGRAPHY": {
+    "style": "Minimal, 2px stroke, sharp corners",
+    "size": "24px (default)",
+    "color": "currentColor",
+    
+    "common_icons": {
+      "cart": "Shopping bag (not cart - more fashion)",
+      "wishlist": "Heart outline",
+      "search": "Magnifying glass",
+      "menu": "Hamburger (minimal)",
+      "close": "X (thick lines)",
+      "arrow": "→ (used heavily in CTAs)"
+    }
+  },
+  
+  "PHOTOGRAPHY_STYLE": {
+    "product_photos": {
+      "style": "High-contrast, editorial",
+      "background": "White or lifestyle",
+      "lighting": "Dramatic shadows acceptable (fashion aesthetic)",
+      "aspect_ratio": "3:4 portrait (fashion standard)"
+    },
+    
+    "lifestyle_photos": {
+      "style": "Instagram aesthetic—spontaneous, authentic",
+      "models": "Diverse, aspirational",
+      "settings": "Urban, modern, on-trend locations",
+      "color_grading": "Vibrant, punchy colors or moody blacks"
+    },
+    
+    "video_content": {
+      "priority": "Video-first for fashion (shows fabric, movement)",
+      "length": "15-30 seconds (social media-friendly)",
+      "music": "Upbeat, trendy (optional)",
+      "usage": "Hero, product pages, lookbooks"
+    }
+  },
+  
+  "ACCESSIBILITY": {
+    "color_contrast": "WCAG AA compliant (4.5:1 text, 3:1 UI)",
+    "focus_states": "Visible 2px outline on all interactive elements",
+    "aria_labels": "All icon buttons labeled",
+    "keyboard_nav": "Full keyboard support (Tab, Enter, Esc)",
+    "reduce_motion": "Respects prefers-reduced-motion",
+    "alt_text": "Required for all images"
+  }
+}

@@ -1,0 +1,369 @@
+{
+  "DATABASE_NAME": "COPYWRITING_DB",
+  "VERSION": "1.0",
+  "PURPOSE": "Эффективные копирайтинг-паттерны для e-commerce",
+  
+  "HEADLINE_FORMULAS": {
+    "problem_solution": {
+      "formula": "Tired of [problem]? [Product] is the answer",
+      "examples": [
+        "Tired of wrinkles? Youth Serum is the answer",
+        "Struggling with sleep? Dream Pillow will change your life"
+      ],
+      "psychology": "Identifies pain point, offers immediate solution",
+      "when_to_use": "Problem-aware audience",
+      "effectiveness": "High (direct, clear value prop)"
+    },
+    
+    "benefit_oriented": {
+      "formula": "Get [desirable outcome] in [timeframe]",
+      "examples": [
+        "Get glowing skin in 7 days",
+        "Lose 10 pounds in 30 days (ethical claim)",
+        "Master Italian in 3 months"
+      ],
+      "psychology": "Outcome-focused, time-bound (urgency)",
+      "caution": "Claims must be realistic and legal"
+    },
+    
+    "curiosity": {
+      "formula": "The secret to [desirable state]",
+      "examples": [
+        "The secret to effortless style",
+        "What top chefs know about kitchen knives"
+      ],
+      "psychology": "Curiosity gap (opens loop in brain)",
+      "when_to_use": "Blog posts, email subject lines"
+    },
+    
+    "social_proof": {
+      "formula": "[Number]+ customers [action/result]",
+      "examples": [
+        "50,000+ customers trust us",
+        "10,000 5-star reviews and counting"
+      ],
+      "psychology": "Herd mentality, safety in numbers",
+      "when_to_use": "Homepage, product pages"
+    },
+    
+    "how_to": {
+      "formula": "How to [achieve result] without [pain point]",
+      "examples": [
+        "How to style outfits without breaking the bank",
+        "How to whiten teeth without sensitivity"
+      ],
+      "psychology": "Educational + problem avoidance",
+      "when_to_use": "Blog, guides, content marketing"
+    },
+    
+    "comparison": {
+      "formula": "[Product A] vs [Product B]: Which is right for you?",
+      "examples": [
+        "Silk vs Cotton Pillowcases: The Truth",
+        "Organic vs Conventional: What's worth it?"
+      ],
+      "psychology": "Helps decision-making, builds authority",
+      "when_to_use": "High-consideration purchases"
+    }
+  },
+  
+  "CTA_PATTERNS": {
+    "action_oriented": {
+      "variants": ["Shop Now", "Add to Cart", "Buy Now", "Get Started", "Order Today"],
+      "psychology": "Direct, imperative",
+      "when_to_use": "Primary CTAs, high-intent pages",
+      "color": "High contrast (red, green, orange)"
+    },
+    
+    "value_focused": {
+      "variants": [
+        "Claim Your Discount",
+        "Save 30% Today",
+        "Get Free Shipping",
+        "Unlock Your Offer"
+      ],
+      "psychology": "Emphasizes benefit/savings",
+      "when_to_use": "Promotional campaigns",
+      "effectiveness": "15-25% higher click-through vs generic"
+    },
+    
+    "low_friction": {
+      "variants": [
+        "Try Free for 30 Days",
+        "No Credit Card Required",
+        "Start Your Free Trial",
+        "Browse (No Commitment)"
+      ],
+      "psychology": "Reduces perceived risk",
+      "when_to_use": "Subscriptions, sign-ups, trials",
+      "conversion_boost": "20-40% vs 'Buy Now'"
+    },
+    
+    "fomo_urgency": {
+      "variants": [
+        "Limited Stock - Order Now",
+        "Sale Ends Tonight",
+        "Only 3 Left!",
+        "Last Chance"
+      ],
+      "psychology": "Fear of missing out, scarcity",
+      "when_to_use": "Sales, limited editions",
+      "caution": "Must be truthful (legal + ethical)"
+    },
+    
+    "personalized": {
+      "variants": [
+        "Find Your Perfect [Product]",
+        "Get Matched",
+        "Discover Your Style",
+        "Build Your Bundle"
+      ],
+      "psychology": "Personal relevance, customization",
+      "when_to_use": "Quizzes, product finders",
+      "engagement": "40-60% higher than generic CTAs"
+    }
+  },
+  
+  "PRODUCT_DESCRIPTIONS": {
+    "framework": "Feature → Benefit → Emotion",
+    
+    "feature_to_benefit": {
+      "principle": "Don't just list features, explain WIIFM (What's In It For Me)",
+      "examples": [
+        {
+          "feature": "100% organic cotton",
+          "benefit": "Gentle on sensitive skin, eco-friendly",
+          "emotion": "Feel good knowing you're kind to your skin and the planet"
+        },
+        {
+          "feature": "Waterproof up to 50m",
+          "benefit": "Wear it in the shower, pool, ocean",
+          "emotion": "Never worry about taking it off - it's built for your life"
+        }
+      ]
+    },
+    
+    "sensory_language": {
+      "principle": "Engage senses to make product tangible",
+      "examples": {
+        "touch": ["Buttery soft", "Silky smooth", "Plush", "Crisp", "Luxuriously thick"],
+        "sight": ["Vibrant", "Matte finish", "Lustrous", "Eye-catching", "Sleek"],
+        "sound": ["Whisper-quiet", "Crisp audio", "Silent operation"],
+        "smell": ["Fresh linen scent", "Subtle vanilla notes"],
+        "taste": ["Rich chocolate undertones", "Bright citrus finish"]
+      },
+      "psychology": "Brain simulates experience, increases desire"
+    },
+    
+    "storytelling": {
+      "structure": "Origin → Craft → Result",
+      "examples": [
+        "Handcrafted in Italy → by third-generation artisans → using century-old techniques",
+        "Sourced from organic farms → cold-pressed within 24 hours → to preserve nutrients"
+      ],
+      "psychology": "Story = emotional connection, authenticity",
+      "when_to_use": "Luxury, artisan, heritage brands"
+    },
+    
+    "specificity": {
+      "principle": "Specific > Vague (builds credibility)",
+      "examples": [
+        "Reduces wrinkles by 47% in 28 days (clinical study)",
+        "Holds 3.5 liters (not 'large capacity')",
+        "Charges in 45 minutes (not 'fast charging')"
+      ],
+      "psychology": "Precision = confidence = trust"
+    },
+    
+    "niche_specific_copy": {
+      "luxury": {
+        "tone": "Sophisticated, understated confidence",
+        "words_to_use": ["Exquisite", "Refined", "Timeless", "Heritage", "Craftsmanship"],
+        "words_to_avoid": ["Cheap", "Deal", "Bargain", "Sale"],
+        "example": "Exquisitely crafted in Florence, each piece is a testament to time-honored tradition"
+      },
+      
+      "fashion": {
+        "tone": "Trendy, conversational, aspirational",
+        "words_to_use": ["Must-have", "On-trend", "Effortless", "Chic", "Statement"],
+        "words_to_avoid": ["Outdated", "Basic", "Conservative"],
+        "example": "The must-have jacket of the season - effortless style that turns heads"
+      },
+      
+      "wellness": {
+        "tone": "Empathetic, educational, transparent",
+        "words_to_use": ["Nourish", "Transform", "Glow", "Pure", "Science-backed"],
+        "words_to_avoid": ["Magic", "Miracle", "Instant"],
+        "example": "Nourish your skin with clinically-proven ingredients - gentle, effective, transparent"
+      },
+      
+      "tech": {
+        "tone": "Innovative, precise, feature-rich",
+        "words_to_use": ["Advanced", "Precision", "Breakthrough", "Next-gen", "Intelligent"],
+        "words_to_avoid": ["Old-school", "Clunky", "Complicated"],
+        "example": "Next-gen processor delivers breakthrough performance - 40% faster than previous models"
+      }
+    }
+  },
+  
+  "POWER_WORDS": {
+    "urgency": ["Now", "Today", "Limited", "Exclusive", "Ending", "Hurry", "Last Chance"],
+    "trust": ["Guaranteed", "Proven", "Certified", "Verified", "Trusted", "Official", "Authentic"],
+    "value": ["Free", "Save", "Discount", "Bonus", "Extra", "Gift", "Complimentary"],
+    "emotion": ["Love", "Discover", "Transform", "Unlock", "Ultimate", "Dream", "Crush"],
+    "exclusivity": ["VIP", "Members Only", "Exclusive", "Private", "Elite", "Select"],
+    "simplicity": ["Easy", "Simple", "Effortless", "Instant", "Quick", "Automatic"],
+    
+    "usage_guidelines": {
+      "do": "Use power words naturally in context",
+      "dont": "Don't stuff every sentence with power words (feels spammy)",
+      "balance": "1-2 power words per sentence maximum"
+    }
+  },
+  
+  "EMAIL_SUBJECT_LINES": {
+    "principles": {
+      "length": "40-50 characters (mobile optimization)",
+      "personalization": "Use [First Name] if available",
+      "emoji": "✅ for casual brands, ❌ for luxury/B2B",
+      "preview_text": "Complement subject line (not duplicate)"
+    },
+    
+    "formulas": {
+      "curiosity": {
+        "examples": [
+          "You won't believe what just dropped",
+          "This changes everything...",
+          "Wait, is this real?"
+        ]
+      },
+      
+      "urgency": {
+        "examples": [
+          "24 hours left: 30% off everything",
+          "Your cart expires in 1 hour",
+          "Last call: Sale ends tonight at midnight"
+        ]
+      },
+      
+      "personalization": {
+        "examples": [
+          "[Name], we miss you! 20% off inside",
+          "Happy Birthday [Name]! Here's a gift",
+          "[Name], your order shipped!"
+        ]
+      },
+      
+      "value": {
+        "examples": [
+          "Free shipping unlocked 🎁",
+          "Your exclusive 30% off code",
+          "Gift with purchase - today only"
+        ]
+      }
+    },
+    
+    "a_b_test_winners": {
+      "question_vs_statement": "Questions boost open rates by 10-15%",
+      "numbers": "Using numbers (e.g. '5 ways') increases opens by 20%",
+      "emojis": "1-2 emojis boost opens by 15% (casual brands)"
+    }
+  },
+  
+  "MICROCOPY": {
+    "description": "Небольшие тексты которые улучшают UX",
+    
+    "button_labels": {
+      "generic": ["Submit", "Click Here", "Continue"],
+      "better": ["Add to Bag", "Get My Discount", "Start Shopping", "Claim Offer"],
+      "principle": "Action + benefit = higher engagement"
+    },
+    
+    "form_labels": {
+      "generic": "Email",
+      "better": "Email (we'll never spam you)",
+      "principle": "Address objections inline"
+    },
+    
+    "error_messages": {
+      "bad": "Error 404",
+      "good": "Oops! This page took a vacation. Let's get you back on track.",
+      "principle": "Friendly, helpful, human"
+    },
+    
+    "empty_states": {
+      "bad": "No items in cart",
+      "good": "Your cart is empty... for now. Start shopping!",
+      "principle": "Positive framing, CTA"
+    },
+    
+    "loading_states": {
+      "generic": "Loading...",
+      "better": ["Preparing your order...", "Finding the perfect match...", "Almost there..."],
+      "principle": "Set expectations, reduce anxiety"
+    }
+  },
+  
+  "TESTIMONIAL_OPTIMIZATION": {
+    "what_makes_good_testimonial": {
+      "specific_result": "Lost 15 pounds in 6 weeks (not just 'Great product!')",
+      "before_after": "I used to struggle with... now I...",
+      "relatable_persona": "As a busy mom of 3...",
+      "photo": "Photo of customer increases trust by 40%"
+    },
+    
+    "placement": {
+      "homepage": "3-5 testimonials (social proof)",
+      "pdp": "2-3 most relevant (product-specific)",
+      "checkout": "Trust signals (reduce cart abandonment)"
+    },
+    
+    "format": {
+      "short_quote": "15-30 words for product cards",
+      "long_form": "50-100 words for dedicated section",
+      "video": "30-60 seconds (highest trust, costliest to produce)"
+    }
+  },
+  
+  "LANDING_PAGE_COPY_STRUCTURE": {
+    "above_fold": {
+      "headline": "Benefit-driven (3-10 words)",
+      "subheadline": "Expands on headline (10-20 words)",
+      "cta": "Primary action button",
+      "visuals": "Hero image or video"
+    },
+    
+    "body": {
+      "section_1": "Problem (agitate pain point)",
+      "section_2": "Solution (introduce product)",
+      "section_3": "How it works (3-5 steps)",
+      "section_4": "Benefits (3-5 key features → benefits)",
+      "section_5": "Social proof (testimonials, numbers)",
+      "section_6": "FAQ (address objections)",
+      "section_7": "Final CTA (restate value)"
+    },
+    
+    "length_guidelines": {
+      "high_ticket": "Long-form (2000+ words, need to build trust)",
+      "low_ticket_impulse": "Short-form (500 words, quick decision)",
+      "complex_product": "Medium-form (1000 words, need education)"
+    }
+  },
+  
+  "COPY_TESTING_FRAMEWORK": {
+    "a_b_test_ideas": [
+      "Headline: Problem-focused vs Benefit-focused",
+      "CTA: 'Buy Now' vs 'Add to Cart' vs 'Get Yours'",
+      "Product description: Long vs Short",
+      "Social proof: Number of customers vs Star rating",
+      "Urgency: 'Limited stock' vs 'Sale ends tonight'"
+    ],
+    
+    "metrics_to_track": {
+      "conversion_rate": "Primary metric",
+      "time_on_page": "Engagement indicator",
+      "bounce_rate": "Are they reading?",
+      "scroll_depth": "How far down page?"
+    }
+  }
+}

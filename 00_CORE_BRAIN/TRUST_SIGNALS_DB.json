@@ -1,0 +1,319 @@
+{
+  "DATABASE_NAME": "TRUST_SIGNALS_DB",
+  "VERSION": "1.0",
+  "PURPOSE": "Элементы которые повышают доверие и снижают тревожность покупателей",
+  
+  "PAYMENT_BADGES": {
+    "accepted_methods": {
+      "visual": "Row of payment icons (Visa, Mastercard, Amex, PayPal, etc.)",
+      "placement": ["Footer", "Checkout page", "Product page (below ATC)"],
+      "psychology": "Familiarity = trust, multiple options = inclusivity",
+      "effectiveness": "+5-10% checkout completion",
+      "design": {
+        "size": "24-32px height",
+        "color": "Grayscale or brand colors",
+        "spacing": "8px between icons"
+      }
+    },
+    
+    "alternative_payments": {
+      "shop_pay": {
+        "visual": "Shop Pay badge",
+        "benefit": "1-click checkout, increased conversion",
+        "placement": "Product page, cart"
+      },
+      "apple_pay_google_pay": {
+        "visual": "Respective badges",
+        "conversion_boost": "+10-20% mobile",
+        "requirement": "HTTPS, proper setup"
+      },
+      "buy_now_pay_later": {
+        "services": "Klarna, Afterpay, Affirm",
+        "message": "4 interest-free payments of $X",
+        "psychology": "Reduces price anxiety",
+        "aov_increase": "+30-50% for $100+ items"
+      }
+    }
+  },
+  
+  "SECURITY_SEALS": {
+    "ssl_certificate": {
+      "visual": "Padlock icon + 'Secure Checkout' or SSL badge",
+      "placement": "Checkout page, footer",
+      "psychology": "Data security, peace of mind",
+      "effectiveness": "Critical (lack of HTTPS = major trust killer)",
+      "modern_note": "HTTPS is expected (2023+), badge less impactful than before"
+    },
+    
+    "security_brands": {
+      "options": ["Norton Secured", "McAfee Secure", "TRUSTe", "BBB Accredited"],
+      "effectiveness": "+10-15% conversion (especially for new brands)",
+      "cost": "$500-$3000/year",
+      "psychology": "Third-party validation = credibility",
+      "placement": "Footer, checkout",
+      "caution": "Some users ignore/don't recognize (effectiveness declining)"
+    },
+    
+    "pci_compliance": {
+      "visual": "PCI DSS Compliant badge",
+      "meaning": "Payment Card Industry Data Security Standard",
+      "psychology": "Professionalism, security",
+      "requirement": "All Shopify stores are PCI compliant by default"
+    }
+  },
+  
+  "REVIEWS_RATINGS": {
+    "star_ratings": {
+      "display": "★★★★★ 4.8 (based on 1,234 reviews)",
+      "placement": ["Product cards", "Product page (prominent)", "Homepage"],
+      "psychology": "Social proof (most powerful trust signal)",
+      "conversion_impact": "+270% (products with reviews vs without)",
+      "minimum_ratings": "Need 10-20+ reviews for credibility"
+    },
+    
+    "review_platforms": {
+      "judges_me": {
+        "features": "Photo reviews, video reviews, Q&A",
+        "pricing": "$15/month",
+        "integration": "Easy Shopify app"
+      },
+      "yotpo": {
+        "features": "Reviews + UGC + loyalty",
+        "pricing": "$29-$299/month",
+        "best_for": "Established brands"
+      },
+      "loox": {
+        "features": "Photo reviews, Instagram integration",
+        "pricing": "$9.99-$299/month"
+      }
+    },
+    
+    "verified_purchase_badge": {
+      "display": "✓ Verified Purchase",
+      "psychology": "Authenticity (not fake reviews)",
+      "effectiveness": "+30-40% review trust"
+    },
+    
+    "photo_reviews": {
+      "effectiveness": "+50% trust vs text-only",
+      "display": "Grid of customer photos below reviews",
+      "psychology": "Real people, real results",
+      "cta": "Incentivize with discount ('Share photo, get 10% off next order')"
+    },
+    
+    "review_filtering": {
+      "by_rating": "5-star, 4-star, etc.",
+      "by_verified": "Verified purchases only",
+      "by_photos": "With photos only",
+      "psychology": "Transparency = trust"
+    }
+  },
+  
+  "GUARANTEES_POLICIES": {
+    "money_back_guarantee": {
+      "standard": "30-day money-back guarantee",
+      "premium": "60-day or 90-day",
+      "visual": "Badge or highlighted text",
+      "placement": ["Product page", "Checkout", "Footer"],
+      "psychology": "Risk reversal (eliminates purchase anxiety)",
+      "conversion_boost": "+10-25%",
+      "wording": {
+        "good": "30-day money-back guarantee",
+        "better": "Risk-free 30-day trial - if you don't love it, return it",
+        "best": "Love it or your money back - no questions asked"
+      }
+    },
+    
+    "free_returns": {
+      "policy": "Free returns within 30 days",
+      "psychology": "Reduces commitment fear",
+      "visual": "Icon + text",
+      "effectiveness": "+15-30% conversion (especially fashion)",
+      "cost": "Returns cost 15-30% of revenue (factor into pricing)"
+    },
+    
+    "lifetime_warranty": {
+      "usage": "Durable goods (bags, tools, outdoor gear)",
+      "examples": "Patagonia, YETI",
+      "psychology": "Quality confidence, brand trust",
+      "conversion": "Allows premium pricing"
+    },
+    
+    "price_match_guarantee": {
+      "policy": "If you find it cheaper, we'll match it",
+      "psychology": "Confidence in pricing",
+      "usage": "Competitive niches",
+      "caution": "Can train customers to shop around"
+    }
+  },
+  
+  "SOCIAL_PROOF": {
+    "customer_count": {
+      "display": "Trusted by 50,000+ customers",
+      "placement": "Homepage, About page",
+      "psychology": "Herd mentality, safety in numbers",
+      "threshold": "Need 10,000+ to be impressive",
+      "alternatives": "X orders shipped, X countries served"
+    },
+    
+    "as_seen_in": {
+      "display": "Logos of press mentions (Forbes, TechCrunch, Vogue, etc.)",
+      "placement": "Homepage, About page",
+      "psychology": "Authority, credibility",
+      "design": "Grayscale logos, uniform height",
+      "caution": "Must be real mentions (not fake)"
+    },
+    
+    "influencer_endorsements": {
+      "display": "Quote + photo from influencer/celebrity",
+      "effectiveness": "High (if audience matches)",
+      "cost": "$500 - $100k+ per post",
+      "placement": "Homepage, product pages"
+    },
+    
+    "real_time_activity": {
+      "examples": [
+        "John from New York purchased 5 minutes ago",
+        "23 people viewing this product now",
+        "Sarah added to cart 2 minutes ago"
+      ],
+      "psychology": "FOMO, social proof",
+      "effectiveness": "+5-15% conversion",
+      "caution": "Must be real (or clearly simulated), not deceptive",
+      "tools": "Provely, FOMO, UseProof"
+    }
+  },
+  
+  "CERTIFICATIONS_BADGES": {
+    "industry_certifications": {
+      "organic": {
+        "badges": "USDA Organic, EU Organic",
+        "niche": "Food, wellness, beauty",
+        "psychology": "Health, quality"
+      },
+      "fair_trade": {
+        "badge": "Fair Trade Certified",
+        "psychology": "Ethics, values alignment"
+      },
+      "b_corp": {
+        "badge": "Certified B Corporation",
+        "psychology": "Social responsibility",
+        "audience": "Conscious consumers"
+      },
+      "vegan_cruelty_free": {
+        "badges": "Vegan Society, Leaping Bunny",
+        "niche": "Beauty, fashion",
+        "psychology": "Ethics, animal welfare"
+      }
+    },
+    
+    "made_in_badges": {
+      "examples": "Made in USA, Made in Italy, Made in Japan",
+      "psychology": {
+        "USA": "Quality, support local",
+        "Italy": "Craftsmanship, luxury (fashion, leather)",
+        "Japan": "Precision, quality (electronics, knives)",
+        "Germany": "Engineering, durability"
+      },
+      "effectiveness": "+10-30% for relevant niches"
+    }
+  },
+  
+  "CONTACT_TRUST_SIGNALS": {
+    "phone_number": {
+      "display": "1-800-XXX-XXXX or local number",
+      "placement": "Header, footer, contact page",
+      "psychology": "Real business, accountability",
+      "effectiveness": "+5-10% trust (especially older demographics)"
+    },
+    
+    "live_chat": {
+      "tools": "Gorgias, Zendesk, Intercom",
+      "availability": "Show online/offline status",
+      "psychology": "Immediate help, human connection",
+      "conversion": "+10-20% when agent available",
+      "response_time": "< 1 minute = best"
+    },
+    
+    "about_us_page": {
+      "content": ["Founder story", "Team photos", "Mission/values", "Timeline"],
+      "psychology": "Transparency, humanizes brand",
+      "photos": "Real team (not stock photos)",
+      "effectiveness": "Critical for new/unknown brands"
+    },
+    
+    "physical_address": {
+      "display": "123 Main St, City, State ZIP",
+      "placement": "Footer, contact page",
+      "psychology": "Legitimacy, not a scam",
+      "note": "PO Box less trustworthy than street address"
+    }
+  },
+  
+  "MEDIA_TRUST": {
+    "professional_photography": {
+      "quality": "High-res, well-lit, consistent",
+      "psychology": "Professionalism = quality product",
+      "cost": "$500-$5000 per product line",
+      "roi": "Essential (poor photos kill conversion)"
+    },
+    
+    "video_content": {
+      "types": ["Product demos", "How-to", "Unboxing", "Behind-the-scenes"],
+      "effectiveness": "+80% conversion vs no video",
+      "length": "30-90 seconds (product demos)",
+      "placement": "Product page, homepage"
+    },
+    
+    "user_generated_content": {
+      "types": ["Customer photos", "Unboxing videos", "Instagram posts"],
+      "psychology": "Authenticity, social proof",
+      "effectiveness": "+40% trust vs branded content",
+      "collection": "Hashtag campaigns, photo review incentives"
+    }
+  },
+  
+  "SCARCITY_URGENCY_SIGNALS": {
+    "low_stock_indicator": {
+      "display": "Only 3 left in stock!",
+      "psychology": "Scarcity = value, urgency",
+      "conversion": "+15-25%",
+      "rule": "MUST be truthful (FTC regulations)"
+    },
+    
+    "recently_sold": {
+      "display": "5 sold in the last 24 hours",
+      "psychology": "Social proof + scarcity",
+      "effectiveness": "+10-15% conversion"
+    },
+    
+    "countdown_timer": {
+      "usage": "Sale ends in X hours",
+      "visual": "Digital countdown",
+      "psychology": "Urgency, FOMO",
+      "caution": "Overuse = decreased effectiveness"
+    }
+  },
+  
+  "TRUST_BY_NICHE": {
+    "luxury": {
+      "critical": ["Made in [country]", "Heritage/craftsmanship story", "Subtle certifications"],
+      "avoid": ["Aggressive urgency", "Cheap-looking badges", "Excessive popups"]
+    },
+    
+    "wellness": {
+      "critical": ["Certifications (Organic, Non-GMO)", "Ingredient transparency", "Third-party testing", "Detailed about page"],
+      "effectiveness": "Trust >> price for this niche"
+    },
+    
+    "fashion": {
+      "critical": ["Reviews with photos", "Size guide", "Free returns", "Instagram feed/UGC"],
+      "urgency": "Low stock, trending badges (acceptable)"
+    },
+    
+    "b2b": {
+      "critical": ["Case studies", "Client logos", "ROI calculators", "Free trial", "Contact sales (not just 'Buy Now')"],
+      "avoid": ["Emotion-driven copy", "Aggressive urgency"]
+    }
+  }
+}

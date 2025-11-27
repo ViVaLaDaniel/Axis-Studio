@@ -1,0 +1,408 @@
+{
+  "THEME_NAME": "Dawn",
+  "DESIGN_SYSTEM_VERSION": "15.0.0",
+  "EXTRACTED_FROM": "https://github.com/Shopify/dawn",
+  
+  "COLOR_SYSTEM": {
+    "description": "Dawn's minimalist color palette - highly flexible via color schemes",
+    
+    "default_scheme": {
+      "name": "Scheme 1 (Default Light)",
+      "colors": {
+        "background": "#FFFFFF",
+        "background_secondary": "#F3F3F3",
+        "text": "#121212",
+        "text_secondary": "#6C6C6C",
+        "button": "#121212",
+        "button_text": "#FFFFFF",
+        "button_secondary": "transparent",
+        "button_secondary_text": "#121212",
+        "border": "#E8E8E8",
+        "success": "#2E7D32",
+        "error": "#C5221F",
+        "sale": "#C5221F"
+      },
+      "psychology": "Clean, minimal, универсальный. Подходит для любой ниши.",
+      "contrast_ratios": {
+        "text_on_background": "16.1:1 (AAA)",
+        "button_text_on_button": "16.1:1 (AAA)"
+      }
+    },
+    
+    "scheme_2": {
+      "name": "Scheme 2 (Subtle Contrast)",
+      "colors": {
+        "background": "#F3F3F3",
+        "background_secondary": "#FFFFFF",
+        "text": "#121212",
+        "text_secondary": "#6C6C6C",
+        "button": "#121212",
+        "button_text": "#FFFFFF"
+      },
+      "usage": "Alternate sections for visual rhythm"
+    },
+    
+    "how_dawn_uses_schemes": "Each section can select a scheme → instant visual variety without custom colors",
+    
+    "semantic_colors": {
+      "price_sale": "#C5221F",
+      "price_regular": "#6C6C6C",
+      "badge_sale": "#C5221F",
+      "badge_sold_out": "#6C6C6C",
+      "success_message": "#2E7D32",
+      "error_message": "#C5221F",
+      "link_hover": "#121212"
+    }
+  },
+  
+  "TYPOGRAPHY_SYSTEM": {
+    "fonts": {
+      "heading": {
+        "family": "'Assistant', sans-serif",
+        "google_font": "https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap",
+        "weights": [400, 700],
+        "fallback": "system-ui, -apple-system, sans-serif",
+        "character_set": "Latin extended",
+        "psychology": "Friendly, modern, readable"
+      },
+      "body": {
+        "family": "'Assistant', sans-serif",
+        "weights": [400, 600],
+        "fallback": "system-ui, -apple-system, sans-serif"
+      }
+    },
+    
+    "type_scale": {
+      "base_size": "15px",
+      "scale_ratio": 1.25,
+      "sizes": {
+        "h1": {"size": "40px", "line_height": "1.1", "weight": 700, "letter_spacing": "0", "usage": "Page titles"},
+        "h2": {"size": "32px", "line_height": "1.2", "weight": 700, "letter_spacing": "0", "usage": "Section headings"},
+        "h3": {"size": "26px", "line_height": "1.3", "weight": 700, "letter_spacing": "0", "usage": "Subsections"},
+        "h4": {"size": "20px", "line_height": "1.4", "weight": 700, "letter_spacing": "0.06em", "usage": "Card titles"},
+        "h5": {"size": "18px", "line_height": "1.4", "weight": 600, "letter_spacing": "0.06em"},
+        "body_large": {"size": "17px", "line_height": "1.6", "weight": 400},
+        "body": {"size": "15px", "line_height": "1.6", "weight": 400, "usage": "Default body text"},
+        "body_small": {"size": "13px", "line_height": "1.5", "weight": 400, "usage": "Captions, metadata"},
+        "button": {"size": "14px", "line_height": "1", "weight": 600, "letter_spacing": "0.08em", "text_transform": "none"}
+      }
+    },
+    
+    "mobile_adjustments": {
+      "h1": "32px (from 40px)",
+      "h2": "26px (from 32px)",
+      "principle": "Reduce heading sizes on mobile for better readability"
+    }
+  },
+  
+  "SPACING_SYSTEM": {
+    "base_unit": "4px",
+    "scale": {
+      "0": "0px",
+      "1": "4px",
+      "2": "8px",
+      "3": "12px",
+      "4": "16px",
+      "5": "20px",
+      "6": "24px",
+      "7": "28px",
+      "8": "32px",
+      "10": "40px",
+      "12": "48px",
+      "16": "64px",
+      "20": "80px",
+      "24": "96px"
+    },
+    
+    "usage_guidelines": {
+      "component_padding": "4-6 (16-24px)",
+      "component_margin": "6-8 (24-32px)",
+      "section_padding_vertical": "12-16 (48-64px) desktop, 8-10 (32-40px) mobile",
+      "section_padding_horizontal": "Page width constrained, auto padding",
+      "grid_gap": "4-6 (16-24px)"
+    },
+    
+    "container_widths": {
+      "page_width": "1200px (default, customizable 1000-1600px)",
+      "content_width": "720px (for text-heavy content)",
+      "mobile": "100% with 16px horizontal padding"
+    }
+  },
+  
+  "BUTTON_STYLES": {
+    "primary": {
+      "background": "var(--color-button)",
+      "color": "var(--color-button-text)",
+      "padding": "14px 28px",
+      "border": "1px solid var(--color-button)",
+      "border_radius": "0px (sharp corners - Dawn signature)",
+      "font_size": "14px",
+      "font_weight": 600,
+      "text_transform": "none",
+      "letter_spacing": "0.08em",
+      "transition": "all 0.2s ease",
+      "hover": {
+        "background": "transparent",
+        "color": "var(--color-button)",
+        "border": "1px solid var(--color-button)"
+      },
+      "active": {
+        "transform": "scale(0.98)"
+      },
+      "disabled": {
+        "opacity": "0.5",
+        "cursor": "not-allowed"
+      }
+    },
+    
+    "secondary": {
+      "background": "transparent",
+      "color": "var(--color-button)",
+      "padding": "14px 28px",
+      "border": "1px solid var(--color-button)",
+      "border_radius": "0px",
+      "hover": {
+        "background": "var(--color-button)",
+        "color": "var(--color-button-text)"
+      }
+    },
+    
+    "link": {
+      "background": "transparent",
+      "color": "currentColor",
+      "padding": "0",
+      "border": "none",
+      "text_decoration": "underline",
+      "text_underline_offset": "0.3em",
+      "hover": {
+        "text_decoration": "none"
+      }
+    },
+    
+    "sizes": {
+      "small": {"padding": "10px 20px", "font_size": "12px"},
+      "medium": {"padding": "14px 28px", "font_size": "14px"},
+      "large": {"padding": "18px 36px", "font_size": "16px"}
+    }
+  },
+  
+  "CARD_STYLES": {
+    "product_card": {
+      "background": "var(--color-background)",
+      "border": "none",
+      "border_radius": "0px",
+      "padding": "0px (image + text, no inner padding)",
+      "shadow": "none",
+      "hover": {
+        "shadow": "none (Dawn is minimal)",
+        "image_transform": "none (optional: scale 1.05 on image)"
+      },
+      "image": {
+        "aspect_ratio": "Square (1:1) or Portrait (3:4) - customizable",
+        "object_fit": "cover",
+        "loading": "lazy (below fold)"
+      },
+      "title": {
+        "font_size": "14px",
+        "line_height": "1.4",
+        "margin_top": "12px",
+        "color": "var(--color-text)"
+      },
+      "price": {
+        "font_size": "14px",
+        "margin_top": "4px",
+        "color": "var(--color-text)"
+      }
+    },
+    
+    "content_card": {
+      "background": "var(--color-background-secondary)",
+      "padding": "24px",
+      "border": "none",
+      "border_radius": "0px",
+      "shadow": "none"
+    }
+  },
+  
+  "INPUT_STYLES": {
+    "text_input": {
+      "background": "var(--color-background)",
+      "border": "1px solid var(--color-border)",
+      "border_radius": "0px",
+      "padding": "12px 16px",
+      "font_size": "16px (prevent iOS zoom)",
+      "color": "var(--color-text)",
+      "focus": {
+        "border_color": "var(--color-text)",
+        "outline": "none"
+      }
+    },
+    
+    "select": {
+      "appearance": "none",
+      "background": "var(--color-background) url('data:image/svg+xml...')",
+      "border": "1px solid var(--color-border)",
+      "padding": "12px 40px 12px 16px"
+    },
+    
+    "checkbox_radio": {
+      "size": "18px",
+      "border": "1px solid var(--color-border)",
+      "checked": {
+        "background": "var(--color-button)",
+        "border_color": "var(--color-button)"
+      }
+    }
+  },
+  
+  "LAYOUT_PATTERNS": {
+    "grid_system": {
+      "type": "CSS Grid",
+      "columns_desktop": "4 (default, customizable 2-6)",
+      "columns_tablet": "3",
+      "columns_mobile": "2",
+      "gap": "24px desktop, 16px mobile",
+      "usage": "Product grids, featured collections"
+    },
+    
+    "hero_layouts": {
+      "image_with_text": {
+        "desktop": "50/50 split (image left or right)",
+        "mobile": "Stacked (image top, text below)",
+        "height": "Adapt to content or fixed (small/medium/large)",
+        "text_alignment": "Left, center, or right",
+        "content_position": "Top, middle, or bottom"
+      },
+      "full_width_banner": {
+        "height": "Adapt, small (400px), medium (500px), large (600px)",
+        "text_overlay": "Optional with opacity control",
+        "mobile": "Auto-height or fixed"
+      }
+    },
+    
+    "section_layouts": {
+      "multicolumn": {
+        "columns": "2-4",
+        "usage": "Features, benefits, USPs",
+        "content": "Icon/image + heading + text"
+      },
+      "collapsible_content": {
+        "type": "Accordion",
+        "usage": "FAQs, product details, shipping info",
+        "behavior": "Single open at a time"
+      }
+    }
+  },
+  
+  "ANIMATION_SYSTEM": {
+    "durations": {
+      "instant": "0ms",
+      "fast": "100ms",
+      "base": "200ms (most transitions)",
+      "slow": "300ms",
+      "slower": "500ms"
+    },
+    
+    "easings": {
+      "standard": "ease",
+      "ease_in_out": "cubic-bezier(0.4, 0.0, 0.2, 1)",
+      "ease_out": "cubic-bezier(0.0, 0.0, 0.2, 1)"
+    },
+    
+    "transitions": {
+      "button_hover": "all 0.2s ease",
+      "drawer_slide": "transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)",
+      "fade_in": "opacity 0.3s ease",
+      "color_change": "color 0.2s ease, background-color 0.2s ease"
+    },
+    
+    "scroll_animations": {
+      "fade_in_on_scroll": {
+        "implementation": "Intersection Observer",
+        "trigger": "Element 10% visible",
+        "animation": "opacity 0 → 1, translateY(20px) → 0",
+        "duration": "500ms",
+        "easing": "ease-out"
+      }
+    },
+    
+    "performance": {
+      "gpu_accelerated": "Use transform and opacity only",
+      "will_change": "Avoid (use sparingly)",
+      "reduce_motion": "@media (prefers-reduced-motion: reduce) { animation: none; }"
+    }
+  },
+  
+  "ICONOGRAPHY": {
+    "style": "Minimal, line-based SVG icons",
+    "stroke_width": "1.5px",
+    "size": "20px (default)",
+    "color": "currentColor (inherits text color)",
+    
+    "common_icons": {
+      "cart": "Shopping bag outline",
+      "search": "Magnifying glass",
+      "menu": "Hamburger (3 lines)",
+      "close": "X",
+      "chevron_down": "V shape",
+      "arrow_right": "→",
+      "check": "Checkmark"
+    },
+    
+    "usage": {
+      "navigation": "20px icons",
+      "buttons": "16px icons (with text), 20px (icon-only)",
+      "social": "24px brand icons"
+    }
+  },
+  
+  "PHOTOGRAPHY_STYLE": {
+    "product_photos": {
+      "background": "White or transparent",
+      "lighting": "Bright, even, minimal shadows",
+      "angles": "Straight-on, 3/4 view",
+      "consistency": "Same background and lighting across products"
+    },
+    
+    "lifestyle_photos": {
+      "style": "Clean, minimal, natural light",
+      "mood": "Authentic, not overly styled",
+      "models": "Diverse representation",
+      "settings": "Simple, uncluttered backgrounds"
+    },
+    
+    "image_optimization": {
+      "format": "WebP with JPG fallback",
+      "sizes": "180w, 360w, 533w, 720w, 940w, 1066w",
+      "loading": "eager (above fold), lazy (below fold)",
+      "aspect_ratios": "Square (1:1), Portrait (3:4), Landscape (4:3) - all supported"
+    }
+  },
+  
+  "RESPONSIVE_BREAKPOINTS": {
+    "mobile": "< 750px",
+    "tablet": "750px - 989px",
+    "desktop": ">= 990px",
+    "large_desktop": ">= 1200px",
+    
+    "strategy": "Mobile-first CSS (base styles for mobile, then @media for larger screens)",
+    
+    "layout_changes": {
+      "navigation": "Hamburger menu (mobile) → Horizontal menu (desktop)",
+      "product_grid": "2 columns (mobile) → 4 columns (desktop)",
+      "hero_text": "Centered (mobile) → Left/right aligned (desktop)",
+      "font_sizes": "Smaller headings on mobile"
+    }
+  },
+  
+  "ACCESSIBILITY_FEATURES": {
+    "color_contrast": "All text meets WCAG AA (4.5:1 min)",
+    "focus_states": "Visible outline on all interactive elements",
+    "keyboard_navigation": "Full tab navigation support",
+    "semantic_html": "Proper heading hierarchy (h1 → h2 → h3)",
+    "aria_labels": "All icon buttons have aria-label",
+    "skip_links": "Skip to content link (visually hidden)",
+    "form_labels": "All inputs have associated labels",
+    "alt_text": "All images require alt attribute"
+  }
+}

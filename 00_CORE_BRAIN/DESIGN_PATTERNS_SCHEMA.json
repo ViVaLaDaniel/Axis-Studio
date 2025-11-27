@@ -1,0 +1,291 @@
+{
+  "SCHEMA_NAME": "DESIGN_PATTERNS_SCHEMA",
+  "VERSION": "1.0",
+  "PURPOSE": "Визуальная декомпозиция Shopify тем для базы знаний AXIS",
+  
+  "COLOR_SYSTEM": {
+    "description": "Полная цветовая палитра темы",
+    "primary": {
+      "main": "#000000",
+      "hover": "#333333",
+      "active": "#666666",
+      "psychology": "What emotion does this color evoke? (black = luxury, sophistication)"
+    },
+    "secondary": {
+      "main": "#FFFFFF",
+      "hover": "#F5F5F5",
+      "active": "#E0E0E0"
+    },
+    "accent": {
+      "main": "#FF0000",
+      "hover": "#CC0000",
+      "usage": "CTAs, important actions, sale badges"
+    },
+    "neutrals": {
+      "gray_50": "#FAFAFA",
+      "gray_100": "#F5F5F5",
+      "gray_200": "#EEEEEE",
+      "gray_300": "#E0E0E0",
+      "gray_400": "#BDBDBD",
+      "gray_500": "#9E9E9E",
+      "gray_600": "#757575",
+      "gray_700": "#616161",
+      "gray_800": "#424242",
+      "gray_900": "#212121"
+    },
+    "semantic_colors": {
+      "success": "#4CAF50",
+      "warning": "#FF9800",
+      "error": "#F44336",
+      "info": "#2196F3"
+    },
+    "color_psychology": {
+      "primary_emotion": "Trust, Professionalism",
+      "secondary_emotion": "Clarity, Simplicity",
+      "niche_fit": ["luxury", "professional", "minimalist"]
+    }
+  },
+  
+  "TYPOGRAPHY_SYSTEM": {
+    "description": "Шрифты, размеры, веса, line-heights",
+    "fonts": {
+      "heading": {
+        "family": "Helvetica Neue, Arial, sans-serif",
+        "weights": [400, 700],
+        "fallback": "system-ui, sans-serif",
+        "google_font_url": null
+      },
+      "body": {
+        "family": "Helvetica Neue, Arial, sans-serif",
+        "weights": [400, 600],
+        "fallback": "system-ui, sans-serif"
+      }
+    },
+    "scale": {
+      "description": "Type scale (modular scale 1.25)",
+      "base": "16px",
+      "h1": {"size": "48px", "line_height": "1.2", "weight": 700},
+      "h2": {"size": "40px", "line_height": "1.3", "weight": 700},
+      "h3": {"size": "32px", "line_height": "1.3", "weight": 700},
+      "h4": {"size": "24px", "line_height": "1.4", "weight": 700},
+      "h5": {"size": "20px", "line_height": "1.4", "weight": 600},
+      "h6": {"size": "18px", "line_height": "1.5", "weight": 600},
+      "body_large": {"size": "18px", "line_height": "1.6", "weight": 400},
+      "body": {"size": "16px", "line_height": "1.6", "weight": 400},
+      "body_small": {"size": "14px", "line_height": "1.5", "weight": 400},
+      "caption": {"size": "12px", "line_height": "1.4", "weight": 400}
+    },
+    "psychology": {
+      "serif_vs_sans": "Sans-serif = modern, clean. Serif = traditional, trustworthy",
+      "size_impact": "Larger headings = confidence, authority. Smaller = accessibility",
+      "weight_impact": "Bold = action, emphasis. Light = elegance, sophistication"
+    }
+  },
+  
+  "SPACING_SYSTEM": {
+    "description": "Consistent spacing scale (base 4px)",
+    "scale": {
+      "xxs": "4px",
+      "xs": "8px",
+      "sm": "12px",
+      "md": "16px",
+      "lg": "24px",
+      "xl": "32px",
+      "xxl": "48px",
+      "xxxl": "64px",
+      "xxxxl": "96px"
+    },
+    "usage": {
+      "component_internal": "xs-sm (8-12px)",
+      "component_margin": "md-lg (16-24px)",
+      "section_padding": "xl-xxl (32-48px)",
+      "section_margin": "xxl-xxxl (48-64px)"
+    },
+    "psychology": "More whitespace = premium feel. Less whitespace = information density"
+  },
+  
+  "LAYOUT_PATTERNS": {
+    "grid_systems": [
+      {
+        "name": "Classic Grid",
+        "columns_desktop": 4,
+        "columns_mobile": 2,
+        "gap": "24px",
+        "usage": "Product collections, general content",
+        "psychology": "Familiar, expected, trusted"
+      },
+      {
+        "name": "Bento Grid",
+        "description": "Asymmetric grid with varied sizes",
+        "columns": "Variable (2-4)",
+        "usage": "Homepage hero, feature highlights",
+        "psychology": "Modern, dynamic, attention-grabbing"
+      },
+      {
+        "name": "Masonry",
+        "description": "Pinterest-style variable height",
+        "columns_desktop": 3,
+        "columns_mobile": 2,
+        "usage": "Image galleries, blog",
+        "psychology": "Creative, exploratory"
+      }
+    ],
+    "hero_patterns": [
+      {
+        "name": "Full-Screen Image + Text",
+        "layout": "Background image, centered text overlay",
+        "height": "100vh or 70vh",
+        "cta_position": "Center or bottom-center",
+        "psychology": "Bold, immersive, confidence"
+      },
+      {
+        "name": "Split Hero (50/50)",
+        "layout": "Image left, text right (or vice versa)",
+        "height": "60-80vh",
+        "usage": "Product showcase, storytelling",
+        "psychology": "Balanced, trustworthy, professional"
+      },
+      {
+        "name": "Video Background Hero",
+        "layout": "Autoplay muted video, text overlay",
+        "height": "100vh",
+        "usage": "Fashion, lifestyle brands",
+        "psychology": "Premium, engaging, modern"
+      }
+    ]
+  },
+  
+  "COMPONENT_STYLES": {
+    "buttons": {
+      "primary": {
+        "style": "Solid fill, rounded corners",
+        "bg_color": "accent or primary",
+        "text_color": "White or contrasting",
+        "padding": "12px 24px",
+        "border_radius": "4px",
+        "hover": "Darken 10%, scale(1.02)",
+        "psychology": "High confidence, primary action"
+      },
+      "secondary": {
+        "style": "Outline, no fill",
+        "border": "2px solid primary",
+        "text_color": "primary",
+        "padding": "12px 24px",
+        "hover": "Fill with primary, text white",
+        "psychology": "Less intrusive, secondary action"
+      },
+      "text_link": {
+        "style": "Underline on hover",
+        "text_color": "primary",
+        "hover": "Underline appears",
+        "psychology": "Minimal, non-committal action"
+      }
+    },
+    "cards": {
+      "product_card": {
+        "border": "1px solid gray-200 or none",
+        "border_radius": "8px",
+        "padding": "16px",
+        "hover": "Shadow elevation, border color shift",
+        "image_ratio": "1:1 (square) or 3:4 (portrait)",
+        "psychology": "Containment, scannability"
+      },
+      "content_card": {
+        "border": "none or subtle",
+        "border_radius": "12px",
+        "padding": "24px",
+        "shadow": "Soft shadow (0 2px 8px rgba(0,0,0,0.1))",
+        "psychology": "Elevated, premium"
+      }
+    },
+    "inputs": {
+      "text_input": {
+        "border": "1px solid gray-300",
+        "border_radius": "4px",
+        "padding": "12px 16px",
+        "focus": "Border color → primary, shadow glow",
+        "font_size": "16px (prevent zoom on iOS)",
+        "psychology": "Clear, inviting interaction"
+      },
+      "search_bar": {
+        "style": "Icon left, rounded",
+        "border_radius": "24px (pill shape)",
+        "padding": "10px 20px 10px 40px",
+        "psychology": "Friendly, approachable"
+      }
+    }
+  },
+  
+  "ANIMATION_PRINCIPLES": {
+    "durations": {
+      "instant": "100ms",
+      "fast": "200ms",
+      "medium": "300ms",
+      "slow": "500ms",
+      "very_slow": "800ms"
+    },
+    "easing": {
+      "standard": "cubic-bezier(0.4, 0.0, 0.2, 1)",
+      "deceleration": "cubic-bezier(0.0, 0.0, 0.2, 1)",
+      "acceleration": "cubic-bezier(0.4, 0.0, 1, 1)",
+      "sharp": "cubic-bezier(0.4, 0.0, 0.6, 1)"
+    },
+    "principles": {
+      "feedback": "User action should have immediate visual response (< 100ms)",
+      "natural_motion": "Objects should move realistically (ease-in-out, not linear)",
+      "performance": "Animate transform and opacity only (GPU-accelerated)",
+      "accessibility": "Respect prefers-reduced-motion (disable animations if set)"
+    },
+    "psychology": "Motion = aliveness, delight. Too much = chaos. None = static, dull."
+  },
+  
+  "PHOTOGRAPHY_STYLE": {
+    "description": "Визуальный стиль фотографий",
+    "product_photos": {
+      "background": "White or lifestyle",
+      "lighting": "Soft, natural or studio",
+      "angles": "Front, 3/4 view, detail shots",
+      "editing": "High contrast or natural colors"
+    },
+    "lifestyle_photos": {
+      "setting": "In-context (product being used)",
+      "models": "Diverse, relatable",
+      "mood": "Aspirational or authentic",
+      "psychology": "Lifestyle = imagination, aspiration. Product-only = functional"
+    },
+    "color_grading": {
+      "luxury": "Desaturated, high contrast, blacks",
+      "fashion": "Vibrant, saturated, punchy",
+      "wellness": "Soft, pastel, warm tones",
+      "tech": "Cool tones, modern, sleek"
+    }
+  },
+  
+  "ICONOGRAPHY": {
+    "style": {
+      "line_weight": "2px",
+      "corners": "Rounded or sharp",
+      "fill_vs_outline": "Outline for modern, fill for bold"
+    },
+    "size_scale": {
+      "small": "16px",
+      "medium": "24px",
+      "large": "32px",
+      "xlarge": "48px"
+    },
+    "usage": {
+      "navigation": "24px outline icons",
+      "features": "32px filled icons",
+      "social": "24px brand icons"
+    },
+    "psychology": "Icons = universal language, faster processing than text"
+  },
+  
+  "RESPONSIVE_BREAKPOINTS": {
+    "mobile": "< 768px",
+    "tablet": "768px - 1024px",
+    "desktop": "> 1024px",
+    "large_desktop": "> 1440px",
+    "design_philosophy": "Mobile-first (design for small, enhance for large)"
+  }
+}

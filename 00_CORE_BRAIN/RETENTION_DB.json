@@ -1,0 +1,369 @@
+{
+  "DATABASE_NAME": "RETENTION_DB",
+  "VERSION": "1.0",
+  "PURPOSE": "Паттерны удержания пользователей в e-commerce",
+  
+  "EMAIL_FLOWS": {
+    "welcome_series": {
+      "purpose": "Onboarding новых подписчиков",
+      "sequence": [
+        {
+          "email_1": {
+            "timing": "Immediately after signup",
+            "subject": "Welcome to [Brand]! Here's 10% off",
+            "content": ["Brand story", "What makes us different", "Discount code"],
+            "cta": "Shop Now",
+            "psychology": "Reciprocity (gift = obligation to buy)"
+          }
+        },
+        {
+          "email_2": {
+            "timing": "2 days later",
+            "subject": "Here's what you'll love about us",
+            "content": ["Top products", "Customer testimonials", "Free shipping info"],
+            "cta": "Browse Bestsellers",
+            "psychology": "Social proof + value proposition"
+          }
+        },
+        {
+          "email_3": {
+            "timing": "5 days later",
+            "subject": "Still thinking? Here's inspiration",
+            "content": ["Style guide", "How-to content", "Customer photos (UGC)"],
+            "cta": "Get Inspired",
+            "psychology": "Education builds trust, inspiration drives desire"
+          }
+        }
+      ],
+      "conversion_rate": "15-25% of series completes purchase"
+    },
+    
+    "abandoned_cart": {
+      "purpose": "Recover lost sales",
+      "trigger": "Cart with items, no purchase within 1 hour",
+      "sequence": [
+        {
+          "email_1": {
+            "timing": "1 hour after abandonment",
+            "subject": "You left something behind!",
+            "content": ["Cart items with images/prices", "Continue shopping CTA"],
+            "psychology": "Reminder + commitment (they already added items)",
+            "conversion_rate": "3-5% recover"
+          }
+        },
+        {
+          "email_2": {
+            "timing": "24 hours later",
+            "subject": "Still interested? Here's 10% off",
+            "content": ["Discount code", "Customer reviews of cart items", "Urgency (code expires)"],
+            "psychology": "Reciprocity + social proof + urgency",
+            "conversion_rate": "5-8% recover"
+          }
+        },
+        {
+          "email_3": {
+            "timing": "3 days later",
+            "subject": "Last chance - your cart expires soon",
+            "content": ["Final reminder", "Testimonials", "Free shipping offer"],
+            "psychology": "Loss aversion (cart will be deleted)",
+            "conversion_rate": "2-3% recover"
+          }
+        }
+      ],
+      "total_recovery_rate": "10-15% of abandoned carts"
+    },
+    
+    "post_purchase": {
+      "purpose": "Delight + encourage repeat purchase",
+      "sequence": [
+        {
+          "email_1": {
+            "timing": "Immediately after purchase",
+            "subject": "Order confirmed! Here's what's next",
+            "content": ["Order details", "Shipping timeline", "Tracking link"],
+            "psychology": "Reduce anxiety, build trust"
+          }
+        },
+        {
+          "email_2": {
+            "timing": "When shipped",
+            "subject": "Your order is on the way!",
+            "content": ["Tracking number", "Delivery estimate", "Care instructions"],
+            "psychology": "Excitement, anticipation"
+          }
+        },
+        {
+          "email_3": {
+            "timing": "7 days after delivery",
+            "subject": "How are you loving your [product]?",
+            "content": ["Request review", "Photo contest", "Referral program"],
+            "cta": "Leave a Review",
+            "psychology": "Social proof generation + referral boost"
+          }
+        },
+        {
+          "email_4": {
+            "timing": "30 days after purchase",
+            "subject": "Based on your purchase, you'll love these",
+            "content": ["Personalized recommendations", "VIP discount"],
+            "psychology": "Personalization + repeat purchase incentive"
+          }
+        }
+      ]
+    },
+    
+    "win_back": {
+      "purpose": "Re-engage dormant customers",
+      "trigger": "No purchase in 90 days (adjustable by niche)",
+      "sequence": [
+        {
+          "email_1": {
+            "timing": "Day 90",
+            "subject": "We miss you! Here's what's new",
+            "content": ["New arrivals", "Best sellers", "Exclusive comeback offer"],
+            "discount": "15-20%",
+            "psychology": "Curiosity + reciprocity"
+          }
+        },
+        {
+          "email_2": {
+            "timing": "Day 105",
+            "subject": "Your exclusive 20% off is expiring",
+            "content": ["Countdown timer", "Top picks for them", "Customer wins (testimonials)"],
+            "psychology": "Urgency + FOMO"
+          }
+        },
+        {
+          "email_3": {
+            "timing": "Day 120",
+            "subject": "Before you go... we'd love your feedback",
+            "content": ["Survey (why did you stop buying?)", "Incentive for completing survey"],
+            "purpose": "Data gathering + last re-engagement attempt"
+          }
+        }
+      ],
+      "win_back_rate": "5-10% of dormant customers"
+    }
+  },
+  
+  "ON_SITE_RETENTION": {
+    "exit_intent_popups": {
+      "trigger": "Mouse moves toward browser close button",
+      "variants": [
+        {
+          "discount_offer": {
+            "content": "Wait! Take 10% off your first order",
+            "cta": "Claim Discount",
+            "when_to_use": "New visitors",
+            "conversion_rate": "2-5% of exit-intent shows"
+          }
+        },
+        {
+          "email_capture": {
+            "content": "Don't miss out! Get exclusive offers + new arrivals",
+            "cta": "Join Now",
+            "incentive": "10% off or free shipping",
+            "when_to_use": "All visitors",
+            "capture_rate": "5-15%"
+          }
+        },
+        {
+          "help_offer": {
+            "content": "Need help deciding? Chat with us!",
+            "cta": "Start Chat",
+            "when_to_use": "Visitors on PDP for >30s",
+            "psychology": "Reduces decision anxiety"
+          }
+        }
+      ],
+      "best_practices": [
+        "Show once per session (not annoying)",
+        "Easy to close (X button prominent)",
+        "Mobile-friendly (doesn't block content)",
+        "A/B test offers (discount vs free shipping)"
+      ]
+    },
+    
+    "recently_viewed_products": {
+      "trigger": "User views product",
+      "storage": "localStorage (30 days)",
+      "display": ["PDP (below current product)", "Cart page", "Homepage (returning visitors)"],
+      "psychology": "Familiar = trust, easy re-discovery",
+      "conversion_boost": "5-10% for returning visitors"
+    },
+    
+    "personalized_recommendations": {
+      "algorithm": "Collaborative filtering or Shopify AI",
+      "placements": [
+        "PDP: 'Frequently bought together'",
+        "Cart: 'You might also like'",
+        "Post-purchase: 'Complete your look'"
+      ],
+      "effectiveness": "15-30% of users click, 5-10% convert"
+    },
+    
+    "free_shipping_threshold": {
+      "pattern": "Progress bar in cart/drawer",
+      "example": "Add $25 more for free shipping!",
+      "psychology": "Goal gradient (closer to goal = more motivated)",
+      "aov_increase": "20-30%",
+      "implementation": {
+        "threshold": "$50-$75 (depends on AOV)",
+        "visuals": "Progress bar (green = achieved)",
+        "messaging": "Dynamic ('$25 to go' → 'Free shipping unlocked!')"
+      }
+    },
+    
+    "loyalty_program": {
+      "tiers": {
+        "bronze": {"spend": "$0-$100", "benefits": "Points on purchases"},
+        "silver": {"spend": "$100-$500", "benefits": "10% off, early access"},
+        "gold": {"spend": "$500+", "benefits": "15% off, free shipping, VIP support"}
+      },
+      "psychology": "Gamification + status + exclusivity",
+      "impact": {
+        "retention_increase": "20-40%",
+        "ltv_increase": "30-50%"
+      },
+      "implementation": "Shopify apps: Smile.io, LoyaltyLion, Yotpo"
+    }
+  },
+  
+  "GAMIFICATION": {
+    "points_system": {
+      "earn_points": [
+        {"action": "Purchase", "points": "1 point per $1 spent"},
+        {"action": "Create account", "points": "100 bonus"},
+        {"action": "Birthday", "points": "200 bonus"},
+        {"action": "Referral", "points": "500 bonus"}
+      ],
+      "redeem_points": "100 points = $1 off",
+      "psychology": "Progress, achievement, reward"
+    },
+    
+    "progress_bars": {
+      "usage": ["Free shipping threshold", "Loyalty tier progress", "Review milestones"],
+      "psychology": "Goal gradient effect (visible progress = motivation)",
+      "design": "Green color, animated fill, celebration on completion"
+    },
+    
+    "badges_achievements": {
+      "examples": ["First purchase badge", "100th order celebration", "VIP member badge"],
+      "psychology": "Status, recognition, belonging",
+      "display": "Account page, email footer, checkout"
+    },
+    
+    "exclusive_member_pricing": {
+      "pattern": "Show member price below regular price",
+      "example": "Regular: $99 | Member: $79",
+      "psychology": "Exclusivity + reciprocity (membership = value)",
+      "conversion_boost": "10-20% for members"
+    }
+  },
+  
+  "LIFECYCLE_ENGAGEMENT": {
+    "customer_journey_stages": {
+      "new_customer": {
+        "definition": "First purchase, 0-30 days",
+        "goals": ["Deliver great experience", "Encourage review", "Introduce brand values"],
+        "tactics": ["Welcome series", "Post-purchase emails", "Referral invite"],
+        "kpi": "Repeat purchase rate within 60 days"
+      },
+      
+      "repeat_customer": {
+        "definition": "2-5 purchases, 30-180 days",
+        "goals": ["Increase purchase frequency", "Build loyalty"],
+        "tactics": ["Personalized recommendations", "VIP preview access", "Birthday rewards"],
+        "kpi": "Purchase frequency (days between orders)"
+      },
+      
+      "vip_customer": {
+        "definition": "6+ purchases or $1000+ LTV",
+        "goals": ["Maximize LTV", "Turn into advocates"],
+        "tactics": ["Concierge service", "Exclusive events", "Early access to new products"],
+        "kpi": "LTV growth, referral rate"
+      },
+      
+      "at_risk": {
+        "definition": "60-90 days since last purchase (was active before)",
+        "goals": ["Re-engage before they churn"],
+        "tactics": ["Win-back emails", "Survey (why inactive?)", "Special offer"],
+        "kpi": "Win-back rate"
+      },
+      
+      "churned": {
+        "definition": "120+ days inactive",
+        "goals": ["Sunset gracefully or final win-back attempt"],
+        "tactics": ["Final offer", "Unsubscribe with feedback option"],
+        "kpi": "Churn rate, feedback quality"
+      }
+    }
+  },
+  
+  "REFERRAL_PROGRAMS": {
+    "give_get_model": {
+      "structure": "Referrer gets $10, friend gets $10",
+      "psychology": "Win-win, reciprocity",
+      "implementation": "Referral links, email sharing, social share",
+      "conversion_rate": "2-5% of customers refer",
+      "referred_customer_value": "25% higher LTV (pre-qualified)"
+    },
+    
+    "social_proof_amplification": {
+      "tactic": "Show 'X friends have shopped here' on referral page",
+      "psychology": "Social proof + FOMO",
+      "boost": "30-50% higher referral conversion"
+    }
+  },
+  
+  "NICHE_SPECIFIC_RETENTION": {
+    "fashion": {
+      "best_tactics": ["New arrival alerts", "Style quiz retargeting", "Seasonal lookbooks"],
+      "email_frequency": "2-3x per week (high engagement niche)",
+      "loyalty": "Points + VIP early access"
+    },
+    
+    "luxury": {
+      "best_tactics": ["Exclusive events", "Personal shopper", "Heritage storytelling"],
+      "email_frequency": "1x per week (quality over quantity)",
+      "loyalty": "Tiered VIP (not points, too transactional)"
+    },
+    
+    "wellness": {
+      "best_tactics": ["Educational content", "Subscription models", "Results tracking"],
+      "email_frequency": "1-2x per week (educational focus)",
+      "loyalty": "Auto-replenish discounts"
+    },
+    
+    "b2b": {
+      "best_tactics": ["Account management", "Bulk reorder", "Usage analytics"],
+      "email_frequency": "Monthly newsletter + transactional",
+      "loyalty": "Volume discounts, payment terms"
+    }
+  },
+  
+  "RETENTION_METRICS": {
+    "key_kpis": {
+      "repeat_purchase_rate": {
+        "calculation": "(Customers with 2+ orders / Total customers) × 100",
+        "benchmark": "20-30% (varies by niche)",
+        "goal": "> 30%"
+      },
+      "customer_ltv": {
+        "calculation": "Average order value × Purchase frequency × Customer lifespan",
+        "importance": "Key profitability metric",
+        "optimization": "Increase AOV, frequency, or lifespan"
+      },
+      "churn_rate": {
+        "calculation": "(Customers lost / Total customers) × 100",
+        "benchmark": "5-10% monthly",
+        "goal": "< 5%"
+      },
+      "email_engagement": {
+        "open_rate": "15-25% (industry average)",
+        "click_rate": "2-5%",
+        "conversion_rate": "1-3%"
+      }
+    }
+  }
+}

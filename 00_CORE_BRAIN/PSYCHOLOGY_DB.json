@@ -1,0 +1,323 @@
+{
+  "DATABASE_NAME": "PSYCHOLOGY_DB",
+  "VERSION": "1.0",
+  "PURPOSE": "Behavioral psychology, neuroscience, cognitive biases для e-commerce оптимизации",
+  
+  "COGNITIVE_BIASES": {
+    "description": "Когнитивные искажения которые влияют на решения о покупке",
+    
+    "loss_aversion": {
+      "principle": "Люди боятся потери больше, чем ценят выгоду",
+      "strength": "2x (loss feels 2x stronger than equivalent gain)",
+      "ecommerce_applications": [
+        {
+          "pattern": "Limited Stock Indicator",
+          "example": "Only 3 left in stock!",
+          "trigger": "inventory < 10",
+          "psychology": "Fear of missing out (FOMO)",
+          "when_to_use": ["fashion", "limited editions", "trending products"],
+          "when_to_avoid": ["luxury (too aggressive)", "B2B (need approval time)"],
+          "effectiveness": "Increases conversion by 10-20%"
+        },
+        {
+          "pattern": "Cart Expiration Timer",
+          "example": "Items reserved for 15 minutes",
+          "psychology": "Fear of losing reserved items",
+          "effectiveness": "Reduces cart abandonment by 5-10%"
+        }
+      ]
+    },
+    
+    "social_proof": {
+      "principle": "Люди копируют поведение других (herd mentality)",
+      "neuroscience": "Mirror neurons activate when seeing others' actions",
+      "ecommerce_applications": [
+        {
+          "pattern": "Customer Reviews",
+          "example": "4.8★ from 1,234 reviews",
+          "effectiveness": "Products with reviews convert 270% better",
+          "best_practices": [
+            "Show star rating on product cards",
+            "Display review count (social proof scale)",
+            "Include photo reviews (authenticity)",
+            "Show verified purchase badge"
+          ]
+        },
+        {
+          "pattern": "Live Purchase Notifications",
+          "example": "John from New York purchased 5 minutes ago",
+          "psychology": "Others are buying = I should buy",
+          "caution": "Can feel manipulative if fake"
+        },
+        {
+          "pattern": "Customer Count",
+          "example": "50,000+ happy customers",
+          "when_to_use": "Established brands only",
+          "when_to_avoid": "New stores (feels fake)"
+        }
+      ]
+    },
+    
+    "scarcity": {
+      "principle": "Rare = Valuable",
+      "neuroscience": "Amygdala activates (urgency response)",
+      "ecommerce_applications": [
+        {
+          "pattern": "Low Stock",
+          "example": "Hurry! Only 2 left",
+          "effectiveness": "15-25% conversion boost",
+          "ethical_rule": "MUST be real inventory"
+        },
+        {
+          "pattern": "Time-Limited Offer",
+          "example": "Sale ends in 2 hours",
+          "countdown_timer": true,
+          "effectiveness": "Creates urgency, reduces decision paralysis"
+        },
+        {
+          "pattern": "Exclusive Access",
+          "example": "VIP members only",
+          "psychology": "Exclusivity = status, desirability",
+          "niche": "luxury, membership sites"
+        }
+      ]
+    },
+    
+    "anchoring": {
+      "principle": "First number seen anchors perception",
+      "neuroscience": "Brain uses first info as reference point",
+      "ecommerce_applications": [
+        {
+          "pattern": "Compare At Price",
+          "example": "<s>$199</s> $99 (Save $100!)",
+          "rules": [
+            "Original price must be legitimate (legal requirement)",
+            "Visually de-emphasize strikethrough price (smaller, grayed)",
+            "Highlight savings amount or percentage"
+          ],
+          "effectiveness": "Increases perceived value by 30-40%"
+        },
+        {
+          "pattern": "Decoy Pricing",
+          "example": "Small $29, Medium $39, Large $49 (best value)",
+          "psychology": "Medium option seems reasonable vs extremes",
+          "when_to_use": "Subscriptions, bundles, tiered products"
+        }
+      ]
+    },
+    
+    "commitment_consistency": {
+      "principle": "Люди хотят быть последовательными со своими действиями",
+      "ecommerce_applications": [
+        {
+          "pattern": "Progressive Engagement",
+          "example": "Quiz → Results → Product Recommendation → Purchase",
+          "psychology": "Each step increases commitment",
+          "effectiveness": "Quiz funnels convert 40-60% higher"
+        },
+        {
+          "pattern": "Cart as Commitment",
+          "example": "You have 3 items in cart",
+          "psychology": "Adding to cart = psychological ownership",
+          "follow_up": "Abandoned cart emails work because of this"
+        }
+      ]
+    },
+    
+    "reciprocity": {
+      "principle": "Люди чувствуют обязанность отплатить за подарок",
+      "ecommerce_applications": [
+        {
+          "pattern": "Free Shipping",
+          "psychology": "Store gives free shipping → customer feels obligated to buy",
+          "threshold": "Free shipping over $50 increases AOV by 20-30%"
+        },
+        {
+          "pattern": "Free Sample",
+          "example": "Free sample with purchase",
+          "effectiveness": "Increases repeat purchase rate"
+        }
+      ]
+    }
+  },
+  
+  "NEUROSCIENCE_TRIGGERS": {
+    "description": "Нейробиологические триггеры",
+    
+    "color_psychology": {
+      "red": {
+        "emotion": "Urgency, excitement, passion",
+        "physiological": "Increases heart rate",
+        "usage": "Sale badges, CTAs, urgency elements",
+        "caution": "Too much = stress, aggression"
+      },
+      "blue": {
+        "emotion": "Trust, calm, professionalism",
+        "physiological": "Lowers heart rate",
+        "usage": "Trust badges, security, corporate",
+        "niche_fit": "Finance, healthcare, B2B"
+      },
+      "green": {
+        "emotion": "Growth, nature, health",
+        "usage": "Eco-friendly, wellness, organic",
+        "cta_effectiveness": "Green CTAs convert well for health/eco products"
+      },
+      "orange": {
+        "emotion": "Friendly, energetic, affordable",
+        "usage": "Playful brands, food, casual",
+        "cta_effectiveness": "High conversion for impulse buys"
+      },
+      "black": {
+        "emotion": "Luxury, sophistication, power",
+        "usage": "Premium brands, fashion, electronics",
+        "psychology": "Exclusivity, high-end"
+      },
+      "white": {
+        "emotion": "Simplicity, cleanliness, space",
+        "usage": "Minimalist brands, healthcare, tech",
+        "psychology": "Clarity, focus"
+      }
+    },
+    
+    "visual_hierarchy": {
+      "f_pattern": {
+        "description": "Eyes scan in F-shape (left to right, top to bottom)",
+        "implications": [
+          "Most important content top-left",
+          "Headlines on left edge",
+          "CTA buttons after key info"
+        ]
+      },
+      "z_pattern": {
+        "description": "Eyes scan Z-shape (for simpler layouts)",
+        "usage": "Landing pages, hero sections",
+        "path": "Top-left → Top-right → Diagonal → Bottom-left → Bottom-right"
+      },
+      "center_stage": {
+        "description": "Eyes naturally drawn to center",
+        "usage": "Product images, headlines in hero"
+      }
+    },
+    
+    "fitts_law": {
+      "principle": "Larger targets are easier to hit",
+      "implications": [
+        "Primary CTA should be largest button",
+        "Mobile touch targets minimum 44x44px",
+        "Most important links = biggest, most prominent"
+      ]
+    },
+    
+    "hicks_law": {
+      "principle": "More choices = longer decision time",
+      "implications": [
+        "Limit navigation menu items (max 7)",
+        "Product variants: show 3-5 options, not 20",
+        "Simplify checkout (guest checkout option)",
+        "Progressive disclosure (show details on demand)"
+      ]
+    },
+    
+    "miller_law": {
+      "principle": "People remember 7 ± 2 items",
+      "implications": [
+        "Feature lists: max 7 bullets",
+        "Navigation: 5-7 main items",
+        "Product benefits: focus on top 5"
+      ]
+    }
+  },
+  
+  "NICHE_SPECIFIC_PSYCHOLOGY": {
+    "luxury": {
+      "key_triggers": ["Exclusivity", "Prestige", "Heritage", "Craftsmanship"],
+      "avoid": ["Aggressive urgency", "Discounts (ruins perception)", "Cluttered design"],
+      "color_palette": "Monochrome (black, white, gold)",
+      "typography": "Serif fonts (tradition, trust)",
+      "imagery": "High-quality lifestyle photos, minimal product shots",
+      "copy_tone": "Sophisticated, understated, confident",
+      "cro_patterns": {
+        "use": ["Social proof (subtle)", "Scarcity (limited editions)", "Authority (expert endorsements)"],
+        "avoid": ["Low stock indicators", "Countdown timers", "Popups"]
+      }
+    },
+    
+    "fashion": {
+      "key_triggers": ["FOMO", "Trends", "Social validation", "Self-expression"],
+      "urgency": "High (fast-moving inventory)",
+      "color_palette": "Bold, vibrant, on-trend",
+      "imagery": "Lifestyle, models, Instagram aesthetic",
+      "copy_tone": "Trendy, conversational, aspirational",
+      "cro_patterns": {
+        "use": ["Low stock", "Recently viewed", "Trending now", "Sticky ATC mobile"],
+        "highly_effective": "Video content, influencer UGC"
+      }
+    },
+    
+    "wellness": {
+      "key_triggers": ["Trust", "Education", "Transformation", "Authenticity"],
+      "urgency": "Low (deliberate purchase)",
+      "color_palette": "Soft, pastel, natural tones (green, beige)",
+      "imagery": "Real people, natural settings, before/after",
+      "copy_tone": "Empathetic, educational, transparent",
+      "cro_patterns": {
+        "use": ["Detailed ingredients", "Expert endorsements", "Educational content", "Reviews with photos"],
+        "avoid": ["Aggressive urgency (undermines trust)"]
+      }
+    },
+    
+    "b2b": {
+      "key_triggers": ["ROI", "Efficiency", "Proof", "Authority"],
+      "decision_time": "Long (approval needed)",
+      "color_palette": "Professional (blue, gray, white)",
+      "imagery": "Data visualizations, case studies, team photos",
+      "copy_tone": "Professional, data-driven, confident",
+      "cro_patterns": {
+        "use": ["Case studies", "ROI calculators", "Free trials", "Demo requests"],
+        "avoid": ["Urgency timers (counterproductive)", "Emotional appeals"]
+      }
+    }
+  },
+  
+  "EMOTIONAL_TRIGGERS": {
+    "fear": {
+      "applications": ["Security (SSL badges)", "Guarantees (money-back)", "Risk reversal (free returns)"],
+      "copy_examples": ["100% Secure Checkout", "30-Day Money-Back Guarantee"]
+    },
+    "greed": {
+      "applications": ["Discounts", "Bundles (save more)", "Loyalty rewards"],
+      "copy_examples": ["Buy 2, Get 1 Free", "VIP members save 20%"]
+    },
+    "curiosity": {
+      "applications": ["Mystery offers", "Quiz funnels", "Reveal mechanics"],
+      "copy_examples": ["Discover your perfect product", "What's your style?"]
+    },
+    "belonging": {
+      "applications": ["Community", "Member-only perks", "User-generated content"],
+      "copy_examples": ["Join 50,000+ members", "See how customers style it"]
+    }
+  },
+  
+  "DECISION_MAKING_FRAMEWORKS": {
+    "system_1_vs_system_2": {
+      "system_1": {
+        "description": "Fast, automatic, emotional",
+        "triggers": "Images, colors, first impressions",
+        "design_for": "Make it beautiful, trustworthy at first glance"
+      },
+      "system_2": {
+        "description": "Slow, deliberate, logical",
+        "triggers": "Reading specs, comparing options, reviews",
+        "design_for": "Clear structure, easy comparisons, complete info"
+      }
+    },
+    
+    "fogg_behavior_model": {
+      "formula": "Behavior = Motivation + Ability + Trigger",
+      "motivation": "Increase desire (benefits, social proof, urgency)",
+      "ability": "Make it easy (guest checkout, autofill, fast load)",
+      "trigger": "Clear CTA (Add to Cart, Buy Now)",
+      "ecommerce_application": "Maximize all 3 for highest conversion"
+    }
+  }
+}

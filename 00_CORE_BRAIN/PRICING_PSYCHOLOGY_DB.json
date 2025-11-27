@@ -1,0 +1,269 @@
+{
+  "DATABASE_NAME": "PRICING_PSYCHOLOGY_DB",
+  "VERSION": "1.0",
+  "PURPOSE": "Психология ценообразования для максимизации конверсии и воспринимаемой ценности",
+  
+  "CHARM_PRICING": {
+    "principle": "Цены заканчивающиеся на 9, 99, 95 воспринимаются значительно дешевле",
+    "examples": {
+      "$99 vs $100": {
+        "perception": "$99 feels like ~$90 (left-digit effect)",
+        "conversion_boost": "+20-24% vs round numbers",
+        "psychology": "Brain processes left digit first ($99 = ninety-something)"
+      },
+      "$19.99 vs $20": {
+        "perception": "$19.99 = \"under $20\" vs $20 = \"twenty dollars\"",
+        "effectiveness": "Very high for impulse purchases"
+      }
+    },
+    "when_to_use": {
+      "best_for": ["Mass market", "Impulse buys", "Competitive niches"],
+      "avoid_for": ["Luxury (looks cheap)", "B2B (prefer round numbers)", "Premium positioning"]
+    },
+    "variations": {
+      ".99": "Most common, mass appeal",
+      ".95": "Slightly more upscale than .99",
+      ".97": "Wholesale/discount feel",
+      ".00": "Round, premium, clean"
+    }
+  },
+  
+  "ANCHORING": {
+    "principle": "First price seen becomes reference point for all other prices",
+    "tactics": {
+      "compare_at_price": {
+        "display": "<s>$199</s> $99",
+        "psychology": "$199 anchors perception, $99 feels like bargain",
+        "visual_rules": {
+          "strikethrough": "Original price grayed + crossed out",
+          "emphasis": "Sale price larger, bold, colored",
+          "savings": "Show '$100 saved' or '50% off' badge"
+        },
+        "effectiveness": "+30-40% perceived value",
+        "legal": "Original price must be legitimate (not fake inflation)"
+      },
+      
+      "show_highest_first": {
+        "example": "Product variants: Show $500 option first, then $300, then $200",
+        "psychology": "$500 anchors high, $300 seems reasonable",
+        "usage": "Pricing tables, variant selectors"
+      },
+      
+      "bundle_anchor": {
+        "example": "Buy 3 for $150 (was $70 each = $210 total) — Save $60!",
+        "psychology": "$210 anchors total value, $150 feels like steal",
+        "effectiveness": "+25-40% bundle conversion"
+      }
+    }
+  },
+  
+  "DECOY_EFFECT": {
+    "principle": "Adding a third option makes middle option seem most attractive",
+    "examples": {
+      "subscription_tiers": {
+        "basic": "$10/mo (limited features)",
+        "pro": "$30/mo (full features) ← MOST POPULAR",
+        "enterprise": "$100/mo (same as Pro + white-label)",
+        "psychology": "Enterprise is decoy (expensive, minimal extra value) → Pro seems best",
+        "result": "70-80% choose Pro (vs 50-60% without decoy)"
+      },
+      
+      "product_sizes": {
+        "small": "$5 (8oz)",
+        "medium": "$7 (16oz) ← BEST VALUE",
+        "large": "$8 (20oz)",
+        "psychology": "Large is decoy (poor value/oz) → Medium seems smart choice",
+        "usage": "Coffee shops, food, consumables"
+      }
+    },
+    "how_to_design": {
+      "step_1": "Identify which option you want to sell most (target)",
+      "step_2": "Create decoy: more expensive, slightly more features/size",
+      "step_3": "Price decoy to make target look like best value",
+      "step_4": "Label target as 'Most Popular' or 'Best Value' badge"
+    }
+  },
+  
+  "PRICE_FRAMING": {
+    "per_day_pricing": {
+      "example": "Just $1/day (instead of $365/year)",
+      "psychology": "$1 feels tiny, $365 feels big",
+      "effectiveness": "+15-30% conversion for subscriptions",
+      "usage": "Subscriptions, memberships, SaaS"
+    },
+    
+    "cost_comparison": {
+      "example": "Less than your daily coffee ($4/day vs $3/day for our product)",
+      "psychology": "Anchors to familiar expense, feels affordable",
+      "usage": "Subscriptions, recurring products"
+    },
+    
+    "savings_emphasis": {
+      "focus_on_savings": "SAVE $100 (not just '50% off')",
+      "dollar_vs_percent": {
+        "rule": "High prices → use % (50% off $1000 = $500 saved sounds big)",
+        "low_prices": "Use $ (save $5 > save 20% on $25 item)"
+      }
+    },
+    
+    "pay_over_time": {
+      "example": "4 payments of $25 (instead of $100 total)",
+      "services": "Klarna, Afterpay, Shop Pay Installments",
+      "psychology": "$25 feels manageable, $100 feels like commitment",
+      "conversion_boost": "+20-40% for $100+ products"
+    }
+  },
+  
+  "PRICE_PRESENTATION": {
+    "remove_currency_symbol": {
+      "theory": "99 feels smaller than $99",
+      "evidence": "Mixed (some studies show effect, others don't)",
+      "recommendation": "A/B test for your audience",
+      "luxury_note": "Luxury often omits symbol (99 or 99.00)"
+    },
+    
+    "font_size": {
+      "sale_price": "Large, bold, colored",
+      "original_price": "Smaller, gray, strikethrough",
+      "psychology": "Visual hierarchy guides attention"
+    },
+    
+    "decimal_places": {
+      "mass_market": "$19.99 (precise, value-focused)",
+      "premium": "$199 or $199.00 (round, clean)",
+      "luxury": "199 (no symbol, no decimals)"
+    },
+    
+    "color_psychology": {
+      "red": "Sale, urgency, action",
+      "green": "Savings, good deal",
+      "black": "Standard, neutral",
+      "gold": "Premium, exclusive"
+    }
+  },
+  
+  "BUNDLE_PRICING": {
+    "good_better_best": {
+      "good": "$30 (1 item)",
+      "better": "$50 (2 items) — Save $10!",
+      "best": "$70 (3 items) — Save $20! ← BEST VALUE",
+      "psychology": "Three tiers satisfies different budgets, middle/best most chosen",
+      "conversion": "Bundles convert 30-50% better than single items"
+    },
+    
+    "frequently_bought_together": {
+      "display": "Product A ($50) + Product B ($30) + Product C ($25) = $105 → Buy together for $89",
+      "savings": "Highlight $16 saved",
+      "placement": "PDP, cart",
+      "effectiveness": "+15-25% AOV"
+    },
+    
+    "volume_discounts": {
+      "example": "1 for $20, 2 for $35 (save $5), 3 for $50 (save $10)",
+      "psychology": "Encourages bulk purchase",
+      "visual": "Table or tiered pricing"
+    }
+  },
+  
+  "TIERED_PRICING": {
+    "free_tier": {
+      "purpose": "Lead generation, trial",
+      "features": "Limited but functional",
+      "conversion_path": "Upgrade prompts at feature limits"
+    },
+    
+    "paid_tiers": {
+      "tier_1": "$10 — Starter (for individuals)",
+      "tier_2": "$30 — Pro (for small teams) ← MOST POPULAR",
+      "tier_3": "$100 — Enterprise (for companies)",
+      "psychology": "Clear differentiation, easy decision-making"
+    },
+    
+    "annual_vs_monthly": {
+      "monthly": "$30/month",
+      "annual": "$300/year (save $60 = 2 months free)",
+      "emphasis": "Show annual savings prominently",
+      "conversion": "Annual reduces churn, higher LTV"
+    }
+  },
+  
+  "SCARCITY_PRICING": {
+    "early_bird": {
+      "example": "First 100 customers: $50 (regular $70)",
+      "psychology": "Scarcity + exclusivity",
+      "countdown": "Only 23 left at this price!",
+      "effectiveness": "+30-50% urgency-driven conversion"
+    },
+    
+    "limited_time": {
+      "example": "Sale ends in 24 hours",
+      "countdown_timer": "Creates urgency",
+      "psychology": "Fear of missing out (FOMO)"
+    },
+    
+    "low_stock": {
+      "display": "Only 3 left in stock at this price",
+      "psychology": "Scarcity = value",
+      "rule": "MUST be truthful (legal + ethical)"
+    }
+  },
+  
+  "FREE_PSYCHOLOGY": {
+    "free_shipping_threshold": {
+      "example": "Free shipping on orders $50+",
+      "current_cart": "$35",
+      "message": "Add $15 more for free shipping!",
+      "psychology": "Perceived value of 'free' >> $5 shipping cost",
+      "aov_increase": "+20-35%"
+    },
+    
+    "free_gift": {
+      "example": "Free gift with purchase over $100",
+      "psychology": "Reciprocity (gift = obligation), perceived value",
+      "effectiveness": "+10-20% conversion, +15-25% AOV"
+    },
+    
+    "bogo": {
+      "example": "Buy one, get one free",
+      "perceived_value": "50% off feels less appealing than 'FREE'",
+      "usage": "Inventory clearance, fashion, consumables"
+    }
+  },
+  
+  "PREMIUM_PRICING": {
+    "prestige_pricing": {
+      "strategy": "Price higher than competitors",
+      "psychology": "High price = high quality (Veblen effect)",
+      "niches": "Luxury, premium, artisan",
+      "example": "Apple, Rolex, Tesla"
+    },
+    
+    "round_pricing": {
+      "luxury": "$300 (not $299.99)",
+      "psychology": "Round = clean, premium, quality-focused",
+      "non_round": "Discount, value-focused"
+    },
+    
+    "price_as_filter": {
+      "purpose": "Attract right customers, repel price-shoppers",
+      "example": "High-end consulting: $5,000/month (not $4,999)",
+      "psychology": "Signals exclusivity, seriousness"
+    }
+  },
+  
+  "A_B_TEST_IDEAS": {
+    "tests_to_run": [
+      "$99 vs $100 (charm pricing effect)",
+      "Show savings in $ vs % (which converts better?)",
+      "$30/month vs $1/day (per-day framing)",
+      "Free shipping vs $5 off (which increases AOV more?)",
+      "2 tiers vs 3 tiers (decoy effect)",
+      "Red price vs black price (color psychology)"
+    ],
+    "metrics": {
+      "conversion_rate": "Primary",
+      "aov": "Average order value",
+      "revenue_per_visitor": "Ultimate metric (CR × AOV)"
+    }
+  }
+}

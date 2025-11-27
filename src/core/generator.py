@@ -44,15 +44,26 @@ class ThemeGenerator:
         self._load_brain_modules()
             
     def _load_brain_modules(self):
-        """Load CRO patterns, competitor intel, and blueprints."""
+        """Load ALL knowledge databases (CRO, design, psychology, retention, copy)."""
         brain = self.context.brain
         
+        # Original knowledge bases
         self.cro_patterns = brain.get("AXIS_CRO_PATTERNS", {})
         self.cro_scientist = brain.get("25_AXIS_CRO_SCIENTIST", {})
         self.competitor_intel = brain.get("24_AXIS_COMPETITOR_INTEL", {})
         self.theme_blueprint = brain.get("AI_THEME_BLUEPRINT", {})
         
-        self.logger.info(f"Loaded brain: CRO patterns, competitor data, blueprint")
+        # NEW: Comprehensive knowledge system
+        self.design_patterns_schema = brain.get("DESIGN_PATTERNS_SCHEMA", {})
+        self.psychology_db = brain.get("PSYCHOLOGY_DB", {})
+        self.retention_db = brain.get("RETENTION_DB", {})
+        self.copywriting_db = brain.get("COPYWRITING_DB", {})
+        
+        # Theme-specific databases
+        self.theme_db_dawn = brain.get("THEME_DB_DAWN", {})
+        self.theme_db_impact = brain.get("THEME_DB_IMPACT", {})
+        
+        self.logger.info(f"Loaded 9 knowledge databases: CRO, Design, Psychology, Retention, Copywriting, Theme DBs")
         
     def generate_theme(self, brief: str, theme_name: str):
         """
@@ -289,12 +300,18 @@ class ThemeGenerator:
     
     def _generate_file(self, theme_root: str, relative_path: str, brief: str, 
                        file_description: str, niche_context: str = ""):
-        """Generate a single file using LLM."""
+        """Generate a single file using LLM with comprehensive knowledge base context."""
         full_path = os.path.join(theme_root, relative_path)
         self.logger.info(f"  👉 Generating: {relative_path}...")
         
+        # Extract niche from context
+        niche = self._extract_niche_from_context(niche_context)
+        
+        # Build knowledge-enriched prompt
+        knowledge_context = self._build_knowledge_context(relative_path, niche)
+        
         prompt = f"""
-        ACT AS: Senior Shopify Theme Developer (10+ years experience).
+        ACT AS: Senior E-Commerce Expert (10+ years: Shopify + UX + CRO + Psychology).
         
         TASK: Write code for '{relative_path}'
         
@@ -304,6 +321,9 @@ class ThemeGenerator:
         
         {niche_context}
         
+        KNOWLEDGE BASE CONTEXT:
+        {knowledge_context}
+        
         CRITICAL RULES:
         - Return ONLY the code. No markdown blocks, no explanations.
         - Follow Shopify OS 2.0 standards
@@ -311,6 +331,8 @@ class ThemeGenerator:
         - Accessible (WCAG 2.1 AA)
         - Mobile-first responsive design
         - Use modern CSS (Grid, Flexbox, CSS variables)
+        - Apply psychology principles (see knowledge base)
+        - Use effective copywriting (see formulas)
         - No jQuery, no Bootstrap
         
         OUTPUT: Pure code for {relative_path}
@@ -332,6 +354,67 @@ class ThemeGenerator:
             
         except Exception as e:
             self.logger.error(f"  ❌ Failed to generate {relative_path}: {e}")
+    
+    
+    def _extract_niche_from_context(self, context: str) -> str:
+        """Extract niche keyword from context string."""
+        niches = ["luxury", "fashion", "furniture", "wellness", "b2b", "watches"]
+        for niche in niches:
+            if niche in context.lower():
+                return niche
+        return "general"
+    
+    def _build_knowledge_context(self, file_path: str, niche: str) -> str:
+        """Build enriched context from knowledge databases based on file type and niche."""
+        context_parts = []
+        
+        # Determine file type
+        if "hero" in file_path or "image-with-text" in file_path:
+            # Hero section knowledge
+            if self.theme_db_dawn:
+                dawn_hero = self.theme_db_dawn.get("SECTIONS_LIBRARY", {}).get("hero_image_with_text", {})
+                context_parts.append(f"HERO BEST PRACTICE (Dawn): {dawn_hero.get('purpose', '')} with responsive: {dawn_hero.get('responsive', '')}")
+            
+            if self.copywriting_db:
+                headline = self.copywriting_db.get("HEADLINE_FORMULAS", {}).get("benefit_oriented", {})
+                context_parts.append(f"HEADLINE FORMULA: {headline.get('formula', '')}")
+        
+        elif "product" in file_path or "main-product" in file_path:
+            # Product page knowledge
+            if self.psychology_db:
+                niche_psych = self.psychology_db.get("NICHE_SPECIFIC_PSYCHOLOGY", {}).get(niche, {})
+                context_parts.append(f"PSYCHOLOGY ({niche}): {niche_psych.get('copy_tone', '')} | CRO use: {niche_psych.get('cro_patterns', {}).get('use', [])}")
+            
+            if self.copywriting_db:
+                product_desc = self.copywriting_db.get("PRODUCT_DESCRIPTIONS", {}).get("framework", "")
+                context_parts.append(f"PRODUCT COPY FRAMEWORK: {product_desc}")
+        
+        elif "header" in file_path:
+            # Header knowledge
+            if self.theme_db_dawn:
+                dawn_header = self.theme_db_dawn.get("SECTIONS_LIBRARY", {}).get("header", {})
+                context_parts.append(f"HEADER COMPONENTS (Dawn): {dawn_header.get('components', [])}")
+        
+        elif ".css" in file_path or "base.css" in file_path:
+            # Design patterns knowledge
+            if self.design_patterns_schema:
+                colors = self.design_patterns_schema.get("COLOR_SYSTEM", {})
+                spacing = self.design_patterns_schema.get("SPACING_SYSTEM", {})
+                context_parts.append(f"COLOR SYSTEM: Use semantic colors with psychology. SPACING: {spacing.get('scale', {})}. Follow mobile-first responsive design.")
+        
+        elif "footer" in file_path:
+            # Retention patterns
+            if self.retention_db:
+                email_signup = self.retention_db.get("ON_SITE_RETENTION", {}).get("exit_intent_popups", {})
+                context_parts.append(f"RETENTION: Include email signup with incentive. Exit-intent best practice: {email_signup}")
+        
+        # Add CTA guidance for all files
+        if self.copywriting_db:
+            ctas = self.copywriting_db.get("CTA_PATTERNS", {})
+            value_cta = ctas.get("value_focused", {})
+            context_parts.append(f"CTA BEST PRACTICE: {value_cta.get('variants', [])} (psychology: {value_cta.get('psychology', '')})")
+        
+        return "\n".join(context_parts) if context_parts else "Use best practices from knowledge base."
     
     def _clean_response(self, text: str) -> str:
         """Remove markdown code blocks from LLM response."""

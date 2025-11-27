@@ -1,0 +1,411 @@
+{
+  "DATABASE_NAME": "MICRO_INTERACTIONS_DB",
+  "VERSION": "1.0",
+  "PURPOSE": "Анимации и микро-взаимодействия которые улучшают UX и создают delight",
+  
+  "BUTTON_INTERACTIONS": {
+    "hover_states": {
+      "scale_up": {
+        "transform": "scale(1.05)",
+        "duration": "200ms",
+        "easing": "ease-out",
+        "psychology": "Affordance (button is clickable)",
+        "best_for": "Primary CTAs"
+      },
+      "lift": {
+        "transform": "translateY(-2px)",
+        "box_shadow": "0 4px 12px rgba(0,0,0,0.15)",
+        "duration": "250ms",
+        "psychology": "Depth, interactivity",
+        "best_for": "Cards, secondary buttons"
+      },
+      "fill": {
+        "background": "Inverts (outline → filled)",
+        "duration": "300ms",
+        "psychology": "Clear state change",
+        "best_for": "Secondary buttons"
+      },
+      "glow": {
+        "box_shadow": "0 0 20px rgba(color, 0.5)",
+        "duration": "300ms",
+        "best_for": "Accent buttons, special offers"
+      }
+    },
+    
+    "active_states": {
+      "press_down": {
+        "transform": "scale(0.98)",
+        "duration": "100ms",
+        "psychology": "Physical button press feel"
+      },
+      "ripple": {
+        "animation": "Circle expands from click point",
+        "duration": "600ms",
+        "psychology": "Material Design pattern, tactile feedback"
+      }
+    },
+    
+    "loading_states": {
+      "spinner": {
+        "visual": "Rotating circle",
+        "duration": "1s infinite",
+        "usage": "ATC button during add"
+      },
+      "pulse": {
+        "animation": "opacity 0.5 → 1 → 0.5",
+        "duration": "1.5s infinite",
+        "usage": "Skeleton loaders"
+      },
+      "text_change": {
+        "sequence": ["Add to Cart", "Adding...", "Added! ✓", "Add to Cart (after 2s)"],
+        "timing": "Instant → 2s → 2s → reset",
+        "psychology": "Clear feedback, reassurance"
+      }
+    },
+    
+    "success_states": {
+      "checkmark_animation": {
+        "visual": "Checkmark draws in (SVG stroke animation)",
+        "duration": "400ms",
+        "easing": "ease-out",
+        "usage": "Form submission, ATC success",
+        "psychology": "Completion, satisfaction"
+      },
+      "confetti": {
+        "trigger": "Special events (first purchase, milestone)",
+        "duration": "2s",
+        "particles": "20-50",
+        "psychology": "Delight, celebration",
+        "caution": "Use sparingly (loses impact if overused)"
+      }
+    }
+  },
+  
+  "FORM_INTERACTIONS": {
+    "input_focus": {
+      "border_glow": {
+        "border": "1px → 2px",
+        "border_color": "gray → primary",
+        "box_shadow": "0 0 0 3px rgba(primary, 0.1)",
+        "duration": "200ms",
+        "psychology": "Clear focus indicator"
+      },
+      "label_float": {
+        "transform": "Label moves from inside input to above",
+        "duration": "200ms",
+        "usage": "Modern input pattern",
+        "accessibility": "Better than placeholder-only"
+      }
+    },
+    
+    "validation": {
+      "inline_success": {
+        "icon": "Green checkmark appears right side",
+        "border_color": "green",
+        "duration": "300ms",
+        "psychology": "Instant positive feedback"
+      },
+      "inline_error": {
+        "icon": "Red X appears",
+        "border_color": "red",
+        "shake": {
+          "animation": "translateX(-5px) → translateX(5px) → 0",
+          "duration": "400ms",
+          "psychology": "Attention-grabbing, indicates mistake"
+        },
+        "message": "Appears below input (red text)"
+      }
+    },
+    
+    "autocomplete": {
+      "dropdown_appear": {
+        "animation": "opacity 0 → 1, translateY(-10px) → 0",
+        "duration": "200ms",
+        "trigger": "User types (debounced 300ms)"
+      },
+      "suggestion_hover": {
+        "background": "light gray",
+        "cursor": "pointer",
+        "psychology": "Scannability"
+      }
+    }
+  },
+  
+  "CART_INTERACTIONS": {
+    "add_to_cart": {
+      "product_fly_animation": {
+        "visual": "Product image clones, flies to cart icon",
+        "path": "Curved (bezier)",
+        "duration": "800ms",
+        "easing": "ease-in",
+        "end": "Fades out at cart icon",
+        "cart_badge": "Bumps (+1 animation)",
+        "psychology": "Physical metaphor, clear feedback",
+        "effectiveness": "+5-10% perceived speed"
+      },
+      "cart_drawer_slide": {
+        "transform": "translateX(100%) → translateX(0)",
+        "duration": "400ms",
+        "easing": "cubic-bezier(0.4, 0.0, 0.2, 1)",
+        "backdrop": "Fade in (opacity 0 → 0.5)",
+        "psychology": "Non-intrusive, review before checkout"
+      }
+    },
+    
+    "quantity_selector": {
+      "button_feedback": {
+        "plus_minus": "Scale 1 → 0.9 → 1 on click",
+        "duration": "200ms"
+      },
+      "number_change": {
+        "animation": "Fade out old → Fade in new",
+        "duration": "150ms",
+        "psychology": "Smooth, not jarring"
+      }
+    },
+    
+    "remove_item": {
+      "swipe_to_delete_mobile": {
+        "gesture": "Swipe left reveals delete button",
+        "visual": "Red background",
+        "confirmation": "Optional (or undo snackbar)",
+        "psychology": "Familiar (iOS pattern)"
+      },
+      "fade_out_desktop": {
+        "animation": "opacity 1 → 0, height collapse",
+        "duration": "400ms",
+        "psychology": "Smooth removal, not abrupt"
+      }
+    }
+  },
+  
+  "IMAGE_INTERACTIONS": {
+    "hover_zoom": {
+      "transform": "scale(1) → scale(1.05)",
+      "duration": "500ms",
+      "easing": "ease-out",
+      "overflow": "hidden (on container)",
+      "usage": "Product cards, galleries",
+      "psychology": "Product preview, engagement"
+    },
+    
+    "lightbox_open": {
+      "trigger": "Click product image",
+      "animation": {
+        "image": "Scale from position → center screen",
+        "backdrop": "Fade in (black, opacity 0.9)",
+        "duration": "400ms"
+      },
+      "navigation": "Arrows + keyboard (left/right)",
+      "close": "X button, ESC key, click outside"
+    },
+    
+    "lazy_load_reveal": {
+      "placeholder": "Blurred low-res image or skeleton",
+      "animation": "Blur 10px → 0px as high-res loads",
+      "duration": "300ms",
+      "psychology": "Progressive enhancement, perceived speed"
+    }
+  },
+  
+  "NAVIGATION_INTERACTIONS": {
+    "mega_menu": {
+      "hover_delay": "300ms (prevent accidental triggers)",
+      "appear": {
+        "animation": "opacity 0 → 1, translateY(-10px) → 0",
+    "duration": "250ms"
+      },
+      "disappear": {
+        "delay": "200ms (allow mouse movement)",
+        "animation": "opacity 1 → 0",
+        "duration": "200ms"
+      }
+    },
+    
+    "mobile_menu_drawer": {
+      "open": {
+        "transform": "translateX(-100%) → translateX(0)",
+        "duration": "350ms",
+        "easing": "cubic-bezier(0.4, 0.0, 0.2, 1)",
+        "backdrop": "Fade in",
+        "body_scroll": "Disabled (prevent scroll behind)"
+      },
+      "close": {
+        "trigger": "X, backdrop click, ESC",
+        "reverse_animation": true
+      }
+    },
+    
+    "sticky_header": {
+      "scroll_down": {
+        "transform": "translateY(0) → translateY(-100%)",
+        "duration": "300ms",
+        "trigger": "Scroll down > 100px",
+        "psychology": "Save screen space"
+      },
+      "scroll_up": {
+        "transform": "translateY(-100%) → translateY(0)",
+        "duration": "300ms",
+        "trigger": "Any scroll up",
+        "psychology": "Quick access to navigation"
+      }
+    }
+  },
+  
+  "SCROLL_ANIMATIONS": {
+    "fade_in_on_scroll": {
+      "initial": "opacity: 0, translateY(30px)",
+      "final": "opacity: 1, translateY(0)",
+      "trigger": "Element 10-20% visible (Intersection Observer)",
+      "duration": "600ms",
+      "easing": "ease-out",
+      "stagger": "100ms delay between elements (if multiple)",
+      "psychology": "Progressive disclosure, engagement"
+    },
+    
+    "parallax": {
+      "element": "Background image or layer",
+      "scroll_speed": "0.5x (slower than page scroll)",
+      "usage": "Hero sections, feature blocks",
+      "caution": "Respect prefers-reduced-motion",
+      "psychology": "Depth, premium feel"
+    },
+    
+    "progress_bar": {
+      "visual": "Horizontal bar at top of page",
+      "width": "0% → 100% based on scroll position",
+      "color": "Primary or accent",
+      "psychology": "Orientation, progress"
+    }
+  },
+  
+  "NOTIFICATION_INTERACTIONS": {
+    "toast_notifications": {
+      "appear": {
+        "position": "Top-right or bottom-right",
+        "animation": "translateX(100%) → translateX(0), or translateY(100%) → translateY(0)",
+        "duration": "300ms"
+      },
+      "auto_dismiss": {
+        "timeout": "3-5 seconds",
+        "progress_bar": "Optional (shows time remaining)",
+        "hover": "Pause auto-dismiss"
+      },
+      "disappear": {
+        "animation": "Reverse of appear",
+        "duration": "200ms"
+      },
+      "types": {
+        "success": "Green, checkmark icon",
+        "error": "Red, X icon",
+        "warning": "Orange, exclamation icon",
+        "info": "Blue, i icon"
+      }
+    },
+    
+    "snackbar_undo": {
+      "usage": "Removed item from cart",
+      "content": "Item removed + Undo button",
+      "timeout": "5 seconds",
+      "undo": "Restores item",
+      "psychology": "Safety net, reduces anxiety"
+    }
+  },
+  
+  "LOADING_STATES": {
+    "skeleton_screens": {
+      "visual": "Gray placeholder shapes (pulse animation)",
+      "pulse": {
+        "animation": "background-position -200% → 200% (linear gradient shimmer)",
+        "duration": "1.5s infinite"
+      },
+      "usage": "Product grids, content loading",
+      "psychology": "Perceived speed, sets expectations",
+      "better_than": "Blank screen or spinner"
+    },
+    
+    "progress_indicators": {
+      "circular_spinner": {
+        "rotation": "360deg infinite",
+        "duration": "1s linear",
+        "usage": "Button loading, general loading"
+      },
+      "linear_progress": {
+        "visual": "Horizontal bar, indeterminate (sliding)",
+        "usage": "Page loads, file uploads",
+        "determinate": "Shows % complete (if progress known)"
+      }
+    }
+  },
+  
+  "DELIGHT_PATTERNS": {
+    "empty_state_interactions": {
+      "empty_cart": {
+        "visual": "Friendly illustration + message",
+        "cta": "Start Shopping (animated button)",
+        "psychology": "Positive framing, not negative"
+      },
+      "empty_wishlist": {
+        "visual": "Heart icon (animated)",
+        "message": "Your wishlist is waiting to be filled",
+        "cta": "Browse Products"
+      }
+    },
+    
+    "easter_eggs": {
+      "konami_code": {
+        "trigger": "↑↑↓↓←→←→BA",
+        "action": "Special discount code or fun animation",
+        "psychology": "Brand personality, shareability"
+      },
+      "click_logo_5x": {
+        "action": "Fun animation or message",
+        "psychology": "Discovery, brand character"
+      }
+    },
+    
+    "celebration_moments": {
+      "first_purchase": {
+        "trigger": "Checkout completion (first-time customer)",
+        "animation": "Confetti + special message",
+        "duration": "3s",
+        "psychology": "Reward, positive reinforcement"
+      },
+      "milestone_orders": {
+        "trigger": "100th order, 1000th, etc.",
+        "animation": "Badge unlock animation",
+        "message": "You're our [X]th customer!"
+      }
+    }
+  },
+  
+  "MOBILE_SPECIFIC": {
+    "pull_to_refresh": {
+      "gesture": "Pull down from top",
+      "visual": "Spinner appears, rotates",
+      "threshold": "80px pull",
+      "release": "Triggers refresh",
+      "psychology": "Native app feel"
+    },
+    
+    "swipe_gestures": {
+      "swipe_left_right": {
+        "usage": "Image galleries, product carousels",
+        "snap": "scroll-snap-type: x mandatory",
+        "indicators": "Dots below"
+      },
+      "swipe_to_delete": {
+        "usage": "Cart items, saved items",
+        "reveal": "Delete button (red)",
+        "threshold": "30% swipe"
+      }
+    },
+    
+    "haptic_feedback": {
+      "supported": "iOS Safari (vibration API)",
+      "trigger": "ATC success, important actions",
+        "pattern": "Short vibration (50ms)",
+        "psychology": "Physical confirmation"
+    }
+  }
+}
