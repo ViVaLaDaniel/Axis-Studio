@@ -56,3 +56,12 @@ class LLMProviderFactory:
     def list_providers(cls):
         """List all registered providers."""
         return list(cls._providers.keys())
+
+# Import adapters to ensure registration
+# Note: In a real app, this might be dynamic or in __init__.py
+try:
+    import src.adapters.gemini_adapter
+    import src.adapters.claude_adapter
+    import src.adapters.openai_adapter
+except ImportError:
+    pass
