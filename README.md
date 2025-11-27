@@ -13,6 +13,8 @@
 
 ### ✅ `axis.config.json`
 
+### ✅ `requirements.txt`
+
 ### ✅ `00_CORE_BRAIN/`
 - ✅ `axis_brain_v10.0_GOD_MODE.json`
 - ✅ `00_INDEX_AXIS_PROJECT_v10.0.md`
@@ -372,6 +374,7 @@ AXIS Studio спроектирован как **LLM-агностичная пл�
 - [**✅ `design_tokens.json`**](./04_EXECUTION_DEV/design_tokens.json) — **Дизайн-Токены.**
 - [**✅ `NEGOTIATION_PROTOCOL.json`**](./04_EXECUTION_DEV/NEGOTIATION_PROTOCOL.json) — **Протокол Переговоров.** Определяет логику отката для разрешения конфликтов.
 - [**✅ `SPEC_LIVING_STYLEGUIDE.md`**](./04_EXECUTION_DEV/SPEC_LIVING_STYLEGUIDE.md) — **Живой Стайлгайд.**
+- [**`requirements.txt`**](./requirements.txt) — **Зависимости проекта Python.**
 
 </details>
 
@@ -512,6 +515,7 @@ AXIS Studio спроектирован как **LLM-агностичная пл�
   <li>feat(src): Create base `src/` subdirectories (core, adapters, cli, utils)</li>
   <li>feat(config): Create axis.config.json</li>
   <li>feat(runtime): Create src/main.py entry point</li>
+  <li>feat(deps): Create requirements.txt</li>
 </ul>
 </details>
 
