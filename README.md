@@ -98,6 +98,10 @@
 
 ### ✅ `src/`
 - ✅ `orchestrator.py`
+- ✅ `core/`
+- ✅ `adapters/`
+- ✅ `cli/`
+- ✅ `utils/`
 </details>
 
 ---
@@ -500,6 +504,7 @@ AXIS Studio спроектирован как **LLM-агностичная пл�
   <li>feat(cleanup): Remove deprecated AXIS_STUDIOS_GEMINI_BOOT_PROMPT_v10.json</li>
   <li>fix(engine): Verify and confirm correct indentation in 09_ENGINE/engine.py</li>
   <li>feat(orchestrator): Move 09_ENGINE/engine.py to src/orchestrator.py</li>
+  <li>feat(src): Create base `src/` subdirectories (core, adapters, cli, utils)</li>
 </ul>
 </details>
 
