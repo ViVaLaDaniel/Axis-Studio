@@ -95,6 +95,9 @@
 ### 🟡 `08_INTEGRATIONS/`
 - ✅ `GEMINI_CLI_ADAPTER.md`
 - ✅ `README.md`
+
+### ✅ `src/`
+- ✅ `orchestrator.py`
 </details>
 
 ---
@@ -421,6 +424,16 @@ AXIS Studio спроектирован как **LLM-агностичная пл�
 
 </details>
 
+<details>
+<summary><code>src/</code> — Исполняемый Движок (Runtime Engine)</summary>
+
+> Эта папка содержит основной исполняемый код системы AXIS, который оркестрирует и выполняет задачи, определенные в файлах конфигурации.
+
+#### 📄 Содержимое:
+- [**`orchestrator.py`**](./src/orchestrator.py) — **Основной Оркестратор.** Загружает и выполняет дерево поведения AI.
+
+</details>
+
 ---
 
 ## 📝 История Изменений (Changelog)
@@ -486,6 +499,7 @@ AXIS Studio спроектирован как **LLM-агностичная пл�
 <ul>
   <li>feat(cleanup): Remove deprecated AXIS_STUDIOS_GEMINI_BOOT_PROMPT_v10.json</li>
   <li>fix(engine): Verify and confirm correct indentation in 09_ENGINE/engine.py</li>
+  <li>feat(orchestrator): Move 09_ENGINE/engine.py to src/orchestrator.py</li>
 </ul>
 </details>
 
