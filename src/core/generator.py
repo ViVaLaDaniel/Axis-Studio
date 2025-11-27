@@ -295,6 +295,7 @@ class ThemeGenerator:
             ("cart.json", "Cart page with upsells")
         ]
         
+        
         for filename, description in templates:
             self._generate_file(theme_root, f"templates/{filename}", brief, description, context)
         
@@ -305,12 +306,69 @@ class ThemeGenerator:
             ("price.liquid", "Price display with compare-at-price")
         ]
         
-        Returns dict with 'code', 'js', 'css' if found, else None.
+        for filename, description in snippets:
+            self._generate_file(theme_root, f"snippets/{filename}", brief, description, context)
+    
+    def _generate_file(self, theme_root: str, relative_path: str, brief: str, 
+                       file_description: str, niche_context: str = ""):
+        """Generate a single file using Component Library or LLM."""
+        full_path = os.path.join(theme_root, relative_path)
+        self.logger.info(f"  👉 Generating: {relative_path}...")
+        
+        # STEP 1: Check Component Library for ready-made code
+        component = self._select_component_from_library(relative_path)
+        if component and component.get('code'):
+            code = component['code']
+            self.logger.info(f"  ✅ Using Component Library ({len(code)} chars)")
+            os.makedirs(os.path.dirname(full_path), exist_ok=True)
+            with open(full_path, 'w', encoding='utf-8') as f:
+                f.write(code)
+            return
+        
+        # STEP 2: Generate with LLM
+        niche = self._extract_niche_from_context(niche_context)
+        knowledge_context = self._build_knowledge_context(relative_path, niche)
+        
+        prompt = f"""
+        ACT AS: Senior E-Commerce Expert (10+ years: Shopify + UX + CRO + Psychology).
+        
+        TASK: Write code for '{relative_path}'
+        
+        PROJECT BRIEF: {brief}
+        
+        FILE PURPOSE: {file_description}
+        
+        {niche_context}
+        
+        KNOWLEDGE CONTEXT:
+        {knowledge_context}
+        
+        CRITICAL RULES:
+        - Return ONLY the code. No markdown blocks, no explanations.
+        - Follow Shopify OS 2.0 standards
+        - Performance-first (lazy load images, minimal JS)
+        - Accessible (WCAG 2.1 AA)
+        - Mobile-first responsive design
+        - No jQuery, no Bootstrap
+        
+        OUTPUT: Pure code for {relative_path}
         """
+        
+        try:
+            response = self.provider.generate(prompt)
+            code = self._clean_response(response)
+            os.makedirs(os.path.dirname(full_path), exist_ok=True)
+            with open(full_path, 'w', encoding='utf-8') as f:
+                f.write(code)
+            self.logger.info(f"  ✅ Generated: {relative_path} ({len(code)} chars)")
+        except Exception as e:
+            self.logger.error(f"  ❌ Failed to generate {relative_path}: {e}")
+    
+    def _select_component_from_library(self, file_path: str) -> dict:
+        """Check Component Library for ready-made code."""
         if not self.component_library:
             return None
         
-        # Map file paths to component names
         component_map = {
             'product-card': ['snippets/product-card', 'product-card.liquid'],
             'cart-drawer': ['sections/cart-drawer', 'cart-drawer.liquid'],
@@ -324,21 +382,17 @@ class ThemeGenerator:
             'announcement': ['sections/announcement', 'banner']
         }
         
-        # Check if file path matches any component
         file_lower = file_path.lower()
         for component_key, keywords in component_map.items():
             if any(keyword in file_lower for keyword in keywords):
-                # Try to get component from library
                 component_data = self.component_library.get(component_key.upper().replace('-', '_'))
                 if component_data:
-                    self.logger.info(f"  ✅ Using ready-made component: {component_key}")
+                    self.logger.info(f"  ✅ Found component: {component_key}")
                     return {
                         'code': component_data.get('code', ''),
                         'js': component_data.get('required_js', ''),
-                        'css': component_data.get('required_css', ''),
-                        'usage': component_data.get('usage', component_data.get('usage_example', ''))
+                        'css': component_data.get('required_css', '')
                     }
-        
         return None
     
     def _extract_niche_from_context(self, context: str) -> str:
