@@ -1,17 +1,32 @@
-# Version History
+# 🏷️ AXIS Studio Versioning
 
-## Current Version: v10.5 Scientific Edition
-
-This document tracks the major versions and release notes for the AXIS Studio project.
-
----
-
-## v10.5 Scientific Edition (November 27, 2025)
-- Initial release with refined core architecture and enhanced documentation.
-- Focus on scientific rigor and modular design.
+**Current Version:** `10.5.0`
+**Codename:** Scientific Edition
 
 ---
 
-## Future Versions:
-- **v11.0: Runtime Engine Alpha** (Focus: Core execution engine, basic CLI, initial LLM integration)
-- **v12.0: Modular Architecture Beta** (Focus: Advanced plugin system, dynamic context loading, comprehensive schema validation)
+## Versioning Strategy
+We follow **Semantic Versioning (SemVer)**: `MAJOR.MINOR.PATCH`
+
+- **MAJOR (10 -> 11):** Breaking changes, new architectural paradigm (e.g., adding Runtime Engine).
+- **MINOR (10.5 -> 10.6):** New features, new modules in `00_CORE_BRAIN`, non-breaking improvements.
+- **PATCH (10.5.0 -> 10.5.1):** Bug fixes, documentation updates, small tweaks.
+
+---
+
+## Release History
+
+### v10.5.0 (Current)
+- **Type:** Minor
+- **Focus:** Restructuring, Documentation, Initial Runtime Prototype.
+- **Key Changes:**
+    - Separated Documentation from Code.
+    - Created `src/` directory structure.
+    - Added `orchestrator.py` prototype.
+
+### v10.0.0
+- **Type:** Major
+- **Focus:** "God Mode" Brain Architecture.
+- **Key Changes:**
+    - Complete definition of AI Roles.
+    - Establishment of Foundation Rules.

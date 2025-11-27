@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "description": "The main behavior tree for the AXIS AI execution engine.",
   "tasks": [
     {
@@ -8,24 +8,17 @@
       "type": "command",
       "enabled": true,
       "details": {
-        "description": "Log a message indicating the start of the process.",
         "command": "echo 'AI Engine Started. Initializing project...'"
       }
     },
     {
       "id": "task_002",
-      "name": "Create Theme Files",
-      "type": "file_operation",
-      "enabled": false,
+      "name": "Create Hello World File",
+      "type": "file_create",
+      "enabled": true,
       "details": {
-        "description": "Create a basic theme file structure.",
-        "operations": [
-          {
-            "action": "create_file",
-            "path": "theme/layout/theme.liquid",
-            "content": "<h1>Hello, World!</h1>"
-          }
-        ]
+        "path": "output/hello.txt",
+        "content": "Hello, Axis Studio! The Runtime Engine is alive."
       }
     }
   ]
