@@ -481,7 +481,12 @@ AXIS Studio спроектирован как **LLM-агностичная пл�
 
 </details>
 </details>
-<!-- Новые изменения будут добавляться сюда автоматически -->
+<details>
+<summary>27 ноября 2025 г.</summary>
+<ul>
+  <li>feat(cleanup): Remove deprecated AXIS_STUDIOS_GEMINI_BOOT_PROMPT_v10.json</li>
+</ul>
+</details>
 
 ---
 
