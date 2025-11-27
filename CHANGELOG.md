@@ -45,6 +45,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 4. Спрашивает где создать тему (Desktop/Custom/Project output)
 5. Генерирует полную Shopify тему (15+ файлов)
 6. Создаёт CRO отчёт с рекомендациями
+
+### 🔬 Theme Knowledge Base (Phase 4.5 - NEW)
+**Инструмент для автоматизации:** `src/utils/theme_analyzer.py`
+
+База знаний топовых Shopify тем:
+- `THEME_DECOMPOSITION_SCHEMA.json` — шаблон для декомпозиции
+- `THEME_DB_DAWN.json` — полная разборка Dawn (800+ строк)
+- `THEME_DB_IMPACT.json` — разборка Impact (premium фичи)
+- Analyzer tool для автоматического анализа любой темы
+
+**Зачем:** LLM генерирует на основе РЕАЛЬНЫХ рабочих примеров из топ-тем, а не "из воздуха"
+
+**Использование:**
+```bash
+python src/utils/theme_analyzer.py --theme dawn --github https://github.com/Shopify/dawn
+```
 - `src/core/context.py`: Context Loader module for reading configuration and Brain files.
 - `src/core/validator.py`: Validator module for JSON schema validation.
 - `src/cli/main.py`: CLI interface with `run`, `init`, `status`, and `generate` commands.
