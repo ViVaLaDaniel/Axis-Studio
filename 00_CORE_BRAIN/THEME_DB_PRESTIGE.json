@@ -1,0 +1,210 @@
+{
+  "THEME_METADATA": {
+    "name": "Prestige",
+    "developer": "Maestrooo",
+    "price": "$350",
+    "version": "5.0.0",
+    "sales_estimate": "8k-12k",
+    "rating": "4.9/5",
+    "niche": ["luxury", "jewelry", "watches", "premium"],
+    "shopify_version": "OS 2.0",
+    "last_analyzed": "2025-11-27",
+    "strengths": ["Mega menu (best-in-class)", "Premium aesthetic", "Size guide", "Advanced filtering", "Video support"],
+    "weaknesses": ["Slower than Dawn (Lighthouse 78)", "Complex settings (250+)", "Expensive"]
+  },
+  
+  "KEY_DIFFERENTIATORS": {
+    "mega_menu": {
+      "description": "Multi-column dropdown with images, links, promotions",
+      "columns": "Up to 4 columns",
+      "content": ["Navigation links", "Featured products", "Promotional images", "Rich text"],
+      "mobile": "Converts to accordion",
+      "psychology": "Information architecture, easy discovery",
+      "best_in_class": "Most advanced mega menu in Shopify themes"
+    },
+    
+    "size_guide": {
+      "description": "Built-in size chart modal",
+      "trigger": "Size Guide button on PDP",
+      "content": "Customizable table (S/M/L dimensions)",
+      "psychology": "Reduces returns, builds confidence",
+      "effectiveness": "+10-15% conversion (fashion/apparel)"
+    },
+    
+    "look_builder": {
+      "description": "Complete the look — suggest matching products",
+      "display": "Grid of complementary items",
+      "placement": "PDP",
+      "psychology": "Cross-sell, outfit coordination",
+      "aov_increase": "+20-30%"
+    },
+    
+    "premium_aesthetic": {
+      "description": "High-end visual design",
+      "characteristics": ["Large imagery", "Generous whitespace", "Serif fonts", "Monochrome palette"],
+      "psychology": "Exclusivity, sophistication",
+      "niche_fit": "Luxury, jewelry, watches, high-end fashion"
+    }
+  },
+  
+  "SECTIONS_LIBRARY": {
+    "header": {
+      "mega_menu_structure": {
+        "parent_item": "Click to expand (desktop), Tap to expand (mobile)",
+        "dropdown": {
+          "layout": "Multi-column grid",
+          "column_types": ["Link list", "Featured product", "Image with text", "Promotion"],
+          "max_columns": 4,
+          "styling": "White background, subtle shadow, smooth animation"
+        },
+        "example": {
+          "Women": {
+            "column_1": ["Clothing", "Dresses", "Tops", "Bottoms"],
+            "column_2": ["Accessories", "Bags", "Jewelry", "Shoes"],
+            "column_3": "Featured Product (image + title + price)",
+            "column_4": "Promotional banner (New Collection image)"
+          }
+        }
+      },
+      "announcement_bar": {
+        "display": "Top of page, optional",
+        "content": "Free shipping, sale announcement, etc.",
+        "dismissible": "X button to close"
+      }
+    },
+    
+    "hero": {
+      "variants": ["Full-width image", "Video background", "Split (image + text)", "Slideshow"],
+      "height_options": ["Adapt", "Small (400px)", "Medium (550px)", "Large (700px)", "Full screen (100vh)"],
+      "text_overlay": {
+        "position": "Top/Middle/Bottom × Left/Center/Right",
+        "max_width": "600px",
+        "color": "Light or dark (auto-adjusts based on image)"
+      },
+      "cta": {
+        "style": "Primary or secondary button",
+        "position": "Below text"
+      }
+    },
+    
+    "featured_collection": {
+      "layout": "Grid (2-5 columns desktop, 2 mobile)",
+      "product_card": {
+        "image": "Hover shows second image",
+        "quick_add": "Optional (shows on hover)",
+        "badges": "Sale, New, Sold Out",
+        "color_swatches": "Show variant colors"
+      },
+      "filtering": {
+        "sidebar": "Price, size, color, material (desktop)",
+        "drawer": "Slide-in from left (mobile)",
+        "ajax": "Filter without page reload"
+      }
+    },
+    
+    "product_page": {
+      "gallery": {
+        "layout": "Thumbnails left, main image right (desktop)",
+        "mobile": "Swipe horizontal",
+        "zoom": "Click to open lightbox",
+        "media_types": ["Images", "Videos", "3D models"]
+      },
+      "product_info": {
+        "sticky": "Scrolls with page (desktop)",
+        "blocks": ["Title", "Price", "Description", "Variant picker", "Quantity", "ATC", "Size guide", "Shipping info", "Reviews"]
+      },
+      "size_guide_modal": {
+        "trigger": "Size Guide link",
+        "content": "Customizable size chart table",
+        "close": "X button, ESC, click outside"
+      },
+      "complete_the_look": {
+        "display": "Below main product",
+        "items": "3-4 complementary products",
+        "add_all": "Add all to cart button"
+      }
+    }
+  },
+  
+  "DESIGN_SYSTEM": {
+    "colors": {
+      "primary": "#1A1A1A (almost black)",
+      "background": "#FFFFFF",
+      "accent": "#B8860B (gold for luxury touch)",
+      "text": "#1A1A1A",
+      "text_secondary": "#767676",
+      "border": "#E5E5E5"
+    },
+    
+    "typography": {
+      "heading_font": "Freight Display Pro (serif) — premium, editorial",
+      "body_font": "Neue Haas Grotesk (sans-serif) — modern, readable",
+      "sizes": {
+        "h1": "56px desktop, 36px mobile",
+        "h2": "40px desktop, 28px mobile",
+        "body": "16px",
+        "button": "13px uppercase, 0.15em letter-spacing"
+      }
+    },
+    
+    "spacing": {
+      "sections": "80px desktop, 60px mobile",
+      "components": "32px",
+      "grid_gap": "24px"
+    },
+    
+    "buttons": {
+      "primary": {
+        "background": "#1A1A1A",
+        "color": "#FFFFFF",
+        "border": "none",
+        "padding": "16px 40px",
+        "border_radius": "0px (sharp)",
+        "text_transform": "uppercase",
+        "letter_spacing": "0.15em",
+        "hover": "background → #4A4A4A"
+      }
+    }
+  },
+  
+  "CRO_FEATURES": {
+    "size_guide": "+10-15% conversion (reduces hesitation)",
+    "complete_the_look": "+20-30% AOV",
+    "advanced_filtering": "+15-25% collection page conversion",
+    "mega_menu": "Better navigation = better discovery",
+    "video_support": "+40% engagement vs images only"
+  },
+  
+  "PERFORMANCE": {
+    "lighthouse_desktop": 85,
+    "lighthouse_mobile": 78,
+    "bundle_sizes": {
+      "js": "160 KB gzipped",
+      "css": "62 KB gzipped"
+    },
+    "notes": "Heavier than Dawn due to advanced features, but optimized for luxury experience"
+  },
+  
+  "MOBILE_OPTIMIZATIONS": {
+    "sticky_header": "Compact on scroll",
+    "product_gallery": "Swipe with dots indicator",
+    "filtering": "Drawer with Apply button",
+    "mega_menu": "Accordion style",
+    "complete_the_look": "Horizontal scroll"
+  },
+  
+  "AXIS_LEARNING_POINTS": {
+    "steal_these": [
+      "Mega menu structure (best navigation)",
+      "Size guide modal (reduces returns)",
+      "Complete the look (cross-sell)",
+      "Premium aesthetic (serif fonts, whitespace)",
+      "Advanced filtering UX"
+    ],
+    "improve_upon": [
+      "Performance (lighter JS bundle)",
+      "Simplify settings (250 is too many)",
+      "Mobile speed (target LCP < 1.5s)"
+    ]
+  }
+}

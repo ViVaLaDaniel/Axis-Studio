@@ -1,0 +1,161 @@
+{
+  "THEME_METADATA": {
+    "name": "Refresh",
+    "developer": "Pixel Union",
+    "price": "$310",
+    "version": "4.0.0",
+    "sales_estimate": "6k-8k",
+    "rating": "4.7/5",
+    "niche": ["wellness", "health", "organic", "natural"],
+    "shopify_version": "OS 2.0",
+    "strengths": ["Ingredient transparency", "Before/after slider", "Soft aesthetic", "Educational content-focused"],
+    "weaknesses": ["Niche-specific (not versatile)", "Fewer sales than Impact/Impulse"]
+  },
+  
+  "KEY_DIFFERENTIATORS": {
+    "ingredient_transparency": {
+      "description": "Highlight product ingredients with benefits",
+      "section": "Ingredient list with icons + descriptions",
+      "display": "Grid of ingredient cards (icon + name + benefit)",
+      "example": {
+        "Vitamin C": "Brightens skin, reduces dark spots",
+        "Hyaluronic Acid": "Deep hydration, plumps skin"
+      },
+      "psychology": "Trust, education, transparency",
+      "effectiveness": "Critical for wellness niche"
+    },
+    
+    "before_after_slider": {
+      "description": "Image comparison slider",
+      "interaction": "Drag slider left/right to reveal before/after",
+      "usage": "Product results, testimonials",
+      "psychology": "Proof, transformation",
+      "effectiveness": "+30-50% engagement vs static images"
+    },
+    
+    "educational_content_blocks": {
+      "types": ["How-to guides", "Benefits explanation", "Science-backed claims", "FAQ accordion"],
+      "placement": "Product page, homepage",
+      "psychology": "Education builds trust (critical for wellness)",
+      "copy_tone": "Empathetic, transparent, science-backed"
+    },
+    
+    "soft_aesthetic": {
+      "characteristics": ["Pastel colors", "Soft shadows", "Organic shapes", "Nature photography"],
+      "psychology": "Calm, natural, trustworthy",
+      "niche_fit": "Wellness, organic, natural products"
+    }
+  },
+  
+  "SECTIONS_LIBRARY": {
+    "ingredients_showcase": {
+      "layout": "Grid (3-4 columns)",
+      "card": {
+        "icon": "Custom SVG or image (e.g., vitamin C orange)",
+        "name": "Ingredient name",
+        "benefit": "Short description (1-2 sentences)",
+        "learn_more": "Optional link to detailed page"
+      }
+    },
+    
+    "before_after_section": {
+      "image_slider": {
+        "before_image": "Left side",
+        "after_image": "Right side",
+        "slider_handle": "Drag to reveal",
+        "labels": "'Before' and 'After' text overlays"
+      },
+      "caption": "Optional text below (e.g., 'Results after 4 weeks')"
+    },
+    
+    "product_page": {
+      "tabs": {
+        "description": "Product benefits",
+        "ingredients": "Full ingredient list with benefits",
+        "how_to_use": "Instructions",
+        "reviews": "Customer reviews",
+        "faq": "Common questions"
+      },
+      "certifications": {
+        "display": "Badges (Organic, Vegan, Cruelty-Free, etc.)",
+        "placement": "Below ATC button",
+        "psychology": "Trust, values alignment"
+      }
+    }
+  },
+  
+  "DESIGN_SYSTEM": {
+    "colors": {
+      "primary": "#4A7C59 (soft green — natural, wellness)",
+      "background": "#FAF9F7 (warm off-white)",
+      "accent": "#E8B4A8 (muted pink)",
+      "text": "#2C2C2C",
+      "text_secondary": "#6C6C6C",
+      "border": "#E5E0D8"
+    },
+    
+    "typography": {
+      "heading": "Lora (serif, warm, editorial)",
+      "body": "Open Sans (sans-serif, readable)",
+      "sizes": {
+        "h1": "48px desktop, 32px mobile",
+        "h2": "36px desktop, 26px mobile",
+        "body": "16px"
+      }
+    },
+    
+    "buttons": {
+      "primary": {
+        "background": "#4A7C59",
+        "color": "#FFFFFF",
+        "padding": "16px 36px",
+        "border_radius": "4px (slightly rounded, soft)",
+        "hover": "background → #3A6C49 (darker green)"
+      }
+    },
+    
+    "imagery": {
+      "style": "Natural light, soft tones, lifestyle",
+      "color_grading": "Warm, pastel, desaturated",
+      "subjects": "Real people, natural settings, product in context"
+    }
+  },
+  
+  "COPY_TONE": {
+    "characteristics": ["Empathetic", "Educational", "Transparent", "Science-backed", "Calm"],
+    "examples": {
+      "headline": "Nourish your skin, naturally",
+      "product_desc": "Formulated with clinically-proven ingredients. Gentle, effective, transparent.",
+      "cta": "Try risk-free for 30 days"
+    },
+    "avoid": ["Aggressive urgency", "Hype", "Miracle claims", "Pushy sales"]
+  },
+  
+  "CRO_FEATURES": {
+    "ingredient_transparency": "Builds trust (critical for wellness conversion)",
+    "before_after_slider": "+30-50% engagement",
+    "educational_content": "Reduces decision anxiety",
+    "certifications": "Values alignment (Organic, Vegan → +15-25% for matching audience)",
+    "30_day_guarantee": "Risk reversal, standard in wellness"
+  },
+  
+  "PERFORMANCE": {
+    "lighthouse_desktop": 88,
+    "lighthouse_mobile": 82,
+    "bundle_sizes": {
+      "js": "125 KB gzipped",
+      "css": "54 KB gzipped"
+    }
+  },
+  
+  "AXIS_LEARNING_POINTS": {
+    "steal_these": [
+      "Ingredient showcase (transparency builds trust)",
+      "Before/after slider (proof of results)",
+      "Educational content focus",
+      "Soft, natural aesthetic (color palette, imagery)",
+      "Certification badges"
+    ],
+    "niche_application": "Wellness, organic, natural, health products — education > urgency"
+  }
+}

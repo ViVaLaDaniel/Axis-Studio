@@ -44,7 +44,7 @@ class ThemeGenerator:
         self._load_brain_modules()
             
     def _load_brain_modules(self):
-        """Load ALL knowledge databases (CRO, design, psychology, retention, copy)."""
+        """Load ALL knowledge databases (CRO, design, psychology, retention, copy, technical)."""
         brain = self.context.brain
         
         # Original knowledge bases
@@ -53,17 +53,27 @@ class ThemeGenerator:
         self.competitor_intel = brain.get("24_AXIS_COMPETITOR_INTEL", {})
         self.theme_blueprint = brain.get("AI_THEME_BLUEPRINT", {})
         
-        # NEW: Comprehensive knowledge system
+        # Comprehensive knowledge system
         self.design_patterns_schema = brain.get("DESIGN_PATTERNS_SCHEMA", {})
         self.psychology_db = brain.get("PSYCHOLOGY_DB", {})
         self.retention_db = brain.get("RETENTION_DB", {})
         self.copywriting_db = brain.get("COPYWRITING_DB", {})
         
-        # Theme-specific databases
+        # Theme-specific databases (7 themes total)
         self.theme_db_dawn = brain.get("THEME_DB_DAWN", {})
         self.theme_db_impact = brain.get("THEME_DB_IMPACT", {})
+        self.theme_db_prestige = brain.get("THEME_DB_PRESTIGE", {})
+        self.theme_db_impulse = brain.get("THEME_DB_IMPULSE", {})
+        self.theme_db_refresh = brain.get("THEME_DB_REFRESH", {})
+        self.theme_db_expanse = brain.get("THEME_DB_EXPANSE", {})
+        self.theme_db_warehouse = brain.get("THEME_DB_WAREHOUSE", {})
         
-        self.logger.info(f"Loaded 9 knowledge databases: CRO, Design, Psychology, Retention, Copywriting, Theme DBs")
+        # NEW: Technical knowledge bases (Shopify-specific)
+        self.shopify_liquid_db = brain.get("SHOPIFY_LIQUID_DB", {})
+        self.shopify_api_db = brain.get("SHOPIFY_API_DB", {})
+        self.component_library = brain.get("COMPONENT_LIBRARY", {})
+        
+        self.logger.info(f"Loaded 17 knowledge databases: CRO, Design, Psychology, Retention, Copywriting, 7 Themes, 3 Technical (Liquid, API, Components)")
         
     def generate_theme(self, brief: str, theme_name: str):
         """
@@ -295,66 +305,41 @@ class ThemeGenerator:
             ("price.liquid", "Price display with compare-at-price")
         ]
         
-        for filename, description in snippets:
-           self._generate_file(theme_root, f"snippets/{filename}", brief, description, context)
-    
-    def _generate_file(self, theme_root: str, relative_path: str, brief: str, 
-                       file_description: str, niche_context: str = ""):
-        """Generate a single file using LLM with comprehensive knowledge base context."""
-        full_path = os.path.join(theme_root, relative_path)
-        self.logger.info(f"  👉 Generating: {relative_path}...")
-        
-        # Extract niche from context
-        niche = self._extract_niche_from_context(niche_context)
-        
-        # Build knowledge-enriched prompt
-        knowledge_context = self._build_knowledge_context(relative_path, niche)
-        
-        prompt = f"""
-        ACT AS: Senior E-Commerce Expert (10+ years: Shopify + UX + CRO + Psychology).
-        
-        TASK: Write code for '{relative_path}'
-        
-        PROJECT BRIEF: {brief}
-        
-        FILE PURPOSE: {file_description}
-        
-        {niche_context}
-        
-        KNOWLEDGE BASE CONTEXT:
-        {knowledge_context}
-        
-        CRITICAL RULES:
-        - Return ONLY the code. No markdown blocks, no explanations.
-        - Follow Shopify OS 2.0 standards
-        - Performance-first (lazy load images, minimal JS)
-        - Accessible (WCAG 2.1 AA)
-        - Mobile-first responsive design
-        - Use modern CSS (Grid, Flexbox, CSS variables)
-        - Apply psychology principles (see knowledge base)
-        - Use effective copywriting (see formulas)
-        - No jQuery, no Bootstrap
-        
-        OUTPUT: Pure code for {relative_path}
+        Returns dict with 'code', 'js', 'css' if found, else None.
         """
+        if not self.component_library:
+            return None
         
-        try:
-            code = self.provider.generate(prompt)
-            code = self._clean_response(code)
-            
-            # Write file
-            self.orchestrator.execute_task({
-                "type": "file_create",
-                "name": f"Create {relative_path}",
-                "details": {
-                    "path": full_path,
-                    "content": code
-                }
-            })
-            
-        except Exception as e:
-            self.logger.error(f"  ❌ Failed to generate {relative_path}: {e}")
-    
+        # Map file paths to component names
+        component_map = {
+            'product-card': ['snippets/product-card', 'product-card.liquid'],
+            'cart-drawer': ['sections/cart-drawer', 'cart-drawer.liquid'],
+            'predictive-search': ['snippets/predictive-search', 'search'],
+            'mega-menu': ['snippets/mega-menu', 'header', 'navigation'],
+            'collection-filters': ['sections/collection', 'filters'],
+            'quick-shop': ['snippets/quick-shop', 'modal'],
+            'sticky-header': ['sections/header', 'sticky'],
+            'newsletter': ['snippets/newsletter', 'popup'],
+            'recommendations': ['sections/product-recommendations', 'related'],
+            'announcement': ['sections/announcement', 'banner']
+        }
+        
+        # Check if file path matches any component
+        file_lower = file_path.lower()
+        for component_key, keywords in component_map.items():
+            if any(keyword in file_lower for keyword in keywords):
+                # Try to get component from library
+                component_data = self.component_library.get(component_key.upper().replace('-', '_'))
+                if component_data:
+                    self.logger.info(f"  ✅ Using ready-made component: {component_key}")
+                    return {
+                        'code': component_data.get('code', ''),
+                        'js': component_data.get('required_js', ''),
+                        'css': component_data.get('required_css', ''),
+                        'usage': component_data.get('usage', component_data.get('usage_example', ''))
+                    }
+        
+        return None
     
     def _extract_niche_from_context(self, context: str) -> str:
         """Extract niche keyword from context string."""

@@ -1,0 +1,126 @@
+{
+  "THEME_METADATA": {
+    "name": "Expanse",
+    "developer": "Pixel Union",
+    "price": "$290",
+    "version": "3.0.0",
+    "sales_estimate": "5k-7k",
+    "rating": "4.6/5",
+    "niche": ["furniture", "home_decor", "large_products", "high_volume"],
+    "shopify_version": "OS 2.0",
+    "strengths": ["Large imagery", "Product collections", "Room planner", "Multi-column layouts"],
+    "weaknesses": ["Image-heavy (slower load)", "Not for small-item stores"]
+  },
+  
+  "KEY_DIFFERENTIATORS": {
+    "large_imagery_focus": {
+      "description": "Full-width, high-resolution images to showcase large products",
+      "hero": "Full viewport height (100vh)",
+      "product_images": "Largest in industry (up to 2000px)",
+      "psychology": "Immersion, detail inspection (critical for furniture)",
+      "usage": "Furniture, home decor, large products"
+    },
+    
+    "product_collections": {
+      "description": "Group products into curated collections (living room set, bedroom set)",
+      "display": "Grid of products in collection",
+      "add_all": "Add entire collection to cart button",
+      "psychology": "Convenience, complete solution",
+      "aov_increase": "+40-60% (selling sets vs individual items)"
+    },
+    
+    "room_planner_integration": {
+      "description": "Optional integration with room visualization tools",
+      "functionality": "See how furniture looks in your space (AR or photo upload)",
+      "psychology": "Reduces return anxiety, visualization",
+      "effectiveness": "+20-30% conversion for furniture"
+    },
+    
+    "multi_column_layouts": {
+      "description": "Flexible grid layouts for showcasing product variety",
+      "columns": "2-6 columns",
+      "content_types": ["Products", "Collections", "Blog posts", "Images with text"],
+      "usage": "Homepage variety, category pages"
+    }
+  },
+  
+  "SECTIONS_LIBRARY": {
+    "collection_list": {
+      "layout": "Grid of collections (not products)",
+      "card": {
+        "image": "Collection featured image",
+        "title": "Collection name",
+        "product_count": "X products",
+        "link": "Browse collection"
+      },
+      "usage": "Homepage (shop by room, shop by style)"
+    },
+    
+    "product_page": {
+      "gallery": {
+        "layout": "Large main image, thumbnails below",
+        "image_size": "Up to 2000px (high-res)",
+        "zoom": "Click to open full-screen lightbox",
+        "3d_ar": "Optional AR for compatible products"
+      },
+      "dimensions_table": {
+        "display": "Product dimensions in table format",
+        "fields": ["Width", "Height", "Depth", "Weight"],
+        "psychology": "Critical for furniture (space planning)"
+      },
+      "assembly_info": {
+        "content": "Assembly required? Instructions link, estimated time",
+        "psychology": "Transparency, sets expectations"
+      }
+    }
+  },
+  
+  "DESIGN_SYSTEM": {
+    "colors": {
+      "primary": "#2B2B2B (charcoal)",
+      "background": "#F7F7F7 (light gray, gallery-like)",
+      "accent": "#C9A86A (warm gold)",
+      "text": "#2B2B2B",
+      "border": "#D8D8D8"
+    },
+    
+    "typography": {
+      "heading": "Playfair Display (serif, elegant)",
+      "body": "Lato (sans-serif, clean)",
+      "sizes": {
+        "h1": "52px desktop, 36px mobile",
+        "body": "16px"
+      }
+    },
+    
+    "imagery": {
+      "style": "Lifestyle, room settings, high-res",
+      "color_grading": "Natural, warm tones",
+      "staging": "Professionally styled rooms"
+    }
+  },
+  
+  "CRO_FEATURES": {
+    "large_imagery": "Critical for furniture (inspection)",
+    "product_collections": "+40-60% AOV (bundled sales)",
+    "dimensions_table": "Reduces returns, builds confidence",
+    "room_planner": "+20-30% conversion",
+    "assembly_info": "Transparency, reduces surprises"
+  },
+  
+  "PERFORMANCE": {
+    "lighthouse_desktop": 78,
+    "lighthouse_mobile": 70,
+    "notes": "Image-heavy (trade-off for furniture niche), optimize with WebP + lazy load"
+  },
+  
+  "AXIS_LEARNING_POINTS": {
+    "steal_these": [
+      "Product collections (bundle selling)",
+      "Large imagery strategy",
+      "Dimensions table (furniture-specific)",
+      "Room planner concept"
+    ],
+    "niche_application": "Furniture, home decor, large products — imagery > speed"
+  }
+}

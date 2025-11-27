@@ -1,0 +1,150 @@
+{
+  "THEME_METADATA": {
+    "name": "Impulse",
+    "developer": "Archetype Themes",
+    "price": "$280",
+    "version": "7.0.0",
+    "sales_estimate": "15k-20k",
+    "rating": "4.8/5",
+    "niche": ["fashion", "apparel", "accessories"],
+    "shopify_version": "OS 2.0",
+    "strengths": ["Fast (Lighthouse 92)", "Color swatches", "Quick shop", "Instagram feed", "Predictive search"],
+    "weaknesses": ["Less features than Impact", "Generic aesthetic (good for wide appeal)"]
+  },
+  
+  "KEY_DIFFERENTIATORS": {
+    "quick_shop": {
+      "description": "Add to cart from collection grid without opening PDP",
+      "trigger": "Quick Shop button on product card hover (desktop) or tap (mobile)",
+      "modal_content": ["Product image", "Title", "Price", "Variant selector (if applicable)", "ATC button"],
+      "effectiveness": "+15-25% collection page conversion",
+      "psychology": "Reduces friction, faster checkout"
+    },
+    
+    "color_swatches": {
+      "description": "Visual color selector on product cards",
+      "display": "Circular color dots below product title",
+      "hover_behavior": "Changes product card image to selected variant",
+      "mobile": "Tap to change",
+      "psychology": "Visual decision-making, instant preview",
+      "effectiveness": "+10-20% engagement"
+    },
+    
+    "predictive_search": {
+      "description": "Live search results as you type",
+      "results": ["Products (with image)", "Collections", "Pages", "Articles"],
+      "display": "Dropdown below search bar",
+      "limit": "8-10 results",
+      "effectiveness": "+20-30% search conversion vs basic search"
+    },
+    
+    "instagram_feed": {
+      "description": "Embed Instagram posts on storefront",
+      "API": "Instagram Basic Display API",
+      "layout": "Grid (4-6 posts)",
+      "click": "Opens Instagram post in new tab",
+      "psychology": "Social proof, UGC, lifestyle context"
+    }
+  },
+  
+  "SECTIONS_LIBRARY": {
+    "collection_grid": {
+      "quick_shop_modal": {
+        "trigger": "Quick Shop button",
+        "layout": "Centered modal, white background",
+        "content": {
+          "image": "Main product image",
+          "title": "Product name",
+          "price": "Current price + compare-at if on sale",
+          "variants": "Dropdown or swatches (if multiple)",
+          "quantity": "Quantity selector",
+          "atc": "Add to Cart button"
+        },
+        "close": "X button, ESC, click outside",
+        "ajax": "Adds to cart without page reload"
+      },
+      
+      "color_swatches_on_cards": {
+        "display": "Row of color dots below product title",
+        "max_visible": "5-6 colors (+ more indicator if > 6)",
+        "hover": "Changes card image to variant image",
+        "selected_state": "Border + checkmark or enlarged"
+      }
+    },
+    
+    "search": {
+      "predictive_search_dropdown": {
+        "sections": {
+          "products": "Top 4-6 products with image + price",
+          "collections": "2-3 collections",
+          "pages": "1-2 pages",
+          "articles": "1-2 blog posts"
+        },
+        "view_all": "Link to full search results at bottom",
+        "keyboard_nav": "Arrow keys to navigate, Enter to select"
+      }
+    }
+  },
+  
+  "DESIGN_SYSTEM": {
+    "colors": {
+      "primary": "#000000",
+      "background": "#FFFFFF",
+      "accent": "#FF4C3B (red-orange for fashion energy)",
+      "text": "#000000",
+      "text_secondary": "#6C6C6C",
+      "border": "#E8E8E8"
+    },
+    
+    "typography": {
+      "heading": "Karla (sans-serif, geometric)",
+      "body": "Karla",
+      "sizes": {
+        "h1": "44px desktop, 32px mobile",
+        "h2": "32px desktop, 24px mobile",
+        "body": "15px"
+      }
+    },
+    
+    "buttons": {
+      "primary": {
+        "background": "#000000",
+        "color": "#FFFFFF",
+        "padding": "14px 32px",
+        "border_radius": "0px",
+        "text_transform": "uppercase",
+        "hover": "background → #FF4C3B (accent)"
+      }
+    }
+  },
+  
+  "PERFORMANCE": {
+    "lighthouse_desktop": 95,
+    "lighthouse_mobile": 92,
+    "bundle_sizes": {
+      "js": "110 KB gzipped",
+      "css": "48 KB gzipped"
+    },
+    "notes": "Faster than Impact, lighter bundle, still feature-rich"
+  },
+  
+  "CRO_FEATURES": {
+    "quick_shop": "+15-25% collection conversion",
+    "color_swatches": "+10-20% engagement",
+    "predictive_search": "+20-30% search conversion",
+    "instagram_feed": "Social proof, increases trust"
+  },
+  
+  "AXIS_LEARNING_POINTS": {
+    "steal_these": [
+      "Quick shop modal (friction reducer)",
+      "Color swatches on cards (visual selection)",
+      "Predictive search (fast discovery)",
+      "Performance (lighter than Impact, still feature-rich)"
+    ],
+    "vs_impact": {
+      "impulse_wins": "Speed (Lighthouse 92 vs 78), Price ($280 vs $350)",
+      "impact_wins": "Features (video hero, lookbook, sticky ATC mobile)"
+    }
+  }
+}

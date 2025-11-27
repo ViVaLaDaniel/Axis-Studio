@@ -1,0 +1,136 @@
+{
+  "THEME_METADATA": {
+    "name": "Warehouse",
+    "developer": "Pixel Union",
+    "price": "$180",
+    "version": "3.0.0",
+    "sales_estimate": "8k-10k",
+    "rating": "4.7/5",
+    "niche": ["minimal", "product_focused", "catalog", "wholesale"],
+    "shopify_version": "OS 2.0",
+    "strengths": ["Fast (Lighthouse 96)", "Product-focused", "Minimal design", "Advanced filtering", "Affordable ($180)"],
+    "weaknesses": ["Very minimal (not for brand storytelling)", "Limited sections"]
+  },
+  
+  "KEY_DIFFERENTIATORS": {
+    "product_first_design": {
+      "description": "Minimal distractions, products are the hero",
+      "header": "Compact, thin",
+      "hero": "Optional (many skip it entirely)",
+      "focus": "Collection pages, product pages",
+      "psychology": "Efficiency, clear decision-making",
+      "usage": "Wholesale, B2B, product catalogs"
+    },
+    
+    "advanced_filtering": {
+      "description": "Best-in-class filtering for large catalogs",
+      "filters": ["Price range", "Size", "Color", "Material", "Brand", "Custom metafields", "In stock only"],
+      "layout": "Sidebar (always visible, not drawer)",
+      "ajax": "Filter without page reload",
+      "url": "SEO-friendly filter URLs",
+      "psychology": "Fast discovery, reduces search time",
+      "effectiveness": "+25-40% for stores with 100+ products"
+    },
+    
+    "search_focused": {
+      "description": "Prominent search bar",
+      "placement": "Center of header (not icon)",
+      "predictive_search": "Live results",
+      "psychology": "Users know what they want, let them find it fast",
+      "usage": "Large catalogs, returning customers"
+    },
+    
+    "minimal_aesthetic": {
+      "description": "Clean, grid-based, no clutter",
+      "colors": "Black, white, gray",
+      "typography": "Sans-serif, legible",
+      "whitespace": "Generous",
+      "psychology": "Professional, efficient, trustworthy"
+    }
+  },
+  
+  "SECTIONS_LIBRARY": {
+    "collection_page": {
+      "layout": "Sidebar filters (left) + Product grid (right)",
+      "filters_always_visible": "Not hidden in drawer (desktop)",
+      "grid": "3-5 columns (customizable)",
+      "sorting": ["Best selling", "Price low-high", "Price high-low", "Newest", "A-Z"],
+      "product_count": "X products found (updates live)"
+    },
+    
+    "product_page": {
+      "layout": "Simple two-column (image left, info right)",
+      "gallery": "Thumbnails left, main image right",
+      "info": "Title, price, description, variant selector, ATC",
+      "no_fluff": "No upsells, no distractions, just product"
+    },
+    
+    "minimal_homepage": {
+      "typical_sections": ["Featured collection", "Collection list", "Promo bar"],
+      "no_storytelling": "No brand story, mission, etc. (product-only focus)"
+    }
+  },
+  
+  "DESIGN_SYSTEM": {
+    "colors": {
+      "primary": "#000000",
+      "background": "#FFFFFF",
+      "text": "#000000",
+      "text_secondary": "#717171",
+      "border": "#DDDDDD"
+    },
+    
+    "typography": {
+      "heading": "Montserrat (sans-serif, clean)",
+      "body": "Montserrat",
+      "sizes": {
+        "h1": "32px desktop, 24px mobile (smaller than fashion themes)",
+        "body": "14px (compact)"
+      }
+    },
+    
+    "buttons": {
+      "primary": {
+        "background": "#000000",
+        "color": "#FFFFFF",
+        "padding": "12px 24px (compact)",
+        "border_radius": "0px",
+        "text_transform": "uppercase"
+      }
+    }
+  },
+  
+  "PERFORMANCE": {
+    "lighthouse_desktop": 98,
+    "lighthouse_mobile": 96,
+    "bundle_sizes": {
+      "js": "85 KB gzipped (lightest)",
+      "css": "38 KB gzipped (lightest)"
+    },
+    "notes": "Fastest Shopify theme (minimal features = minimal code)"
+  },
+  
+  "CRO_FEATURES": {
+    "advanced_filtering": "+25-40% for large catalogs",
+    "search_focus": "+15-25% returning customer conversion",
+    "fast_load": "+10-20% mobile conversion (speed = trust)",
+    "minimal_design": "Reduces decision fatigue"
+  },
+  
+  "IDEAL_USE_CASES": {
+    "wholesale_b2b": "Quick reorders, large catalogs",
+    "product_catalogs": "100-1000+ SKUs",
+    "industrial_supplies": "Efficiency > emotion",
+    "returning_customers": "They know what they want"
+  },
+  
+  "AXIS_LEARNING_POINTS": {
+    "steal_these": [
+      "Advanced filtering (sidebar, always visible)",
+      "Search-first header",
+      "Product-focused minimal design",
+      "Performance (lightest bundle)"
+    ],
+    "when_to_use": "B2B, wholesale, large catalogs, efficiency-focused"
+  }
+}

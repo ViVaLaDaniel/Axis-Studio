@@ -1,0 +1,185 @@
+{
+  "DATABASE_NAME": "SHOPIFY_API_DB",
+  "VERSION": "1.0",
+  "PURPOSE": "Все Shopify APIs для современных тем",
+  
+  "CART_API": {
+    "description": "Ajax Cart API для динамического управления корзиной",
+    "base_url": "/cart",
+    
+    "get_cart": {
+      "method": "GET",
+      "endpoint": "/cart.js",
+      "returns": "JSON cart object",
+      "example": "fetch('/cart.js').then(r => r.json()).then(cart => console.log(cart))",
+      "response_fields": {
+        "item_count": "Total items",
+        "total_price": "Total in cents",
+        "items": "Array of line items",
+        "currency": "Currency code"
+      }
+    },
+    
+    "add_to_cart": {
+      "method": "POST",
+      "endpoint": "/cart/add.js",
+      "body": {"id": "variant_id", "quantity": 1},
+      "example": "fetch('/cart/add.js', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({id: 123456, quantity: 1}) }).then(r => r.json())",
+      "returns": "Line item object",
+      "error_handling": "Returns 422 if variant unavailable"
+    },
+    
+    "update_cart": {
+      "method": "POST",
+      "endpoint": "/cart/update.js",
+      "body": {"updates": {"line_item_key": "new_quantity"}},
+      "example": "fetch('/cart/update.js', {..., body: JSON.stringify({updates: {'12345:1': 2}}) })",
+      "use_case": "Change quantity"
+    },
+    
+    "change_cart":  {
+      "method": "POST",
+      "endpoint": "/cart/change.js",
+      "body": {"id": "variant_id", "quantity": 2},
+      "difference_from_update": "Accepts variant ID + new quantity (simpler)",
+      "example": "fetch('/cart/change.js', {..., body: JSON.stringify({id: 123456, quantity: 2}) })"
+    },
+    
+    "clear_cart": {
+      "method": "POST",
+      "endpoint": "/cart/clear.js",
+      "returns": "Empty cart object"
+    }
+  },
+  
+  "PRODUCT_RECOMMENDATIONS_API": {
+    "description": "Get product recommendations",
+    "endpoint": "/recommendations/products.json?product_id={id}&limit=4",
+    "method": "GET",
+    "example": "fetch('/recommendations/products.json?product_id=123456&limit=4').then(r => r.json())",
+    "returns": {"products": "Array of recommended products"},
+    "use_case": "Complete the look, You may also like",
+    "limit": "Max 10 products",
+    "algorithm": "Shopify's ML algorithm (based on purchase history, similar products)"
+  },
+  
+  "SECTION_RENDERING_API": {
+    "description": "Re-render sections without page reload",
+    "endpoint": "?section_id={section-file-name}",
+    "method": "GET",
+    "example": "fetch('?section_id=cart-drawer').then(r => r.text()).then(html => {...})",
+    "use_case": "Update cart drawer after add, refresh product card after wishlist",
+    "returns": "HTML of section",
+    "performance": "Faster than full page reload"
+  },
+  
+  "STOREFRONT_API_GRAPHQL": {
+    "description": "GraphQL API for advanced queries",
+    "endpoint": "/api/2024-10/graphql.json",
+    "method": "POST",
+    "authentication": "Storefront Access Token (in theme settings)",
+    
+    "example_query_products": {
+      "query": "query { products(first: 10) { edges { node { id title priceRange { minVariantPrice { amount } } } } } }",
+      "use_case": "Advanced filtering, custom collections"
+    },
+    
+    "example_query_cart": {
+      "mutation": "mutation { cartCreate(input: {lines: [{merchandiseId: 'gid://shopify/ProductVariant/123', quantity: 1}]}) { cart { id lines(first: 10) { edges { node { id quantity } } } } } }",
+      "use_case": "Headless cart"
+    },
+    
+    "capabilities": [
+      "Query products with advanced filters",
+      "Create/update cart",
+      "Customer authentication",
+      "Metafields access",
+      "Multi-currency support"
+    ]
+  },
+  
+  "PREDICTIVE_SEARCH_API": {
+    "description": "Live search as you type",
+    "endpoint": "/search/suggest.json?q={query}&resources[type]=product,collection,page&resources[limit]=10",
+    "method": "GET",
+    "example": "fetch(`/search/suggest.json?q=${searchTerm}&resources[type]=product&resources[limit]=8`).then(r => r.json())",
+    "returns": {
+      "resources": {
+        "results": {
+          "products": "Array of products",
+          "collections": "Array of collections",
+          "pages": "Array of pages"
+        }
+      }
+    },
+    "debounce": "300-500ms recommended to avoid too many requests"
+  },
+  
+  "LOCALIZATION_API": {
+    "currency_selector": {
+      "form": "{% form 'localization', class: 'currency-selector' %}",
+      "input": "<select name='currency_code'>{% for currency in localization.available_currencies %}<option value='{{ currency.iso_code }}'>{{ currency.iso_code }}</option>{% endfor %}</select>",
+      "submit": "Form auto-submits on change"
+    },
+    
+    "language_selector": {
+      "form": "{% form 'localization', class: 'language-selector' %}",
+      "input": "<select name='locale_code'>{% for language in localization.available_languages %}<option value='{{ language.iso_code }}'>{{ language.endonym_name }}</option>{% endfor %}</select>"
+    },
+    
+    "money_with_currency": {
+      "filter": "{{ product.price | money_with_currency }}",
+      "output": "$29.99 USD",
+      "auto_converts": "Yes, based on selected currency"
+    }
+  },
+  
+  "METAFIELDS_API": {
+    "description": "Custom data attached to products/collections/etc",
+    "access_in_liquid": "{{ product.metafields.custom.field_name }}",
+    
+    "example_use_cases": {
+      "ingredients": "{{ product.metafields.custom.ingredients }}",
+      "size_chart": "{{ product.metafields.custom.size_chart }}",
+      "care_instructions": "{{ product.metafields.custom.care_instructions }}",
+      "brand_story": "{{ product.metafields.custom.brand_story }}"
+    },
+    
+    "types": ["single_line_text", "multi_line_text", "rich_text", "number", "date", "url", "json", "file_reference (image/video)"],
+    
+    "creating": "Admin → Settings → Custom data → Add definition"
+  },
+  
+  "CUSTOMER_API": {
+    "login": {
+      "form": "{% form 'customer_login' %}",
+      "inputs": ["email", "password"],
+      "redirect": "{{ routes.account_url }}"
+    },
+    
+    "register": {
+      "form": "{% form 'create_customer' %}",
+      "inputs": ["first_name", "last_name", "email", "password"]
+    },
+    
+    "check_logged_in": "{% if customer %}Logged in{% else %}Guest{% endif %}",
+    
+    "customer_object": {
+      "properties": ["id", "email", "first_name", "last_name", "orders_count", "total_spent", "tags", "default_address"]
+    }
+  },
+  
+  "PERFORMANCE_APIS": {
+    "resource_hints": {
+      "dns_prefetch": "<link rel='dns-prefetch' href='https://cdn.shopify.com'>",
+      "preconnect": "<link rel='preconnect' href='https://cdn.shopify.com'>",
+      "preload": "<link rel='preload' as='image' href='{{ hero.image | image_url: width: 1200 }}'>",
+      "prefetch": "<link rel='prefetch' href='/collections/all'>"
+    },
+    
+    "intersection_observer": {
+      "purpose": "Lazy load, scroll animations",
+      "example": "const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } }); }); document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));"
+    }
+  }
+}
