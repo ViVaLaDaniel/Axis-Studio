@@ -73,6 +73,7 @@ This document records all significant changes and versions of the AXIS Studios p
   <li>docs(roadmap): Create ROADMAP.md and move content from README.md</li>
   <li>docs(changelog): Create CHANGELOG.md and move content from README.md</li>
   <li>docs(readme): Refactor README.md to a shorter storefront version</li>
+  <li>docs(versioning): Create VERSION.md and link it in README.md</li>
 </ul>
 </details>
 

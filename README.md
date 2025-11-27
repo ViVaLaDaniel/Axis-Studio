@@ -5,6 +5,11 @@
 См. полный план разработки в [ROADMAP.md](ROADMAP.md).
 </details>
 
+<details>
+<summary><h2>✨ Текущая Версия</h2></summary>
+См. историю версий и план будущих релизов в [VERSION.md](VERSION.md).
+</details>
+
 <p align="center">
   <img alt="Version" src="https://img.shields.io/badge/version-10.5-blue.svg?cacheSeconds=2592000" />
   <img alt="Status" src="https://img.shields.io/badge/status-production--ready-brightgreen.svg" />
