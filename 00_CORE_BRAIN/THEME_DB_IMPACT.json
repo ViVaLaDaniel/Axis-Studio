@@ -1,0 +1,184 @@
+{
+  "THEME_METADATA": {
+    "name": "Impact",
+    "developer": "Maestrooo",
+    "price": "$350",
+    "version": "6.0.0",
+    "sales_estimate": "10k-15k",
+    "rating": "4.9/5",
+    "niche": ["fashion", "apparel", "accessories"],
+    "shopify_version": "OS 2.0",
+    "last_analyzed": "2025-11-27",
+    "strengths": ["Video-first design", "Instagram-like UX", "Advanced filtering", "Lookbook builder", "Best mobile UX", "80+ sections"],
+    "weaknesses": ["Expensive ($350)", "Complex for small stores", "Heavy JS bundle (150KB+)", "Learning curve"]
+  },
+  
+  "FILE_STRUCTURE": {
+    "directories": {
+      "assets": {
+        "css_files": ["theme.css", "critical.css"],
+        "js_files": ["theme.js", "vendor.js"],
+        "total_css_size_kb": 58,
+        "total_js_size_kb": 152,
+        "performance_notes": "Monolithic CSS/JS (not modular like Dawn), but still performant"
+      },
+      "sections": {
+        "count": 80,
+        "unique_to_impact": [
+          "video-hero.liquid",
+          "lookbook.liquid",
+          "instagram-feed.liquid",
+          "before-after.liquid",
+          "scrolling-text.liquid",
+          "age-verifier.liquid"
+        ]
+      }
+    }
+  },
+  
+  "KEY_DIFFERENTIATORS": {
+    "video_hero": {
+      "description": "Full-screen video background with autoplay",
+      "features": ["Autoplay", "Muted", "Loop", "Mobile video support", "Fallback image"],
+      "performance": "Lazy loads video below fold",
+      "mobile": "Uses poster image on slow connections"
+    },
+    
+    "lookbook": {
+      "description": "Instagram-style product tagging on lifestyle images",
+      "behavior": "Click hotspot → product quick-view modal",
+      "use_case": "Show products in context (outfit, room setup)",
+      "mobile": "Touch-friendly hotspots"
+    },
+    
+    "instagram_feed": {
+      "description": "Pull recent Instagram posts into storefront",
+      "integration": "Instagram Basic Display API",
+      "display": "Grid of posts with captions",
+      "clickable": "Opens Instagram post in new tab"
+    },
+    
+    "advanced_filtering": {
+      "filters": ["Price", "Size", "Color", "Material", "Brand", "Custom metafields"],
+      "layout": "Sidebar (desktop), drawer (mobile)",
+      "ajax": "Updates without page reload",
+      "url": "SEO-friendly URLs (/collections/all?filter.p.size=M)",
+      "mobile_ux": "Best-in-class mobile filtering"
+   },
+    
+    "quick_view": {
+      "trigger": "Click product card 'Quick View' button",
+      "content": ["Image slider", "Title", "Price", "Variant selector", "ATC", "View full details link"],
+      "benefit": "Browse without leaving collection page",
+      "ajax": "Fetches product data without page load"
+    },
+    
+    "sticky_atc_mobile": {
+      "description": "Fixed ATC bar at bottom on mobile",
+      "trigger": "Scroll past main ATC button",
+      "content": ["Product image", "Price", "ATC button"],
+      "thumb_friendly": "Within reach zone",
+      "impact_signature": "This is Impact's mobile UX strength"
+    }
+  },
+  
+  "CRO_FEATURES": {
+    "cart_goal": {
+      "description": "Free shipping progress bar in cart",
+      "example": "Add $25 more for free shipping!",
+      "updates": "Real-time as cart changes",
+      "psychology": "Threshold effect, encourages higher AOV"
+    },
+    
+    "countdown_timer": {
+      "description": "Urgency timer for sales/launches",
+      "customizable": "End date, message",
+      "placement": "Announcement bar, product page",
+      "auto_hide": "Hides after countdown ends"
+    },
+    
+    "recently_viewed": {
+      "description": "Shows products user viewed recently",
+      "storage": "localStorage",
+      "display": "Carousel of 6-8 products",
+      "placement": "Product page, cart"
+    },
+    
+    "product_reviews": {
+      "integration": "Judges.me, Loox, Yotpo",
+      "display": "Star rating, review count, photo reviews",
+      "filtering": "Filter by rating",
+      "impact": "Social proof drives conversion"
+    }
+  },
+  
+  "MOBILE_FIRST_DESIGN": {
+    "philosophy": "Impact is designed mobile-first, then adapted for desktop",
+    "statistics": "70% of fashion store traffic is mobile",
+    
+    "mobile_optimizations": [
+      "Sticky ATC bar (signature feature)",
+      "Swipe gestures (product images, carousels)",
+      "Touch-optimized filter drawer",
+      "Large tap targets (min 48px)",
+      "Reduced motion option (respects prefers-reduced-motion)",
+      "Optimized images (WebP, lazy load)",
+      "Fast-tap cart drawer (no page load)"
+    ],
+    
+    "mobile_page_speed": {
+      "LCP_mobile": "1.8s (Good)",
+      "FID_mobile": "< 100ms (Good)",
+      "notes": "Heavier than Dawn, but optimized for mobile fashion UX"
+    }
+  },
+  
+  "SETTINGS_COMPLEXITY": {
+    "total_settings": 250,
+    "categories": 18,
+    "merchant_feedback": {
+      "positive": "Extremely customizable, can match any brand",
+      "negative": "Overwhelming for beginners, too many options",
+      "learning_curve": "2-3 hours to understand all settings"
+    },
+    "axis_approach": "Offer preset-first (Impact-style themes), advanced settings optional"
+  },
+  
+  "PERFORMANCE_TRADEOFFS": {
+    "lighthouse_desktop": 92,
+    "lighthouse_mobile": 78,
+    "reason": "Heavy JS for advanced features (filtering, quick view, lookbook)",
+    "bundle_sizes": {
+      "js_total_gzipped": "152 KB",
+      "css_total_gzipped": "58 KB"
+    },
+    "tradeoff": "Sacrifices some performance for rich UX (acceptable for fashion)",
+    "axis_challenge": "Match Impact's UX with better performance (target: JS < 120KB)"
+  },
+  
+  "AXIS_LEARNING_POINTS": {
+    "steal_these": [
+      "Video-first hero (fashion brands love video)",
+      "Lookbook with product tagging",
+      "Sticky ATC mobile bar (huge conversion boost)",
+      "Advanced filtering UX (best-in-class)",
+      "Quick view modal",
+      "Instagram feed integration",
+      "Mobile-first design philosophy"
+    ],
+    
+    "improve_upon": [
+      "Reduce JS bundle (Impact is 152KB, we target < 120KB)",
+      "Simplify settings (250 is too many, offer presets)",
+      "Better documentation (Impact docs are good, but could be better)",
+      "Faster mobile performance (LCP < 1.5s)"
+    ],
+    
+    "axis_unique_selling_points": [
+      "Impact-quality UX at $100 cheaper ($240-280 vs $350)",
+      "Lighter JS bundle (better performance)",
+      "Simpler settings (preset-first approach)",
+      "Same mobile UX with faster load times"
+    ]
+  }
+}

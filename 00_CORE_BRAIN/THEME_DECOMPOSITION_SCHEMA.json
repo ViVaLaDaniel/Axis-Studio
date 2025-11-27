@@ -1,0 +1,415 @@
+{
+  "SCHEMA_NAME": "THEME_DECOMPOSITION_TEMPLATE",
+  "VERSION": "1.0",
+  "PURPOSE": "Детальная декомпозиция Shopify темы для базы знаний AXIS",
+  
+  "THEME_METADATA": {
+    "name": "Theme Name",
+    "developer": "Developer Name",
+    "price": "$350",
+    "version": "1.0.0",
+    "sales_estimate": "10k-15k",
+    "rating": "4.9/5",
+    "niche": ["fashion", "luxury", "general"],
+    "shopify_version": "OS 2.0",
+    "last_analyzed": "2025-11-27"
+  },
+  
+  "FILE_STRUCTURE": {
+    "description": "Полная структура файлов темы",
+    "directories": {
+      "assets": {
+        "css_files": ["base.css", "theme.css", "component-*.css"],
+        "js_files": ["global.js", "product-form.js", "cart.js"],
+        "total_css_size_kb": 45,
+        "total_js_size_kb": 120,
+        "performance_notes": "Uses CSS splitting, lazy loads JS"
+      },
+      "config": {
+        "settings_schema": "Full JSON structure",
+        "total_settings": 150,
+        "preset_count": 3
+      },
+      "layout": {
+        "files": ["theme.liquid", "password.liquid"],
+        "notes": "Standard OS 2.0 layout"
+      },
+      "sections": {
+        "count": 50,
+        "list": ["header", "hero", "product-grid", "footer", "etc"]
+      },
+      "snippets": {
+        "count": 30,
+        "list": ["product-card", "icon-*", "price", "etc"]
+      },
+      "templates": {
+        "json_templates": ["index.json", "product.json", "collection.json", "cart.json"],
+        "notes": "All JSON-based (OS 2.0)"
+      }
+    }
+  },
+  
+  "SECTIONS_LIBRARY": {
+    "description": "Детальная разборка КАЖДОЙ секции",
+    "sections": [
+      {
+        "name": "header",
+        "file": "sections/header.liquid",
+        "purpose": "Main navigation, logo, cart icon, search",
+        "schema_settings": {
+          "logo_width": {"type": "range", "min": 50, "max": 250, "default": 100},
+          "menu": {"type": "link_list"},
+          "enable_sticky": {"type": "checkbox", "default": true},
+          "show_search": {"type": "checkbox", "default": true}
+        },
+        "components": [
+          {
+            "name": "Logo",
+            "type": "image",
+            "behavior": "Clickable, links to homepage",
+            "responsive": "Scales down on mobile"
+          },
+          {
+            "name": "Main Navigation",
+            "type": "menu",
+            "behavior": "Dropdown on hover (desktop), accordion on mobile",
+            "features": ["Mega menu support", "Icon + text links"]
+          },
+          {
+            "name": "Search Button",
+            "type": "button",
+            "behavior": "Opens modal search (or inline)",
+            "ux_pattern": "Icon-only on mobile, icon+text on desktop"
+          },
+          {
+            "name": "Cart Icon",
+            "type": "button",
+            "behavior": "Shows cart count badge, opens drawer cart",
+            "features": ["Real-time count update", "Badge animation on add"]
+          }
+        ],
+        "interactions": {
+          "sticky_behavior": "Becomes sticky on scroll down, hides on scroll up",
+          "mobile_menu": "Slide-in from left, overlay background",
+          "cart_drawer": "Slide-in from right, AJAX update"
+        },
+        "css_classes": [
+          ".header", ".header--sticky", ".header__logo", ".header__nav",
+          ".header__cart", ".header__search"
+        ],
+        "js_dependencies": ["sticky-header.js", "cart-drawer.js"],
+        "accessibility": {
+          "aria_labels": ["navigation", "cart", "search"],
+          "keyboard_nav": true,
+          "screen_reader_text": "Skip to content link"
+        },
+        "performance": {
+          "lazy_load": false,
+          "critical_css": true,
+          "notes": "Header is above-fold, must be fast"
+        }
+      },
+      
+      {
+        "name": "hero",
+        "file": "sections/hero.liquid",
+        "purpose": "Main homepage banner with CTA",
+        "schema_settings": {
+          "image": {"type": "image_picker"},
+          "video": {"type": "url"},
+          "heading": {"type": "text", "default": "Welcome"},
+          "subheading": {"type": "textarea"},
+          "button_text": {"type": "text", "default": "Shop Now"},
+          "button_link": {"type": "url"},
+          "height": {"type": "select", "options": ["small", "medium", "large", "fullscreen"]},
+          "text_alignment": {"type": "select", "options": ["left", "center", "right"]},
+          "overlay_opacity": {"type": "range", "min": 0, "max": 100, "default": 30}
+        },
+        "components": [
+          {
+            "name": "Hero Image/Video",
+            "type": "media",
+            "behavior": "Background image or autoplay video",
+            "responsive": "Different images for mobile/desktop",
+            "performance": "loading=eager, fetchpriority=high"
+          },
+          {
+            "name": "Heading",
+            "type": "text",
+            "behavior": "Large prominent text (H1)",
+            "animations": "Fade-in on load"
+          },
+          {
+            "name": "CTA Button",
+            "type": "button",
+            "behavior": "Primary action button",
+            "hover_effect": "Scale up, color shift",
+            "analytics": "Track clicks"
+          }
+        ],
+        "variants": {
+          "image_only": "Static background image",
+          "video_background": "Autoplay muted video",
+          "slideshow": "Multiple slides with transition"
+        },
+        "ux_patterns": {
+          "full_screen": "Hero takes 100vh on desktop",
+          "scroll_indicator": "Arrow or text 'Scroll down'",
+          "parallax": "Background scrolls slower than content (optional)"
+        }
+      }
+    ]
+  },
+  
+  "COMPONENTS_LIBRARY": {
+    "description": "Переиспользуемые компоненты (snippets + patterns)",
+    "components": [
+      {
+        "name": "Product Card",
+        "file": "snippets/product-card.liquid",
+        "purpose": "Display product in grid (collection, search, homepage)",
+        "elements": {
+          "image": {
+            "behavior": "Hover shows second image (if available)",
+            "lazy_load": true,
+            "aspect_ratio": "1:1 or custom"
+          },
+          "title": {
+            "behavior": "Clickable link to PDP",
+            "truncate": "2 lines max"
+          },
+          "price": {
+            "display": "Current price + compare-at-price (if on sale)",
+            "formatting": "$99.00 (no cents if .00)"
+          },
+          "badges": {
+            "types": ["Sale", "New", "Sold Out", "Low Stock"],
+            "position": "Top-left corner"
+          },
+          "quick_add": {
+            "type": "button",
+            "behavior": "AJAX add to cart without leaving page",
+            "show_when": "Hover (desktop) or always (mobile)"
+          },
+          "wishlist": {
+            "type": "icon_button",
+            "behavior": "Toggle favorite, save to customer account",
+            "position": "Top-right corner"
+          },
+          "color_swatches": {
+            "display": "Show available variants (if enabled)",
+            "behavior": "Hover changes image to variant"
+          }
+        },
+        "states": {
+          "default": "Standard display",
+          "hover": "Quick add button appears, second image shows",
+          "sold_out": "Grayed out, 'Sold Out' badge"
+        },
+        "animations": {
+          "hover_scale": "Image scales 1.05x",
+          "fade_in": "Card fades in on scroll (Intersection Observer)"
+        }
+      },
+      
+      {
+        "name": "Add to Cart Button",
+        "file": "sections/product-form.liquid (inline)",
+        "variants": {
+          "standard": "Regular button on product page",
+          "sticky": "Fixed at bottom on mobile",
+          "quick_add": "Mini button on product card"
+        },
+        "states": {
+          "default": "Shop Now / Add to Cart",
+          "loading": "Adding... (spinner)",
+          "success": "Added! (checkmark, then reset after 2s)",
+          "error": "Out of Stock / Error (red)"
+        },
+        "behavior": {
+          "validation": "Check variant selected, quantity > 0",
+          "ajax": "Add to cart without page reload",
+          "feedback": "Show cart drawer or notification",
+          "analytics": "Fire 'add_to_cart' event"
+        }
+      }
+    ]
+  },
+  
+  "UX_PATTERNS": {
+    "description": "Поведенческие паттерны и интеракции",
+    "patterns": [
+      {
+        "name": "Sticky Header",
+        "behavior": "Header becomes fixed on scroll down, hides on scroll up (saves space)",
+        "implementation": "JS: Intersection Observer + scroll direction detection",
+        "css": ".header--sticky { position: fixed; top: 0; }",
+        "accessibility": "Does not trap focus, skip link available"
+      },
+      {
+        "name": "Drawer Cart",
+        "behavior": "Cart slides in from right, shows items, allows edit/remove, proceed to checkout",
+        "open_trigger": "Click cart icon, ATC success",
+        "close_trigger": "Click outside, ESC key, close button",
+        "features": ["AJAX update", "Quantity edit", "Upsells", "Free shipping tracker"],
+        "accessibility": "Focus trap, ARIA role=dialog"
+      },
+      {
+        "name": "Quick View Modal",
+        "behavior": "Opens product details in modal without leaving collection page",
+        "trigger": "Click 'Quick View' button on product card",
+        "content": ["Image", "Title", "Price", "Variant selector", "ATC button"],
+        "close": "ESC, click outside, X button"
+      },
+      {
+        "name": "Mega Menu",
+        "behavior": "Dropdown with multiple columns, images, featured links",
+        "trigger": "Hover on parent menu item (desktop)",
+        "layout": "2-4 columns, promotional image on right",
+        "mobile": "Not used (replaced with accordion)"
+      },
+      {
+        "name": "Predictive Search",
+        "behavior": "Shows live results as user types",
+        "trigger": "Type in search field (debounced 300ms)",
+        "results": "Products, collections, pages (max 10)",
+        "performance": "Uses Shopify Predictive Search API"
+      }
+    ]
+  },
+  
+  "SETTINGS_ANALYSIS": {
+    "description": "Разбор settings_schema.json",
+    "categories": [
+      {
+        "name": "Colors",
+        "settings": [
+          {"id": "color_primary", "type": "color", "default": "#000000"},
+          {"id": "color_secondary", "type": "color", "default": "#FFFFFF"},
+          {"id": "color_accent", "type": "color", "default": "#FF5733"}
+        ]
+      },
+      {
+        "name": "Typography",
+        "settings": [
+          {"id": "font_heading", "type": "font_picker", "default": "Helvetica"},
+          {"id": "font_body", "type": "font_picker", "default": "Arial"},
+          {"id": "font_size_base", "type": "range", "min": 12, "max": 24, "default": 16}
+        ]
+      },
+      {
+        "name": "Layout",
+        "settings": [
+          {"id": "layout_width", "type": "range", "min": 1200, "max": 1600, "default": 1400},
+          {"id": "enable_sticky_header", "type": "checkbox", "default": true},
+          {"id": "product_grid_columns_desktop", "type": "range", "min": 2, "max": 5, "default": 4}
+        ]
+      }
+    ],
+    "total_settings": 150,
+    "merchant_friendly": "Settings grouped by category, clear labels, helpful descriptions"
+  },
+  
+  "PERFORMANCE_PROFILE": {
+    "lighthouse_scores": {
+      "performance": 95,
+      "accessibility": 98,
+      "best_practices": 100,
+      "seo": 100
+    },
+    "core_web_vitals": {
+      "LCP": "1.2s (Good)",
+      "FID": "< 100ms (Good)",
+      "CLS": "0.05 (Good)"
+    },
+    "optimizations": [
+      "Lazy load images (loading=lazy)",
+      "Preload critical fonts",
+      "Inline critical CSS",
+      "Defer non-critical JS",
+      "Use WebP images",
+      "Minify CSS/JS"
+    ],
+    "bundle_sizes": {
+      "css_total": "45 KB (gzipped)",
+      "js_total": "120 KB (gzipped)",
+      "notes": "Within AXIS performance budget"
+    }
+  },
+  
+  "CONVERSION_FEATURES": {
+    "description": "CRO-оптимизированные фичи",
+    "features": [
+      {
+        "name": "Low Stock Indicator",
+        "display": "Only 3 left!",
+        "trigger": "inventory < 10",
+        "psychology": "Urgency, loss aversion"
+      },
+      {
+        "name": "Recently Viewed Products",
+        "display": "Grid of 4-6 products user viewed recently",
+        "storage": "localStorage",
+        "placement": "PDP, Cart page"
+      },
+      {
+        "name": "Upsell Recommendations",
+        "trigger": "Add to cart",
+        "algorithm": "Frequently bought together",
+        "display": "Drawer cart, cart page"
+      },
+      {
+        "name": "Free Shipping Threshold",
+        "display": "Add $25 more for free shipping!",
+        "update": "Live update as cart changes",
+        "placement": "Cart drawer, cart page"
+      },
+      {
+        "name": "Social Proof",
+        "types": ["Verified reviews", "Star rating", "Photo reviews", "Trust badges"],
+        "placement": "PDP, homepage, footer"
+      }
+    ]
+  },
+  
+  "MOBILE_OPTIMIZATIONS": {
+    "description": "Специфичные для мобильных устройств оптимизации",
+    "features": [
+      {
+        "name": "Sticky ATC Bar",
+        "behavior": "Fixed at bottom, shows product info + ATC button",
+        "trigger": "Scroll past main ATC button",
+        "thumb_friendly": "Button in reach zone (bottom 1/3)"
+      },
+      {
+        "name": "Collapsible Product Details",
+        "behavior": "Description, specs, shipping collapsed by default",
+        "purpose": "Reduce scroll length"
+      },
+      {
+        "name": "Touch-Friendly Targets",
+        "min_size": "44px x 44px (Apple HIG)",
+        "spacing": "8px min between targets"
+      },
+      {
+        "name": "Mobile-First Images",
+        "behavior": "Serve smaller images on mobile (srcset)",
+        "aspect_ratio": "Portrait-friendly (3:4 vs 1:1)"
+      }
+    ]
+  },
+  
+  "ACCESSIBILITY_AUDIT": {
+    "wcag_compliance": "2.1 AA",
+    "features": [
+      "Semantic HTML (header, nav, main, footer)",
+      "ARIA labels for icons",
+      "Keyboard navigation (tab, enter, esc)",
+      "Focus indicators visible",
+      "Color contrast > 4.5:1",
+      "Alt text for all images",
+      "Screen reader announcements (cart update, errors)"
+    ],
+    "tested_with": ["NVDA", "VoiceOver", "JAWS"]
+  }
+}

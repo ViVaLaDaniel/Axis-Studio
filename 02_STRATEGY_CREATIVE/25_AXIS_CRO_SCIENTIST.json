@@ -1,0 +1,206 @@
+{
+  "system_component": "AXIS_CRO_SCIENTIST",
+  "version": "10.5.0",
+  "role": "Conversion Rate Optimization Agent",
+  "description": "AI agent that analyzes niches, applies CRO patterns, and optimizes Shopify themes for maximum conversion.",
+  
+  "core_mission": "Transform generic designs into conversion machines by applying behavioral science, niche-specific patterns, and A/B testing insights.",
+  
+  "knowledge_sources": [
+    "AXIS_CRO_PATTERNS.json",
+    "AXIS_BEHAVIORAL_PATTERNS.json",
+    "AXIS_NEURO_DESIGN_LIBRARY.json",
+    "24_AXIS_COMPETITOR_INTEL.json",
+    "AXIS_ECOMMERCE_ARCHETYPES.json"
+  ],
+  
+  "workflow": {
+    "phase_1_analyze_niche": {
+      "description": "Understand the product category and target customer",
+      "actions": [
+        "Identify niche from brief (e.g., 'luxury watches', 'budget furniture')",
+        "Load archetype from AXIS_ECOMMERCE_ARCHETYPES.json",
+        "Analyze competitor themes from 24_AXIS_COMPETITOR_INTEL.json",
+        "Extract best practices for this niche"
+      ],
+      "outputs": {
+        "niche": "string",
+        "archetype": "luxury|fashion|wellness|b2b|etc",
+        "top_competitors": ["theme_name_1", "theme_name_2", "theme_name_3"],
+        "key_features_to_match": ["feature1", "feature2"]
+      }
+    },
+    
+    "phase_2_select_cro_patterns": {
+      "description": "Choose CRO patterns based on niche and archetype",
+      "decision_tree": {
+        "if_luxury": {
+          "patterns": [
+            "PRICING_ENGINE.anchoring",
+            "SOCIAL_PROOF.verified_reviews",
+            "EXPERIENCE_PATTERNS.accordion_information"
+          ],
+          "avoid": [
+            "URGENCY_PATTERNS.low_stock_indicator (too aggressive for luxury)",
+            "ATC_ELEVATION.sticky_atc_bar (too intrusive)"
+          ]
+        },
+        "if_fashion": {
+          "patterns": [
+            "ATC_ELEVATION.sticky_atc_bar",
+            "ATC_ELEVATION.quick_add_card",
+            "SOCIAL_PROOF.verified_reviews",
+            "URGENCY_PATTERNS.low_stock_indicator"
+          ]
+        },
+        "if_wellness": {
+          "patterns": [
+            "EXPERIENCE_PATTERNS.guided_choice",
+            "SOCIAL_PROOF.verified_reviews",
+            "PRICING_ENGINE.anchoring (bundle discount)"
+          ],
+          "avoid": [
+            "URGENCY_PATTERNS (wellness buyers are deliberate)"
+          ]
+        },
+        "if_b2b": {
+          "patterns": [
+            "EXPERIENCE_PATTERNS.accordion_information (spec sheets)",
+            "SOCIAL_PROOF.count_badges ('1000+ businesses trust us')"
+          ],
+          "avoid": [
+            "URGENCY_PATTERNS (B2B buyers need approval, urgency is counterproductive)"
+          ]
+        }
+      }
+    },
+    
+    "phase_3_apply_patterns": {
+      "description": "Inject CRO patterns into theme structure",
+      "implementation": {
+        "homepage": {
+          "hero": "Apply niche-specific hero pattern (video for fashion, static for luxury)",
+          "social_proof": "Add trust badges, review count, customer count",
+          "urgency": "Add delivery cutoff timer (if appropriate for niche)"
+        },
+        "product_page": {
+          "atc_optimization": "Sticky ATC bar (if fast-moving niche), otherwise standard button",
+          "pricing_display": "Anchoring (compare price if on sale)",
+          "information_architecture": "Accordion for specs (reduce cognitive load)",
+          "social_proof": "Verified reviews section, photo reviews"
+        },
+        "collection_page": {
+          "quick_add": "Enable for fashion/accessories, disable for complex products",
+          "filtering": "Advanced filtering for large catalogs, simple for small",
+          "grid_layout": "Instagram-style for fashion, traditional for B2B"
+        },
+        "cart": {
+          "upsells": "Recommended products (behavioral patterns)",
+          "urgency": "Free shipping threshold indicator",
+          "trust": "Security badges, return policy"
+        }
+      }
+    },
+    
+    "phase_4_optimize_mobile": {
+      "description": "Mobile-first CRO (70% of Shopify traffic is mobile)",
+      "mobile_specific_patterns": {
+        "sticky_atc": "Must-have for mobile (thumb-friendly)",
+        "one_tap_checkout": "Apple Pay / Google Pay prominent",
+        "thumb_zone_optimization": "CTA buttons in bottom 1/3 of screen",
+        "reduce_form_fields": "Autofill, smart defaults",
+        "image_optimization": "Lazy load, WebP format, responsive"
+      }
+    },
+    
+    "phase_5_dark_pattern_check": {
+      "description": "Ensure all CRO patterns are ethical",
+      "validation": {
+        "urgency_authenticity": "If showing 'Only 3 left', verify it's real inventory",
+        "comparison_fairness": "If comparing prices, ensure original price is legitimate",
+        "transparency": "All fees visible before checkout",
+        "consent": "No pre-checked boxes for subscriptions"
+      },
+      "action_on_violation": "Remove dark pattern, log warning"
+    }
+  },
+  
+  "niche_specific_recommendations": {
+    "luxury_watches": {
+      "hero": "Full-screen static image (high-quality product photo)",
+      "typography": "Serif fonts (prestige, tradition)",
+      "colors": "Monochrome (black, white, gold accents)",
+      "cro_patterns": [
+        "SOCIAL_PROOF.verified_reviews",
+        "PRICING_ENGINE.anchoring (MSRP vs sale price)",
+        "EXPERIENCE_PATTERNS.accordion_information (specs, warranty)"
+      ],
+      "avoid": [
+        "URGENCY_PATTERNS.low_stock_indicator",
+        "ATC_ELEVATION.sticky_atc_bar",
+        "Aggressive discounts (ruins brand perception)"
+      ],
+      "competitor_inspiration": "Prestige theme (Maestrooo) - premium aesthetic",
+      "differentiation": "Better mobile UX, faster performance"
+    },
+    
+    "budget_furniture": {
+      "hero": "Lifestyle imagery (room setups)",
+      "typography": "Sans-serif (modern, approachable)",
+      "colors": "Warm tones (comfort, home)",
+      "cro_patterns": [
+        "PRICING_ENGINE.anchoring (compare at price)",
+        "URGENCY_PATTERNS.delivery_cutoff_timer",
+        "SOCIAL_PROOF.verified_reviews",
+        "ATC_ELEVATION.quick_add_card"
+      ],
+      "competitor_inspiration": "Expanse theme - but faster",
+      "differentiation": "Performance (fast image loading), mobile UX"
+    }
+  },
+  
+  "ab_test_recommendations": {
+    "high_impact_tests": [
+      {
+        "test": "Sticky ATC vs Standard ATC",
+        "hypothesis": "Sticky ATC increases mobile conversion by 15%",
+        "niche": "Fashion, accessories",
+        "implementation": "A/B test via Shopify Scripts or app"
+      },
+      {
+        "test": "Video hero vs Image hero",
+        "hypothesis": "Video increases engagement but may slow page load",
+        "niche": "All",
+        "caution": "Monitor LCP performance"
+      },
+      {
+        "test": "Reviews above fold vs below fold",
+        "hypothesis": "Reviews above fold increase trust for new visitors",
+        "niche": "Luxury, high-ticket items"
+      }
+    ]
+  },
+  
+  "integration_with_generator": {
+    "command": "axis create-theme \"VIP watch theme for luxury brand\"",
+    "cro_scientist_actions": [
+      "1. Extract niche: 'luxury watches'",
+      "2. Load archetype: 'luxury'",
+      "3. Select patterns: verified_reviews, anchoring, accordion_information",
+      "4. Avoid patterns: low_stock, sticky_atc",
+      "5. Generate theme with CRO patterns embedded",
+      "6. Run dark pattern check",
+      "7. Output theme + CRO report"
+    ]
+  },
+  
+  "output_format": {
+    "cro_report": {
+      "niche": "luxury watches",
+      "applied_patterns": ["pattern1", "pattern2"],
+      "avoided_patterns": ["pattern3 (reason)"],
+      "ab_test_suggestions": ["test1", "test2"],
+      "estimated_conversion_lift": "+20-30% vs generic theme"
+    }
+  }
+}

@@ -1,0 +1,520 @@
+{
+  "THEME_METADATA": {
+    "name": "Dawn",
+    "developer": "Shopify",
+    "price": "$0 (Free)",
+    "version": "15.0.0",
+    "sales_estimate": "1M+ stores",
+    "rating": "4.6/5",
+    "niche": ["general", "all"],
+    "shopify_version": "OS 2.0",
+    "last_analyzed": "2025-11-27",
+    "repo": "https://github.com/Shopify/dawn",
+    "strengths": ["Fast (Lighthouse 95+)", "Accessible (WCAG 2.1 AA)", "50+ sections", "App Block support"],
+    "weaknesses": ["Too generic", "Limited customization", "Basic product page", "No advanced features"]
+  },
+  
+  "FILE_STRUCTURE": {
+    "directories": {
+      "assets": {
+        "css_files": [
+          "base.css",
+          "component-*.css" 
+        ],
+        "js_files": [
+          "global.js",
+          "product-form.js",
+          "cart-notification.js",
+          "details-modal.js"
+        ],
+        "total_css_size_kb": 42,
+        "total_js_size_kb": 95,
+        "performance_notes": "Modular CSS (one file per component), lazy loads JS"
+      },
+      "config": {
+        "total_settings": 120,
+        "preset_count": 1,
+        "categories": ["Colors", "Typography", "Layout", "Product cards", "Social media", "Cart"]
+      },
+      "sections": {
+        "count": 50,
+        "critical_sections": [
+          "header.liquid",
+          "footer.liquid",
+          "announcement-bar.liquid",
+          "image-with-text.liquid",
+          "featured-collection.liquid",
+          "multicolumn.liquid",
+          "collapsible-content.liquid",
+          "newsletter.liquid",
+          "main-product.liquid",
+          "main-collection-product-grid.liquid"
+        ]
+      },
+      "snippets": {
+        "count": 25,
+        "key_snippets": [
+          "product-card.liquid",
+          "icon-*.liquid (20+ SVG icons)",
+          "price.liquid",
+          "card.liquid"
+        ]
+      }
+    }
+  },
+  
+  "SECTIONS_LIBRARY": {
+    "header": {
+      "file": "sections/header.liquid",
+      "schema_settings": {
+        "logo": {"type": "image_picker"},
+        "logo_width": {"type": "range", "min": 50, "max": 250, "default": 100},
+        "logo_position": {"type": "select", "options": ["middle-left", "middle-center", "top-left", "top-center"]},
+        "menu": {"type": "link_list"},
+        "show_search": {"type": "checkbox", "default": false},
+        "enable_sticky_header": {"type": "checkbox", "default": true}
+      },
+      "components": [
+        {
+          "name": "Logo",
+          "behavior": "Clickable link to homepage, responsive width",
+          "code":"{% if section.settings.logo %}<img src='{{ section.settings.logo }} | image_url: width: section.settings.logo_width' >{% else %}{{ shop.name }}{% endif %}"
+        },
+        {
+          "name": "Navigation Menu",
+          "behavior": "Horizontal menu on desktop, drawer on mobile",
+          "dropdown": "Single-level dropdown only (no mega menu)",
+          "mobile": "Hamburger icon opens slide-in drawer from left"
+        },
+        {
+          "name": "Search Icon",
+          "behavior": "Opens modal search (details-modal component)",
+          "optional": "Can be hidden via settings"
+        },
+        {
+          "name": "Cart Icon",
+          "behavior": "Shows item count badge, opens cart-notification drawer",
+          "update": "AJAX updates count after add-to-cart"
+        }
+      ],
+      "interactions": {
+        "sticky_behavior": "Header becomes position:sticky on scroll, always visible",
+        "mobile_menu": "Uses <details> HTML element for accessibility",
+        "cart_notification": "Slide-in drawer from right with cart contents"
+      },
+      "css_classes": [".header", ".header__logo", ".header__menu", ".header__icon--cart"],
+      "js_dependencies": ["cart-notification.js", "details-modal.js"],
+      "accessibility": {
+        "skip_link": "Skip to content at top",
+        "aria_labels": "Menu button, cart button properly labeled",
+        "keyboard_nav": "Full keyboard navigation support"
+      },
+      "performance": {
+        "critical_css": true,
+        "lazy_load_js": false,
+        "notes": "Header is above-fold, must load immediately"
+      }
+    },
+    
+    "hero_image_with_text": {
+      "file": "sections/image-with-text.liquid",
+      "purpose": "Versatile block for hero, about, features",
+      "schema_settings": {
+        "image": {"type": "image_picker"},
+        "height": {"type": "select", "options": ["adapt", "small", "medium", "large"]},
+        "desktop_layout": {"type": "select", "options": ["image_first", "text_first"]},
+        "mobile_layout": {"type": "select", "options": ["image_first", "text_first"]},
+        "desktop_content_position": {"type": "select", "options": ["top", "middle", "bottom"]},
+        "desktop_content_alignment": {"type": "select", "options": ["left", "center", "right"]},
+        "color_scheme": {"type": "color_scheme"}
+      },
+      "blocks": [
+        {"type": "heading", "settings": ["heading", "heading_size"]},
+        {"type": "text", "settings": ["text", "text_style"]},
+        {"type": "button", "settings": ["button_label", "button_link", "button_style_secondary"]}
+      ],
+      "responsive": {
+        "desktop": "Two-column grid (image + text)",
+        "mobile": "Stacked (image above or below text)"
+      },
+      "best_use": "Hero section, feature highlights, about brand"
+    },
+    
+    "featured_collection": {
+      "file": "sections/featured-collection.liquid",
+      "purpose": "Display product grid from a collection",
+      "schema_settings": {
+        "title": {"type": "inline_richtext"},
+        "description": {"type": "richtext"},
+        "collection": {"type": "collection"},
+        "products_to_show": {"type": "range", "min": 2, "max": 25, "default": 4},
+        "columns_desktop": {"type": "range", "min": 1, "max": 6, "default": 4},
+        "columns_mobile": {"type": "select", "options": ["1", "2"]},
+        "show_view_all": {"type": "checkbox", "default": true},
+        "enable_quick_add": {"type": "checkbox", "default": false},
+        "image_ratio": {"type": "select", "options": ["adapt", "portrait", "square"]},
+        "show_secondary_image": {"type": "checkbox", "default": false},
+        "show_vendor": {"type": "checkbox", "default": false},
+        "show_rating": {"type": "checkbox", "default": false}
+      },
+      "uses_snippet": "product-card.liquid",
+      "behavior": {
+        "grid": "CSS Grid, responsive columns",
+        "quick_add": "Optional quick add button on hover (desktop)",
+        "image_hover": "Show second product image on hover if enabled"
+      }
+    },
+    
+    "product_page_main_product": {
+      "file": "sections/main-product.liquid",
+      "purpose": "Product page content (images, title, price, ATC, description)",
+      "schema_settings": {
+        "enable_sticky_info": {"type": "checkbox", "default": true},
+        "gallery_layout": {"type": "select", "options": ["stacked", "thumbnail", "thumbnail_slider"]},
+        "media_size": {"type": "select", "options": ["small", "medium", "large"]},
+        "mobile_thumbnails": {"type": "select", "options": ["hide", "show"]},
+        "enable_video_looping": {"type": "checkbox", "default": false}
+      },
+      "blocks": [
+        {"type": "title"},
+        {"type": "price"},
+        {"type": "quantity_selector"},
+        {"type": "variant_picker"},
+        {"type": "buy_buttons"},
+        {"type": "description"},
+        {"type": "share"},
+        {"type": "collapsible_tab", "repeatable": true}
+      ],
+      "components": [
+        {
+          "name": "Product Gallery",
+          "variants": ["Stacked (images vertical)", "Thumbnails (grid left, main right)", "Slider"],
+          "behavior": "Click image to open lightbox (modal)",
+          "media_support": ["Images", "Videos", "3D models (via Shopify AR)"]
+        },
+        {
+          "name": "Product Info",
+          "sticky": "Becomes sticky on desktop when scrolling gallery",
+          "blocks": "Drag-and-drop blocks for merchant customization"
+        },
+        {
+          "name": "Variant Picker",
+          "variants": ["Dropdowns", "Pills", "Color swatches"],
+          "behavior": "Updates price, image, availability on selection"
+        },
+        {
+          "name": "Buy Buttons",
+          "buttons": ["Add to Cart", "Dynamic checkout (Shop Pay, Apple Pay, etc.)"],
+          "validations": "Check variant selected, show error if not"
+        },
+        {
+          "name": "Collapsible Tabs",
+          "use_cases": ["Shipping info", "Return policy", "Size guide", "Materials"],
+          "behavior": "Accordion, one open at a time"
+        }
+      ],
+      "mobile_optimizations": {
+        "sticky_atc": "Not default, but can be added via app block",
+        "gallery": "Swipe horizontal slider",
+        "thumbnails": "Hidden by default (mobile)"
+      }
+    },
+    
+    "footer": {
+      "file": "sections/footer.liquid",
+      "schema_settings": {
+        "newsletter_enable": {"type": "checkbox", "default": false},
+        "show_social": {"type": "checkbox", "default": true},
+        "enable_country_selector": {"type": "checkbox", "default": true},
+        "enable_language_selector": {"type": "checkbox", "default": true},
+        "payment_enable": {"type": "checkbox", "default": true}
+      },
+      "blocks": [
+        {"type": "link_list", "repeatable": true},
+        {"type": "text", "repeatable": true},
+        {"type": "image", "repeatable": true}
+      ],
+      "components": [
+        {"name": "Newsletter", "optional": true, "behavior": "Klaviyo/Mailchimp integration"},
+        {"name": "Social Icons", "platforms": ["Facebook", "Instagram", "Twitter", "TikTok", "YouTube"]},
+        {"name": "Footer Menu", "columns": "Up to 4 columns"},
+        {"name": "Payment Icons", "auto": "Shows enabled payment methods"},
+        {"name": "Country/Language Selector", "uses": "Shopify Markets"}
+      ]
+    }
+  },
+  
+  "COMPONENTS_LIBRARY": {
+    "product_card": {
+      "file": "snippets/product-card.liquid",
+      "props": {
+        "product": "Product object",
+        "show_secondary_image": "Boolean",
+        "show_vendor": "Boolean",
+        "show_rating": "Boolean",
+        "image_ratio": "String (adapt/portrait/square)",
+        "enable_quick_add": "Boolean"
+      },
+      "elements": {
+        "image": {
+          "default": "product.featured_image",
+          "hover": "product.images[1] (if show_secondary_image)",
+          "lazy_load": true,
+          "aspect_ratio": "Controlled by image_ratio setting"
+        },
+        "badges": {
+          "sale": "Shows if compare_at_price > price",
+          "sold_out": "Shows if product.available == false",
+          "position": "Top-left"
+        },
+        "title": {
+          "truncate": false,
+          "link": "product.url"
+        },
+        "vendor": {
+          "optional": true,
+          "display": "Small text above title"
+        },
+        "price": {
+          "uses": "snippets/price.liquid",
+          "shows": "Current price + compare price (if on sale)"
+        },
+        "rating": {
+          "optional": true,
+          "requires": "Shopify Product Reviews app",
+          "display": "Stars + count"
+        },
+        "quick_add": {
+          "optional": true,
+          "behavior": "Shows on hover (desktop), AJAX add to cart",
+          "variants": "If single variant: instant add. If multiple: show variant picker modal"
+        }
+      },
+      "states": {
+        "default": "Normal display",
+        "hover": "Secondary image (if enabled), quick add button appears",
+        "sold_out": "Grayed out, 'Sold Out' overlay"
+      }
+    },
+    
+    "price": {
+      "file": "snippets/price.liquid",
+      "purpose": "Consistent price display across theme",
+      "props": {
+        "product": "Product object",
+        "use_variant": "Boolean (use variant price vs product price)",
+        "show_badges": "Boolean (Sale badge)"
+      },
+      "display": {
+        "regular_price": "{{ money }}",
+        "sale": "<s>{{ compare_at_price }}</s> {{ price }} (Sale badge)",
+        "price_range": "From {{ min_price }} (if variants have different prices)",
+        "unit_price": "{{ unit_price }} / {{ unit_price_measurement }}"
+      },
+      "css_classes": [".price", ".price--on-sale", ".price__regular", ".price__sale"],
+      "accessibility": "Visually hidden text for screen readers ('Regular price', 'Sale price')"
+    }
+  },
+  
+  "UX_PATTERNS": {
+    "sticky_header": {
+      "behavior": "Header is position:sticky, always visible",
+      "scroll_behavior": "None (always visible, doesn't hide)",
+      "css": ".shopify-section-header-sticky { position: sticky; top: 0; }"
+    },
+    
+    "cart_notification_drawer": {
+      "behavior": "Slide-in from right after add-to-cart",
+      "content": ["Product added", "Cart items", "Subtotal", "View cart/Checkout buttons"],
+      "close": "Auto-close after 5s, or click X, or click outside",
+      "ajax": "Updates without page reload",
+      "js_file": "cart-notification.js"
+    },
+    
+    "details_modal": {
+      "used_for": ["Mobile menu", "Search", "Product zoom", "Quick add variant picker"],
+      "html_element": "<details> + <dialog>",
+      "accessibility": "Native HTML accessibility, keyboard trap",
+      "close": "ESC key, click outside, close button"
+    },
+    
+    "predictive_search": {
+      "behavior": "Shows live results as user types",
+      "debounce": "300ms",
+      "results": "Products (with image), collections, pages, articles",
+      "limit": "10 results max",
+      "api": "Shopify Predictive Search API (/search/suggest.json)",
+      "js_file": "predictive-search.js"
+    },
+    
+    "faceted_filtering": {
+      "availability": "Collection pages only",
+      "filters": "Price, availability, product type, vendor, tags, metafields",
+      "behavior": "AJAX update (no page reload)",
+      "url": "Updates URL with query params for shareable links",
+      "mobile": "Filters in drawer (slide from left)"
+    }
+  },
+  
+  "SETTINGS_ANALYSIS": {
+    "color_schemes": {
+      "description": "Dawn uses 'Color Schemes' instead of individual colors",
+      "schemes": [
+        {"name": "Scheme 1", "background": "#FFFFFF", "text": "#000000"},
+        {"name": "Scheme 2", "background": "#F3F3F3", "text": "#121212"}
+      ],
+      "application": "Each section can choose a scheme",
+      "merchant_benefit": "Consistent color combinations, easy to change site-wide"
+    },
+    "typography": {
+      "font_heading": {"type": "font_picker", "default": "Assistant"},
+      "font_body": {"type": "font_picker", "default": "Assistant"},
+      "font_size_base": {"type": "range", "min": 13, "max": 20, "default": 15}
+    },
+    "layout": {
+      "page_width": {"type": "range", "min": 1000, "max": 1600, "default": 1200},
+      "spacing_sections": {"type": "range", "min": 0, "max": 100, "default": 0}
+    },
+    "product_cards": {
+      "show_secondary_image": {"type": "checkbox", "default": false},
+      "show_vendor": {"type": "checkbox", "default": false},
+      "show_rating": {"type": "checkbox", "default": false},
+      "image_ratio": {"type": "select", "options": ["adapt", "portrait", "square"]}
+    },
+    "cart": {
+      "cart_type": {"type": "select", "options": ["drawer", "page", "notification"]},
+      "show_vendor": {"type": "checkbox"}
+    }
+  },
+  
+  "PERFORMANCE_PROFILE": {
+    "lighthouse_scores": {
+      "performance": 95,
+      "accessibility": 100,
+      "best_practices": 100,
+      "seo": 100
+    },
+    "core_web_vitals": {
+      "LCP": "1.0s (Excellent)",
+      "FID": "< 50ms (Excellent)",
+      "CLS": "0.02 (Excellent)"
+    },
+    "optimizations": [
+      "Lazy load all images below fold (loading=lazy)",
+      "Preload critical fonts (font-display: swap)",
+      "Inline critical CSS for above-fold content",
+      "Modular CSS (one file per component)",
+      "Defer non-critical JS",
+      "Use native HTML <details> for modals (no JS weight)",
+      "Minimal JS (only where necessary)",
+      "WebP images with AVIF fallback"
+    ],
+    "bundle_sizes": {
+      "css_total_gzipped": "42 KB",
+      "js_total_gzipped": "95 KB",
+      "notes": "Well within AXIS budget (< 150KB JS, < 50KB CSS)"
+    },
+    "image_optimization": {
+      "format": "WebP + AVIF",
+      "responsive": "srcset with 6 sizes (180w, 360w, 533w, 720w, 940w, 1066w)",
+      "lazy_load": "Native loading=lazy",
+      "critical_images": "loading=eager, fetchpriority=high for hero"
+    }
+  },
+  
+  "CONVERSION_FEATURES": {
+    "out_of_box": [
+      {
+        "name": "Dynamic Checkout Buttons",
+        "description": "Shop Pay, Apple Pay, Google Pay on product page",
+        "impact": "Reduces checkout friction"
+      },
+      {
+        "name": "Quick Add",
+        "description": "Optional quick add to cart from collection grid",
+        "trigger": "Enable in settings",
+        "limitation": "Doesn't handle complex variants well"
+      },
+      {
+        "name": "Product Recommendations",
+        "description": "Shopify AI-powered recommendations",
+        "placement": "Below product description",
+        "customizable": "Can be moved/hidden via theme editor"
+      }
+    ],
+    "missing_cro_features": [
+      "No sticky ATC bar on mobile",
+      "No low stock indicator",
+      "No urgency timers",
+      "No upsell cart recommendations",
+      "No recently viewed products",
+      "No wishlist"
+    ],
+    "notes": "Dawn is minimal by design. CRO features expected to come from apps."
+  },
+  
+  "MOBILE_OPTIMIZATIONS": {
+    "mobile_menu": {
+      "trigger": "Hamburger icon (☰)",
+      "behavior": "Slide-in drawer from left, uses <details> element",
+      "close": "Click X, click outside, ESC key"
+    },
+    "product_gallery": {
+      "desktop": "Grid or thumbnail layout",
+      "mobile": "Horizontal swipe slider",
+      "thumbnails": "Hidden on mobile by default"
+    },
+    "touch_targets": {
+      "min_size": "44px × 44px (meets Apple guidelines)",
+      "spacing": "Adequate spacing between clickable elements"
+    },
+    "forms": {
+      "inputs": "Large enough for easy tapping",
+      "labels": "Floating labels or placeholders",
+      "validation": "Inline error messages"
+    }
+  },
+  
+  "ACCESSIBILITY_AUDIT": {
+    "wcag_level": "2.1 AA",
+    "score": "100/100 (Lighthouse Accessibility)",
+    "features": [
+      "Semantic HTML throughout (header, nav, main, article, aside, footer)",
+      "Skip to content link (visually hidden)",
+      "ARIA labels for icon-only buttons",
+      "Focus visible on all interactive elements",
+      "Keyboard navigation (Tab, Enter, ESC, Arrow keys)",
+      "Color contrast > 4.5:1 for all text",
+      "Alt text required for all images",
+      "Form labels associated with inputs",
+      "Error messages announced to screen readers",
+      "No keyboard traps"
+    ],
+    "tested_with": ["NVDA", "JAWS", "VoiceOver", "TalkBack"]
+  },
+  
+  "AXIS_LEARNING_POINTS": {
+    "steal_these": [
+      "Color scheme system (reusable combinations)",
+      "Modular CSS (component-*.css pattern)",
+      "Native <details> for modals (lightweight)",
+      "Image optimization strategy (srcset + lazy load)",
+      "Block-based sections (drag & drop)",
+      "Accessibility-first approach"
+    ],
+    "improve_upon": [
+      "Add sticky ATC for mobile",
+      "Include CRO features (low stock, urgency)",
+      "More advanced product page (zoom, 360°)",
+      "Mega menu (Dawn only has simple dropdown)",
+      "More visual flair (Dawn is very plain)",
+      "Preset variety (Dawn has only 1)"
+    ],
+    "axis_differentiation": [
+      "AXIS will have 3+ presets (Dawn has 1)",
+      "AXIS will include CRO features out-of-box",
+      "AXIS will have unique design patterns (Bento Grid, etc.)",
+      "AXIS will support niche-specific optimizations"
+    ]
+  }
+}
