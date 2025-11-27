@@ -1,0 +1,45 @@
+{
+  "system_name": "AI_THEME_BLUEPRINT",
+  "version": "1.0",
+  "description": "Defines the standard file structure for a Shopify OS 2.0 theme. Used by the Theme Generator as a skeleton.",
+  "structure": {
+    "config": {
+      "settings_schema.json": "Defines global theme settings (colors, typography, etc.)",
+      "settings_data.json": "Stores the actual values for the settings"
+    },
+    "layout": {
+      "theme.liquid": "The master layout file. Contains <head>, <body>, and {{ content_for_layout }}."
+    },
+    "sections": {
+      "header.liquid": "Sticky header with logo and navigation",
+      "footer.liquid": "Footer with links and newsletter",
+      "hero.liquid": "Hero banner with image and text overlay",
+      "rich-text.liquid": "Simple text block",
+      "product-grid.liquid": "Grid of products for collection pages"
+    },
+    "snippets": {
+      "icon-cart.liquid": "SVG icon for cart",
+      "icon-search.liquid": "SVG icon for search",
+      "css-variables.liquid": "CSS custom properties derived from settings"
+    },
+    "templates": {
+      "index.json": "JSON template for the homepage",
+      "product.json": "JSON template for product pages",
+      "collection.json": "JSON template for collection pages",
+      "cart.json": "JSON template for the cart page"
+    },
+    "assets": {
+      "base.css": "Main stylesheet",
+      "global.js": "Main JavaScript file"
+    },
+    "locales": {
+      "en.default.json": "English translations"
+    }
+  },
+  "required_files": [
+    "config/settings_schema.json",
+    "layout/theme.liquid",
+    "templates/index.json",
+    "assets/base.css"
+  ]
+}

@@ -70,14 +70,14 @@ Python-модули, которые:
 
 ---
 
-## 🛠 CLI (после реализации Runtime Engine)
+## 🛠 CLI (Runtime Engine)
 
 | Команда | Назначение |
 |--------|------------|
-| `python main.py init` | Инициализация проекта |
-| `python main.py create "brief"` | Запуск генерации темы |
-| `python main.py validate` | Проверка качества |
-| `python main.py report` | Создать отчёт |
+| `python src/cli/main.py run` | Запуск Оркестратора |
+| `python src/cli/main.py status` | Проверка статуса системы |
+| `python src/cli/main.py generate "prompt"` | Генерация кода через LLM |
+| `python src/cli/main.py create-theme "brief"` | Создание новой темы (Autonomous Factory) |
 
 ---
 
