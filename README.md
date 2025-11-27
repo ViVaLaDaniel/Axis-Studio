@@ -11,6 +11,8 @@
 
 ---
 
+### ✅ `axis.config.json`
+
 ### ✅ `00_CORE_BRAIN/`
 - ✅ `axis_brain_v10.0_GOD_MODE.json`
 - ✅ `00_INDEX_AXIS_PROJECT_v10.0.md`
@@ -98,10 +100,6 @@
 
 ### ✅ `src/`
 - ✅ `orchestrator.py`
-- ✅ `core/`
-- ✅ `adapters/`
-- ✅ `cli/`
-- ✅ `utils/`
 </details>
 
 ---
@@ -301,6 +299,7 @@ AXIS Studio спроектирован как **LLM-агностичная пл�
 - [**`LLM_INTEGRATION_GUIDE.md`**](./00_CORE_BRAIN/LLM_INTEGRATION_GUIDE.md) — **Гайд по Интеграции LLM.** Универсальное руководство по подключению любой LLM к AXIS OS.
 - [**`AXIS_KNOWLEDGE_SYNCER.json`**](./00_CORE_BRAIN/AXIS_KNOWLEDGE_SYNCER.json) — **Ядро Знаний и Синхронизатор.**
 - [**`AXIS_SYSTEM_PROMPT_v10.json`**](./00_CORE_BRAIN/AXIS_SYSTEM_PROMPT_v10.json) — **Системный промпт.**
+- [**`axis.config.json`**](./axis.config.json) — **Конфигурационный файл системы.**
 
 </details>
 
@@ -505,6 +504,7 @@ AXIS Studio спроектирован как **LLM-агностичная пл�
   <li>fix(engine): Verify and confirm correct indentation in 09_ENGINE/engine.py</li>
   <li>feat(orchestrator): Move 09_ENGINE/engine.py to src/orchestrator.py</li>
   <li>feat(src): Create base `src/` subdirectories (core, adapters, cli, utils)</li>
+  <li>feat(config): Create axis.config.json</li>
 </ul>
 </details>
 

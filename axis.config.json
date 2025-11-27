@@ -1,0 +1,26 @@
+{
+  "project_name": "Axis Studio",
+  "version": "1.0.0",
+  "paths": {
+    "core_brain": "00_CORE_BRAIN",
+    "runtime_engine": "src/orchestrator.py",
+    "reports": "REPORTS",
+    "src_root": "src"
+  },
+  "llm_config": {
+    "default_provider": "gemini",
+    "providers": {
+      "gemini": {
+        "api_key_env": "GEMINI_API_KEY",
+        "model": "gemini-pro"
+      },
+      "openai": {
+        "api_key_env": "OPENAI_API_KEY",
+        "model": "gpt-4"
+      }
+    }
+  },
+  "development": {
+    "debug_mode": true
+  }
+}
