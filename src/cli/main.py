@@ -26,14 +26,14 @@ def main():
     # axis generate
     generate_parser = subparsers.add_parser('generate', help='Generate code using LLM')
     generate_parser.add_argument('prompt', type=str, help='Generation prompt')
-    generate_parser.add_argument('--provider', type=str, default='gemini_browser', 
+    generate_parser.add_argument('--provider', type=str, default='gemini',
                                  help='LLM provider to use')
     
     # axis create-theme
     theme_parser = subparsers.add_parser('create-theme', help='Create a new Shopify theme')
     theme_parser.add_argument('brief', type=str, help='Theme brief (e.g. "Minimalist fashion store")')
     theme_parser.add_argument('--name', type=str, default='my-axis-theme', help='Theme directory name')
-    theme_parser.add_argument('--provider', type=str, default='gemini_browser', help='LLM provider')
+    theme_parser.add_argument('--provider', type=str, default='gemini', help='LLM provider')
     
     args = parser.parse_args()
     
@@ -46,7 +46,7 @@ def main():
         print("(Not implemented yet)")
     elif args.command == 'status':
         print("✅ AXIS Studio v10.5 - Scientific Edition")
-        print("📂 Project Root: C:\\Users\\wiwal\\GIT\\Axis Studio")
+        print("📂 Project Root: ./")
         print("🧠 Brain: 00_CORE_BRAIN")
         print("⚙️ Runtime: src/")
     elif args.command == 'generate':
@@ -58,11 +58,6 @@ def main():
             if not provider.is_available():
                 print(f"❌ Provider '{args.provider}' is not available.")
                 return
-            
-            # For browser provider, need to login first
-            if args.provider == 'gemini_browser':
-                print("🔐 Logging in to Gemini...")
-                provider.login()
             
             print(f"📝 Prompt: {args.prompt}")
             response = provider.generate(args.prompt)
