@@ -5,6 +5,7 @@ import os
 # Add project root to path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
+from src import adapters
 from src.orchestrator import AxisOrchestrator
 
 def main():
@@ -26,14 +27,14 @@ def main():
     # axis generate
     generate_parser = subparsers.add_parser('generate', help='Generate code using LLM')
     generate_parser.add_argument('prompt', type=str, help='Generation prompt')
-    generate_parser.add_argument('--provider', type=str, default='gemini_browser', 
+    generate_parser.add_argument('--provider', type=str, default='gemini_api', 
                                  help='LLM provider to use')
     
     # axis create-theme
     theme_parser = subparsers.add_parser('create-theme', help='Create a new Shopify theme')
     theme_parser.add_argument('brief', type=str, help='Theme brief (e.g. "Minimalist fashion store")')
     theme_parser.add_argument('--name', type=str, default='my-axis-theme', help='Theme directory name')
-    theme_parser.add_argument('--provider', type=str, default='gemini_browser', help='LLM provider')
+    theme_parser.add_argument('--provider', type=str, default='gemini_api', help='LLM provider')
     
     args = parser.parse_args()
     
