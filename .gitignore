@@ -1,3 +1,5 @@
-
 # Log files
 *.log
+
+# Local documentation and meta files
+_local_docs/
